@@ -1,0 +1,12 @@
+{
+  "env": {
+    "name": "#{envName}"
+  },
+  "apiServer": {
+    "BASE_URL": "http://localhost:9797/boffihq/api"
+  },
+  "applicationTitle": "BACK OFFICE",
+  "applicationSubtitle": "HEAD OFFICE",
+  "outletCode": "0208"
+
+}
