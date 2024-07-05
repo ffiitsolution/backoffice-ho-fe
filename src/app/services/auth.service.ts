@@ -1,8 +1,9 @@
 import { Injectable } from "@angular/core";
-import { AppConfig } from "../config/app.config";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
+
 import { AppService } from "./app.service";
+import { AppConfig } from "../config/app.config";
 
 @Injectable({
     providedIn: 'root'
@@ -16,11 +17,8 @@ export class AuthService {
         private appService: AppService    
     ){}
 
-    doLogin(username: any, password: any): Observable<any> {
-        return this.httpClient.post(this.BASE_URL + '/auth/login', {
-            staffCode: username,
-            password: password
-        });
+    doLogin(params: any): Observable<any> {
+        return this.httpClient.post(this.BASE_URL +`/auth/login`, params);
     }
 
     doLogout() {
@@ -28,4 +26,7 @@ export class AuthService {
         this.appService.setToken(null);
     }
 
+    setUser(user: any) {
+        localStorage.setItem('hq_user', JSON.stringify(user));
+    }
 }

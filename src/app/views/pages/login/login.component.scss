@@ -1,0 +1,29 @@
+.custom-margin {
+    margin: 1.5rem 4rem;
+}
+
+.button-pass {
+    background: transparent;
+    border: 0;
+    padding: 12px;
+}
+
+.footer-version {
+    color: #2c384aae;
+    line-height: 20px; 
+    font-size:13px;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.box-error-message {
+    padding: 8px 28px;
+    border: 1px solid #d14747;
+    border-radius: 30px;
+    background: #d1474724;;
+    margin-bottom: 12px;
+
+    p {
+        margin: 0;
+    }
+}

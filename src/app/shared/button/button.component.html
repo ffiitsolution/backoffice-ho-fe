@@ -1,0 +1,17 @@
+<button 
+    [class]="'button-app '+size+' '+weight+' '+color"
+    [ngStyle]="{
+        'border-radius': shape == 'pill' ? '120px' : '3px'  
+    }"
+    [ngClass]="disabled || loading ? 'disabled' : ''" 
+    (click)="actionButton()"
+>
+    <ng-content *ngIf="!loading"></ng-content>
+    <div *ngIf="loading">
+        <div class="fade show d-flex" style="text-align: center; gap: 8px;">
+            <i class="spinner-grow" style="width: 10px; height: 10px"></i>
+            <i class="spinner-grow" style="width: 10px; height: 10px"></i>
+            <i class="spinner-grow" style="width: 10px; height: 10px"></i>
+        </div>
+    </div>
+</button>
