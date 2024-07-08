@@ -1,21 +1,28 @@
+// App Angular
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { AppConfig } from './config/app.config';
 import { APP_INITIALIZER, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient } from '@angular/common/http';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { AppConfig } from './config/app.config';
-
+// Material UI Component
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 
+// Layout Component
+import { LayoutComponent } from './layout/layout.component';
+
+// Shared Component
 import { ButtonSharedComponent } from './shared/button/button.component';
-import { LoginComponent } from './views/pages/login/login.component';
+
+// View Component
+import { LoginComponent } from './views/auth/login/login.component';
 
 
 export function initializeApp(appConfig: AppConfig) {
@@ -25,13 +32,14 @@ export function initializeApp(appConfig: AppConfig) {
 @NgModule({
   declarations: [
     AppComponent,
+    LayoutComponent,
     LoginComponent,
     ButtonSharedComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
+    // HttpClientModule,
     BrowserAnimationsModule,
     MatFormFieldModule, 
     MatInputModule, 
@@ -41,6 +49,7 @@ export function initializeApp(appConfig: AppConfig) {
   ],
   providers: [
     AppConfig,
+    provideHttpClient(),
     {
       provide: APP_INITIALIZER,
       useFactory: initializeApp,

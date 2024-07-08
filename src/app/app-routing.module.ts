@@ -1,39 +1,44 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { LoginComponent } from './views/pages/login/login.component';
-import { DefaultLayoutComponent } from './layout/default-layout/default-layout.component';
+import { LoginComponent } from './views/auth/login/login.component';
+import { LayoutComponent } from './layout/layout.component';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
-  { path: '', redirectTo: '/login', pathMatch: 'full' }, 
-  { path: '**', redirectTo: '/login' },
+  { 
+    path: 'login', 
+    component: LoginComponent 
+  },
+  { 
+    path: '', 
+    redirectTo: '/login', 
+    pathMatch: 'full' 
+  }, 
+  { 
+    path: '**', 
+    redirectTo: '/login' 
+  }, 
   {
     path: '',
-    component: DefaultLayoutComponent,
+    component: LayoutComponent,
     children: [
-      // {
-      //   path: 'home',
-      //   loadChildren: () => import('./views/home/home.module').then((m) => m.HomeModule)
-      // },
-      // {
-      //   path: 'master',
-      //   loadChildren: () => import('./views/master/master.module').then((m) => m.MasterModule)
-      // },
-      // {
-      //   path: 'transaction',
-      //   loadChildren: () => import('./views/transaction/transaction.module').then((m) => m.TransactionModule)
-      // },
-      // {
-      //   path: 'report',
-      //   loadChildren: () => import('./views/report/report.module').then((m) => m.ReportModule)
-      // },
+      {
+        path: 'home',
+        loadChildren: () => import('./views/home/home.module').then((m) => m.HomeModule)
+      },
     ]
-  },
+  }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [
+    RouterModule.forRoot(routes, {
+      scrollPositionRestoration: 'top',
+      anchorScrolling: 'enabled',
+      initialNavigation: 'enabledBlocking'
+    })
+  ],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}
