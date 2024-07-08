@@ -30,7 +30,6 @@ export class LoginComponent implements OnInit {
     });
 
     constructor(
-        private router: Router,
         private authSvc: AuthService,    
     ) { }
 
@@ -56,12 +55,10 @@ export class LoginComponent implements OnInit {
                 finalize(() => this.isLoading = false))
                 .subscribe(response => {
                     const success = response?.success || false;
-                    this.errorMessage = success ? '' : response?.message;
                     if (success) {
                         const user = response?.data?.user;
                         this.authSvc.setUser(user);
                         localStorage.setItem('hq_token', response?.data?.token);
-                        this.router.navigate(['/home']);
                     }
                 }
             );
