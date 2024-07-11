@@ -25,6 +25,7 @@ import { LoginComponent } from './views/auth/login/login.component';
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import { BrandComponent } from './layout/brand/brand.component';
 import { SideBarItemComponent } from './layout/sidebar/sidebar-item/sidebar-item.component';
+import { MasterModule } from './views/master/master.module';
 
 
 export function initializeApp(appConfig: AppConfig) {
@@ -49,6 +50,7 @@ export function initializeApp(appConfig: AppConfig) {
     MaterialModule,
     ReactiveFormsModule,
     FormsModule,
+    MasterModule
   ],
   providers: [
     AppConfig,
