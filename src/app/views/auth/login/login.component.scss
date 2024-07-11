@@ -1,5 +1,20 @@
-.custom-margin {
-    margin: 1.5rem 4rem;
+.login-container {
+    border: none !important;
+    border-radius: 8px !important;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    
+    .custom-margin {
+        margin: 3rem 2.5rem;
+        gap: 10px;
+
+        .logo-container {
+            width: 250px;
+        }
+
+        .title {
+            font-size: 22px;
+        }
+    }
 }
 
 .button-pass {

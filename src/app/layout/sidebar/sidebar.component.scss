@@ -1,0 +1,33 @@
+.app-title {
+    display: block;
+    margin: 10px 0px;
+    padding-left: 20px;
+    color: #B9B9B9;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.sidebar-list {
+    height: 550px;
+    overflow: auto;
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: #A66969 transparent; /* Firefox */
+}
+
+/* WebKit Browsers */
+.sidebar-list::-webkit-scrollbar {
+    width: 12px;
+    background-color: #F5F5F5;
+}
+
+.sidebar-list::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 10px; /* Rounded corners for the thumb */
+    border: 3px solid #f1f1f1; /* Border to create space around thumb */
+}
+
+.sidebar-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px; /* Rounded corners for the track */
+    margin: 5px; /* Adds space around the track */
+}

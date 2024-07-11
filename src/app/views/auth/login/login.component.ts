@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnInit, signal, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { finalize } from 'rxjs';
@@ -9,7 +9,8 @@ import { AuthService } from '../../../services/auth.service';
 @Component({
     selector: 'app-login',
     templateUrl: 'login.component.html',
-    styleUrls: ['login.component.scss']
+    styleUrls: ['login.component.scss'],
+    encapsulation: ViewEncapsulation.Emulated
 })
 
 export class LoginComponent implements OnInit {

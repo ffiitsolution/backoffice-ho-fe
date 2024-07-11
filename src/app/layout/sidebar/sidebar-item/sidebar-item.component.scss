@@ -1,0 +1,44 @@
+.menu-items-button {
+    border: none;
+    border-radius: 0px !important;
+    background: transparent;
+
+    ::ng-deep .mat-mdc-list-item-unscoped-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border: none;
+        background: none;
+    }
+
+    .icon-menu {
+        color: #FFFFFF;
+        font-size: 25px;
+    }
+
+    .menu-parent {
+        color: #FFFFFF;
+        font-weight: 500;
+    }
+
+    .button-menu {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        background: none;
+        color: #FFFFFF;
+    }
+}
+
+.submenu {
+    border-radius: 0px !important;
+
+    .menu-child-items {
+        border-radius: 0px !important;
+    }
+    .menu-child {
+        color: #CACACA;
+        padding-left: 37px;
+    }
+}

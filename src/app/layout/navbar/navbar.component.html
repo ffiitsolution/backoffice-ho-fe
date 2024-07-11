@@ -1,0 +1,58 @@
+<mat-toolbar class="topbar">
+    <button mat-icon-button class = "hide-sidebar">
+      <mat-icon [ngStyle]="{'color':'#9E9E9E'}">reorder</mat-icon>
+    </button>
+
+    <span class="flex-1-auto"></span>
+
+    <!-- --------------------------------------------------------------- -->
+    <!-- Profile Icon -->
+
+    <div class="d-flex align-items-center justify-content-center" class="user-profile-data">
+      <!-- --------------------------------------------------------------- -->
+      <!-- Profile, Outlet, Trans Date Data -->
+
+      <div class="navbar-user-data">
+        <span>Welcome, User</span>
+
+        <hr class="separator">
+
+        <span>Outlet - 0000</span>
+
+        <hr class="separator">
+
+        <span>01 Januari 2024</span>
+      </div>
+
+      <!-- --------------------------------------------------------------- -->
+
+      <button
+        mat-icon-button
+        [matMenuTriggerFor]="profilemenu"
+        aria-label="Notifications" class="m-l-10 navbar-btn"
+      >
+        <mat-icon [ngStyle]="{'color':'#9E9E9E'}" class="object-cover">account_circle</mat-icon>
+      </button>
+
+    </div>
+
+
+    <!-- --------------------------------------------------------------- -->
+    
+    <!-- --------------------------------------------------------------- -->
+    <!-- Profile Dropdown -->
+
+    <mat-menu #profilemenu="matMenu" xPosition="before" class="topbar-dd profile-container cardWithShadow">    
+        <div class="profile-section">
+          <button
+            class="w-100 navbar-profile-logout-button"
+            (click)="logout()"
+          >
+            <mat-icon>power_settings_new</mat-icon>
+              Logout
+            </button>
+        </div>
+    </mat-menu>
+
+    <!-- --------------------------------------------------------------- -->
+</mat-toolbar>

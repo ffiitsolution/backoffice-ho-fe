@@ -3,23 +3,24 @@
         <div class="row justify-content-center">
             <div md="8" class="row d-flex justify-content-center">
                 <div style="width: fit-content">
-                    <div class="card p-2">
+                    <div class="card login-container p-2">
                         <div class="card-body">
                             <div class="d-flex flex-column align-items-center custom-margin">
-                                <div class="text-center disable-selection mb-3">
+                                <div class="logo-container text-center d-flex align-items-center justify-content-center disable-selection mb-3">
+                                    <img src="/assets/img/jagonya_ayam.png" class="mx-auto d-block"
+                                        style="max-width: 50%;" alt="JAGONYA AYAM KFC" draggable="false">
                                     <img src="/assets/img/brand/logo_kfc.png" class="img-fluid mx-auto d-block"
-                                        style="max-width: 47%;" alt="LOGO KFC" draggable="false">
+                                        style="max-width: 50%;" alt="LOGO KFC" draggable="false">
                                 </div>
 
-                                <h5 class="text-center mb-3 fw-semibold">{{ appSubtitle }} - {{ appTitle }}</h5>
+                                <span class="text-center mb-3 fw-semibold title">{{ appSubtitle }} - {{ appTitle }}</span>
+
                                 <div *ngIf="errorMessage" class="box-error-message">
                                     <p class="text-danger" style="text-align:center;"> {{ errorMessage}}</p>
                                 </div>
 
-                                <p class="text-medium-emphasis m-0">Sign In to your account</p>
-
                                 <form [formGroup]="loginForm" class="d-flex flex-column w-100 mb-4">
-                                    <mat-form-field appearance="outline" style="margin-bottom: 8px;">
+                                    <mat-form-field appearance="outline" style="margin-bottom: 8px;" class="custom-border-color">
                                         <mat-label>Username</mat-label>
                                         <input 
                                             matInput 
@@ -28,7 +29,13 @@
                                             name="username" 
                                             required
                                         />
-
+                                        <button
+                                        mat-icon-button
+                                        matSuffix
+                                            class="button-pass"
+                                        >
+                                            <mat-icon [ngStyle]="{'color':'#9E9E9E'}">account_circle</mat-icon>
+                                        </button>
                                         <mat-error *ngIf="loginForm.controls['username'].hasError('required')">You must enter a value</mat-error>
                                     </mat-form-field>
 
@@ -49,7 +56,7 @@
                                             [attr.aria-pressed]="hide()"
                                             class="button-pass"
                                         >
-                                            <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                            <mat-icon [ngStyle]="{'color':'#9E9E9E'}">{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
                                         </button>
                                         <mat-error *ngIf="loginForm.controls['password'].hasError('required')">You must enter a value</mat-error>
                                     </mat-form-field>

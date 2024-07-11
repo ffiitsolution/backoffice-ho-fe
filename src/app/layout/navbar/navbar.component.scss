@@ -1,0 +1,75 @@
+.topbar {
+    background-color: white;
+    position: sticky;
+    top: 0;
+    z-index: 9;
+    height: 70px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(37, 83, 185, 0.1);
+    justify-content: space-between;
+
+    .user-profile-data {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+
+        .navbar-user-data {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+    
+            span {
+                font-size: 14px;
+                color:#9E9E9E;
+            }
+    
+            .separator {
+                border-left: 2px solid #9E9E9E;
+                height: 35px;
+                margin: 12px; 
+            }
+        }
+    }
+
+
+
+    .hide-sidebar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: none;
+        background: none;
+    }
+
+    .navbar-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: none;
+        background: none;
+
+        .object-cover {
+            object-fit: cover;
+        }
+          
+    }
+    
+    .profile-container {
+        min-width: 200px !important;
+        margin-top: 10px !important;
+    }
+}
+
+.profile-section {
+    padding: 12px;
+
+    .navbar-profile-logout-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: none;
+        border: none;
+        gap: 8px;
+    }
+}

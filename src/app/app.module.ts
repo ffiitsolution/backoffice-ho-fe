@@ -9,20 +9,22 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { provideHttpClient } from '@angular/common/http';
 
-// Material UI Component
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
+// Material UI Module
+import { MaterialModule } from './material.module';
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 
 // Layout Component
 import { LayoutComponent } from './layout/layout.component';
+import { NavbarComponent } from './layout/navbar/navbar.component';
 
 // Shared Component
 import { ButtonSharedComponent } from './shared/button/button.component';
 
 // View Component
 import { LoginComponent } from './views/auth/login/login.component';
+import { SidebarComponent } from './layout/sidebar/sidebar.component';
+import { BrandComponent } from './layout/brand/brand.component';
+import { SideBarItemComponent } from './layout/sidebar/sidebar-item/sidebar-item.component';
 
 
 export function initializeApp(appConfig: AppConfig) {
@@ -34,16 +36,17 @@ export function initializeApp(appConfig: AppConfig) {
     AppComponent,
     LayoutComponent,
     LoginComponent,
-    ButtonSharedComponent
+    ButtonSharedComponent,
+    NavbarComponent,
+    SidebarComponent,
+    BrandComponent,
+    SideBarItemComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    // HttpClientModule,
     BrowserAnimationsModule,
-    MatFormFieldModule, 
-    MatInputModule, 
-    MatIconModule,
+    MaterialModule,
     ReactiveFormsModule,
     FormsModule,
   ],

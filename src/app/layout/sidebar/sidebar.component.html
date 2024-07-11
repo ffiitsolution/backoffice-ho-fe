@@ -1,0 +1,11 @@
+<div class="flex-layout">
+  <app-brand></app-brand>
+
+  <span class="app-title">BACK OFFICE HO</span>
+
+  <ng-scrollbar class="position-relative" style="height: 100%;">
+    <mat-nav-list class="sidebar-list">
+      <app-sidebar-item *ngFor="let item of navItems" [item]="item"> </app-sidebar-item>
+    </mat-nav-list>
+  </ng-scrollbar>
+</div>
