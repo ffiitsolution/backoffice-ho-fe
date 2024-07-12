@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { AppConfig } from "../config/app.config";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Observable } from "rxjs";
 
 @Injectable({
     providedIn: 'root',
@@ -18,6 +19,27 @@ export class AppService {
         } else {
             localStorage.removeItem('hq_token');
         }
+    }
+
+    getToken(): string | null {
+        return localStorage.getItem('hq_token');
+    }
+
+    headers(): HttpHeaders {
+        let headers = new HttpHeaders().set('Content-Type', 'application/json');
+        let token = this.getToken();
+        if (token !== null && token?.length > 0) {
+          headers = new HttpHeaders()
+            .set('Content-Type', 'application/json')
+            .set('X-API-TOKEN', token);
+        }
+        return headers;
+      }
+
+    listGlobal(body: any = {}): Observable<any> {
+        return this.httpClient.post(this.BASE_URL + '/global/dt', body, {
+          headers: this.headers(),
+        });
     }
 
 }

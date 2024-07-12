@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NavbarService } from '../../../services/navbar.service';
 import { Router } from '@angular/router';
-import { SidebarMenu } from '../../sidebar/sidebar.model'; 
+import { SidebarMenu, SidebarSideMenu } from '../../sidebar/sidebar.model'; 
 
 @Component({
     selector: 'app-sidebar-item',
@@ -12,7 +12,7 @@ import { SidebarMenu } from '../../sidebar/sidebar.model';
 export class SideBarItemComponent implements OnInit {
     @Input() item: SidebarMenu;
     @Input() depth: any;
-    @Output() assemblyQueueChange = new EventEmitter<any>();
+    @Output() dataBreadCrumb = new EventEmitter<any>();
 
     parentBreadcrumb: string = ''; 
     childBreadcrumb: string = '';
@@ -53,16 +53,26 @@ export class SideBarItemComponent implements OnInit {
 
     toggleItem(item: SidebarMenu) {
       item.expanded = !item.expanded;
-
+      this.parentBreadcrumb = item.parentName!
       if(!item.children) {
-        this.parentBreadcrumb = item.parentName!
+        const dataBreadCrumb = {
+          parentBreadcrumb: this.parentBreadcrumb
+        }
+        this.dataBreadCrumb.emit(dataBreadCrumb)
         this.goToPage(item.route);
       }
     }
   
-    onItemSelected(item: SidebarMenu) {
-      console.log(item)
+    onItemSelected(item: SidebarSideMenu) {
+      this.childBreadcrumb = item.childName;
+
       if (item.route) {
+        const dataBreadCrumb = {
+          parentBreadcrumb: this.parentBreadcrumb,
+          childBreadcrumb: this.childBreadcrumb
+        }
+
+        this.dataBreadCrumb.emit(dataBreadCrumb)
         this.router.navigate([item.route]);
       }
     }

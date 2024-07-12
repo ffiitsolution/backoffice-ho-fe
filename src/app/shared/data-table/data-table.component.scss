@@ -1,0 +1,70 @@
+.data-table-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+    background: #FFFFFF;
+    border-radius: 10px;
+
+    .data-header-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0px 16px;
+        width: 100%;
+        background: #A62B2B;
+        border-radius: 10px 10px 0px 0px;
+
+        span {
+            font-size: 20px;
+            color: #FFFFFF;
+        }
+
+        .custom-search-form {
+            margin: 16px 0px 0px 0px;
+
+            ::ng-deep .mdc-text-field {
+                border-radius: 8px !important;
+                background-color: #FFFFFF !important;
+            }
+        }
+    }
+
+    .data-table-container {
+        overflow-y: auto;
+        flex: 2;
+        height: 100%;
+
+        table {
+            width: 100%;
+            box-shadow: none !important;
+        }
+    }
+
+    .data-table-container::-webkit-scrollbar {
+        width: 12px;
+      }
+      
+      .data-table-container::-webkit-scrollbar-track {
+        background: #f1f1f1;
+      }
+      
+      .data-table-container::-webkit-scrollbar-thumb {
+        background-color: #888;
+        border-radius: 10px;
+        border: 3px solid #f1f1f1;
+      }
+    
+    .data-table-footer {
+        position: sticky;
+        bottom: 0;
+        background: white;
+        z-index: 0;
+        box-shadow: 0px -1px 5px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+
+        .custom-paginator {
+            border-radius: 0px 0px 10px 10px;
+        }
+    }
+  }
+  

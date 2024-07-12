@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { navItems } from './sidebar-menu.component';
 
 @Component({
@@ -8,8 +8,15 @@ import { navItems } from './sidebar-menu.component';
 })
 
 export class SidebarComponent implements OnInit {
+    @Output() dataBreadCrumb = new EventEmitter<any>();
+
     navItems = navItems;
     constructor() { }
 
     ngOnInit() { }
+
+    getDataBreadCrumb(dataBreadcrumb: any) {
+        console.log(dataBreadcrumb)
+        this.dataBreadCrumb.emit(dataBreadcrumb);
+    }
 }

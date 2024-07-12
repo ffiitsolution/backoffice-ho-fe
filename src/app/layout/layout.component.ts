@@ -15,6 +15,10 @@ const MONITOR_VIEW = 'screen and (min-width: 1024px)';
 
 export class LayoutComponent implements OnInit {
     @ViewChild('leftsidenav')
+
+    // Value
+    dataBreadcrumb: any;
+
     public sidenav: MatSidenav | any;
 
     //get options from service
@@ -57,5 +61,9 @@ export class LayoutComponent implements OnInit {
 
     onSidenavOpenedChange(isOpened: boolean) {
         this.isCollapsedWidthFixed = !this.isOver;
+    }
+
+    getDataBreadCrumb(dataBreadCrumb: any) {
+        this.dataBreadcrumb = dataBreadCrumb;
     }
 }

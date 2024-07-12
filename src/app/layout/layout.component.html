@@ -7,12 +7,31 @@
   (closedStart)="onSidenavClosedStart()"
   class="sidebarNav"
   >
-    <app-sidebar></app-sidebar>
+    <app-sidebar (dataBreadCrumb)="getDataBreadCrumb($event)"></app-sidebar>
   </mat-sidenav>
   
   <mat-sidenav-content class="contentWrapper p-left ">
     <main class="pageWrapper maxWidth">
       <app-navbar></app-navbar>
+
+      <!-- Breadcrumb -->
+      <ng-container *ngIf="dataBreadcrumb">
+        <div class="breadcrumb-container">
+          <span class="breadcrumb-item">
+            {{ dataBreadcrumb.parentBreadcrumb }}
+          </span>
+
+          <ng-container *ngIf=" dataBreadcrumb.childBreadcrumb">
+            <mat-icon [ngStyle]="{'color':'#9E9E9E', 'width': '15px', 'height' : '15px', 'font-size' : '18px'}">keyboard_arrow_right</mat-icon>
+  
+            <span class="breadcrumb-item">
+              {{ dataBreadcrumb.childBreadcrumb }}
+            </span>
+          </ng-container>
+  
+        </div>
+      </ng-container>
+
       
       <div class="m-t-30">
         <router-outlet></router-outlet>

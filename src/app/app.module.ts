@@ -26,6 +26,10 @@ import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import { BrandComponent } from './layout/brand/brand.component';
 import { SideBarItemComponent } from './layout/sidebar/sidebar-item/sidebar-item.component';
 import { HashLocationStrategy, LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { GlobalComponent } from './views/master/global/global.component';
+import { DataTableComponent } from './shared/data-table/data-table.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 export function initializeApp(appConfig: AppConfig) {
@@ -41,7 +45,9 @@ export function initializeApp(appConfig: AppConfig) {
     NavbarComponent,
     SidebarComponent,
     BrandComponent,
-    SideBarItemComponent
+    SideBarItemComponent,
+    GlobalComponent,
+    DataTableComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +55,8 @@ export function initializeApp(appConfig: AppConfig) {
     BrowserAnimationsModule,
     MaterialModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MatTableModule,
   ],
   providers: [
     {

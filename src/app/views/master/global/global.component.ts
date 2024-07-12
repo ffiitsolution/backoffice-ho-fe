@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AppService } from '../../../services/app.service';
+import { Subject, takeUntil, tap } from 'rxjs';
 
 @Component({
     selector: 'app-global',
@@ -7,7 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class GlobalComponent implements OnInit {
-    constructor() { }
+    headerTitle: string = '';
+    onDestroy$ = new Subject<void>();
 
-    ngOnInit() { }
+    constructor(
+        private service: AppService
+    ) { }
+
+    ngOnInit() { 
+        this.headerTitle = 'Master Data Global';
+        this.getDataGlobal();
+    }
+
+    getDataGlobal() {
+        this.service.listGlobal().pipe(
+            takeUntil(this.onDestroy$),
+            tap((data) => {
+                console.log(data)
+            })
+        ).subscribe();
+    }
 }

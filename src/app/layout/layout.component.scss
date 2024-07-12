@@ -37,6 +37,19 @@
     &.maxWidth {
       max-width: 1200px;
     }
+
+    .breadcrumb-container {
+      margin: 20px 0px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 10px;
+
+      .breadcrumb-item {
+        font-size: 14px;
+        color: #9E9E9E;
+      }
+    }
   }
   
   .w-100 {
