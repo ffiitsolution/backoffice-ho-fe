@@ -37,8 +37,18 @@
     .menu-child-items {
         border-radius: 0px !important;
     }
+
+    ::ng-deep .mdc-list-item__primary-text {
+        line-height: 2 !important;
+    }
+    
     .menu-child {
         color: #CACACA;
         padding-left: 37px;
     }
+
+    ::ng-deep .mat-toolbar {
+        background-color: #711E1E !important;
+    }
 }
+

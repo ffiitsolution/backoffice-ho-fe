@@ -25,7 +25,7 @@ import { LoginComponent } from './views/auth/login/login.component';
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import { BrandComponent } from './layout/brand/brand.component';
 import { SideBarItemComponent } from './layout/sidebar/sidebar-item/sidebar-item.component';
-import { MasterModule } from './views/master/master.module';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 
 export function initializeApp(appConfig: AppConfig) {
@@ -49,10 +49,13 @@ export function initializeApp(appConfig: AppConfig) {
     BrowserAnimationsModule,
     MaterialModule,
     ReactiveFormsModule,
-    FormsModule,
-    MasterModule
+    FormsModule
   ],
   providers: [
+    {
+      provide: LocationStrategy,
+      useClass: HashLocationStrategy
+    },
     AppConfig,
     provideHttpClient(),
     {

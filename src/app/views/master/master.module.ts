@@ -11,9 +11,12 @@ import { CommonModule } from '@angular/common';
     ],
     imports: [
         CommonModule,
-        MasterRoutingModule
+        MasterRoutingModule,
+        RouterModule.forChild(routes)
     ],
-    exports: []
+    providers: [
+        
+    ]
   })
   
   export class MasterModule {}

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NavbarService } from '../../../services/navbar.service';
 import { Router } from '@angular/router';
 import { SidebarMenu } from '../../sidebar/sidebar.model'; 
@@ -12,6 +12,10 @@ import { SidebarMenu } from '../../sidebar/sidebar.model';
 export class SideBarItemComponent implements OnInit {
     @Input() item: SidebarMenu;
     @Input() depth: any;
+    @Output() assemblyQueueChange = new EventEmitter<any>();
+
+    parentBreadcrumb: string = ''; 
+    childBreadcrumb: string = '';
   
     constructor(
         public navService: NavbarService, 
@@ -43,11 +47,21 @@ export class SideBarItemComponent implements OnInit {
     //   });
     // }
 
+    goToPage(route: any) {
+      this.router.navigate([route]);
+    }
+
     toggleItem(item: SidebarMenu) {
       item.expanded = !item.expanded;
+
+      if(!item.children) {
+        this.parentBreadcrumb = item.parentName!
+        this.goToPage(item.route);
+      }
     }
   
     onItemSelected(item: SidebarMenu) {
+      console.log(item)
       if (item.route) {
         this.router.navigate([item.route]);
       }
