@@ -29,6 +29,7 @@ import { HashLocationStrategy, LocationStrategy, PathLocationStrategy } from '@a
 import { GlobalComponent } from './views/master/global/global.component';
 import { DataTableComponent } from './shared/data-table/data-table.component';
 import { MatTableModule } from '@angular/material/table';
+import { DataTablesModule } from 'angular-datatables';
 import { MatPaginatorModule } from '@angular/material/paginator';
 
 
@@ -47,7 +48,7 @@ export function initializeApp(appConfig: AppConfig) {
     BrandComponent,
     SideBarItemComponent,
     GlobalComponent,
-    DataTableComponent
+    DataTableComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,6 +58,7 @@ export function initializeApp(appConfig: AppConfig) {
     ReactiveFormsModule,
     FormsModule,
     MatTableModule,
+    DataTablesModule
   ],
   providers: [
     {

@@ -3,6 +3,15 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 
+import { DataTableDirective } from 'angular-datatables';
+import { Subject, takeUntil, tap } from 'rxjs';
+import { Page } from './data-table.model';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { AppService } from '../../services/app.service';
+
+import { ACTION } from '../../helper/action.helper';
+import { FORM_STATUS } from '../../helper/form.helper';
+
 @Component({
   selector: 'app-data-table',
   templateUrl: './data-table.component.html',
@@ -10,20 +19,43 @@ import { MatSort } from '@angular/material/sort';
 })
 export class DataTableComponent implements OnInit, AfterViewInit {
     @Input() headerTitle: string = '';
+    @Input() urlService: any;
+    @Input() columns: any;
+
+    @ViewChild(DataTableDirective, {static: false})
+    
+    // Data Table Configuration 
+    dtElement: DataTableDirective;
+    dtOptions: DataTables.Settings = {};
+    dtTrigger: Subject<any> = new Subject();
+    selectedRowData: any;
+    dtColumns: any = [];
+    page = new Page();
+
+    // Form Configuration
+    formStatus: string;
+    createUpdateForm: FormGroup;
+
+    // Parameter
+    selectedCondition: string | null = null;
+    selectedStatus: string | null = null;
+    onDestroy$ = new Subject<void>();
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
     @ViewChild(MatSort) sort: MatSort;
-
-    displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-    dataSource = new MatTableDataSource(ELEMENT_DATA);
+    
+    constructor(
+        private formBuilder: FormBuilder,
+        private service: AppService
+    ) {}
 
     ngOnInit(): void {
-
+        this.getDataTable();
+        // this.initTable()
     }
 
     ngAfterViewInit() {
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
+        this.dtTrigger.next(null);
     }
 
     onKeyUp(event: KeyboardEvent): void {
@@ -32,19 +64,84 @@ export class DataTableComponent implements OnInit, AfterViewInit {
     }
 
     applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+      
     }
-}
+    
 
-const ELEMENT_DATA: any[] = [
-  { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
-  { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
-  { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
-  { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
-  { position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },
-  { position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C' },
-  { position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N' },
-  { position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O' },
-  { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },
-  { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' }
-];
+    getDataTable() {
+        const mapData = (resp: any) => {
+            return resp.data.map((item: any, index: number) => {
+              const { rn, ...rest } = item;
+              return {
+                ...rest,
+                dtIndex: this.page.start + index + 1
+              };
+            });
+        };
+
+        const handleButtonClick = (action: string, data: any) => {
+            this.selectedRowData = data;
+            let { cond, code, description, value, status } = data;
+            switch (action) {
+              case ACTION.EDIT:
+                this.formStatus = FORM_STATUS.UPDATE;
+                break;
+              case ACTION.INACTIVE:
+                this.formStatus = FORM_STATUS.INACTIVE;
+                status = 'I';
+                break;
+              case ACTION.ACTIVATE:
+                status = 'A';
+                this.formStatus = FORM_STATUS.ACTIVATE;
+                break;
+            }
+            this.createUpdateForm.patchValue({ cond, code, description, value, status });
+            const openModalButton = document.getElementById("openModalButton");
+            if (openModalButton instanceof HTMLButtonElement) {
+              openModalButton.click();
+            }
+        };
+        this.dtOptions = {
+            processing: true,
+            serverSide: true,
+            autoWidth: true,
+            info: true,
+            drawCallback: () => {
+              this.selectedRowData = undefined;
+            },
+            ajax: (dataTablesParameters: any, callback) => {
+              this.page.start = dataTablesParameters.start;
+              this.page.length = dataTablesParameters.length;
+              dataTablesParameters['status'] = this.selectedStatus ?? '';
+              dataTablesParameters['cond'] = this.selectedCondition ?? '';
+              this.service.listGlobal(dataTablesParameters).subscribe((resp: any) => {
+                  const mappedData = mapData(resp);
+                  this.page.recordsTotal = resp.recordsTotal;
+                  this.page.recordsFiltered = resp.recordsFiltered;
+                  callback({
+                    recordsTotal: resp.recordsTotal,
+                    recordsFiltered: resp.recordsFiltered,
+                    data: mappedData,
+                  });
+                });
+            },
+            columns: this.columns,
+            searchDelay: 1500,
+            order: [[1, 'asc']],
+            rowCallback: (row: Node, data: any, index: number) => {
+              $('.action-edit', row).on('click', () => handleButtonClick(ACTION.EDIT, data));
+              $('.action-inactive', row).on('click', () => handleButtonClick(ACTION.INACTIVE, data));
+              $('.action-activate', row).on('click', () => handleButtonClick(ACTION.ACTIVATE, data));
+              return row;
+            },
+          };
+      
+          this.dtColumns = this.dtOptions.columns;
+    }    
+
+    dtPageChange(event: any) {
+        this.selectedRowData = undefined;
+        $.fn['dataTable'].ext.search.pop();
+    }
+        
+}
