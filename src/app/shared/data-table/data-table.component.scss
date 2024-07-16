@@ -90,6 +90,25 @@
                     z-index: 1;
                 }
 
+                tbody {
+                  font-size: 14px;
+
+                  .badge-status {
+                    background: #808080;
+                    color: #fff;
+                    display: inline-block;
+                    text-align: center;
+                    line-height: 1;
+                    padding: 9px 9px;
+                    width: 100%;
+                    border-radius: 40px;
+                
+                    &__A {
+                        background: #2EB85C !important;
+                    }
+                  }
+                }
+
                 .dropdown-action {
                     position: relative;
                     display: inline-block;
@@ -99,7 +118,7 @@
                       color: #4CAF50;
                       border-radius: 8px;
                       padding: 2px;
-                      font-size: 16px;
+                      font-size: 14px;
                       cursor: pointer;
                       border: 2px solid #4CAF50;
                       width: 90px
@@ -116,6 +135,9 @@
                       right: 0;
                   
                       .action-button {
+                        display: flex;
+                        align-items: center;
+                        justify-content: flex-start;
                         width: 100%;
                         background: white;
                         border-radius: 10px;
@@ -123,6 +145,7 @@
                         border: none;
                         text-align: left;
                         height: 50px;
+                        gap: 8px;
                         font-weight: 600;
                       }
                   

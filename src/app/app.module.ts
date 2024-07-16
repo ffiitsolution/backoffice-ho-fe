@@ -19,6 +19,7 @@ import { NavbarComponent } from './layout/navbar/navbar.component';
 
 // Shared Component
 import { ButtonSharedComponent } from './shared/button/button.component';
+import { DialogConfirmationComponent } from './shared/dialog-confirmation/dialog-confirmation.component';
 
 // View Component
 import { LoginComponent } from './views/auth/login/login.component';
@@ -51,6 +52,7 @@ export function initializeApp(appConfig: AppConfig) {
     GlobalComponent,
     OutletComponent,
     DataTableComponent,
+    DialogConfirmationComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Subscription } from 'rxjs';
 import { MatSidenav } from '@angular/material/sidenav';
@@ -13,7 +13,7 @@ const MONITOR_VIEW = 'screen and (min-width: 1024px)';
     styleUrls: ['layout.component.scss']
 })
 
-export class LayoutComponent implements OnInit {
+export class LayoutComponent implements OnInit, AfterViewInit {
     @ViewChild('leftsidenav')
 
     // Value
@@ -32,7 +32,7 @@ export class LayoutComponent implements OnInit {
         return this.isMobileScreen;
     }
 
-    constructor(private breakpointObserver: BreakpointObserver) {
+    constructor(private breakpointObserver: BreakpointObserver, private cdr: ChangeDetectorRef) {
         this.htmlElement = document.querySelector('html')!;
         this.layoutChangesSubscription = this.breakpointObserver
         .observe([MOBILE_VIEW, TABLET_VIEW, MONITOR_VIEW])
@@ -46,6 +46,12 @@ export class LayoutComponent implements OnInit {
     }
 
     ngOnInit(): void {}
+
+        
+    ngAfterViewInit(): void {
+        this.cdr.detectChanges()
+    }
+
 
     ngOnDestroy() {
         this.layoutChangesSubscription.unsubscribe();

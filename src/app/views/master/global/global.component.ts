@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { AppService } from '../../../services/app.service';
 import { Subject, takeUntil, tap } from 'rxjs';
 
@@ -11,17 +11,20 @@ import { Subject, takeUntil, tap } from 'rxjs';
 export class GlobalComponent implements OnInit {
     headerTitle: string = '';
     apiUrl: string = '';
+    apiUpdateUrl: string = '';
     menuTable: string = '';
     renderColumns: any;
     onDestroy$ = new Subject<void>();
 
     constructor(
-        private service: AppService
+        private service: AppService,
+        private cdr: ChangeDetectorRef
     ) { }
 
     ngOnInit() { 
       this.headerTitle = 'Master Data Global';
       this.apiUrl = '/global/dt'
+      this.apiUpdateUrl = '/master/global/update'
       this.menuTable = 'global';
       this.renderColumn();
     }

@@ -9,6 +9,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { MatDialogModule } from '@angular/material/dialog'
 
 @NgModule({
     declarations: [],
@@ -21,7 +22,8 @@ import { MatSortModule } from '@angular/material/sort';
       MatSidenavModule,
       MatListModule,
       MatPaginatorModule,
-      MatSortModule
+      MatSortModule,
+      MatDialogModule
     ],
   })
   export class MaterialModule {}

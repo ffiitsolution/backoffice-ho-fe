@@ -2,6 +2,7 @@ import { Component, AfterViewInit, ViewChild, OnInit, Input } from '@angular/cor
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { MatDialog } from '@angular/material/dialog';
 
 import { DataTableDirective } from 'angular-datatables';
 import { Subject, takeUntil, tap } from 'rxjs';
@@ -11,6 +12,7 @@ import { AppService } from '../../services/app.service';
 
 import { ACTION } from '../../helper/action.helper';
 import { FORM_STATUS } from '../../helper/form.helper';
+import { DialogConfirmationComponent } from '../dialog-confirmation/dialog-confirmation.component';
 
 @Component({
   selector: 'app-data-table',
@@ -20,6 +22,7 @@ import { FORM_STATUS } from '../../helper/form.helper';
 export class DataTableComponent implements OnInit, AfterViewInit {
     @Input() headerTitle: string = '';
     @Input() apiUrl: string = '';
+    @Input() apiUpdateUrl: string = '';
     @Input() menuTable: any;
     @Input() columns: any;
 
@@ -53,7 +56,8 @@ export class DataTableComponent implements OnInit, AfterViewInit {
     
     constructor(
         private formBuilder: FormBuilder,
-        private service: AppService
+        private service: AppService,
+        private dialog: MatDialog
     ) {}
 
     ngOnInit(): void {
@@ -146,7 +150,7 @@ export class DataTableComponent implements OnInit, AfterViewInit {
             order: [[1, 'asc']],
             rowCallback: (row: Node, data: any, index: number) => {
               $('.action-edit', row).on('click', () => handleButtonClick(ACTION.EDIT, data));
-              $('.action-inactive', row).on('click', () => handleButtonClick(ACTION.INACTIVE, data));
+              $('.action-inactive', row).on('click', () => this.dialogConfirmation(data, 'inactive'));
               $('.action-activate', row).on('click', () => handleButtonClick(ACTION.ACTIVATE, data));
               return row;
             },
@@ -154,6 +158,34 @@ export class DataTableComponent implements OnInit, AfterViewInit {
       
           this.dtColumns = this.dtOptions.columns;
     }    
+
+    updateDatatable(data: any) {
+      this.service.updateDataTable(this.apiUpdateUrl, data).pipe(
+        takeUntil(this.onDestroy$),
+        tap((response) => {
+          console.log(response)
+        })
+      ).subscribe();
+    }
+
+    dialogConfirmation(data: any, status: string) {
+      const confirmationData = {
+        data: data,
+        status: status
+      }
+
+      const confirmationDialog = this.dialog.open(DialogConfirmationComponent, {
+        data: confirmationData
+      });
+
+      confirmationDialog.afterClosed().subscribe((result) => {
+        if(result) {
+          this.updateDatatable(data);
+        } else {
+          confirmationDialog.close()
+        }
+      })
+    }
 
     dtPageChange(event: any) {
         this.selectedRowData = undefined;

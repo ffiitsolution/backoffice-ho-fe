@@ -43,9 +43,9 @@ export class AppService {
         });
     }
 
-    listGlobal(body: any = {}): Observable<any> {
-        return this.httpClient.post(this.BASE_URL + '/global/dt', body, {
-          headers: this.headers(),
+    updateDataTable(url: string, body: any = {}): Observable<any> {
+        return this.httpClient.post(this.BASE_URL + url, body, {
+            headers: this.headers()
         });
     }
 
