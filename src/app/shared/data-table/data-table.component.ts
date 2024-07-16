@@ -19,7 +19,8 @@ import { FORM_STATUS } from '../../helper/form.helper';
 })
 export class DataTableComponent implements OnInit, AfterViewInit {
     @Input() headerTitle: string = '';
-    @Input() urlService: any;
+    @Input() apiUrl: string = '';
+    @Input() menuTable: any;
     @Input() columns: any;
 
     @ViewChild(DataTableDirective, {static: false})
@@ -36,9 +37,15 @@ export class DataTableComponent implements OnInit, AfterViewInit {
     formStatus: string;
     createUpdateForm: FormGroup;
 
-    // Parameter
+    // Parameter Global
     selectedCondition: string | null = null;
     selectedStatus: string | null = null;
+
+    // Parameter Outlet
+    selectedOutletType: any = '';
+    selectedRegion: any = '';
+    selectedArea: any = '';
+
     onDestroy$ = new Subject<void>();
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -112,18 +119,27 @@ export class DataTableComponent implements OnInit, AfterViewInit {
             ajax: (dataTablesParameters: any, callback) => {
               this.page.start = dataTablesParameters.start;
               this.page.length = dataTablesParameters.length;
-              dataTablesParameters['status'] = this.selectedStatus ?? '';
-              dataTablesParameters['cond'] = this.selectedCondition ?? '';
-              this.service.listGlobal(dataTablesParameters).subscribe((resp: any) => {
-                  const mappedData = mapData(resp);
-                  this.page.recordsTotal = resp.recordsTotal;
-                  this.page.recordsFiltered = resp.recordsFiltered;
-                  callback({
-                    recordsTotal: resp.recordsTotal,
-                    recordsFiltered: resp.recordsFiltered,
-                    data: mappedData,
-                  });
+
+              if (this.menuTable == 'global') {
+                dataTablesParameters['status'] = this.selectedStatus ?? '';
+                dataTablesParameters['cond'] = this.selectedCondition ?? '';
+              } else if (this.menuTable == 'outlet') {
+                dataTablesParameters['type'] = this.selectedOutletType;
+                dataTablesParameters['regionCode'] = this.selectedRegion;
+                dataTablesParameters['areaCode'] = this.selectedArea;
+                dataTablesParameters['status'] = this.selectedStatus;
+              }
+
+              this.service.getListDataTable(this.apiUrl ,dataTablesParameters).subscribe((resp: any) => {
+                const mappedData = mapData(resp);
+                this.page.recordsTotal = resp.recordsTotal;
+                this.page.recordsFiltered = resp.recordsFiltered;
+                callback({
+                  recordsTotal: resp.recordsTotal,
+                  recordsFiltered: resp.recordsFiltered,
+                  data: mappedData,
                 });
+              });
             },
             columns: this.columns,
             searchDelay: 1500,

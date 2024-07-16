@@ -16,7 +16,6 @@ export class SidebarComponent implements OnInit {
     ngOnInit() { }
 
     getDataBreadCrumb(dataBreadcrumb: any) {
-        console.log(dataBreadcrumb)
         this.dataBreadCrumb.emit(dataBreadcrumb);
     }
 }

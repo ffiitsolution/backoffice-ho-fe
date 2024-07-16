@@ -13,7 +13,8 @@ export const navItems: SidebarMenu[] = [
     icon: 'data_usage',
     children: [
       { displayName: 'Dashboard', route: '/master/dashboard', childName: 'dashboard' },
-      { displayName: 'Global', route: '/master/global', childName: 'global' }
+      { displayName: 'Global', route: '/master/global', childName: 'global' },
+      { displayName: 'Outlet', route: '/master/outlet', childName: 'outlet' }
     ]
   },
   {

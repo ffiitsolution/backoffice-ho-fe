@@ -10,8 +10,9 @@ import { Subject, takeUntil, tap } from 'rxjs';
 
 export class GlobalComponent implements OnInit {
     headerTitle: string = '';
+    apiUrl: string = '';
+    menuTable: string = '';
     renderColumns: any;
-    apiGlobal: any;
     onDestroy$ = new Subject<void>();
 
     constructor(
@@ -19,13 +20,10 @@ export class GlobalComponent implements OnInit {
     ) { }
 
     ngOnInit() { 
-        this.headerTitle = 'Master Data Global';
-        this.renderColumn();
-        this.apiUrl();
-    }
-
-    apiUrl() {
-       this.apiGlobal = this.service.listGlobal();
+      this.headerTitle = 'Master Data Global';
+      this.apiUrl = '/global/dt'
+      this.menuTable = 'global';
+      this.renderColumn();
     }
 
     renderColumn() {

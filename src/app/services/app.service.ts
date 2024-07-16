@@ -28,13 +28,20 @@ export class AppService {
     headers(): HttpHeaders {
         let headers = new HttpHeaders().set('Content-Type', 'application/json');
         let token = this.getToken();
+
         if (token !== null && token?.length > 0) {
           headers = new HttpHeaders()
             .set('Content-Type', 'application/json')
             .set('X-API-TOKEN', token);
         }
         return headers;
-      }
+    }
+
+    getListDataTable(url: string = '', body: any = {}): Observable<any> {
+        return this.httpClient.post(this.BASE_URL + url, body, {
+          headers: this.headers(),
+        });
+    }
 
     listGlobal(body: any = {}): Observable<any> {
         return this.httpClient.post(this.BASE_URL + '/global/dt', body, {

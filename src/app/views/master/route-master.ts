@@ -1,6 +1,7 @@
 import { RouterModule, Routes } from '@angular/router';
 import { GlobalComponent } from './global/global.component';
 import { NgModule } from '@angular/core';
+import { OutletComponent } from './outlet/outlet.component';
 
 
 export const routes: Routes = [
@@ -11,6 +12,13 @@ export const routes: Routes = [
       title: 'Global'
     }
   },
+  {
+    path: 'outlet',
+    component: OutletComponent,
+    data: {
+      title: 'Outlet'
+    }
+  }
 
 ];
 

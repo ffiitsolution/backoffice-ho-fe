@@ -31,6 +31,7 @@ import { DataTableComponent } from './shared/data-table/data-table.component';
 import { MatTableModule } from '@angular/material/table';
 import { DataTablesModule } from 'angular-datatables';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { OutletComponent } from './views/master/outlet/outlet.component';
 
 
 export function initializeApp(appConfig: AppConfig) {
@@ -48,6 +49,7 @@ export function initializeApp(appConfig: AppConfig) {
     BrandComponent,
     SideBarItemComponent,
     GlobalComponent,
+    OutletComponent,
     DataTableComponent,
   ],
   imports: [

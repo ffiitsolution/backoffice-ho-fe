@@ -26,7 +26,7 @@ export class SideBarItemComponent implements OnInit {
       }
     }
 
-    ngOnInit() { }
+    ngOnInit() {}
   
     ngOnChanges() {
       this.navService.currentUrl.subscribe((url: string) => {
