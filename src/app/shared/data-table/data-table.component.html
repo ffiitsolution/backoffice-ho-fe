@@ -4,10 +4,21 @@
     <!-- <mat-form-field class="custom-search-form">
       <input matInput (keyup)="onKeyUp($event)" placeholder="Filter">
     </mat-form-field> -->
+    
+    <div class="button-data-head-container">
+      <button mat-button class="head-table-button filter-data-button">
+        <i class="fa fa-filter"></i> 
+        Filter
+      </button> 
+  
+      <button mat-button class="head-table-button add-data-button" (click)="dialogAddNewData()">
+        <i class="fa fa-plus"></i> 
+        New Data
+      </button>
+    </div>
   </div>
 
-  <div class="data-table-container">
-
+  <div class="data-table-container">   
     <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" (page.dt)="dtPageChange($event)" class="row-border hover"></table>
   </div>
 </div>

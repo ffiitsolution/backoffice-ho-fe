@@ -16,5 +16,6 @@ export enum MESSAGES {
     ERROR_MESSAGE_DOWNLOAD_FILE = 'File tidak dapat terunduh',
 
     /*/ CONFIRMATION MESSAGE */
-    INACTIVE_CONFRIMATION_MESSAGE = 'Apakah Anda yakin akan melakukan inactive pada item ini?'
+    INACTIVE_CONFRIMATION_MESSAGE = 'Apakah Anda yakin akan melakukan perubahan inactive pada item ini?',
+    ACTIVATE_CONFRIMATION_MESSAGE = 'Apakah Anda yakin akan melakukan perubahan aktifasi pada item ini?',
 }

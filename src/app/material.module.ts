@@ -6,7 +6,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
-import { MatTableModule } from '@angular/material/table';
+import { MatSelectModule } from '@angular/material/select';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatDialogModule } from '@angular/material/dialog'
@@ -23,7 +23,8 @@ import { MatDialogModule } from '@angular/material/dialog'
       MatListModule,
       MatPaginatorModule,
       MatSortModule,
-      MatDialogModule
+      MatDialogModule,
+      MatSelectModule
     ],
   })
   export class MaterialModule {}

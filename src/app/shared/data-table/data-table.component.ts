@@ -13,6 +13,7 @@ import { AppService } from '../../services/app.service';
 import { ACTION } from '../../helper/action.helper';
 import { FORM_STATUS } from '../../helper/form.helper';
 import { DialogConfirmationComponent } from '../dialog-confirmation/dialog-confirmation.component';
+import { DialogCrudDataComponent } from '../dialog-crud-data/dialog-crud-data.component';
 
 @Component({
   selector: 'app-data-table',
@@ -151,7 +152,7 @@ export class DataTableComponent implements OnInit, AfterViewInit {
             rowCallback: (row: Node, data: any, index: number) => {
               $('.action-edit', row).on('click', () => handleButtonClick(ACTION.EDIT, data));
               $('.action-inactive', row).on('click', () => this.dialogConfirmation(data, 'inactive'));
-              $('.action-activate', row).on('click', () => handleButtonClick(ACTION.ACTIVATE, data));
+              $('.action-activate', row).on('click', () => this.dialogConfirmation(data, 'activate'));
               return row;
             },
           };
@@ -175,7 +176,8 @@ export class DataTableComponent implements OnInit, AfterViewInit {
       }
 
       const confirmationDialog = this.dialog.open(DialogConfirmationComponent, {
-        data: confirmationData
+        data: confirmationData,
+        disableClose: true
       });
 
       confirmationDialog.afterClosed().subscribe((result) => {
@@ -185,6 +187,22 @@ export class DataTableComponent implements OnInit, AfterViewInit {
           confirmationDialog.close()
         }
       })
+    }
+
+    dialogAddNewData() {
+      const data = {
+        crudStatus: 'add',
+        menuTable: this.menuTable
+      }
+
+      const dialogNewData = this.dialog.open(DialogCrudDataComponent, {
+        data: data,
+        width: '800px',
+        panelClass: 'create-data-dialog',
+        disableClose: true
+      });
+
+      dialogNewData.afterClosed();
     }
 
     dtPageChange(event: any) {

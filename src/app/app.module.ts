@@ -1,4 +1,4 @@
-// App Angular
+// App Angular Global Set
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AppConfig } from './config/app.config';
@@ -21,18 +21,20 @@ import { NavbarComponent } from './layout/navbar/navbar.component';
 import { ButtonSharedComponent } from './shared/button/button.component';
 import { DialogConfirmationComponent } from './shared/dialog-confirmation/dialog-confirmation.component';
 
+// Table Module
+import { MatTableModule } from '@angular/material/table';
+import { DataTablesModule } from 'angular-datatables';
+
 // View Component
 import { LoginComponent } from './views/auth/login/login.component';
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import { BrandComponent } from './layout/brand/brand.component';
 import { SideBarItemComponent } from './layout/sidebar/sidebar-item/sidebar-item.component';
-import { HashLocationStrategy, LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { GlobalComponent } from './views/master/global/global.component';
 import { DataTableComponent } from './shared/data-table/data-table.component';
-import { MatTableModule } from '@angular/material/table';
-import { DataTablesModule } from 'angular-datatables';
-import { MatPaginatorModule } from '@angular/material/paginator';
 import { OutletComponent } from './views/master/outlet/outlet.component';
+import { DialogCrudDataComponent } from './shared/dialog-crud-data/dialog-crud-data.component';
 
 
 export function initializeApp(appConfig: AppConfig) {
@@ -52,7 +54,8 @@ export function initializeApp(appConfig: AppConfig) {
     GlobalComponent,
     OutletComponent,
     DataTableComponent,
-    DialogConfirmationComponent
+    DialogConfirmationComponent,
+    DialogCrudDataComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,5 @@
 .dialog-confirmation-container {
-    padding: 16px;
+    padding: 6px;
     
     .confirmation-title {
         text-transform: capitalize;
@@ -8,39 +8,11 @@
 
     .confirmation-message {
         font-size: 16px;
+        line-height: inherit;
     }
 
     .confirmation-button-container {
         gap: 10px;
-
-        .confirmation-button {
-            border: none;
-            width: 120px;
-            height: 40px;
-            border-radius: 8px;
-            font-size: 16px;
-        }
-
-        .cancel-button {
-            background: #9DA5B1;
-            color: #FFFFFF;
-        }
-
-        .cancel-button:hover {
-            background: #FFFFFF;
-            color: #000000;
-            border: 1px solid #9DA5B1; 
-        }
-
-        .confirm-button {
-            background: #2EB85C;
-            color: #FFFFFF;
-        }
-
-        .confirm-button:hover {
-            background: #FFFFFF;
-            color: #2EB85C;
-            border: 1px solid #2EB85C;
-        }
+        margin-top: 20px;
     }
 }

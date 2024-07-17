@@ -2,7 +2,7 @@
     <h2 mat-dialog-title class="confirmation-title">{{ data.status }} {{ data.data.code }}</h2>
     <mat-dialog-content class="confirmation-message">{{ messageConfirmation }}</mat-dialog-content>
     <mat-dialog-actions class="confirmation-button-container">
-        <button mat-button mat-dialog-close class="confirmation-button cancel-button" (click)="onConfirm(false)">Cancel</button>
-        <button mat-button class="confirmation-button confirm-button" (click)="onConfirm(true)">Confirm</button>
+        <button mat-button mat-dialog-close class="btn-g cancel-button" (click)="onConfirm(false)">Cancel</button>
+        <button mat-button class="btn-g confirm-button" (click)="onConfirm(true)">Confirm</button>
     </mat-dialog-actions>
 </div>
