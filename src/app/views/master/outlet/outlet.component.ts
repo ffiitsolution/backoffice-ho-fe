@@ -12,6 +12,7 @@ export class OutletComponent implements OnInit {
     headerTitle: string = '';
     menuTable: string = '';
     apiUrl: string = '';
+    setOrderBy: any;
 
     renderColumns: any;
     onDestroy$ = new Subject<void>();
@@ -71,5 +72,9 @@ export class OutletComponent implements OnInit {
               },
             }
         ]
+    }
+
+    orderBy() {
+      this.setOrderBy =  [[1, 'asc']];
     }
 }

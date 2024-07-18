@@ -22,10 +22,12 @@ import { DialogCrudDataComponent } from '../dialog-crud-data/dialog-crud-data.co
 })
 export class DataTableComponent implements OnInit, AfterViewInit {
     @Input() headerTitle: string = '';
+    @Input() condList: any;
     @Input() apiUrl: string = '';
     @Input() apiUpdateUrl: string = '';
     @Input() menuTable: any;
     @Input() columns: any;
+    @Input() orderBy: any;
 
     @ViewChild(DataTableDirective, {static: false})
     
@@ -42,13 +44,29 @@ export class DataTableComponent implements OnInit, AfterViewInit {
     createUpdateForm: FormGroup;
 
     // Parameter Global
-    selectedCondition: string | null = null;
-    selectedStatus: string | null = null;
+    selectedCondition: any;
+    selectedConditionValue: string | null = null;
 
     // Parameter Outlet
     selectedOutletType: any = '';
     selectedRegion: any = '';
     selectedArea: any = '';
+    selectFilter: any;
+    isFilterVisible: boolean = false;
+
+    // Parameter Status
+    selectedStatus: any;
+    selectedStatusValue: string | null = null;
+    statusList = [
+      { 
+        name: 'Active',
+        code: 'A'
+      },
+      { 
+        name: 'Inactive',
+        code: 'I'
+      }
+    ];
 
     onDestroy$ = new Subject<void>();
 
@@ -70,15 +88,9 @@ export class DataTableComponent implements OnInit, AfterViewInit {
         this.dtTrigger.next(null);
     }
 
-    onKeyUp(event: KeyboardEvent): void {
-    const target = event.target as HTMLInputElement;
-    this.applyFilter(target.value);
+    openFilter() {
+      this.isFilterVisible = !this.isFilterVisible;
     }
-
-    applyFilter(filterValue: string) {
-      
-    }
-    
 
     getDataTable() {
         const mapData = (resp: any) => {
@@ -126,13 +138,13 @@ export class DataTableComponent implements OnInit, AfterViewInit {
               this.page.length = dataTablesParameters.length;
 
               if (this.menuTable == 'global') {
-                dataTablesParameters['status'] = this.selectedStatus ?? '';
-                dataTablesParameters['cond'] = this.selectedCondition ?? '';
+                dataTablesParameters['status'] = this.selectedStatus?.code ?? '';
+                dataTablesParameters['cond'] = this.selectedCondition?.cond ?? '';
               } else if (this.menuTable == 'outlet') {
                 dataTablesParameters['type'] = this.selectedOutletType;
                 dataTablesParameters['regionCode'] = this.selectedRegion;
                 dataTablesParameters['areaCode'] = this.selectedArea;
-                dataTablesParameters['status'] = this.selectedStatus;
+                dataTablesParameters['status'] = this.selectedStatus?.code ?? '';
               }
 
               this.service.getListDataTable(this.apiUrl ,dataTablesParameters).subscribe((resp: any) => {
@@ -148,9 +160,9 @@ export class DataTableComponent implements OnInit, AfterViewInit {
             },
             columns: this.columns,
             searchDelay: 1500,
-            order: [[1, 'asc']],
+            order: this.orderBy,
             rowCallback: (row: Node, data: any, index: number) => {
-              $('.action-edit', row).on('click', () => handleButtonClick(ACTION.EDIT, data));
+              $('.action-edit', row).on('click', () => this.dialogEditDataTable(data));
               $('.action-inactive', row).on('click', () => this.dialogConfirmation(data, 'inactive'));
               $('.action-activate', row).on('click', () => this.dialogConfirmation(data, 'activate'));
               return row;
@@ -158,7 +170,13 @@ export class DataTableComponent implements OnInit, AfterViewInit {
           };
       
           this.dtColumns = this.dtOptions.columns;
-    }    
+    }   
+    
+    onFilterChange(): void {
+      this.dtElement.dtInstance.then(dtInstance => {
+        dtInstance.draw();
+      });
+    }
 
     updateDatatable(data: any) {
       this.service.updateDataTable(this.apiUpdateUrl, data).pipe(
@@ -203,6 +221,23 @@ export class DataTableComponent implements OnInit, AfterViewInit {
       });
 
       dialogNewData.afterClosed();
+    }
+
+    dialogEditDataTable(dataColumn: any) {
+      const data = {
+        crudStatus: 'edit',
+        menuTable: this.menuTable,
+        data: dataColumn
+      }
+
+      const dialogEditData = this.dialog.open(DialogCrudDataComponent, {
+        data: data,
+        width: '800px',
+        panelClass: 'create-data-dialog',
+        disableClose: true
+      });
+
+      dialogEditData.afterClosed();
     }
 
     dtPageChange(event: any) {

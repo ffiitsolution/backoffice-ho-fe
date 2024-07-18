@@ -22,5 +22,13 @@ export class AppComponent implements OnInit {
     //   }
     //   window.scrollTo(0, 0);
     // });
+
+    console.log(this.router.url)
+
+    if(this.router.url == '') {
+      console.log('hai')
+    } else {
+      console.log('halo')
+    }
   }
 }

@@ -36,6 +36,9 @@ import { DataTableComponent } from './shared/data-table/data-table.component';
 import { OutletComponent } from './views/master/outlet/outlet.component';
 import { DialogCrudDataComponent } from './shared/dialog-crud-data/dialog-crud-data.component';
 
+// Other Library
+import { NgSelectModule } from '@ng-select/ng-select';
+
 
 export function initializeApp(appConfig: AppConfig) {
   return () => appConfig.load();
@@ -65,7 +68,8 @@ export function initializeApp(appConfig: AppConfig) {
     ReactiveFormsModule,
     FormsModule,
     MatTableModule,
-    DataTablesModule
+    DataTablesModule,
+    NgSelectModule
   ],
   providers: [
     {

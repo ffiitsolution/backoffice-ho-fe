@@ -23,6 +23,7 @@ export class DialogCrudDataComponent implements OnInit {
     ngOnInit() { 
         this.getCrudTitle();
         this.initializeForm();
+        console.log(this.data)
     }
 
     getCrudTitle() {
@@ -41,11 +42,11 @@ export class DialogCrudDataComponent implements OnInit {
 
     globalForm(): FormGroup {
         return this.formBuilder.group({
-          cond: [''],
-          code: [''],
-          description: [''],
-          value: [''],
-          status: ['']
+            cond: [this.data?.data?.cond || ''],
+            code: [this.data?.data?.code || ''],
+            description: [this.data?.data?.description || ''],
+            value: [this.data?.data?.value || 0],
+            status: [this.data?.data?.status || '']
         });
     }
 
