@@ -59,16 +59,32 @@ export class OutletComponent implements OnInit {
               orderable: false,
               searchable: false,
               render: (data: any, type: any, row: any) => {
-                return `
+                ` <div class="dropdown-action">
+                    <button class="dropbtn">Action <i class="fa fa-caret-down" aria-hidden="true"></i></button>
+                    <div class="dropdown-content">
+                      <button class="action-button action-edit"><i class="fa fa-pencil"></i> Edit</button>
+                      <button class="action-button"><i class="fa fa-power-off"></i> Inactive</button>
+                    </div>
+                  </div>
+                `
+                let actionBtn =  `
                   <div class="dropdown-action">
                     <button class="dropbtn">Action <i class="fa fa-caret-down" aria-hidden="true"></i></button>
                     <div class="dropdown-content">
-                      <button class="action-button"><i class="fa fa-eye"></i> View</button>
                       <button class="action-button action-edit"><i class="fa fa-pencil"></i> Edit</button>
-                       <button class="action-button"><i class="fa fa-power-off"></i> Inactive</button>
-                    </div>
-                  </div>
                 `;
+                if (data == 'I') {
+                  actionBtn += `
+                      <button class="action-button action-activate"><i class="fa fa-power-off"></i> Activate</button>
+                    </div>
+                  </div>`
+                } else {
+                  actionBtn += `
+                      <button class="action-button action-inactive"><i class="fa fa-power-off"></i> Inactive</button>
+                    </div>
+                  </div>`
+                }
+                return actionBtn;
               },
             }
         ]
