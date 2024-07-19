@@ -1,9 +1,10 @@
 .data-table-wrapper {
     display: flex;
     flex-direction: column;
-    height: calc(100vh - 175px);
+    height: calc(100vh - 134px);
     background: #FFFFFF;
     border-radius: 10px;
+    border: 2px solid #A62B2B;
 
     .data-header-container {
         display: flex;
@@ -11,9 +12,7 @@
         justify-content: space-between;
         padding: 16px;
         width: 100%;
-        border: 2px solid #A62B2B;
-        background: #FFFFFF;
-        border-radius: 10px 10px 0px 0px;
+        border-bottom: 1px solid #D0D0D0;
 
         span {
             font-size: 20px;
@@ -77,7 +76,7 @@
       justify-content: center;
       align-items: center;
       width: 100%;
-      padding: 16px;
+      padding: 12px 14px;
       gap: 10px;
       border-bottom: 1px solid #D0D0D0;
 
@@ -100,14 +99,16 @@
             input {
               cursor: pointer !important;
             }
-            
           }
 
           ::ng-deep .ng-dropdown-panel {
-            margin-top: 40px;
-            background: #F3F3F3;
-            border-radius: 8px;
+
+            margin-top: 34px;
+            border-radius: 4px;
             padding: 0px 0px 0px 0px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            box-shadow: 0 1px #0000000f;
 
             ::ng-deep .ng-dropdown-panel-items::-webkit-scrollbar {
               width: 12px;
@@ -125,15 +126,28 @@
 
             ::ng-deep .ng-option {
               display: flex !important;
-              height: 52px;
+              height: auto;
               padding: 8px;
               align-items: center;
               border-bottom: 1px solid #E0E0E0;
               font-size: 14px;
             }
+
+            ::ng-deep .ng-option-selected {
+              background-color: #c8e4f982;
+            }
           }
+        }
+
+        mat-label {
+          font-size: 14px;
+          font-weight: 600;
+        }
       }
-      }
+    }
+
+    select:focus-visible {
+      outline: none;
     }
 
     .data-table-container {
@@ -160,8 +174,12 @@
                 background: white; 
                 padding: 8px 16px;
                 box-shadow: 0px -1px 5px rgba(0, 0, 0, 0.1);
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
 
                 ::ng-deep .dt-length {
+                  font-size: 14px;
                     label {
                       margin-left: 5px;
                       color: #8E8E8E;
@@ -170,50 +188,82 @@
                     .dt-input {
                       border-radius: 0.375rem !important;
                     }
-                  }
+
+                    select:focus-visible{
+                        outline: none !important;
+                    }
+                }
                   
-                  ::ng-deep .dt-search {
+                ::ng-deep .dt-search {
+                    font-size: 14px;
                     label {
-                      margin-right: 5px;
-                      color: #8E8E8E;
+                        margin-right: 5px;
+                        color: #8E8E8E;
                     }
                     
                     .dt-input {
-                      border-radius: 0.375rem !important;
+                        border-radius: 0.375rem !important;
+                        width: 72%;
                     }
-                  }
+
+                    input:focus-visible {
+                        outline: none !important;
+                    }
+                }
             }
 
             ::ng-deep .dt-layout-table {
                 height: 100%;
                 overflow-y: auto;
-                overflow-x: hidden;
+                overflow-x: auto;
+                scrollbar-color: #cdcdcd transparent;
 
                 thead {
                     position: sticky;
                     top: 0;
                     background: #FFFFFF;
-                    box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+                    box-shadow: rgba(0, 0, 0, 0.25) 12px 4px 10px 0px;
                     z-index: 1;
+
+                    th {
+                        border-bottom: 0;
+                    }
+
+                    th:last-child {
+                        text-align: center;
+                    }
                 }
 
                 tbody {
                   font-size: 14px;
 
-                  .badge-status {
-                    background: #808080;
-                    color: #fff;
-                    display: inline-block;
-                    text-align: center;
-                    line-height: 1;
-                    padding: 9px 9px;
-                    width: 100%;
-                    border-radius: 40px;
+                    .badge-status {
+                        background: #808080;
+                        color: #fff;
+                        display: inline-block;
+                        text-align: center;
+                        line-height: 1;
+                        padding: 9px 9px;
+                        width: 100%;
+                        border-radius: 40px;
                 
-                    &__A {
-                        background: #2EB85C !important;
+                        &__A {
+                            background: #2EB85C !important;
+                        }
                     }
-                  }
+                
+                    tr:last-child td {
+                        border-bottom: 0;
+                    }
+
+                    tr td:last-child{
+                        text-align: center;
+                    }
+
+                    td {
+                        padding: 10px;
+                    }
+
                 }
 
                 .dropdown-action {
@@ -240,21 +290,22 @@
                       box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
                       z-index: 1;
                       right: 0;
+                      padding: 4px;
                   
-                      .action-button {
-                        display: flex;
-                        align-items: center;
-                        justify-content: flex-start;
-                        width: 100%;
-                        background: white;
-                        border-radius: 10px;
-                        padding: 0px 10px;
-                        border: none;
-                        text-align: left;
-                        height: 50px;
-                        gap: 8px;
-                        font-weight: 400;
-                      }
+                        .action-button {
+                            display: flex;
+                            align-items: center;
+                            justify-content: flex-start;
+                            width: 100%;
+                            background: white;
+                            border-radius: 10px;
+                            padding: 6px 10px;
+                            border: none;
+                            text-align: left;
+                            height: auto;
+                            gap: 8px;
+                            font-weight: 400;
+                        }
                   
                       .action-button:hover {
                         background: #D8EAF9;
@@ -301,20 +352,32 @@
                 width: 100%;
                 background: white; /* Optional: to ensure the footer stands out */
                 box-shadow: 0px -1px 5px rgba(0, 0, 0, 0.1);
-                padding: 8px 16px;
+                padding: 14px 16px;
                 border-radius: 0px 0px 10px 10px;
 
-                ::ng-deep .current {
-                  border: none !important;
-                  color: #FFFFFF !important;
-                  background: #A62B2B !important;
-                  border-radius: 300px;
+                ::ng-deep .current,
+                ::ng-deep .dt-paging-button:hover.current,
+                ::ng-deep .dt-paging-button:focus-visible,
+                ::ng-deep .dt-paging-button:active{
+                    border: none !important;
+                    color: #FFFFFF !important;
+                    background: #A62B2B !important;
+                    border-radius: 300px;
+                    text-decoration: none !important;
+                    outline: none !important;
                 }
 
                 ::ng-deep .dt-paging-button:hover {
-                  background: #B3B3B3 !important;
-                  border: none !important;
-                  border-radius: 300px;
+                    color: #A62B2B !important;
+                    text-decoration: underline !important;
+                    background: transparent !important;
+                    border: none !important;
+                    padding: 3px 12px;
+                }
+
+                ::ng-deep .dt-paging-button {
+                    padding: 3px 12px;
+                    border: 0;
                 }
 
                 ::ng-deep .disabled:hover {
@@ -322,6 +385,15 @@
                   border: none !important;
                   border-radius: 300px;
                 }
+            }
+
+            ::ng-deep .dt-layout-cell {
+                font-size: 14px;
+                padding: 0;
+
+                .dt-start, .dr-end {
+                    width: 50%;
+                };
             }
         }
           
@@ -336,6 +408,7 @@
         table {
             width: 100%;
             box-shadow: none !important;
+            font-size: 14px !important;
         }
     }
 
@@ -365,6 +438,16 @@
             border-radius: 0px 0px 10px 10px;
         }
     }
-    
+}
+
+@media screen and (max-width: 768px) {  
+    ::ng-deep .dt-input {
+        margin-bottom: 9px;
+    }
+
+    .dt-container .dt-layout-table tbody {
+        font-size: 12px;
+
+    }  
 }
   
