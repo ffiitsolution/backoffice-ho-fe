@@ -38,6 +38,7 @@ import { DialogCrudDataComponent } from './shared/dialog-crud-data/dialog-crud-d
 
 // Other Library
 import { NgSelectModule } from '@ng-select/ng-select';
+import { GlobalFormComponent } from './views/master/global/global-form/global-form.component';
 
 
 export function initializeApp(appConfig: AppConfig) {
@@ -58,7 +59,8 @@ export function initializeApp(appConfig: AppConfig) {
     OutletComponent,
     DataTableComponent,
     DialogConfirmationComponent,
-    DialogCrudDataComponent
+    DialogCrudDataComponent,
+    GlobalFormComponent
   ],
   imports: [
     BrowserModule,

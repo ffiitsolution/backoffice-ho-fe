@@ -11,6 +11,7 @@ import { GlobalService } from './global.service';
 export class GlobalComponent implements OnInit {
     headerTitle: string = '';
     apiUrl: string = '';
+    apiInsertUrl: string = '';
     apiUpdateUrl: string = '';
     condList: any;
     menuTable: string = '';
@@ -25,8 +26,9 @@ export class GlobalComponent implements OnInit {
 
     ngOnInit() { 
       this.headerTitle = 'Master Data Global';
-      this.apiUrl = '/global/dt'
-      this.apiUpdateUrl = '/master/global/update'
+      this.apiUrl = '/global/dt';
+      this.apiInsertUrl = '/master/global/insert';
+      this.apiUpdateUrl = '/master/global/update';
       this.menuTable = 'global';
       this.renderColumn();
       this.getFilter();

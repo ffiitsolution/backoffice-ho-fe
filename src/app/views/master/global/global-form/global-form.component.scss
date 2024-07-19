@@ -1,0 +1,43 @@
+.form-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+
+    .form-item {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 6px;
+
+        input, textarea {
+            width: 100%;
+            border-radius: 6px;
+            border: 1px solid #D0D0D0;
+            padding: 8px;
+        }
+
+        input:focus, textarea:focus {
+            outline-color: #5d5d5d;
+        }
+
+        .select-form {
+            width: 100%;
+            height: 40px;
+            border-radius: 6px;
+            border: 1px solid #D0D0D0;
+            font-size: 14px;
+
+            ::ng-deep .mat-mdc-select-trigger {
+                padding: 8px;
+            }
+        }
+
+        input, select {
+            height: 40px;
+        }
+
+        textarea {
+            height: 100%;
+        } 
+    }
+}

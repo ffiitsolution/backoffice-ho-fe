@@ -14,6 +14,8 @@ export class DialogCrudDataComponent implements OnInit {
 
     form: FormGroup
 
+    dataInput: any;
+
     constructor(
         private formBuilder: FormBuilder,
         public dialogRef: MatDialogRef<DialogCrudDataComponent>, 
@@ -22,8 +24,6 @@ export class DialogCrudDataComponent implements OnInit {
 
     ngOnInit() { 
         this.getCrudTitle();
-        this.initializeForm();
-        console.log(this.data)
     }
 
     getCrudTitle() {
@@ -34,28 +34,15 @@ export class DialogCrudDataComponent implements OnInit {
         }
     }
 
-    initializeForm() {
-        if(this.data.menuTable === 'global') {
-            this.form = this.globalForm();
-        }
-    }
-
-    globalForm(): FormGroup {
-        return this.formBuilder.group({
-            cond: [this.data?.data?.cond || ''],
-            code: [this.data?.data?.code || ''],
-            description: [this.data?.data?.description || ''],
-            value: [this.data?.data?.value || 0],
-            status: [this.data?.data?.status || '']
-        });
-    }
-
     clearForm() {
         this.form.reset(); 
     }
 
+    getFormValue(event: any) {
+        this.dataInput = event;
+    }
+
     submitForm() {
-        console.log(this.form.value);
-        // Add logic to submit the form
+        this.dialogRef.close(this.dataInput);
     }
 }

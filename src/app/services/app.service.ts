@@ -43,6 +43,12 @@ export class AppService {
         });
     }
 
+    upsertDataTable(url: string, body: any = {}): Observable<any> {
+        return this.httpClient.post(this.BASE_URL + url, body, {
+            headers: this.headers()
+        });
+    }
+
     updateDataTable(url: string, body: any = {}): Observable<any> {
         return this.httpClient.post(this.BASE_URL + url, body, {
             headers: this.headers()

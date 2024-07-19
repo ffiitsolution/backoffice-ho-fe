@@ -24,6 +24,7 @@ export class DataTableComponent implements OnInit, AfterViewInit {
     @Input() headerTitle: string = '';
     @Input() condList: any;
     @Input() apiUrl: string = '';
+    @Input() apiInserteUrl: string = '';
     @Input() apiUpdateUrl: string = '';
     @Input() menuTable: any;
     @Input() columns: any;
@@ -178,8 +179,17 @@ export class DataTableComponent implements OnInit, AfterViewInit {
       });
     }
 
+    insertDataTable(data: any) {
+      this.service.upsertDataTable(this.apiInserteUrl, data).pipe(
+        takeUntil(this.onDestroy$),
+        tap((response) => {
+          console.log(response)
+        })
+      ).subscribe();
+    }
+
     updateDatatable(data: any) {
-      this.service.updateDataTable(this.apiUpdateUrl, data).pipe(
+      this.service.upsertDataTable(this.apiUpdateUrl, data).pipe(
         takeUntil(this.onDestroy$),
         tap((response) => {
           console.log(response)
@@ -220,7 +230,9 @@ export class DataTableComponent implements OnInit, AfterViewInit {
         disableClose: true
       });
 
-      dialogNewData.afterClosed();
+      dialogNewData.afterClosed().subscribe((response) => {
+        this.insertDataTable(response)
+      });
     }
 
     dialogEditDataTable(dataColumn: any) {
