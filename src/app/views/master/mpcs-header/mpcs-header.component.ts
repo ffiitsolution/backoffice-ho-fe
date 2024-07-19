@@ -10,6 +10,7 @@ import { Subject, takeUntil, tap } from 'rxjs';
 export class MpcsHeaderComponent implements OnInit {
     headerTitle: string = '';
     apiUrl: string = '';
+    apiInsertUrl: string = '';
     apiUpdateUrl: string = '';
     condList: any;
     menuTable: string = '';
@@ -23,8 +24,9 @@ export class MpcsHeaderComponent implements OnInit {
 
     ngOnInit() {
       this.headerTitle = 'Master Data MPCS Header';
-      this.apiUrl = '/mpcs-header/dt'
-      this.apiUpdateUrl = '/master/mpcs-header/update'
+      this.apiUrl = '/mpcs-header/dt';
+      this.apiInsertUrl = '/master/global/insert';
+      this.apiUpdateUrl = '/master/mpcs-header/update';
       this.menuTable = 'mpcs-header';
       this.renderColumn();
       this.getFilter();
@@ -99,6 +101,6 @@ export class MpcsHeaderComponent implements OnInit {
     }
 
     orderBy() {
-      this.setOrderBy =  [[1, 'asc']];
+      this.setOrderBy =  [[1, 'asc'],[6, 'asc']];
     }
 }

@@ -10,6 +10,7 @@ import { Subject, takeUntil, tap } from 'rxjs';
 export class MenuItemLimitComponent implements OnInit {
     headerTitle: string = '';
     apiUrl: string = '';
+    apiInsertUrl: string = '';
     apiUpdateUrl: string = '';
     condList: any;
     menuTable: string = '';
@@ -23,8 +24,9 @@ export class MenuItemLimitComponent implements OnInit {
 
     ngOnInit() {
       this.headerTitle = 'Master Data Menu Item Limit';
-      this.apiUrl = '/menu-item-limit/dt'
-      this.apiUpdateUrl = '/master/menu-item-limit/update'
+      this.apiUrl = '/menu-item-limit/dt';
+      this.apiInsertUrl = '/master/menu-item-limit/insert';
+      this.apiUpdateUrl = '/master/menu-item-limit/update';
       this.menuTable = 'menu-item-limit';
       this.renderColumn();
       this.getFilter();

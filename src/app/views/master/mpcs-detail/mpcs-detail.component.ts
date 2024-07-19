@@ -10,6 +10,7 @@ import { Subject, takeUntil, tap } from 'rxjs';
 export class MpcsDetailComponent implements OnInit {
     headerTitle: string = '';
     apiUrl: string = '';
+    apiInsertUrl: string = '';
     apiUpdateUrl: string = '';
     condList: any;
     menuTable: string = '';
@@ -23,8 +24,9 @@ export class MpcsDetailComponent implements OnInit {
 
     ngOnInit() {
       this.headerTitle = 'Master Data MPCS Detail';
-      this.apiUrl = '/mpcs-detail/dt'
-      this.apiUpdateUrl = '/master/mpcs-detail/update'
+      this.apiUrl = '/mpcs-detail/dt';
+      this.apiInsertUrl = '/master/mpcs-detail/insert';
+      this.apiUpdateUrl = '/master/mpcs-detail/update';
       this.menuTable = 'mpcs-detail';
       this.renderColumn();
       this.getFilter();

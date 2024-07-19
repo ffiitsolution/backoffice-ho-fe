@@ -10,6 +10,7 @@ import { Subject, takeUntil, tap } from 'rxjs';
 export class MenuSetComponent implements OnInit {
     headerTitle: string = '';
     apiUrl: string = '';
+    apiInsertUrl: string = '';
     apiUpdateUrl: string = '';
     condList: any;
     menuTable: string = '';
@@ -23,8 +24,9 @@ export class MenuSetComponent implements OnInit {
 
     ngOnInit() {
       this.headerTitle = 'Master Data Menu Set';
-      this.apiUrl = '/menu-set/dt'
-      this.apiUpdateUrl = '/master/menu-set/update'
+      this.apiUrl = '/menu-set/dt';
+      this.apiInsertUrl = '/master/menu-set/insert';
+      this.apiUpdateUrl = '/master/menu-set/update';
       this.menuTable = 'menu-set';
       this.renderColumn();
       this.getFilter();

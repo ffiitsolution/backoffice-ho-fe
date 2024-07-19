@@ -10,6 +10,7 @@ import { Subject, takeUntil, tap } from 'rxjs';
 export class SupplierComponent implements OnInit {
     headerTitle: string = '';
     apiUrl: string = '';
+    apiInsertUrl: string = '';
     apiUpdateUrl: string = '';
     condList: any;
     menuTable: string = '';
@@ -23,8 +24,9 @@ export class SupplierComponent implements OnInit {
 
     ngOnInit() {
       this.headerTitle = 'Master Data Supplier';
-      this.apiUrl = '/supplier/dt'
-      this.apiUpdateUrl = '/master/supplier/update'
+      this.apiUrl = '/supplier/dt';
+      this.apiInsertUrl = '/master/global/insert';
+      this.apiUpdateUrl = '/master/supplier/update';
       this.menuTable = 'supplier';
       this.renderColumn();
       this.getFilter();

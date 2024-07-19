@@ -10,6 +10,7 @@ import { Subject, takeUntil, tap } from 'rxjs';
 export class MenuItemScheduleComponent implements OnInit {
     headerTitle: string = '';
     apiUrl: string = '';
+    apiInsertUrl: string = '';
     apiUpdateUrl: string = '';
     condList: any;
     menuTable: string = '';
@@ -23,8 +24,9 @@ export class MenuItemScheduleComponent implements OnInit {
 
     ngOnInit() {
       this.headerTitle = 'Master Data Menu Item Schedule';
-      this.apiUrl = '/menu-item-schedule/dt'
-      this.apiUpdateUrl = '/master/menu-item-schedule/update'
+      this.apiUrl = '/menu-item-schedule/dt';
+      this.apiInsertUrl = '/master/menu-item-schedule/insert';
+      this.apiUpdateUrl = '/master/menu-item-schedule/update';
       this.menuTable = 'menu-item-schedule';
       this.renderColumn();
       this.getFilter();

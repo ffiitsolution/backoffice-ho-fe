@@ -10,6 +10,7 @@ import { Subject, takeUntil, tap } from 'rxjs';
 export class ModifierItemComponent implements OnInit {
     headerTitle: string = '';
     apiUrl: string = '';
+    apiInsertUrl: string = '';
     apiUpdateUrl: string = '';
     condList: any;
     menuTable: string = '';
@@ -24,7 +25,8 @@ export class ModifierItemComponent implements OnInit {
     ngOnInit() {
       this.headerTitle = 'Master Data Modifier Item';
       this.apiUrl = '/modifier-item/dt'
-      this.apiUpdateUrl = '/master/modifier-item/update'
+      this.apiInsertUrl = '/master/modifier-item/insert';
+      this.apiUpdateUrl = '/master/modifier-item/update';
       this.menuTable = 'modifier-item';
       this.renderColumn();
       this.getFilter();
