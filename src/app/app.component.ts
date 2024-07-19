@@ -5,7 +5,8 @@ import { AuthService } from './services/auth.service';
 @Component({
   selector: 'app-root',
   template: '<router-outlet></router-outlet>',
-  providers: []
+  providers: [],
+  styleUrl: './app.component.scss',
 })
 export class AppComponent implements OnInit {
   title = 'HEAD OFFICE BO | PT FAST FOOD INDONESIA';

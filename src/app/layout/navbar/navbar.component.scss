@@ -3,7 +3,7 @@
     position: sticky;
     top: 0;
     z-index: 9;
-    height: 70px;
+    max-height: 8%;
     border-radius: 10px;
     box-shadow: 0 2px 6px rgba(37, 83, 185, 0.1);
     justify-content: space-between;
@@ -12,7 +12,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 40px;
+        gap: 12px;
 
         .navbar-user-data {
             display: flex;
@@ -20,7 +20,7 @@
             justify-content: center;
     
             span {
-                font-size: 14px;
+                font-size: 16px;
                 color:#9E9E9E;
             }
     
@@ -62,7 +62,7 @@
 }
 
 .profile-section {
-    padding: 12px;
+    padding: 0 10px;
 
     .navbar-profile-logout-button {
         display: flex;
