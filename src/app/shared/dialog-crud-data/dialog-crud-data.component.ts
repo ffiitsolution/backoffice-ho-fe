@@ -18,11 +18,11 @@ export class DialogCrudDataComponent implements OnInit {
 
     constructor(
         private formBuilder: FormBuilder,
-        public dialogRef: MatDialogRef<DialogCrudDataComponent>, 
+        public dialogRef: MatDialogRef<DialogCrudDataComponent>,
         @Inject(MAT_DIALOG_DATA) public data: any
     ) { }
 
-    ngOnInit() { 
+    ngOnInit() {
         this.getCrudTitle();
     }
 
@@ -35,7 +35,7 @@ export class DialogCrudDataComponent implements OnInit {
     }
 
     clearForm() {
-        this.form.reset(); 
+        this.form.reset();
     }
 
     getFormValue(event: any) {

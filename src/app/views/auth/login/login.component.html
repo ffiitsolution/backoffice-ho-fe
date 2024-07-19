@@ -22,11 +22,11 @@
                                 <form [formGroup]="loginForm" class="d-flex flex-column w-100 mb-4">
                                     <mat-form-field appearance="outline" style="margin-bottom: 8px;" class="custom-border-color">
                                         <mat-label>Username</mat-label>
-                                        <input 
-                                            matInput 
-                                            type="text" 
-                                            formControlName="username" 
-                                            name="username" 
+                                        <input
+                                            matInput
+                                            type="text"
+                                            formControlName="username"
+                                            name="username"
                                             required
                                         />
                                         <button
@@ -42,11 +42,11 @@
 
                                     <mat-form-field appearance="outline" style="margin-bottom: 8px;">
                                         <mat-label>Password</mat-label>
-                                        <input 
-                                            matInput 
+                                        <input
+                                            matInput
                                             [type]="hide() ? 'password' : 'text'"
-                                            formControlName="password" 
-                                            name="password" 
+                                            formControlName="password"
+                                            name="password"
                                             required
                                         />
                                         <button
@@ -73,7 +73,7 @@
                                 </form>
 
                                 <p class="text-medium-emphasis footer-version">IT Department PT.Fast Food
-                                    Indonesia, Tbk. <br> Version {{ version }} at {{year}} </p>
+                                    Indonesia, Tbk. <br> Version {{ appSvc.versionFe }} at {{year}} </p>
                             </div>
                         </div>
                     </div>

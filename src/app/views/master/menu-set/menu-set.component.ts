@@ -1,17 +1,15 @@
 import { AfterViewInit, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Subject, takeUntil, tap } from 'rxjs';
-import { GlobalService } from './global.service';
 
 @Component({
-    selector: 'app-global',
-    templateUrl: 'global.component.html',
-    styleUrls: ['global.component.scss']
+    selector: 'app-menu-set',
+    templateUrl: 'menu-set.component.html',
+    styleUrls: ['menu-set.component.scss']
 })
 
-export class GlobalComponent implements OnInit {
+export class MenuSetComponent implements OnInit {
     headerTitle: string = '';
     apiUrl: string = '';
-    apiInsertUrl: string = '';
     apiUpdateUrl: string = '';
     condList: any;
     menuTable: string = '';
@@ -20,37 +18,34 @@ export class GlobalComponent implements OnInit {
     onDestroy$ = new Subject<void>();
 
     constructor(
-        private service: GlobalService,
         private cdr: ChangeDetectorRef
     ) { }
 
     ngOnInit() {
-      this.headerTitle = 'Master Data Global';
-      this.apiUrl = '/global/dt';
-      this.apiInsertUrl = '/master/global/insert';
-      this.apiUpdateUrl = '/master/global/update';
-      this.menuTable = 'global';
+      this.headerTitle = 'Master Data Menu Set';
+      this.apiUrl = '/menu-set/dt'
+      this.apiUpdateUrl = '/master/menu-set/update'
+      this.menuTable = 'menu-set';
       this.renderColumn();
       this.getFilter();
       this.orderBy();
     }
 
     getFilter() {
-      this.service.getListGlobalCondition().pipe(
-        takeUntil(this.onDestroy$),
-        tap((response) => {
-          this.condList = response.data;
-        })
-      ).subscribe()
+
     }
 
+    // :regionCode, :outletCode, :menuSetCode, :menuSetItemCode, :seq, :qty, :modifierGroupCode, :status, :userUpd, :dateUpd, :timeUpd
     renderColumn() {
     this.renderColumns = [
         { data: 'dtIndex', title: '#', orderable: false, searchable: false },
-        { data: 'cond', title: 'CONDITION', orderable: true, searchable: true },
-        { data: 'code', title: 'CODE', orderable: true, searchable: true },
-        { data: 'description', title: 'DESCRIPTION', orderable: true, searchable: true },
-        { data: 'value', title: 'VALUE', orderable: true, searchable: true },
+        { data: 'regionCode', title: 'REGION CODE', orderable: true, searchable: true },
+        { data: 'outletCode', title: 'OUTLET CODE', orderable: true, searchable: true },
+        { data: 'menuSetCode', title: 'MENU SET CODE', orderable: true, searchable: true },
+        { data: 'menuSetItemCode', title: 'ITEM CODE', orderable: true, searchable: true },
+        { data: 'seq', title: 'SEQ', orderable: true, searchable: true },
+        { data: 'qty', title: 'QTY', orderable: true, searchable: true },
+        { data: 'modifierGroupCode', title: 'MODIFIER GROUP CODE', orderable: true, searchable: true },
         {
           data: 'status',
           title: 'STATUS',
@@ -65,6 +60,9 @@ export class GlobalComponent implements OnInit {
             `;
           },
         },
+        { data: 'userUpd', title: 'USER UPD', orderable: true, searchable: true },
+        { data: 'dateUpd', title: 'DATE UPD', orderable: true, searchable: true },
+        { data: 'timeUpd', title: 'TIME UPD', orderable: true, searchable: true },
         {
           data: 'status',
           title: 'ACTIONS',
@@ -103,6 +101,6 @@ export class GlobalComponent implements OnInit {
     }
 
     orderBy() {
-      this.setOrderBy =  [[1, 'asc']];
+      this.setOrderBy =  [[8, 'asc'],[1, 'asc']];
     }
 }

@@ -31,8 +31,8 @@ export class DataTableComponent implements OnInit, AfterViewInit {
     @Input() orderBy: any;
 
     @ViewChild(DataTableDirective, {static: false})
-    
-    // Data Table Configuration 
+
+    // Data Table Configuration
     dtElement: DataTableDirective;
     dtOptions: DataTables.Settings = {};
     dtTrigger: Subject<any> = new Subject();
@@ -59,21 +59,25 @@ export class DataTableComponent implements OnInit, AfterViewInit {
     selectedStatus: any;
     selectedStatusValue: string | null = null;
     statusList = [
-      { 
+      {
         name: 'Active',
         code: 'A'
       },
-      { 
+      {
         name: 'Inactive',
         code: 'I'
       }
     ];
 
+    // Parameter Other
+    selectedItemCode: any;
+    selectedCdSupplier: any;
+
     onDestroy$ = new Subject<void>();
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
     @ViewChild(MatSort) sort: MatSort;
-    
+
     constructor(
         private formBuilder: FormBuilder,
         private service: AppService,
@@ -146,6 +150,22 @@ export class DataTableComponent implements OnInit, AfterViewInit {
                 dataTablesParameters['regionCode'] = this.selectedRegion;
                 dataTablesParameters['areaCode'] = this.selectedArea;
                 dataTablesParameters['status'] = this.selectedStatus?.code ?? '';
+              } else if (this.menuTable == 'supplier') {
+                dataTablesParameters['status'] = this.selectedStatus?.code ?? '';
+              } else if (this.menuTable == 'item-supplier') {
+                dataTablesParameters['status'] = this.selectedStatus?.code ?? '';
+                dataTablesParameters['itemCode'] = this.selectedItemCode?.code ?? '';
+                dataTablesParameters['cdSupplier'] = this.selectedCdSupplier?.code ?? '';
+              } else if (this.menuTable == 'mpcs-header') {
+                dataTablesParameters['status'] = this.selectedStatus?.code ?? '';
+              } else if (this.menuTable == 'mpcs-detail') {
+                dataTablesParameters['status'] = this.selectedStatus?.code ?? '';
+              } else if (this.menuTable == 'modifier-item') {
+                dataTablesParameters['status'] = this.selectedStatus?.code ?? '';
+              } else if (this.menuTable == 'menu-item') {
+                dataTablesParameters['status'] = this.selectedStatus?.code ?? '';
+              } else if (this.menuTable == 'menu-set') {
+                dataTablesParameters['status'] = this.selectedStatus?.code ?? '';
               }
 
               this.service.getListDataTable(this.apiUrl ,dataTablesParameters).subscribe((resp: any) => {
@@ -169,10 +189,10 @@ export class DataTableComponent implements OnInit, AfterViewInit {
               return row;
             },
           };
-      
+
           this.dtColumns = this.dtOptions.columns;
-    }   
-    
+    }
+
     onFilterChange(): void {
       this.dtElement.dtInstance.then(dtInstance => {
         dtInstance.draw();
@@ -256,5 +276,5 @@ export class DataTableComponent implements OnInit, AfterViewInit {
         this.selectedRowData = undefined;
         $.fn['dataTable'].ext.search.pop();
     }
-        
+
 }

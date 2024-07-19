@@ -35,6 +35,17 @@ import { GlobalComponent } from './views/master/global/global.component';
 import { DataTableComponent } from './shared/data-table/data-table.component';
 import { OutletComponent } from './views/master/outlet/outlet.component';
 import { DialogCrudDataComponent } from './shared/dialog-crud-data/dialog-crud-data.component';
+import { AuthGuard } from './guard/auth.guard';
+import { AuthService } from './services/auth.service';
+import { ItemSupplierComponent } from './views/master/item-supplier/item-supplier.component';
+import { MenuItemComponent } from './views/master/menu-item/menu-item.component';
+import { MenuItemLimitComponent } from './views/master/menu-item-limit/menu-item-limit.component';
+import { MenuItemScheduleComponent } from './views/master/menu-item-schedule/menu-item-schedule.component';
+import { MenuSetComponent } from './views/master/menu-set/menu-set.component';
+import { ModifierItemComponent } from './views/master/modifier-item/modifier-item.component';
+import { MpcsDetailComponent } from './views/master/mpcs-detail/mpcs-detail.component';
+import { MpcsHeaderComponent } from './views/master/mpcs-header/mpcs-header.component';
+import { SupplierComponent } from './views/master/supplier/supplier.component';
 
 // Other Library
 import { NgSelectModule } from '@ng-select/ng-select';
@@ -60,7 +71,16 @@ export function initializeApp(appConfig: AppConfig) {
     DataTableComponent,
     DialogConfirmationComponent,
     DialogCrudDataComponent,
-    GlobalFormComponent
+    GlobalFormComponent,
+    ItemSupplierComponent,
+    MenuItemComponent,
+    MenuItemLimitComponent,
+    MenuItemScheduleComponent,
+    MenuSetComponent,
+    ModifierItemComponent,
+    MpcsDetailComponent,
+    MpcsHeaderComponent,
+    SupplierComponent,
   ],
   imports: [
     BrowserModule,
@@ -78,6 +98,8 @@ export function initializeApp(appConfig: AppConfig) {
       provide: LocationStrategy,
       useClass: PathLocationStrategy
     },
+    AuthGuard,
+    AuthService,
     AppConfig,
     provideHttpClient(),
     {
@@ -86,8 +108,8 @@ export function initializeApp(appConfig: AppConfig) {
       deps: [AppConfig], multi: true
     },
     provideAnimationsAsync(),
-    { 
-      provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, 
+    {
+      provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
       useValue: {duration: 5000}
     }
   ],

@@ -5,6 +5,7 @@ import { finalize } from 'rxjs';
 
 import { AppConfig } from '../../../config/app.config';
 import { AuthService } from '../../../services/auth.service';
+import { AppService } from '../../../services/app.service';
 
 @Component({
     selector: 'app-login',
@@ -31,10 +32,11 @@ export class LoginComponent implements OnInit {
     });
 
     constructor(
-        private authSvc: AuthService,    
+      private authSvc: AuthService,
+      public appSvc: AppService,
     ) { }
 
-    ngOnInit() { 
+    ngOnInit() {
         this.year = new Date().getFullYear();
         this.authSvc.doLogout();
     }
@@ -49,8 +51,9 @@ export class LoginComponent implements OnInit {
             this.isLoading = true;
             let params = {
                 staffCode : this.loginForm.value.username,
-                password : this.loginForm.value.password
-            }   
+                password : this.loginForm.value.password,
+                versionFe : this.appSvc.versionFe
+            }
             this.authSvc.doLogin(params)
             .pipe(
                 finalize(() => this.isLoading = false))

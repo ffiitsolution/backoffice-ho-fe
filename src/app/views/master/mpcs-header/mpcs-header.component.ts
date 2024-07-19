@@ -1,17 +1,15 @@
 import { AfterViewInit, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Subject, takeUntil, tap } from 'rxjs';
-import { GlobalService } from './global.service';
 
 @Component({
-    selector: 'app-global',
-    templateUrl: 'global.component.html',
-    styleUrls: ['global.component.scss']
+    selector: 'app-mpcs-header',
+    templateUrl: 'mpcs-header.component.html',
+    styleUrls: ['mpcs-header.component.scss']
 })
 
-export class GlobalComponent implements OnInit {
+export class MpcsHeaderComponent implements OnInit {
     headerTitle: string = '';
     apiUrl: string = '';
-    apiInsertUrl: string = '';
     apiUpdateUrl: string = '';
     condList: any;
     menuTable: string = '';
@@ -20,37 +18,32 @@ export class GlobalComponent implements OnInit {
     onDestroy$ = new Subject<void>();
 
     constructor(
-        private service: GlobalService,
         private cdr: ChangeDetectorRef
     ) { }
 
     ngOnInit() {
-      this.headerTitle = 'Master Data Global';
-      this.apiUrl = '/global/dt';
-      this.apiInsertUrl = '/master/global/insert';
-      this.apiUpdateUrl = '/master/global/update';
-      this.menuTable = 'global';
+      this.headerTitle = 'Master Data MPCS Header';
+      this.apiUrl = '/mpcs-header/dt'
+      this.apiUpdateUrl = '/master/mpcs-header/update'
+      this.menuTable = 'mpcs-header';
       this.renderColumn();
       this.getFilter();
       this.orderBy();
     }
 
     getFilter() {
-      this.service.getListGlobalCondition().pipe(
-        takeUntil(this.onDestroy$),
-        tap((response) => {
-          this.condList = response.data;
-        })
-      ).subscribe()
+
     }
 
+    // :outletCode, :mpcsGroup, :description, :fryerType, :qtyConv, :status, :userUpd, :dateUpd, :timeUpd
     renderColumn() {
     this.renderColumns = [
         { data: 'dtIndex', title: '#', orderable: false, searchable: false },
-        { data: 'cond', title: 'CONDITION', orderable: true, searchable: true },
-        { data: 'code', title: 'CODE', orderable: true, searchable: true },
+        { data: 'outletCode', title: 'OUTLET CODE', orderable: true, searchable: true },
+        { data: 'mpcsGroup', title: 'MPCS GROUP', orderable: true, searchable: true },
         { data: 'description', title: 'DESCRIPTION', orderable: true, searchable: true },
-        { data: 'value', title: 'VALUE', orderable: true, searchable: true },
+        { data: 'fryerType', title: 'FRYER TYPE', orderable: true, searchable: true },
+        { data: 'qtyConv', title: 'QTY CONV', orderable: true, searchable: true },
         {
           data: 'status',
           title: 'STATUS',
@@ -65,6 +58,9 @@ export class GlobalComponent implements OnInit {
             `;
           },
         },
+        { data: 'userUpd', title: 'USER UPD', orderable: true, searchable: true },
+        { data: 'dateUpd', title: 'DATE UPD', orderable: true, searchable: true },
+        { data: 'timeUpd', title: 'TIME UPD', orderable: true, searchable: true },
         {
           data: 'status',
           title: 'ACTIONS',

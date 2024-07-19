@@ -2,8 +2,10 @@
   "name": "new-head-office",
   "version": "0.0.0",
   "scripts": {
+    "prebuild": "node scripts/update-version.js",
+    "prestart": "node scripts/update-version.js",
     "ng": "ng",
-    "start": "ng serve -o",
+    "start": "ng serve -o --port 4747",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
