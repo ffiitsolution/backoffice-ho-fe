@@ -444,6 +444,16 @@
     }
 }
 
+::ng-deep .error-snackbar .mat-mdc-snackbar-surface {
+    background-color: #CC0000 !important;
+    color: #ffffff !important;
+}
+
+::ng-deep .success-snackbar .mat-mdc-snackbar-surface {
+    background-color: #5CB85C !important;
+    color: #ffffff !important;
+}
+
 @media screen and (max-width: 768px) {  
     ::ng-deep .dt-input {
         margin-bottom: 9px;

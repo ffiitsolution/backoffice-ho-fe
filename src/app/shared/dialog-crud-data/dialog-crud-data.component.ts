@@ -12,7 +12,7 @@ import { FormGroup, FormControl, FormArray, FormBuilder } from '@angular/forms';
 export class DialogCrudDataComponent implements OnInit {
     crudTitle: string = '';
 
-    form: FormGroup
+    form: FormGroup;
 
     dataInput: any;
 
