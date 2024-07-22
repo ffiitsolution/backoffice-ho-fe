@@ -30,7 +30,8 @@ body {
     width: 120px;
     height: 40px;
     border-radius: 8px;
-    font-size: 16px;
+    font-size: 14px;
+    font-weight: 500;
 }
 
 .cancel-button {
@@ -38,10 +39,12 @@ body {
     color: #FFFFFF;
 }
 
-.cancel-button:hover {
+.cancel-button:hover, 
+.cancel-button:focus-visible {
     background: #FFFFFF;
-    color: #000000;
-    border: 1px solid #9DA5B1; 
+    color: #9DA5B1;
+    border: 2px solid #9DA5B1; 
+    outline: none;
 }
 
 .confirm-button {
@@ -49,10 +52,11 @@ body {
     color: #FFFFFF;
 }
 
-.confirm-button:hover {
+.confirm-button:hover,
+.confirm-button:focus-visible {
     background: #FFFFFF;
     color: #2EB85C;
-    border: 1px solid #2EB85C;
+    border: 2px solid #2EB85C;
 }
 
 .clear-form-btn {

@@ -3,7 +3,7 @@
     "name": "DEV"
   },
   "apiServer": {
-    "BASE_URL": "http://172.16.9.138:9797/boffihq/api"
+    "BASE_URL": "http://172.16.9.123:9797/boffihq/api"
   },
   "applicationTitle": "BACK OFFICE",
   "applicationSubtitle": "HEAD OFFICE",

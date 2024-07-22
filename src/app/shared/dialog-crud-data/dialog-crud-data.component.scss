@@ -12,6 +12,7 @@
     }
 
     .crud-form-container {
+        margin-top: 20px;
         min-height: 250px;
 
         .form-content {
@@ -24,16 +25,24 @@
                 flex-direction: column;
                 width: 100%;
                 gap: 6px;
+
+                > label {
+                    font-weight: 500;
+                }
     
-                input, textarea {
+                input, 
+                textarea {
                     width: 100%;
                     border-radius: 6px;
                     border: 1px solid #D0D0D0;
                     padding: 8px;
                 }
 
-                input:focus, textarea:focus {
-                    outline-color: #5d5d5d;
+                input:focus, 
+                input:focus-visible, 
+                textarea:focus,
+                textarea:focus-visible {
+                    outline-color: #D8EAF9 !important;
                 }
 
                 .select-form {
@@ -63,11 +72,43 @@
         gap: 8px;
         box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.1);
     }
+
+    ::ng-deep .mat-mdc-dialog-title {
+        padding: 16px 18px;
+        margin: 0;
+        &::before {
+            height: auto;
+        }
+    }
+}
+
+::ng-deep div.mat-mdc-select-panel{
+    background-color: #fff !important;
+    box-shadow: 6px 8px 20px 2px rgba(0, 0, 0, 0.29) !important;
+    z-index: 1 !important;
 }
 
 ::ng-deep .mdc-menu-surface {
     padding: 0px !important;
-    background-color: #e7e7e7 !important;
     box-shadow: none !important;
     border-radius: 6px !important;
+}
+
+::ng-deep .mat-mdc-dialog-surface {
+    background-color: #fff !important;
+    box-shadow: 10px 7px 16px -4px rgba(0,0,0,0.48);
+}
+
+::ng-deep .mat-mdc-option-active.mdc-list-item.mdc-list-item--selected{
+    background-color: #C8E4F9 !important;
+}
+
+::ng-deep .mat-mdc-option-active.mdc-list-item {
+    background-color: transparent !important;
+}
+
+
+::ng-deep .mat-mdc-option:hover:not(.mdc-list-item--disabled),
+::ng-deep .mat-mdc-option:hover:not(.mdc-list-item--selected){
+    background-color: #DAEDFB !important;
 }

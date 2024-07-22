@@ -1,6 +1,4 @@
-.dialog-confirmation-container {
-    padding: 6px;
-    
+.dialog-confirmation-container {    
     .confirmation-title {
         text-transform: capitalize;
         font-weight: 500;
@@ -13,6 +11,13 @@
 
     .confirmation-button-container {
         gap: 10px;
-        margin-top: 20px;
+    }
+
+    h2.mat-mdc-dialog-title {
+        margin: 0 !important;
+        padding: 22px 18px;
+        &::before {
+            height: auto;
+        }
     }
 }
