@@ -15,67 +15,68 @@ import { PaymentMethodComponent } from './payment/payment-method/payment-method.
 import { MasterPaymentComponent } from './payment/master-payment/master-payment.component';
 
 export const routes: Routes = [
-  {
-    path: 'global',
-    component: GlobalComponent,
-    data: {
-      title: 'Global',
+    {
+        path: 'global',
+        component: GlobalComponent,
+        data: {
+            title: 'Global',
+        },
     },
-  },
-  {
-    path: 'outlet',
-    component: OutletComponent,
-    data: {
-      title: 'Outlet',
+    {
+        path: 'outlet',
+        component: OutletComponent,
+        data: {
+            title: 'Outlet',
+        },
     },
-  },
-  {
-    path: 'menu-item',
-    component: MenuItemComponent,
-    data: {
-      title: 'Menu Item',
+    {
+        path: 'menu-item',
+        component: MenuItemComponent,
+        data: {
+            title: 'Menu Item',
+        },
     },
-  },
-  {
-    path: 'menu-item-limit',
-    component: MenuItemLimitComponent,
-    data: {
-      title: 'Menu Item Limit',
+    {
+        path: 'menu-item-limit',
+        component: MenuItemLimitComponent,
+        data: {
+            title: 'Menu Item Limit',
+        },
     },
-  },
-  {
-    path: 'menu-item-schedule',
-    component: MenuItemScheduleComponent,
-    data: {
-      title: 'Menu Item Schedule',
+    {
+        path: 'menu-item-schedule',
+        component: MenuItemScheduleComponent,
+        data: {
+            title: 'Menu Item Schedule',
+        },
     },
-  },
-  {
-    path: 'menu-set',
-    component: MenuSetComponent,
-    data: {
-      title: 'Menu Set',
+    {
+        path: 'menu-set',
+        component: MenuSetComponent,
+        data: {
+            title: 'Menu Set',
+        },
     },
-  },
-  {
-    path: 'modifier-item',
-    component: ModifierItemComponent,
-    data: {
-      title: 'Modifier Item',
+    {
+        path: 'modifier-item',
+        component: ModifierItemComponent,
+        data: {
+            title: 'Modifier Item',
+        },
     },
-  },
-  {
-    path: 'mpcs-header',
-    component: MpcsHeaderComponent,
-    data: {
-      title: 'MPCS Header',
+    {
+        path: 'mpcs-header',
+        component: MpcsHeaderComponent,
+        data: {
+            title: 'MPCS Header',
+        },
     },
-  },
-  {
-    path: 'mpcs-detail',
-    component: MpcsDetailComponent,
-    data: {
-      title: 'MPCS Detail',
+    {
+        path: 'mpcs-detail',
+        component: MpcsDetailComponent,
+        data: {
+            title: 'MPCS Detail',
+        },
     },
   },
   {
@@ -111,14 +112,13 @@ export const routes: Routes = [
     data: {
       title: 'Supplier',
     },
-  },
-  {
-    path: 'item-supplier',
-    component: ItemSupplierComponent,
-    data: {
-      title: 'Item Supplier',
+    {
+        path: 'item-supplier',
+        component: ItemSupplierComponent,
+        data: {
+            title: 'Item Supplier',
+        },
     },
-  },
 ];
 
 @NgModule({

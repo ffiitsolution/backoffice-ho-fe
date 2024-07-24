@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { FormGroup, FormControl, FormArray, FormBuilder } from '@angular/forms';
+import { RegexPipe } from '../../../../services/input.pipe';
 
 @Component({
     selector: 'app-global-form',
@@ -15,7 +16,8 @@ export class GlobalFormComponent implements OnInit {
     form: FormGroup;
 
     constructor(
-        private formBuilder: FormBuilder
+        private formBuilder: FormBuilder,
+        private regexPipe: RegexPipe,
     ) { }
 
     ngOnInit() {
@@ -37,5 +39,11 @@ export class GlobalFormComponent implements OnInit {
 
     clearForm() {
         this.form.reset(); 
+    }
+
+    onChangeInput(input: any, type: string) {
+        const result: boolean = this.regexPipe.transform(input, type);
+        if(!result) input.preventDefault();
+        return result;
     }
 }
