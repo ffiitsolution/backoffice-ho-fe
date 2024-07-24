@@ -46,12 +46,14 @@ import { ModifierItemComponent } from './views/master/modifier-item/modifier-ite
 import { MpcsDetailComponent } from './views/master/mpcs-detail/mpcs-detail.component';
 import { MpcsHeaderComponent } from './views/master/mpcs-header/mpcs-header.component';
 import { SupplierComponent } from './views/master/supplier/supplier.component';
+import { PaymentMethodComponent } from './views/master/payment/payment-method/payment-method.component';
 
 // Other Library
 import { NgSelectModule } from '@ng-select/ng-select';
 import { GlobalFormComponent } from './views/master/global/global-form/global-form.component';
 import { NavigationService } from './services/navigation.service';
 import { ErrorHelper } from './helper/error.helper';
+import { MasterPaymentComponent } from './views/master/payment/master-payment/master-payment.component';
 
 
 export function initializeApp(appConfig: AppConfig) {
@@ -82,7 +84,9 @@ export function initializeApp(appConfig: AppConfig) {
     ModifierItemComponent,
     MpcsDetailComponent,
     MpcsHeaderComponent,
-    SupplierComponent,
+    MasterPaymentComponent,
+    PaymentMethodComponent,
+    SupplierComponent
   ],
   imports: [
     BrowserModule,

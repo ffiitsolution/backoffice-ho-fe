@@ -1,78 +1,37 @@
 import { Component, OnInit } from '@angular/core';
-import { AppService } from '../../../services/app.service';
-import { Subject, takeUntil, tap } from 'rxjs';
-import { OutletService } from './outlet.service';
 
 @Component({
-    selector: 'app-outlet',
-    templateUrl: 'outlet.component.html',
-    styleUrls: ['outlet.component.scss']
+    selector: 'app-payment-method',
+    templateUrl: 'payment-method.component.html',
+    styleUrls: ['payment-method.component.scss']
 })
 
-export class OutletComponent implements OnInit {
+export class PaymentMethodComponent implements OnInit {
+    tabMenus: any;
     headerTitle: string = '';
     menuTable: string = '';
     apiUrl: string = '';
+    renderColumns: {};
     setOrderBy: any;
-    regionList: any;
-    typeList: any;
-    areaList: any;
 
-    renderColumns: any;
-    onDestroy$ = new Subject<void>();
+    constructor() { }
 
-    constructor(
-        private service: OutletService,
-    ) { }
-
-    ngOnInit() { 
-        this.headerTitle = 'Master Data Outlet';
-        this.menuTable = 'outlet';
-        this.apiUrl = '/outlet/dt';
+    ngOnInit() {
+        this.headerTitle = 'Master Data Payment Method';
+        this.menuTable = 'payment-method';
+        this.apiUrl = '/payment-method/dt';
         this.renderColumn();
-        this.getRegionFilter();
-        this.getTypeFilter();
-        this.getAreaFilter();
-    }
-
-    getTypeFilter() {
-        this.service.getFilterListType().pipe(
-            takeUntil(this.onDestroy$),
-            tap((response) => {
-                this.typeList = response.data;
-            })
-        ).subscribe();
-    }
-
-    getRegionFilter() {
-        this.service.getFilterListRegion().pipe(
-            takeUntil(this.onDestroy$),
-            tap((response) => {
-                this.regionList = response.data;
-            })
-        ).subscribe();
-    }
-
-    getAreaFilter() {
-        this.service.getFilterAreaCode().pipe(
-            takeUntil(this.onDestroy$),
-            tap((response) => {
-                this.areaList = response.data;
-            })
-        ).subscribe();
+        this.orderBy();
+        this.getTabMenus();
     }
 
     renderColumn() {
         this.renderColumns =  [
             { data: 'dtIndex', title: '#', orderable: false, searchable: false },
             { data: 'regionCode', title: 'REGION CODE', orderable: true, searchable: true },
-            // { data: 'regionName', title: 'REGION NAME', orderable: true, searchable: true },
-            { data: 'areaCode', title: 'AREA CODE', orderable: true, searchable: true },
-            // { data: 'areaName', title: 'AREA NAME', orderable: true, searchable: true },
             { data: 'outletCode', title: 'OUTLET CODE', orderable: true, searchable: true },
-            { data: 'outletName', title: 'OUTLET NAME', orderable: true, searchable: true },
-            { data: 'initialOutlet', title: 'INITIAL', orderable: true, searchable: true },
-            { data: 'type', title: 'TYPE', orderable: true, searchable: true },
+            // { data: 'paymentMethodCode', title: 'PAYMENT METHOD CODE', orderable: true, searchable: true },
+            { data: 'paymentTypeCode', title: 'PAYMENT TYPE CODE', orderable: true, searchable: true },
             {
               data: 'status',
               title: 'STATUS',
@@ -126,6 +85,27 @@ export class OutletComponent implements OnInit {
     }
 
     orderBy() {
-        this.setOrderBy =  [[1, 'asc']];
+        this.setOrderBy =  [
+            [6, 'asc'],
+            [1, 'asc']
+        ];
     }
+
+    getTabMenus() {
+        this.tabMenus = [
+            {
+                tabMenuName: 'Master Payment',
+                route: '/master/payment/master-payment'
+            },
+            {
+                tabMenuName: 'Master Payment Method',
+                route: '/master/payment/payment-method'
+            },
+            {
+                tabMenuName: 'Master Payment Method Limit',
+                route: '/master/payment/payment-method'
+            }
+        ]
+    }
+
 }

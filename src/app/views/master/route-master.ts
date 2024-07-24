@@ -11,6 +11,8 @@ import { ModifierItemComponent } from './modifier-item/modifier-item.component';
 import { MpcsDetailComponent } from './mpcs-detail/mpcs-detail.component';
 import { MpcsHeaderComponent } from './mpcs-header/mpcs-header.component';
 import { SupplierComponent } from './supplier/supplier.component';
+import { PaymentMethodComponent } from './payment/payment-method/payment-method.component';
+import { MasterPaymentComponent } from './payment/master-payment/master-payment.component';
 
 export const routes: Routes = [
   {
@@ -75,6 +77,33 @@ export const routes: Routes = [
     data: {
       title: 'MPCS Detail',
     },
+  },
+  {
+    path: 'payment',
+    data: {
+      title: 'Payment',
+    },
+    children: [
+      {
+        path: '',
+        redirectTo: 'master-payment',
+        pathMatch: 'full',
+      },
+      {
+        path: 'payment-method',
+        component: PaymentMethodComponent,
+        data: {
+          title: 'Payment Method List',
+        },
+      },
+      {
+        path: 'master-payment',
+        component: MasterPaymentComponent,
+        data: {
+          title: 'Master Payment',
+        },
+      },
+    ],
   },
   {
     path: 'supplier',

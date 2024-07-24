@@ -20,6 +20,7 @@ import { DialogCrudDataComponent } from '../dialog-crud-data/dialog-crud-data.co
 import { ErrorHelper } from '../../helper/error.helper';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { MESSAGES } from '../../helper/message.helper';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-data-table',
@@ -28,7 +29,11 @@ import { MESSAGES } from '../../helper/message.helper';
 })
 export class DataTableComponent implements OnInit, AfterViewInit {
     @Input() headerTitle: string = '';
+    @Input() tabMenus: any;
     @Input() condList: any;
+    @Input() type: any;
+    @Input() regionCodes: any;
+    @Input() areaCodes: any;
     @Input() apiUrl: string = '';
     @Input() apiInserteUrl: string = '';
     @Input() apiUpdateUrl: string = '';
@@ -82,6 +87,7 @@ export class DataTableComponent implements OnInit, AfterViewInit {
     // Parameter Other
     selectedItemCode: any;
     selectedCdSupplier: any;
+    activeTabRoute: string = ''; 
 
     onDestroy$ = new Subject<void>();
 
@@ -92,15 +98,22 @@ export class DataTableComponent implements OnInit, AfterViewInit {
         private service: AppService,
         private dialog: MatDialog,
         private errorHelper: ErrorHelper,
-        private snackBar: MatSnackBar
+        private snackBar: MatSnackBar,
+        private router: Router
     ) {}
 
     ngOnInit(): void {
         this.getDataTable();
+        this.activeTabRoute = this.router.url; 
+
     }
 
     ngAfterViewInit() {
         this.dtTrigger.next(null);
+    }
+
+    changeTab(router: any) {
+        this.router.navigate([router])
     }
 
     openFilter() {
@@ -131,31 +144,35 @@ export class DataTableComponent implements OnInit, AfterViewInit {
                 this.page.length = dataTablesParameters.length;
 
                 if (this.menuTable == 'global') {
-                dataTablesParameters['status'] = this.selectedStatus?.code ?? '';
-                dataTablesParameters['cond'] = this.selectedCondition?.cond ?? '';
+                    dataTablesParameters['status'] = this.selectedStatus?.code ?? '';
+                    dataTablesParameters['cond'] = this.selectedCondition?.cond ?? '';
                 } else if (this.menuTable == 'outlet') {
-                dataTablesParameters['type'] = this.selectedOutletType;
-                dataTablesParameters['regionCode'] = this.selectedRegion;
-                dataTablesParameters['areaCode'] = this.selectedArea;
-                dataTablesParameters['status'] = this.selectedStatus?.code ?? '';
+                    dataTablesParameters['type'] = this.selectedOutletType?.code ?? '';
+                    dataTablesParameters['regionCode'] = this.selectedRegion?.code ?? '';
+                    dataTablesParameters['areaCode'] = this.selectedArea?.code ?? '';
+                    dataTablesParameters['status'] = this.selectedStatus?.code ?? '';
                 } else if (this.menuTable == 'supplier') {
-                dataTablesParameters['status'] = this.selectedStatus?.code ?? '';
+                    dataTablesParameters['status'] = this.selectedStatus?.code ?? '';
                 } else if (this.menuTable == 'item-supplier') {
-                dataTablesParameters['status'] = this.selectedStatus?.code ?? '';
-                dataTablesParameters['itemCode'] = this.selectedItemCode?.code ?? '';
-                dataTablesParameters['cdSupplier'] =
+                    dataTablesParameters['status'] = this.selectedStatus?.code ?? '';
+                    dataTablesParameters['itemCode'] = this.selectedItemCode?.code ?? '';
+                    dataTablesParameters['cdSupplier'] =
                     this.selectedCdSupplier?.code ?? '';
                 } else if (this.menuTable == 'mpcs-header') {
-                dataTablesParameters['status'] = this.selectedStatus?.code ?? '';
+                    dataTablesParameters['status'] = this.selectedStatus?.code ?? '';
                 } else if (this.menuTable == 'mpcs-detail') {
-                dataTablesParameters['status'] = this.selectedStatus?.code ?? '';
+                    dataTablesParameters['status'] = this.selectedStatus?.code ?? '';
                 } else if (this.menuTable == 'modifier-item') {
-                dataTablesParameters['status'] = this.selectedStatus?.code ?? '';
+                    dataTablesParameters['status'] = this.selectedStatus?.code ?? '';
                 } else if (this.menuTable == 'menu-item') {
-                dataTablesParameters['status'] = this.selectedStatus?.code ?? '';
+                    dataTablesParameters['status'] = this.selectedStatus?.code ?? '';
                 } else if (this.menuTable == 'menu-set') {
-                dataTablesParameters['status'] = this.selectedStatus?.code ?? '';
-                }
+                    dataTablesParameters['status'] = this.selectedStatus?.code ?? '';
+                } else if (this.menuTable == 'master-payment') {
+                    dataTablesParameters['status'] = this.selectedStatus?.code ?? '';
+                } else if (this.menuTable == 'payment-method') {
+                    dataTablesParameters['status'] = this.selectedStatus?.code ?? '';
+                } 
 
                 this.service
                     .getListDataTable(this.apiUrl, dataTablesParameters).pipe(

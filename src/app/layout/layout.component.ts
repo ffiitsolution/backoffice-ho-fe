@@ -64,10 +64,8 @@ export class LayoutComponent implements OnInit, AfterViewInit {
     }
 
     ngOnInit(): void {
-        this.service.isLoading.subscribe(
-            (loading) => {
+        this.service.isLoading.subscribe((loading) => {
                 this.isLoading = loading;
-                console.log(this.isLoading);
             }
         )
     }
