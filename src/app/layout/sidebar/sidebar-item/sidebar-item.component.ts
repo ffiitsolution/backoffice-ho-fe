@@ -29,10 +29,10 @@ export class SideBarItemComponent implements OnInit {
     ngOnInit() {}
   
     ngOnChanges() {
-      this.navService.currentUrl.subscribe((url: string) => {
-        if (this.item.route && url) {
-        }
-      });
+        this.navService.currentUrl.subscribe((url: string) => {
+            if (this.item.route && url) {
+            }
+        });
     }
   
     // onItemSelected(item: any) {
@@ -52,19 +52,20 @@ export class SideBarItemComponent implements OnInit {
     }
 
     toggleItem(item: SidebarMenu) {
-      item.expanded = !item.expanded;
-      this.parentBreadcrumb = item.parentName!
-      if(!item.children) {
-        const dataBreadCrumb = {
-          parentBreadcrumb: this.parentBreadcrumb
+        item.expanded = !item.expanded;
+        this.parentBreadcrumb = item.parentName!;
+
+        if(!item.children) {
+            const dataBreadCrumb = {
+                parentBreadcrumb: this.parentBreadcrumb
+            }
+            this.dataBreadCrumb.emit(dataBreadCrumb)
+            this.goToPage(item.route);
         }
-        this.dataBreadCrumb.emit(dataBreadCrumb)
-        this.goToPage(item.route);
-      }
     }
   
-    onItemSelected(item: SidebarSideMenu) {
-      this.childBreadcrumb = item.childName;
+    onItemSelected(item: SidebarMenu) {
+      this.childBreadcrumb = item.displayName;
 
       if (item.route) {
         const dataBreadCrumb = {
