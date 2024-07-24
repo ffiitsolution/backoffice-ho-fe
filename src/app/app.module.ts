@@ -51,6 +51,7 @@ import { PaymentMethodComponent } from './views/master/payment/payment-method/pa
 // Other Library
 import { NgSelectModule } from '@ng-select/ng-select';
 import { GlobalFormComponent } from './views/master/global/global-form/global-form.component';
+import { RegexPipe } from './services/input.pipe';
 import { NavigationService } from './services/navigation.service';
 import { ErrorHelper } from './helper/error.helper';
 import { MasterPaymentComponent } from './views/master/payment/master-payment/master-payment.component';
@@ -110,6 +111,7 @@ export function initializeApp(appConfig: AppConfig) {
     AuthService,
     NavigationService,
     AppConfig,
+    RegexPipe,
     ErrorHelper,
     provideHttpClient(),
     {
