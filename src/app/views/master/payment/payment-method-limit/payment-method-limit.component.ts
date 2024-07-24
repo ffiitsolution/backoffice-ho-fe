@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'app-payment-method',
-    templateUrl: 'payment-method.component.html',
-    styleUrls: ['payment-method.component.scss']
+    selector: 'app-payment-method-limit',
+    templateUrl: 'payment-method-limit.component.html',
+    styleUrls: ['payment-method-limit.component.scss']
 })
 
-export class PaymentMethodComponent implements OnInit {
+export class PaymentMethodLimitComponent implements OnInit {
     tabMenus: any;
     headerTitle: string = '';
     menuTable: string = '';
@@ -16,39 +16,24 @@ export class PaymentMethodComponent implements OnInit {
 
     constructor() { }
 
-    ngOnInit() {
-        this.headerTitle = 'Master Data Payment Method';
-        this.menuTable = 'payment-method';
-        this.apiUrl = '/payment-method/dt';
+    ngOnInit() { 
+        this.headerTitle = 'Master Data Payment Method Limit';
+        this.menuTable = 'payment-method-limit';
+        this.apiUrl = '/payment-method-limit/dt';
         this.renderColumn();
         this.orderBy();
         this.getTabMenus();
     }
-
+    
     renderColumn() {
         this.renderColumns =  [
             { data: 'dtIndex', title: '#', orderable: false, searchable: false },
             { data: 'regionCode', title: 'REGION CODE', orderable: true, searchable: true },
             { data: 'outletCode', title: 'OUTLET CODE', orderable: true, searchable: true },
             { data: 'paymentMethodCode', title: 'PAYMENT METHOD CODE', orderable: true, searchable: true },
-            { data: 'paymentTypeCode', title: 'PAYMENT TYPE CODE', orderable: true, searchable: true },
-            { data: 'colorCode', title: 'COLOR CODE', orderable: true, searchable: true },
+            { data: 'orderType', title: 'Order Type', orderable: true, searchable: true },
             {
-              data: 'status',
-              title: 'STATUS',
-              orderable: true,
-              searchable: true,
-              render: (data: any, type: any, row: any) => {
-                const statusText = data === 'A' ? 'Active' :  (data === 'I' ? 'Inactive' : '-');
-                return `
-                  <div class="badge-status badge-status__${data}">
-                      ${statusText}
-                  </div>
-                `;
-              },
-            },
-            {
-                data: 'status',
+                data: 'dtIndex',
                 title: 'ACTIONS',
                 orderable: false,
                 searchable: false,
@@ -57,7 +42,6 @@ export class PaymentMethodComponent implements OnInit {
                         <button class="dropbtn">Action <i class="fa fa-caret-down" aria-hidden="true"></i></button>
                         <div class="dropdown-content">
                         <button class="action-button action-edit"><i class="fa fa-pencil"></i> Edit</button>
-                        <button class="action-button"><i class="fa fa-power-off"></i> Inactive</button>
                         </div>
                     </div>
                     `
@@ -65,20 +49,10 @@ export class PaymentMethodComponent implements OnInit {
                         <div class="dropdown-action">
                             <button class="dropbtn">Action <i class="fa fa-caret-down" aria-hidden="true"></i></button>
                             <div class="dropdown-content">
-                            <button class="action-button action-edit"><i class="fa fa-pencil"></i> Edit</button>
-                        `;
-                    if (data == 'I') {
-                        actionBtn += `
-                            <button class="action-button action-activate"><i class="fa fa-power-off"></i> Activate</button>
+                                <button class="action-button action-edit"><i class="fa fa-pencil"></i> Edit</button>
                             </div>
-                        </div>`
-                    } else {
-                        actionBtn += `
-                            <button class="action-button action-inactive"><i class="fa fa-power-off"></i> Inactive</button>
-                            </div>
-                        </div>`
-                    }
-                    
+                        </div>
+                    `;
                     return actionBtn;
                 },
             }
@@ -108,5 +82,4 @@ export class PaymentMethodComponent implements OnInit {
             }
         ]
     }
-
 }

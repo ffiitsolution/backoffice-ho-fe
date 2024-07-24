@@ -172,7 +172,7 @@ export class DataTableComponent implements OnInit, AfterViewInit {
                     dataTablesParameters['status'] = this.selectedStatus?.code ?? '';
                 } else if (this.menuTable == 'payment-method') {
                     dataTablesParameters['status'] = this.selectedStatus?.code ?? '';
-                } 
+                }
 
                 this.service
                     .getListDataTable(this.apiUrl, dataTablesParameters).pipe(
