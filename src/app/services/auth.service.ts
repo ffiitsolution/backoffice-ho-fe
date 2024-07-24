@@ -60,6 +60,12 @@ export class AuthService {
     }
 
     isLoggedIn(): boolean {
-        return !!localStorage.getItem('hq_token');
+        const xToken = localStorage.getItem('hq_token');
+        const hqUser = localStorage.getItem('hq_user');
+        return !!xToken && !!hqUser;
+    }
+
+    getLastPage(): string {
+        return localStorage.getItem('last_page') || '/home';
     }
 }

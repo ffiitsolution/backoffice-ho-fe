@@ -1,57 +1,108 @@
-<div class="data-table-wrapper">
-    <div class="data-header-container">
-        <span>{{ headerTitle }}</span>
-
-        <div class="button-data-head-container">
-            <button mat-button class="head-table-button filter-data-button" (click)="openFilter()">
-                <i class="fa fa-filter"></i> 
-                Filter
-            </button> 
-
-            <button mat-button class="head-table-button add-data-button" (click)="dialogAddNewData()">
-                <i class="fa fa-plus"></i> 
-                New Data
-            </button>
-        </div>
-    </div>
-
-    <ng-container *ngIf="isFilterVisible">
-        <div class="filter-container">
-            <ng-container *ngIf="menuTable == 'global'">
-                <div class="filter-field">
-                    <mat-label for="condition">Condition</mat-label>
-                    <ng-select 
-                        class="select-filter" 
-                        [items]="condList" 
-                        bindLabel="cond" 
-                        [(ngModel)]="selectedCondition"
-                        (ngModelChange)="onFilterChange()"
-                    >
-                    </ng-select>
+<div class="data-table-content">
+    <ng-container *ngIf="tabMenus">
+        <div class="tab-menu-container">
+            <ng-container *ngFor="let tabItem of tabMenus">
+                <div class="tab-menu-item" (click)="changeTab(tabItem.route)" [class.active]="tabItem.route === activeTabRoute">
+                    <span>{{ tabItem.tabMenuName }}</span>
                 </div>
             </ng-container>
 
-            <div class="filter-field">
-                <mat-label for="status">Status</mat-label>
-                <ng-select 
-                    class="select-filter" 
-                    [items]="statusList" 
-                    bindLabel="name" 
-                    [(ngModel)]="selectedStatus"
-                    (ngModelChange)="onFilterChange()">
-                </ng-select>
-            </div>
         </div>
     </ng-container>
 
-
-    <div class="data-table-container">   
-        <table 
-            datatable 
-            [dtOptions]="dtOptions" 
-            [dtTrigger]="dtTrigger" 
-            (page.dt)="dtPageChange($event)" 
-            class="row-border hover">
-        </table>
+    <div class="data-table-wrapper">
+        <div class="data-header-container">
+            <span>{{ headerTitle }}</span>
+    
+            <div class="button-data-head-container">
+                <button mat-button class="head-table-button filter-data-button" (click)="openFilter()">
+                    <i class="fa fa-filter"></i> 
+                    Filter
+                </button> 
+    
+                <button mat-button class="head-table-button add-data-button" (click)="dialogAddNewData()">
+                    <i class="fa fa-plus"></i> 
+                    New Data
+                </button>
+            </div>
+        </div>
+    
+        <ng-container *ngIf="isFilterVisible">
+            <div class="filter-container">
+                <ng-container *ngIf="menuTable == 'global'">
+                    <div class="filter-field">
+                        <mat-label for="condition">Condition</mat-label>
+                        <ng-select 
+                            class="select-filter" 
+                            [items]="condList" 
+                            bindLabel="cond" 
+                            [(ngModel)]="selectedCondition"
+                            (ngModelChange)="onFilterChange()"
+                        >
+                        </ng-select>
+                    </div>
+                </ng-container>
+    
+                <ng-container *ngIf="menuTable == 'outlet'">
+                    <div class="filter-field">
+                        <mat-label for="condition">Type</mat-label>
+                        <ng-select 
+                            class="select-filter" 
+                            [items]="type" 
+                            bindLabel="code" 
+                            [(ngModel)]="selectedOutletType"
+                            (ngModelChange)="onFilterChange()"
+                        >
+                        </ng-select>
+                    </div>
+    
+                    <div class="filter-field">
+                        <mat-label for="condition">Region Code</mat-label>
+                        <ng-select 
+                            class="select-filter" 
+                            [items]="regionCodes" 
+                            bindLabel="code" 
+                            [(ngModel)]="selectedRegion"
+                            (ngModelChange)="onFilterChange()"
+                        >
+                        </ng-select>
+                    </div>
+    
+                    <div class="filter-field">
+                        <mat-label for="condition">Area  Code</mat-label>
+                        <ng-select 
+                            class="select-filter" 
+                            [items]="areaCodes" 
+                            bindLabel="code" 
+                            [(ngModel)]="selectedArea"
+                            (ngModelChange)="onFilterChange()"
+                        >
+                        </ng-select>
+                    </div>
+                </ng-container>
+    
+                <div class="filter-field">
+                    <mat-label for="status">Status</mat-label>
+                    <ng-select 
+                        class="select-filter" 
+                        [items]="statusList" 
+                        bindLabel="name" 
+                        [(ngModel)]="selectedStatus"
+                        (ngModelChange)="onFilterChange()">
+                    </ng-select>
+                </div>
+            </div>
+        </ng-container>
+    
+    
+        <div class="data-table-container">   
+            <table 
+                datatable 
+                [dtOptions]="dtOptions" 
+                [dtTrigger]="dtTrigger" 
+                (page.dt)="dtPageChange($event)" 
+                class="row-border hover">
+            </table>
+        </div>
     </div>
 </div>

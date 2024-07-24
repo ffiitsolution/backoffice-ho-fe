@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { NavbarService } from '../../../services/navbar.service';
+import { NavigationService } from '../../../services/navigation.service';
 import { Router } from '@angular/router';
 import { SidebarMenu, SidebarSideMenu } from '../../sidebar/sidebar.model'; 
 
@@ -18,7 +18,7 @@ export class SideBarItemComponent implements OnInit {
     childBreadcrumb: string = '';
   
     constructor(
-        public navService: NavbarService, 
+        public navService: NavigationService, 
         public router: Router
     ) {
       if (this.depth === undefined) {
@@ -27,25 +27,6 @@ export class SideBarItemComponent implements OnInit {
     }
 
     ngOnInit() {}
-  
-    ngOnChanges() {
-        this.navService.currentUrl.subscribe((url: string) => {
-            if (this.item.route && url) {
-            }
-        });
-    }
-  
-    // onItemSelected(item: any) {
-    //   if (!item.children || !item.children.length) {
-    //     this.router.navigate([item.route]);
-    //   }
-  
-    //   // scroll
-    //   document.querySelector('.page-wrapper')?.scroll({
-    //     top: 0,
-    //     left: 0,
-    //   });
-    // }
 
     goToPage(route: any) {
       this.router.navigate([route]);
@@ -62,6 +43,11 @@ export class SideBarItemComponent implements OnInit {
             this.dataBreadCrumb.emit(dataBreadCrumb)
             this.goToPage(item.route);
         }
+
+        this.dataBreadCrumb.emit(dataBreadCrumb);
+        localStorage.setItem('dataBreadcrumb', JSON.stringify(dataBreadCrumb));
+        this.goToPage(item.route);
+      }
     }
   
     onItemSelected(item: SidebarMenu) {
@@ -73,7 +59,8 @@ export class SideBarItemComponent implements OnInit {
           childBreadcrumb: this.childBreadcrumb
         }
 
-        this.dataBreadCrumb.emit(dataBreadCrumb)
+        this.dataBreadCrumb.emit(dataBreadCrumb);
+        localStorage.setItem('dataBreadcrumb', JSON.stringify(dataBreadCrumb));
         this.router.navigate([item.route]);
       }
     }

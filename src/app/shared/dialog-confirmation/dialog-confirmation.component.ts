@@ -23,9 +23,9 @@ export class DialogConfirmationComponent implements OnInit {
 
     getMessage() {
         if (this.data.status == 'inactive') {
-            this.messageConfirmation = MESSAGES.INACTIVE_CONFRIMATION_MESSAGE;
+            this.messageConfirmation = MESSAGES.INACTIVE_CONFRIMATION_MESSAGE_EN;
         } else if (this.data.status == 'activate') {
-            this.messageConfirmation = MESSAGES.ACTIVATE_CONFRIMATION_MESSAGE;
+            this.messageConfirmation = MESSAGES.ACTIVATE_CONFRIMATION_MESSAGE_EN;
         }
     }
 
