@@ -44,7 +44,6 @@ export class SideBarItemComponent implements OnInit {
             this.dataBreadCrumb.emit(dataBreadCrumb)
             this.goToPage(item.route);
         }
-
         this.dataBreadCrumb.emit(dataBreadCrumb);
         localStorage.setItem('dataBreadcrumb', JSON.stringify(dataBreadCrumb));
         this.goToPage(item.route);

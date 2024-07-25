@@ -15,16 +15,16 @@ export const navItems: SidebarMenu[] = [
       { displayName: 'Dashboard', route: '/master/dashboard', childName: 'dashboard' },
       { displayName: 'Global', route: '/master/global', childName: 'global' },
       { displayName: 'Outlet', route: '/master/outlet', childName: 'outlet' },
-      { displayName: 'Menu Item', route: '/master/menu-item', childName: 'menu-item' },
-      { displayName: 'Menu Item Limit', route: '/master/menu-item-limit', childName: 'menu-item-limit' },
-      { displayName: 'Menu Item Schedule', route: '/master/menu-item-schedule', childName: 'menu-item-schedule' },
-      { displayName: 'Menu Set', route: '/master/menu-set', childName: 'menu-set' },
-      { displayName: 'Modifier Item', route: '/master/modifier-item', childName: 'modifier-item' },
-      { displayName: 'MPCS Header', route: '/master/mpcs-header', childName: 'mpcs-header' },
-      { displayName: 'MPCS Detail', route: '/master/mpcs-detail', childName: 'mpcs-detail' },
+      { displayName: 'Menu', route: '/master/menu-item', childName: 'menu' },
+      // { displayName: 'Menu Item Limit', route: '/master/menu-item-limit', childName: 'menu-item-limit' },
+      // { displayName: 'Menu Item Schedule', route: '/master/menu-item-schedule', childName: 'menu-item-schedule' },
+      // { displayName: 'Menu Set', route: '/master/menu-set', childName: 'menu-set' },
+      { displayName: 'Modifier Item', route: '/master/modifier-item', childName: 'modifier item' },
+      { displayName: 'MPCS Header', route: '/master/mpcs-header', childName: 'mpcs header' },
+      { displayName: 'MPCS Detail', route: '/master/mpcs-detail', childName: 'mpcs detail' },
       { displayName: 'Payment', route: '/master/payment', childName: 'payment' },
       { displayName: 'Supplier', route: '/master/supplier', childName: 'supplier' },
-      { displayName: 'Item Supplier', route: '/master/item-supplier', childName: 'item-supplier' }
+      { displayName: 'Item Supplier', route: '/master/item-supplier', childName: 'item supplier' }
     ]
   },
   {

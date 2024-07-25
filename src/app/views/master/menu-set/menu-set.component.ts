@@ -17,6 +17,7 @@ export class MenuSetComponent implements OnInit {
     renderColumns: any;
     setOrderBy: any;
     onDestroy$ = new Subject<void>();
+    tabMenus: any;
 
     constructor(
         private cdr: ChangeDetectorRef
@@ -31,6 +32,7 @@ export class MenuSetComponent implements OnInit {
       this.renderColumn();
       this.getFilter();
       this.orderBy();
+      this.getTabMenus();
     }
 
     getFilter() {
@@ -104,5 +106,26 @@ export class MenuSetComponent implements OnInit {
 
     orderBy() {
       this.setOrderBy =  [[8, 'asc'],[1, 'asc']];
+    }
+
+    getTabMenus() {
+        this.tabMenus = [
+            {
+                tabMenuName: 'Menu Item',
+                route: '/master/menu-item'
+            },
+            {
+                tabMenuName: 'Menu Item Limit',
+                route: '/master/menu-item-limit'
+            },
+            {
+                tabMenuName: 'Menu Item Schedule',
+                route: '/master/menu-item-schedule'
+            },
+            {
+                tabMenuName: 'Menu Set',
+                route: '/master/menu-set'
+            }
+        ]
     }
 }
