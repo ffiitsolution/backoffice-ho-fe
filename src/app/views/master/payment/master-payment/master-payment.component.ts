@@ -100,7 +100,7 @@ export class MasterPaymentComponent implements OnInit {
             },
             {
                 tabMenuName: 'Master Payment Method Limit',
-                route: '/master/payment/payment-method'
+                route: '/master/payment/payment-method-limit'
             }
         ]
     }

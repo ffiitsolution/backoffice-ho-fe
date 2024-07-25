@@ -88,7 +88,7 @@ export class OutletComponent implements OnInit {
               },
             },
             {
-                data: 'dtIndex',
+                data: 'status',
                 title: 'ACTIONS',
                 orderable: false,
                 searchable: false,

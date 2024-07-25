@@ -55,6 +55,7 @@ import { RegexPipe } from './services/input.pipe';
 import { NavigationService } from './services/navigation.service';
 import { ErrorHelper } from './helper/error.helper';
 import { MasterPaymentComponent } from './views/master/payment/master-payment/master-payment.component';
+import { PaymentMethodLimitComponent } from './views/master/payment/payment-method-limit/payment-method-limit.component';
 
 
 export function initializeApp(appConfig: AppConfig) {
@@ -87,6 +88,7 @@ export function initializeApp(appConfig: AppConfig) {
     MpcsHeaderComponent,
     MasterPaymentComponent,
     PaymentMethodComponent,
+    PaymentMethodLimitComponent,
     SupplierComponent
   ],
   imports: [

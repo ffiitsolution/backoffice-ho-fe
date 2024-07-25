@@ -21,42 +21,47 @@ export class SideBarItemComponent implements OnInit {
         public navService: NavigationService, 
         public router: Router
     ) {
-      if (this.depth === undefined) {
+        if (this.depth === undefined) {
         this.depth = 0;
-      }
+        }
     }
 
     ngOnInit() {}
 
     goToPage(route: any) {
-      this.router.navigate([route]);
+        this.router.navigate([route]);
     }
 
     toggleItem(item: SidebarMenu) {
-      item.expanded = !item.expanded;
-      this.parentBreadcrumb = item.parentName!
-      if(!item.children) {
-        const dataBreadCrumb = {
-          parentBreadcrumb: this.parentBreadcrumb
+        item.expanded = !item.expanded;
+        this.parentBreadcrumb = item.parentName!;
+        let dataBreadCrumb: any;
+
+        if(!item.children) {
+            dataBreadCrumb = {
+                parentBreadcrumb: this.parentBreadcrumb
+            }
+            this.dataBreadCrumb.emit(dataBreadCrumb)
+            this.goToPage(item.route);
         }
         this.dataBreadCrumb.emit(dataBreadCrumb);
         localStorage.setItem('dataBreadcrumb', JSON.stringify(dataBreadCrumb));
         this.goToPage(item.route);
-      }
     }
-  
-    onItemSelected(item: SidebarSideMenu) {
-      this.childBreadcrumb = item.childName;
 
-      if (item.route) {
-        const dataBreadCrumb = {
-          parentBreadcrumb: this.parentBreadcrumb,
-          childBreadcrumb: this.childBreadcrumb
+    onItemSelected(item: SidebarMenu) {
+        this.childBreadcrumb = item.displayName;
+
+        if (item.route) {
+            const dataBreadCrumb = {
+                parentBreadcrumb: this.parentBreadcrumb,
+                childBreadcrumb: this.childBreadcrumb
+            }
+            
+            this.dataBreadCrumb.emit(dataBreadCrumb);
+            localStorage.setItem('dataBreadcrumb', JSON.stringify(dataBreadCrumb));
+            this.router.navigate([item.route]);
         }
-
-        this.dataBreadCrumb.emit(dataBreadCrumb);
-        localStorage.setItem('dataBreadcrumb', JSON.stringify(dataBreadCrumb));
-        this.router.navigate([item.route]);
-      }
     }
 }
+  
