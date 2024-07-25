@@ -43,11 +43,11 @@
 
 .pageWrapper {
     padding: 10px 10px 10px 0;
-    height: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     height: 100vh;
-    // overflow: hidden;  
+    overflow: hidden;  
     margin: 0 auto;
 
     &.maxWidth {
@@ -61,7 +61,7 @@
         align-items: center;
         justify-content: flex-start;
         gap: 4px;
-        height: 6%;
+        height: 8%;
 
         .breadcrumb-item {
         font-size: 14px;

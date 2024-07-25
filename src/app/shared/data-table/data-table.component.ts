@@ -105,7 +105,6 @@ export class DataTableComponent implements OnInit, AfterViewInit {
     ngOnInit(): void {
         this.getDataTable();
         this.activeTabRoute = this.router.url; 
-
     }
 
     ngAfterViewInit() {

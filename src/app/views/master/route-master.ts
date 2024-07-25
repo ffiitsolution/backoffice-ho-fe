@@ -78,7 +78,6 @@ export const routes: Routes = [
             title: 'MPCS Detail',
         },
     },
-  },
   {
     path: 'payment',
     data: {
@@ -105,20 +104,7 @@ export const routes: Routes = [
         },
       },
     ],
-  },
-  {
-    path: 'supplier',
-    component: SupplierComponent,
-    data: {
-      title: 'Supplier',
-    },
-    {
-        path: 'item-supplier',
-        component: ItemSupplierComponent,
-        data: {
-            title: 'Item Supplier',
-        },
-    },
+  }
 ];
 
 @NgModule({

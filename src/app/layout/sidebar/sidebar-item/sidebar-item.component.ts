@@ -33,25 +33,20 @@ export class SideBarItemComponent implements OnInit {
     }
 
     toggleItem(item: SidebarMenu) {
-        item.expanded = !item.expanded;
-        this.parentBreadcrumb = item.parentName!;
-
-        if(!item.children) {
-            const dataBreadCrumb = {
-                parentBreadcrumb: this.parentBreadcrumb
-            }
-            this.dataBreadCrumb.emit(dataBreadCrumb)
-            this.goToPage(item.route);
+      item.expanded = !item.expanded;
+      this.parentBreadcrumb = item.parentName!
+      if(!item.children) {
+        const dataBreadCrumb = {
+          parentBreadcrumb: this.parentBreadcrumb
         }
-
         this.dataBreadCrumb.emit(dataBreadCrumb);
         localStorage.setItem('dataBreadcrumb', JSON.stringify(dataBreadCrumb));
         this.goToPage(item.route);
       }
     }
   
-    onItemSelected(item: SidebarMenu) {
-      this.childBreadcrumb = item.displayName;
+    onItemSelected(item: SidebarSideMenu) {
+      this.childBreadcrumb = item.childName;
 
       if (item.route) {
         const dataBreadCrumb = {
