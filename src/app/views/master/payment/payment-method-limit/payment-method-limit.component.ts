@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { PaymentMethodLimitService } from './payment-method-limit.service';
+import { Subject, takeUntil, tap } from 'rxjs';
+import { FilterService } from '../../../../services/filter.service';
 
 @Component({
     selector: 'app-payment-method-limit',
@@ -12,9 +15,14 @@ export class PaymentMethodLimitComponent implements OnInit {
     menuTable: string = '';
     apiUrl: string = '';
     renderColumns: {};
+    orderTypeList: {};
+    regionList: {};
     setOrderBy: any;
+    onDestroy$ = new Subject<void>();
 
-    constructor() { }
+    constructor(
+        private service: FilterService
+    ) { }
 
     ngOnInit() { 
         this.headerTitle = 'Master Data Payment Method Limit';
@@ -23,6 +31,8 @@ export class PaymentMethodLimitComponent implements OnInit {
         this.renderColumn();
         this.orderBy();
         this.getTabMenus();
+        this.getRegionFilter();
+        this.getOrderType();
     }
     
     renderColumn() {
@@ -64,6 +74,24 @@ export class PaymentMethodLimitComponent implements OnInit {
             [6, 'asc'],
             [1, 'asc']
         ];
+    }
+
+    getRegionFilter() {
+        this.service.getFilterListRegion().pipe(
+            takeUntil(this.onDestroy$),
+            tap((response) => {
+                this.regionList = response.data;
+            })
+        ).subscribe();
+    }
+
+    getOrderType() {
+        this.service.getFilterOrderType().pipe(
+            takeUntil(this.onDestroy$),
+            tap((response) => {
+                this.orderTypeList = response.data;
+            })
+        ).subscribe()
     }
 
     getTabMenus() {

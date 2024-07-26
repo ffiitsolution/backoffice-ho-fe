@@ -31,6 +31,7 @@ export class DataTableComponent implements OnInit, AfterViewInit {
     @Input() headerTitle: string = '';
     @Input() tabMenus: any;
     @Input() condList: any;
+    @Input() orderTypeList: any;
     @Input() type: any;
     @Input() regionCodes: any;
     @Input() areaCodes: any;
@@ -87,6 +88,7 @@ export class DataTableComponent implements OnInit, AfterViewInit {
     // Parameter Other
     selectedItemCode: any;
     selectedCdSupplier: any;
+    selectedOrderType: any;
     activeTabRoute: string = ''; 
 
     onDestroy$ = new Subject<void>();
@@ -171,6 +173,9 @@ export class DataTableComponent implements OnInit, AfterViewInit {
                     dataTablesParameters['status'] = this.selectedStatus?.code ?? '';
                 } else if (this.menuTable == 'payment-method') {
                     dataTablesParameters['status'] = this.selectedStatus?.code ?? '';
+                } else if (this.menuTable == 'payment-method-limit') {
+                    dataTablesParameters['regionCode'] = this.selectedRegion?.code ?? '';
+                    dataTablesParameters['orderType'] = this.selectedOrderType?.code ?? '';
                 }
 
                 this.service
