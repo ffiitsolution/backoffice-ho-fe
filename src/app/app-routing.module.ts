@@ -4,10 +4,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './views/auth/login/login.component';
 import { LayoutComponent } from './layout/layout.component';
 import { AuthGuard } from './guard/auth.guard';
+import { HomeComponent } from './views/home/home.component';
 
 const routes: Routes = [
     { path: 'login', component: LoginComponent },
-    { path: '', redirectTo: 'login', pathMatch: 'full' },
     {
         path: '',
         component: LayoutComponent,
@@ -15,14 +15,31 @@ const routes: Routes = [
         children: [
             {
                 path: 'home',
-                loadChildren: () => import('./views/home/home.module').then((m) => m.HomeModule )
+                component: HomeComponent,
+                data: {
+                    title: 'Home',
+                },
             },
             {
                 path: 'master',
                 loadChildren: () => import('./views/master/master.module').then((m) => m.MasterModule )
             },
+            {
+                path: 'transaction',
+                loadChildren: () => import('./views/transaction/transaction.module').then((m) => m.TransactionModule )
+            },
+            {
+                path: 'report',
+                loadChildren: () => import('./views/report/report.module').then((m) => m.ReportModule )
+            },
+            {
+                path: '',
+                redirectTo: 'home',
+                pathMatch: 'full'
+            },
         ]
-    }
+    },
+    { path: '**', redirectTo: 'login', pathMatch: 'full' },
 ];
 
 @NgModule({

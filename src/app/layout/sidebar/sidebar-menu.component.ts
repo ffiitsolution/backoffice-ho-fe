@@ -12,7 +12,7 @@ export const navItems: SidebarMenu[] = [
     parentName: 'master',
     icon: 'data_usage',
     children: [
-      { displayName: 'Dashboard', route: '/master/dashboard', childName: 'dashboard' },
+      { displayName: 'Dashboard', route: '/master/dashboard', childName: 'dashboard-master' },
       { displayName: 'Global', route: '/master/global', childName: 'global' },
       { displayName: 'Outlet', route: '/master/outlet', childName: 'outlet' },
       { displayName: 'Menu', route: '/master/menu-item', childName: 'menu' },
@@ -33,8 +33,7 @@ export const navItems: SidebarMenu[] = [
     icon: 'compare_arrows',
     parentName: 'transaction',
     children: [
-      { displayName: 'Dashboard', route: '/child3', childName: 'dashboard' },
-      { displayName: 'Kirim Data Master', route: '/child4', childName: 'kirim data master' }
+      { displayName: 'Dashboard', route: '/transaction/dashboard', childName: 'dashboard-transaction' },
     ]
   },
   {
@@ -42,8 +41,8 @@ export const navItems: SidebarMenu[] = [
     icon: 'insert_drive_file',
     parentName: 'report',
     children: [
-      { displayName: 'Report HQ', route: '/child3', childName: 'report headquarters' },
-      { displayName: 'Report Log', route: '/child4', childName: 'report log' }
+      { displayName: 'All Report', route: '/report/all', childName: 'all-report' },
+      { displayName: 'Send Master', route: '/report/send-master', childName: 'send-master' }
     ]
   }
 

@@ -2,78 +2,88 @@ import { Injectable } from '@angular/core';
 import { AppConfig } from '../config/app.config';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 interface VersionInfo {
   version: string;
 }
 
 @Injectable({
-    providedIn: 'root',
+  providedIn: 'root',
 })
-
 export class AppService {
-    protected BASE_URL = AppConfig.settings.apiServer.BASE_URL;
+  protected BASE_URL = AppConfig.settings.apiServer.BASE_URL;
 
-    versionFe: string = '';
+  versionFe: string = '';
 
-    _isLoading$ = new BehaviorSubject<boolean>(false);
+  _isLoading$ = new BehaviorSubject<boolean>(false);
 
-    isLoading = this._isLoading$.asObservable();
+  isLoading = this._isLoading$.asObservable();
 
-    constructor(private httpClient: HttpClient) {
-        this.onInit();
+  constructor(private httpClient: HttpClient, private snackBar: MatSnackBar) {
+    this.onInit();
+  }
+
+  private onInit() {
+    this.getVersion();
+  }
+
+  setToken(token: string | null) {
+    if (token) {
+      localStorage.setItem('hq_token', token);
+    } else {
+      localStorage.removeItem('hq_token');
     }
+  }
 
-    private onInit() {
-        this.getVersion();
+  getToken(): string | null {
+    return localStorage.getItem('hq_token');
+  }
+
+  headers(): HttpHeaders {
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    let token = this.getToken();
+
+    if (token !== null && token?.length > 0) {
+      headers = new HttpHeaders()
+        .set('Content-Type', 'application/json')
+        .set('X-API-TOKEN', token);
     }
+    return headers;
+  }
 
-    setToken(token: string | null) {
-        if (token) {
-            localStorage.setItem('hq_token', token);
-        } else {
-            localStorage.removeItem('hq_token');
-        }
-    }
+  // type = error, success
+  showSnackbar(message: string, type: string = 'success') {
+    this.snackBar.open(message, 'Close', {
+      duration: 5000,
+      horizontalPosition: 'end',
+      verticalPosition: 'top',
+      panelClass: [type + '-snackbar'],
+    });
+  }
 
-    getToken(): string | null {
-        return localStorage.getItem('hq_token');
-    }
+  getVersion() {
+    this.httpClient
+      .get<VersionInfo>('assets/version.json')
+      .subscribe((data) => {
+        this.versionFe = data.version;
+      });
+    return this.versionFe;
+  }
 
-    headers(): HttpHeaders {
-        let headers = new HttpHeaders().set('Content-Type', 'application/json');
-        let token = this.getToken();
+  getListDataTable(url: string = '', body: any = {}): Observable<any> {
+    return this.httpClient.post(this.BASE_URL + url, body, {
+      headers: this.headers(),
+    });
+  }
 
-        if (token !== null && token?.length > 0) {
-            headers = new HttpHeaders()
-            .set('Content-Type', 'application/json')
-            .set('X-API-TOKEN', token);
-        }
-        return headers;
-    }
+  upsertDataTable(url: string, body: any = {}): Observable<any> {
+    return this.httpClient.post(this.BASE_URL + url, body, {
+      headers: this.headers(),
+    });
+  }
 
-    getVersion() {
-        this.httpClient
-            .get<VersionInfo>('assets/version.json')
-            .subscribe((data) => {
-            this.versionFe = data.version;
-            });
-        return this.versionFe;
-    }
-
-    getListDataTable(url: string = '', body: any = {}): Observable<any> {
-        return this.httpClient.post(this.BASE_URL + url, body, {
-            headers: this.headers(),
-        });
-    }
-
-    upsertDataTable(url: string, body: any = {}): Observable<any> {
-        return this.httpClient.post(this.BASE_URL + url, body, {
-            headers: this.headers()
-        });
-    }
-
-    dataLoading(loading: boolean) {
-        this._isLoading$.next(loading);
-    }
+  dataLoading(loading: boolean) {
+    this._isLoading$.next(loading);
+  }
 }

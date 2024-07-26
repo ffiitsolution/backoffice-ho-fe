@@ -19,9 +19,12 @@ export class ErrorHelper {
             errorMessage = `Error: ${error.error.message}`;
         } else {
             switch (error.status) {
-                case 500:
-                    errorMessage = MESSAGES.ERROR_MESSAGE_CONNECTION_EN;
-                break;
+              case 0:
+                  errorMessage = MESSAGES.ERROR_MESSAGE_NO_CONNECTION_EN;
+              break;
+              case 500:
+                  errorMessage = MESSAGES.ERROR_MESSAGE_CONNECTION_EN;
+              break;
                 case 400:
                     errorMessage = MESSAGES.ERROR_MESSAGE_INSERT;
                 break;

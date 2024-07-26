@@ -1,4 +1,4 @@
-import { Component, OnInit, signal, ViewEncapsulation } from '@angular/core';
+import { Component, ElementRef, OnInit, signal, ViewChild, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { finalize } from 'rxjs';
@@ -15,6 +15,7 @@ import { AppService } from '../../../services/app.service';
 })
 
 export class LoginComponent implements OnInit {
+    @ViewChild('passwordInput') passwordInput!: ElementRef;
     appTitle = AppConfig.settings.applicationTitle;
     appSubtitle = AppConfig.settings.applicationSubtitle;
     password: string;
@@ -24,7 +25,6 @@ export class LoginComponent implements OnInit {
 
     errorMessage: string;
     hide = signal(true);
-
 
     loginForm = new FormGroup({
         username: new FormControl('', [Validators.required]),
@@ -44,6 +44,10 @@ export class LoginComponent implements OnInit {
     clickEvent(event: MouseEvent) {
         this.hide.set(!this.hide);
         event.stopPropagation();
+    }
+
+    toPassword(){
+        this.passwordInput?.nativeElement?.focus();
     }
 
     onSubmit(){
