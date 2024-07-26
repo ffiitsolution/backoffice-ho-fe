@@ -14,8 +14,16 @@ import { SupplierComponent } from './supplier/supplier.component';
 import { PaymentMethodComponent } from './payment/payment-method/payment-method.component';
 import { MasterPaymentComponent } from './payment/master-payment/master-payment.component';
 import { PaymentMethodLimitComponent } from './payment/payment-method-limit/payment-method-limit.component';
+import { DashboardMasterComponent } from './dashboard-master/dashboard-master.component';
 
 export const routes: Routes = [
+      {
+            path: 'dashboard',
+            component: DashboardMasterComponent,
+            data: {
+                  title: 'Dashboard Master',
+            },
+      },
       {
             path: 'global',
             component: GlobalComponent,

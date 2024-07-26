@@ -29,6 +29,7 @@ export enum MESSAGES {
     SUCCESS_MESSAGE_UPDATE_EN = 'Data Updated Successfully!',
 
     /*/ ERROR MESSAGE */
+    ERROR_MESSAGE_NO_CONNECTION_EN = 'No connection to server.',
     ERROR_MESSAGE_CONNECTION_EN = 'Internal Server Error. Please Try Again Later.',
     ERROR_MESSAGE_INSERT = 'The Value Entered is Incorrect or Already Exists, Please Try Again',
 

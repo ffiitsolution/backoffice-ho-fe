@@ -1,24 +1,23 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NavigationService } from '../../../services/navigation.service';
 import { Router } from '@angular/router';
-import { SidebarMenu, SidebarSideMenu } from '../../sidebar/sidebar.model'; 
+import { SidebarMenu, SidebarSideMenu } from '../../sidebar/sidebar.model';
 
 @Component({
-    selector: 'app-sidebar-item',
-    templateUrl: 'sidebar-item.component.html',
-    styleUrls: ['sidebar-item.component.scss']
+  selector: 'app-sidebar-item',
+  templateUrl: 'sidebar-item.component.html',
+  styleUrls: ['sidebar-item.component.scss'],
 })
-
 export class SideBarItemComponent implements OnInit {
-    @Input() item: SidebarMenu;
-    @Input() depth: any;
-    @Output() dataBreadCrumb = new EventEmitter<any>();
+  @Input() item: SidebarMenu;
+  @Input() depth: any;
+  @Output() dataBreadCrumb = new EventEmitter<any>();
 
-    parentBreadcrumb: string = ''; 
+    parentBreadcrumb: string = '';
     childBreadcrumb: string = '';
-  
+
     constructor(
-        public navService: NavigationService, 
+        public navService: NavigationService,
         public router: Router
     ) {
         if (this.depth === undefined) {
@@ -26,7 +25,7 @@ export class SideBarItemComponent implements OnInit {
         }
     }
 
-    ngOnInit() {}
+  ngOnInit() {}
 
     goToPage(route: any) {
         this.router.navigate([route]);
@@ -57,11 +56,10 @@ export class SideBarItemComponent implements OnInit {
                 parentBreadcrumb: this.parentBreadcrumb,
                 childBreadcrumb: this.childBreadcrumb
             }
-            
+
             this.dataBreadCrumb.emit(dataBreadCrumb);
             localStorage.setItem('dataBreadcrumb', JSON.stringify(dataBreadCrumb));
             this.router.navigate([item.route]);
         }
     }
 }
-  

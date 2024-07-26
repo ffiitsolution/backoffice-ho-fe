@@ -2,7 +2,12 @@
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AppConfig } from './config/app.config';
-import { APP_INITIALIZER, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA, NgModule } from '@angular/core';
+import {
+  APP_INITIALIZER,
+  CUSTOM_ELEMENTS_SCHEMA,
+  NO_ERRORS_SCHEMA,
+  NgModule,
+} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
@@ -30,7 +35,7 @@ import { LoginComponent } from './views/auth/login/login.component';
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import { BrandComponent } from './layout/brand/brand.component';
 import { SideBarItemComponent } from './layout/sidebar/sidebar-item/sidebar-item.component';
-import { LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { DatePipe, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { GlobalComponent } from './views/master/global/global.component';
 import { DataTableComponent } from './shared/data-table/data-table.component';
 import { OutletComponent } from './views/master/outlet/outlet.component';
@@ -56,7 +61,12 @@ import { NavigationService } from './services/navigation.service';
 import { ErrorHelper } from './helper/error.helper';
 import { MasterPaymentComponent } from './views/master/payment/master-payment/master-payment.component';
 import { PaymentMethodLimitComponent } from './views/master/payment/payment-method-limit/payment-method-limit.component';
-
+import { DashboardMasterComponent } from './views/master/dashboard-master/dashboard-master.component';
+import { DashboardTransactionComponent } from './views/transaction/dashboard-transaction/dashboard-transaction.component';
+import { HomeComponent } from './views/home/home.component';
+import { AllReportComponent } from './views/report/all-report/all-report.component';
+import { SendMasterComponent } from './views/report/send-master/send-master.component';
+import { MAT_DATE_LOCALE, provideNativeDateAdapter } from '@angular/material/core';
 
 export function initializeApp(appConfig: AppConfig) {
   return () => appConfig.load();
@@ -89,7 +99,13 @@ export function initializeApp(appConfig: AppConfig) {
     MasterPaymentComponent,
     PaymentMethodComponent,
     PaymentMethodLimitComponent,
-    SupplierComponent
+    SupplierComponent,
+    HomeComponent,
+    DashboardMasterComponent,
+    DashboardTransactionComponent,
+    AllReportComponent,
+    HomeComponent,
+    SendMasterComponent,
   ],
   imports: [
     BrowserModule,
@@ -100,32 +116,36 @@ export function initializeApp(appConfig: AppConfig) {
     FormsModule,
     MatTableModule,
     DataTablesModule,
-    NgSelectModule
+    NgSelectModule,
   ],
   providers: [
     {
       provide: LocationStrategy,
-      useClass: PathLocationStrategy
+      useClass: PathLocationStrategy,
     },
     AuthGuard,
     AuthService,
     NavigationService,
     AppConfig,
+    DatePipe,
     RegexPipe,
     ErrorHelper,
     provideHttpClient(),
+    provideNativeDateAdapter(),
+    {provide: MAT_DATE_LOCALE, useValue: 'id-ID'},
     {
       provide: APP_INITIALIZER,
       useFactory: initializeApp,
-      deps: [AppConfig], multi: true
+      deps: [AppConfig],
+      multi: true,
     },
     provideAnimationsAsync(),
     {
       provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
-      useValue: {duration: 5000}
-    }
+      useValue: { duration: 5000 },
+    },
   ],
   bootstrap: [AppComponent],
-  schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
 })
-export class AppModule { }
+export class AppModule {}

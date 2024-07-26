@@ -1,16 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { 
-    height: 100%; 
+html, body {
+    height: 100%;
     color: #343a40 !important;
 }
-body { 
-    margin: 0; 
-    font-family: Roboto, "Helvetica Neue", sans-serif; 
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6, .card-body {
-    font-family: Roboto, "Helvetica Neue", sans-serif; 
+    font-family: Roboto, "Helvetica Neue", sans-serif;
     color: #343a40;
 }
 
@@ -39,11 +39,11 @@ body {
     color: #FFFFFF;
 }
 
-.cancel-button:hover, 
+.cancel-button:hover,
 .cancel-button:focus-visible {
     background: #FFFFFF;
     color: #9DA5B1;
-    border: 2px solid #9DA5B1; 
+    border: 2px solid #9DA5B1;
     outline: none;
 }
 
@@ -85,3 +85,12 @@ body {
     max-width: 100vw !important;
 }
 
+.error-snackbar .mat-mdc-snackbar-surface {
+  background-color: #CC0000 !important;
+  color: #ffffff !important;
+}
+
+.success-snackbar .mat-mdc-snackbar-surface {
+  background-color: #5CB85C !important;
+  color: #ffffff !important;
+}
