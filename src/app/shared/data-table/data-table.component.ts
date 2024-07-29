@@ -365,6 +365,7 @@ export class DataTableComponent implements OnInit, AfterViewInit {
 
 		dialogNewData.afterClosed().subscribe((response) => {
 			if (response) {
+				console.log(response)
 				this.insertDataTable(response);
 			}
 		});

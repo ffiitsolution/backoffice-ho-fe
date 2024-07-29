@@ -29,14 +29,14 @@ body {
     border: none;
     width: 120px;
     height: 40px;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 500;
+    border-radius: 8px !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
 }
 
 .cancel-button {
-    background: #9DA5B1;
-    color: #FFFFFF;
+    background: #9DA5B1 !important;
+    color: #FFFFFF !important;
 }
 
 .cancel-button:hover,
@@ -48,8 +48,8 @@ body {
 }
 
 .confirm-button {
-    background: #2EB85C;
-    color: #FFFFFF;
+    background: #2EB85C !important;
+    color: #FFFFFF !important;
 }
 
 .confirm-button:hover,
