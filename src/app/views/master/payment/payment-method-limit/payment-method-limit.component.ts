@@ -17,11 +17,12 @@ export class PaymentMethodLimitComponent implements OnInit {
     renderColumns: {};
     orderTypeList: {};
     regionList: {};
+    paymentMethodCodeList: {};
     setOrderBy: any;
     onDestroy$ = new Subject<void>();
 
     constructor(
-        private service: FilterService
+        private filterService: FilterService
     ) { }
 
     ngOnInit() { 
@@ -33,6 +34,7 @@ export class PaymentMethodLimitComponent implements OnInit {
         this.getTabMenus();
         this.getRegionFilter();
         this.getOrderType();
+        this.getPaymentMethodCode();
     }
     
     renderColumn() {
@@ -77,7 +79,7 @@ export class PaymentMethodLimitComponent implements OnInit {
     }
 
     getRegionFilter() {
-        this.service.getFilterListRegion().pipe(
+        this.filterService.getFilterListRegion().pipe(
             takeUntil(this.onDestroy$),
             tap((response) => {
                 this.regionList = response.data;
@@ -86,13 +88,23 @@ export class PaymentMethodLimitComponent implements OnInit {
     }
 
     getOrderType() {
-        this.service.getFilterOrderType().pipe(
+        this.filterService.getFilterOrderType().pipe(
             takeUntil(this.onDestroy$),
             tap((response) => {
                 this.orderTypeList = response.data;
             })
         ).subscribe()
     }
+
+    getPaymentMethodCode() {
+        this.filterService.getFilterPaymentMethodCode().pipe(
+            takeUntil(this.onDestroy$),
+            tap((response) => {
+                this.paymentMethodCodeList = response.data;
+            })
+        ).subscribe();
+    }
+
 
     getTabMenus() {
         this.tabMenus = [

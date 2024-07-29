@@ -26,5 +26,17 @@ export class FilterService {
             headers: this.appService.headers()
         });
     }
+
+    getFilterPaymentMethodCode(): Observable<any> {
+        return this.httpClient.post(this.BASE_URL + '/filter/payment-method-code', {}, {
+            headers: this.appService.headers()
+        });
+    }
+
+    getFilterPaymentTypeCode(): Observable<any> {
+        return this.httpClient.post(this.BASE_URL + '/filter/payment-type-code', {}, {
+            headers: this.appService.headers()
+        });
+    }
 }
 

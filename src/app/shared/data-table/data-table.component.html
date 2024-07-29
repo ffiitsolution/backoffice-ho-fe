@@ -116,6 +116,32 @@
                   </div>
                 </ng-container>
 
+                <ng-container *ngIf="menuTable == 'payment-method' || menuTable == 'payment-method-limit'">
+                    <div class="filter-field">
+                        <mat-label for="status">Payment Method Code</mat-label>
+                        <ng-select 
+                            class="select-filter" 
+                            [items]="paymentMethodCodeList" 
+                            bindLabel="code" 
+                            [(ngModel)]="selectPaymentMethodCode"
+                            (ngModelChange)="onFilterChange()">
+                        </ng-select>
+                    </div>
+                </ng-container>
+
+                <ng-container *ngIf="menuTable == 'payment-method'">
+                    <div class="filter-field">
+                        <mat-label for="status">Payment Type Code</mat-label>
+                        <ng-select 
+                            class="select-filter" 
+                            [items]="paymentTypeCodeList" 
+                            bindLabel="code" 
+                            [(ngModel)]="selectPaymentTypeCode"
+                            (ngModelChange)="onFilterChange()">
+                        </ng-select>
+                    </div>
+                </ng-container>
+                
                 <ng-container *ngIf="menuTable != 'payment-method-limit'">
                     <div class="filter-field">
                         <mat-label for="status">Status</mat-label>
@@ -131,8 +157,6 @@
 
             </div>
         </ng-container>
-
-
 
         <div class="data-table-container">
             <table
