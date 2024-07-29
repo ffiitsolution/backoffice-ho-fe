@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FilterService } from '../../../../services/filter.service';
+import { Subject, takeUntil, tap } from 'rxjs';
 
 @Component({
     selector: 'app-payment-method',
@@ -13,8 +15,13 @@ export class PaymentMethodComponent implements OnInit {
     apiUrl: string = '';
     renderColumns: {};
     setOrderBy: any;
+    paymentMethodCodeList: any;
+    paymentTypeCodeList: any;
+    onDestroy$ = new Subject<void>();
 
-    constructor() { }
+    constructor(
+        private filterService: FilterService
+    ) { }
 
     ngOnInit() {
         this.headerTitle = 'Master Data Payment Method';
@@ -23,6 +30,8 @@ export class PaymentMethodComponent implements OnInit {
         this.renderColumn();
         this.orderBy();
         this.getTabMenus();
+        this.getPaymentMethodCode();
+        this.getPaymentTypeCode();
     }
 
     renderColumn() {
@@ -32,6 +41,7 @@ export class PaymentMethodComponent implements OnInit {
             { data: 'outletCode', title: 'OUTLET CODE', orderable: true, searchable: true },
             { data: 'paymentMethodCode', title: 'PAYMENT METHOD CODE', orderable: true, searchable: true },
             { data: 'paymentTypeCode', title: 'PAYMENT TYPE CODE', orderable: true, searchable: true },
+            { data: 'seq', title: 'SEQ', orderable: true, searchable: true },
             { data: 'colorCode', title: 'COLOR CODE', orderable: true, searchable: true },
             {
               data: 'status',
@@ -47,6 +57,12 @@ export class PaymentMethodComponent implements OnInit {
                 `;
               },
             },
+            { data: 'minSales', title: 'MIN SALES', orderable: true, searchable: true },
+            { data: 'moreThanPaymentAllow', title: 'MORE THAN PAYMENT ALLOW', orderable: true, searchable: true },
+            { data: 'documentEntry', title: 'DOCUMENT ENTRY', orderable: true, searchable: true },
+            { data: 'changeAllow', title: 'CHANGE ALLOW', orderable: true, searchable: true },
+            { data: 'maxChange', title: 'MAX CHANGE', orderable: true, searchable: true },
+            { data: 'action', title: 'ACTION', orderable: true, searchable: true },
             {
                 data: 'status',
                 title: 'ACTIONS',
@@ -83,6 +99,24 @@ export class PaymentMethodComponent implements OnInit {
                 },
             }
         ]
+    }
+
+    getPaymentMethodCode() {
+        this.filterService.getFilterPaymentMethodCode().pipe(
+            takeUntil(this.onDestroy$),
+            tap((response) => {
+                this.paymentMethodCodeList = response.data;
+            })
+        ).subscribe();
+    }
+
+    getPaymentTypeCode() {
+        this.filterService.getFilterPaymentTypeCode().pipe(
+            takeUntil(this.onDestroy$),
+            tap((response) => {
+                this.paymentTypeCodeList = response.data;
+            })
+        ).subscribe()
     }
 
     orderBy() {
