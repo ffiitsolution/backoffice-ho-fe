@@ -1,0 +1,35 @@
+<form [formGroup]="form" class="form-content" #formRef="ngForm">
+    <div class="form-item">
+        <label for="cond">Region Code</label>
+        <input id="cond" formControlName="regionCode">
+    </div>
+
+    <div class="form-item">
+        <label for="code">Outlet Code</label>
+        <input id="code" formControlName="outletCode">
+    </div>
+
+    <div class="form-item">
+        <label for="paymentMethodCode">Payment Method Code</label>
+        <ng-select 
+            class="select-filter"
+            [items]="paymentMethodList" 
+            bindLabel="code"
+            bindValue="code"
+            formControlName="paymentMethodCode">
+        </ng-select>
+    </div>
+
+    <div class="form-item">
+        <label for="orderType">Order Type</label>
+        <ng-select 
+            class="select-filter"
+            [items]="orderTypeList" 
+            bindLabel="code" 
+            bindValue="code"
+            formControlName="orderType">
+        </ng-select>
+    </div>
+</form>
+
+<!-- <button class="clear-form-btn" (click)="clearForm()">Clear Form</button> -->

@@ -52,13 +52,6 @@ import { MpcsDetailComponent } from './views/master/mpcs-detail/mpcs-detail.comp
 import { MpcsHeaderComponent } from './views/master/mpcs-header/mpcs-header.component';
 import { SupplierComponent } from './views/master/supplier/supplier.component';
 import { PaymentMethodComponent } from './views/master/payment/payment-method/payment-method.component';
-
-// Other Library
-import { NgSelectModule } from '@ng-select/ng-select';
-import { GlobalFormComponent } from './views/master/global/global-form/global-form.component';
-import { RegexPipe } from './services/input.pipe';
-import { NavigationService } from './services/navigation.service';
-import { ErrorHelper } from './helper/error.helper';
 import { MasterPaymentComponent } from './views/master/payment/master-payment/master-payment.component';
 import { PaymentMethodLimitComponent } from './views/master/payment/payment-method-limit/payment-method-limit.component';
 import { RecipeHeaderComponent } from './views/master/recipe-header/recipe-header.component';
@@ -69,6 +62,16 @@ import { DashboardTransactionComponent } from './views/transaction/dashboard-tra
 import { HomeComponent } from './views/home/home.component';
 import { AllReportComponent } from './views/report/all-report/all-report.component';
 import { SendMasterComponent } from './views/report/send-master/send-master.component';
+
+// Form
+import { GlobalFormComponent } from './views/master/global/global-form/global-form.component';
+import { PaymentMethodLimitFormComponent } from './views/master/payment/payment-method-limit/payment-method-limit-form/payment-method-limit-form.component';
+
+// Other Library
+import { NgSelectModule } from '@ng-select/ng-select';
+import { RegexPipe } from './services/input.pipe';
+import { NavigationService } from './services/navigation.service';
+import { ErrorHelper } from './helper/error.helper';
 import { MAT_DATE_LOCALE, provideNativeDateAdapter } from '@angular/material/core';
 
 export function initializeApp(appConfig: AppConfig) {
@@ -111,6 +114,7 @@ export function initializeApp(appConfig: AppConfig) {
     AllReportComponent,
     HomeComponent,
     SendMasterComponent,
+    PaymentMethodLimitFormComponent
   ],
   imports: [
     BrowserModule,
