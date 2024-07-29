@@ -13,6 +13,17 @@ interface VersionInfo {
 })
 export class AppService {
   protected BASE_URL = AppConfig.settings.apiServer.BASE_URL;
+  private functions: { [key: string]: () => void } = {};
+
+  userData: any;
+
+  isServerOnline: boolean = false;
+  wsServerTime: any;
+
+  data: any;
+  params: any;
+  args: any;
+  type: any;
 
   versionFe: string = '';
 
@@ -40,6 +51,13 @@ export class AppService {
     return localStorage.getItem('hq_token');
   }
 
+  getUserData(){
+    if(this.userData === null){
+      this.userData = JSON.parse(localStorage.getItem('hq_user') ?? '');
+    }
+    return this.userData;
+  }
+
   headers(): HttpHeaders {
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
     let token = this.getToken();
@@ -50,6 +68,30 @@ export class AppService {
         .set('X-API-TOKEN', token);
     }
     return headers;
+  }
+
+  generateDateRange(startDate: string, endDate: string): string[] {
+    // date format = '2024-07-01'
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+    const dateRange: string[] = [];
+    for (let dt = new Date(start); dt <= end; dt.setDate(dt.getDate() + 1)) {
+      dateRange.push(dt.toISOString().split('T')[0]);
+    }
+    return dateRange;
+  }
+
+  registerFunction(key: string, func: () => void): void {
+    this.functions[key] = func;
+  }
+
+  executeFunction(key: string): void {
+    const func = this.functions[key];
+    if (func) {
+      func();
+    } else {
+      console.error(`No function registered with key: ${key}`);
+    }
   }
 
   // type = error, success

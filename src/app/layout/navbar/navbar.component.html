@@ -13,15 +13,16 @@
       <!-- Profile, Outlet, Trans Date Data -->
 
       <div class="navbar-user-data">
-        <span>Welcome, User</span>
+        <span>Welcome, {{ dataUser?.staffFullName }}</span>
 
         <hr class="separator">
 
-        <span>Outlet - 0000</span>
+        <span>{{ dataUser?.groupId }}</span>
 
         <hr class="separator">
 
-        <span>01 Januari 2024</span>
+        <span *ngIf="service.isServerOnline" class="text-success fw-bold" title="ONLINE">{{ service.wsServerTime?.serverTime }}</span>
+        <span *ngIf="!service.isServerOnline" class="text-danger fw-bold">OFFLINE</span>
       </div>
 
       <!-- --------------------------------------------------------------- -->
@@ -38,11 +39,11 @@
 
 
     <!-- --------------------------------------------------------------- -->
-    
+
     <!-- --------------------------------------------------------------- -->
     <!-- Profile Dropdown -->
 
-    <mat-menu #profilemenu="matMenu" xPosition="before" class="topbar-dd profile-container cardWithShadow">    
+    <mat-menu #profilemenu="matMenu" xPosition="before" class="topbar-dd profile-container cardWithShadow">
         <div class="profile-section">
           <button
             class="w-100 navbar-profile-logout-button"
