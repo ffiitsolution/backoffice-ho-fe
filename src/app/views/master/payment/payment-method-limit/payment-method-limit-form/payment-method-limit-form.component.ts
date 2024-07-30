@@ -20,8 +20,8 @@ export class PaymentMethodLimitFormComponent implements OnInit {
     paymentMethodList: any;
     orderTypeList: any;
 
-    selectPaymentMethodCode: any;
-    selectOrderTypeCode: any;
+    selectPaymentMethodCode: any = null;
+    selectOrderTypeCode: any = null;
 
     onDestroy$ = new Subject<void>();
 
@@ -44,8 +44,8 @@ export class PaymentMethodLimitFormComponent implements OnInit {
         this.form =  this.formBuilder.group({
             regionCode: [this.data?.data?.regionCode || ''],
             outletCode: [this.data?.data?.outletCode || ''],
-            paymentMethodCode: [this.data?.data?.paymentMethodCode || ''],
-            orderType: [this.data?.data?.orderType || '']
+            paymentMethodCode: [this.data?.data?.paymentMethodCode || null],
+            orderType: [this.data?.data?.orderType || null]
         });
     }
 
