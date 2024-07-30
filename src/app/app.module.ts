@@ -62,6 +62,8 @@ import { DashboardTransactionComponent } from './views/transaction/dashboard-tra
 import { HomeComponent } from './views/home/home.component';
 import { AllReportComponent } from './views/report/all-report/all-report.component';
 import { SendMasterComponent } from './views/report/send-master/send-master.component';
+import { RecipeHeaderComponent } from './views/master/recipe-header/recipe-header.component';
+import { RecipeHeaderFormComponent } from './views/master/recipe-header/recipe-header-form/recipe-header-form.component';
 
 // Form
 import { GlobalFormComponent } from './views/master/global/global-form/global-form.component';
@@ -114,7 +116,9 @@ export function initializeApp(appConfig: AppConfig) {
     AllReportComponent,
     HomeComponent,
     SendMasterComponent,
-    PaymentMethodLimitFormComponent
+    PaymentMethodLimitFormComponent,
+    RecipeHeaderComponent,
+    RecipeHeaderFormComponent
   ],
   imports: [
     BrowserModule,
