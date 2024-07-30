@@ -15,6 +15,7 @@ import { PaymentMethodComponent } from './payment/payment-method/payment-method.
 import { MasterPaymentComponent } from './payment/master-payment/master-payment.component';
 import { PaymentMethodLimitComponent } from './payment/payment-method-limit/payment-method-limit.component';
 import { DashboardMasterComponent } from './dashboard-master/dashboard-master.component';
+import { RecipeHeaderComponent } from './recipe-header/recipe-header.component';
 
 export const routes: Routes = [
       {
@@ -134,6 +135,13 @@ export const routes: Routes = [
             component: ItemSupplierComponent,
             data: {
                   title: 'Item Supplier',
+            },
+      },
+      {
+            path: 'recipe-header',
+            component: RecipeHeaderComponent,
+            data: {
+                  title: 'Recipe Header',
             },
       },
 ];

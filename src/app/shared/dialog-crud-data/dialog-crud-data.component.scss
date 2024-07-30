@@ -13,7 +13,7 @@
 
     .crud-form-container {
         margin-top: 20px;
-        min-height: 250px;
+        margin-bottom: 20px;
 
         .form-content {
             display: grid;
@@ -53,7 +53,7 @@
                     font-size: 14px;
 
                     ::ng-deep .mat-mdc-select-trigger {
-                        padding: 8px;
+                        padding: 8px !important;
                     }
                 }
 
@@ -79,6 +79,15 @@
         &::before {
             height: auto;
         }
+    }
+
+    ::ng-deep .mat-mdc-select-trigger {
+        padding: 8px !important;
+        height: 100% !important;
+    }
+    
+    ::ng-deep .mat-pseudo-checkbox {
+        display: none !important;
     }
 }
 
@@ -111,4 +120,8 @@
 ::ng-deep .mat-mdc-option:hover:not(.mdc-list-item--disabled),
 ::ng-deep .mat-mdc-option:hover:not(.mdc-list-item--selected){
     background-color: #DAEDFB !important;
+}
+
+::ng-deep .mat-mdc-button-base {
+    margin-left: 0 !important;
 }

@@ -1,9 +1,9 @@
 import {
-  Component,
-  AfterViewInit,
-  ViewChild,
-  OnInit,
-  Input,
+	Component,
+	AfterViewInit,
+	ViewChild,
+	OnInit,
+	Input,
 } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -28,9 +28,9 @@ import { Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
 
 @Component({
-  selector: 'app-data-table',
-  templateUrl: './data-table.component.html',
-  styleUrls: ['./data-table.component.scss'],
+	selector: 'app-data-table',
+	templateUrl: './data-table.component.html',
+	styleUrls: ['./data-table.component.scss'],
 })
 export class DataTableComponent implements OnInit, AfterViewInit {
 	@Input() headerTitle: string = '';
@@ -180,55 +180,65 @@ export class DataTableComponent implements OnInit, AfterViewInit {
 				this.page.start = dataTablesParameters.start;
 				this.page.length = dataTablesParameters.length;
 
-				if (this.menuTable == 'global') {
+				const setCommonParameters = () => {
 					dataTablesParameters['status'] = this.selectedStatus?.code ?? '';
-					dataTablesParameters['cond'] = this.selectedCondition?.cond ?? '';
-				} else if (this.menuTable == 'outlet') {
-					dataTablesParameters['type'] = this.selectedOutletType?.code ?? '';
-					dataTablesParameters['regionCode'] = this.selectedRegion?.code ?? '';
-					dataTablesParameters['areaCode'] = this.selectedArea?.code ?? '';
-					dataTablesParameters['status'] = this.selectedStatus?.code ?? '';
-				} else if (this.menuTable == 'supplier') {
-					dataTablesParameters['status'] = this.selectedStatus?.code ?? '';
-				} else if (this.menuTable == 'item-supplier') {
-					dataTablesParameters['status'] = this.selectedStatus?.code ?? '';
-					dataTablesParameters['itemCode'] = this.selectedItemCode?.code ?? '';
-					dataTablesParameters['cdSupplier'] = this.selectedCdSupplier?.code ?? '';
-				} else if (this.menuTable == 'mpcs-header') {
-					dataTablesParameters['status'] = this.selectedStatus?.code ?? '';
-				} else if (this.menuTable == 'mpcs-detail') {
-					dataTablesParameters['status'] = this.selectedStatus?.code ?? '';
-				} else if (this.menuTable == 'modifier-item') {
-					dataTablesParameters['status'] = this.selectedStatus?.code ?? '';
-				} else if (this.menuTable == 'menu-item') {
-					dataTablesParameters['status'] = this.selectedStatus?.code ?? '';
-				} else if (this.menuTable == 'menu-set') {
-					dataTablesParameters['status'] = this.selectedStatus?.code ?? '';
-				} else if (this.menuTable == 'master-payment') {
-					dataTablesParameters['status'] = this.selectedStatus?.code ?? '';
-				} else if (this.menuTable == 'payment-method') {
-					dataTablesParameters['status'] = this.selectedStatus?.code ?? '';
-					dataTablesParameters['paymentMethodCode'] = this.selectPaymentMethodCode?.code ?? '';
-					dataTablesParameters['paymentTypeCode'] = this.selectPaymentTypeCode?.code ?? '';
-				} else if (this.menuTable == 'payment-method-limit') {
-					dataTablesParameters['regionCode'] = this.selectedRegion?.code ?? '';
-					dataTablesParameters['orderType'] = this.selectedOrderType?.code ?? '';
-					dataTablesParameters['paymentMethodCode'] = this.selectPaymentMethodCode?.code ?? '';
-				} else if (this.menuTable == 'sync-update') {
-					dataTablesParameters['status'] = this.selectedStatus?.code ?? '';
-					dataTablesParameters['startDate'] = this.selectedDateRange?.value
-					.start
-					? this.datePipe.transform(
-						this.selectedDateRange?.value.start,
-						'dd MMM yyyy'
-					)
-					: '';
-				dataTablesParameters['endDate'] = this.selectedDateRange?.value.end
-					? this.datePipe.transform(
-						this.selectedDateRange?.value.end,
-						'dd MMM yyyy'
-					)
-					: '';
+				};
+				  
+				switch (this.menuTable) {
+					case 'global':
+						setCommonParameters();
+						dataTablesParameters['cond'] = this.selectedCondition?.cond ?? '';
+					break;
+				
+					case 'outlet':
+						setCommonParameters();
+						dataTablesParameters['type'] = this.selectedOutletType?.code ?? '';
+						dataTablesParameters['regionCode'] = this.selectedRegion?.code ?? '';
+						dataTablesParameters['areaCode'] = this.selectedArea?.code ?? '';
+					break;
+				
+					case 'supplier':
+					case 'mpcs-header':
+					case 'mpcs-detail':
+					case 'modifier-item':
+					case 'recipe-header':
+					case 'menu-item':
+					case 'menu-set':
+					case 'master-payment':
+						setCommonParameters();
+					break;
+				
+					case 'item-supplier':
+						setCommonParameters();
+						dataTablesParameters['itemCode'] = this.selectedItemCode?.code ?? '';
+						dataTablesParameters['cdSupplier'] = this.selectedCdSupplier?.code ?? '';
+					break;
+				
+					case 'payment-method':
+						setCommonParameters();
+						dataTablesParameters['paymentMethodCode'] = this.selectPaymentMethodCode?.code ?? '';
+						dataTablesParameters['paymentTypeCode'] = this.selectPaymentTypeCode?.code ?? '';
+					break;
+				
+					case 'payment-method-limit':
+						dataTablesParameters['regionCode'] = this.selectedRegion?.code ?? '';
+						dataTablesParameters['orderType'] = this.selectedOrderType?.code ?? '';
+						dataTablesParameters['paymentMethodCode'] = this.selectPaymentMethodCode?.code ?? '';
+					break;
+				
+					case 'sync-update':
+						setCommonParameters();
+						dataTablesParameters['startDate'] = this.selectedDateRange?.value.start
+							? this.datePipe.transform(this.selectedDateRange?.value.start, 'dd MMM yyyy')
+							: '';
+						dataTablesParameters['endDate'] = this.selectedDateRange?.value.end
+							? this.datePipe.transform(this.selectedDateRange?.value.end, 'dd MMM yyyy')
+							: '';
+					break;
+				
+					default:
+						setCommonParameters();
+					break;
 				}
 
 				this.service
@@ -267,7 +277,7 @@ export class DataTableComponent implements OnInit, AfterViewInit {
 			},
 		};
 
-    	this.dtColumns = this.dtOptions.columns;
+		this.dtColumns = this.dtOptions.columns;
 	}
 
 	private getDateDaysAgo(days: number): Date {
