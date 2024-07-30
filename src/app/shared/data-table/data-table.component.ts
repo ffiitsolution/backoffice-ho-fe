@@ -19,9 +19,9 @@ import { DialogConfirmationComponent } from '../dialog-confirmation/dialog-confi
 import { DialogCrudDataComponent } from '../dialog-crud-data/dialog-crud-data.component';
 import { ErrorHelper } from '../../helper/error.helper';
 import {
-	MatSnackBar,
-	MatSnackBarHorizontalPosition,
-	MatSnackBarVerticalPosition,
+  MatSnackBar,
+  MatSnackBarHorizontalPosition,
+  MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
 import { MESSAGES } from '../../helper/message.helper';
 import { Router } from '@angular/router';
@@ -92,9 +92,9 @@ export class DataTableComponent implements OnInit, AfterViewInit {
 			},
 		];
 
-	// Parameter Payment Method
-	selectPaymentMethodCode: any;
-	selectPaymentTypeCode: any;
+		// Parameter Payment Method
+		selectPaymentMethodCode: any;
+		selectPaymentTypeCode: any;
 
 	// Parameter Other
 	selectedItemCode: any;

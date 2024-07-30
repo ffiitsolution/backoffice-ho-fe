@@ -56,7 +56,6 @@ import { MasterPaymentComponent } from './views/master/payment/master-payment/ma
 import { PaymentMethodLimitComponent } from './views/master/payment/payment-method-limit/payment-method-limit.component';
 import { RecipeHeaderComponent } from './views/master/recipe-header/recipe-header.component';
 import { RecipeHeaderFormComponent } from './views/master/recipe-header/recipe-header-form/recipe-header-form.component';
-
 import { DashboardMasterComponent } from './views/master/dashboard-master/dashboard-master.component';
 import { DashboardTransactionComponent } from './views/transaction/dashboard-transaction/dashboard-transaction.component';
 import { HomeComponent } from './views/home/home.component';
@@ -106,8 +105,6 @@ export function initializeApp(appConfig: AppConfig) {
     PaymentMethodComponent,
     PaymentMethodLimitComponent,
     SupplierComponent,
-    RecipeHeaderComponent,
-    RecipeHeaderFormComponent,
     HomeComponent,
     DashboardMasterComponent,
     DashboardTransactionComponent,
@@ -116,7 +113,8 @@ export function initializeApp(appConfig: AppConfig) {
     SendMasterComponent,
     PaymentMethodLimitFormComponent,
     RecipeHeaderComponent,
-    RecipeHeaderFormComponent
+    RecipeHeaderFormComponent,
+     PaymentMethodLimitFormComponent
   ],
   imports: [
     BrowserModule,
