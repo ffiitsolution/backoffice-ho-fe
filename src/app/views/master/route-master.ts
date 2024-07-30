@@ -16,7 +16,6 @@ import { MasterPaymentComponent } from './payment/master-payment/master-payment.
 import { PaymentMethodLimitComponent } from './payment/payment-method-limit/payment-method-limit.component';
 import { RecipeHeaderComponent } from './recipe-header/recipe-header.component';
 import { DashboardMasterComponent } from './dashboard-master/dashboard-master.component';
-import { RecipeHeaderComponent } from './recipe-header/recipe-header.component';
 
 export const routes: Routes = [
       {

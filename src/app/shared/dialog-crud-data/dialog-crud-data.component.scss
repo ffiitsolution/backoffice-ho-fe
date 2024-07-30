@@ -13,7 +13,7 @@
 
     .crud-form-container {
         margin-top: 20px;
-        min-height: 250px;
+        margin-bottom: 20px;
 
         .form-content {
             display: grid;
@@ -120,4 +120,8 @@
 ::ng-deep .mat-mdc-option:hover:not(.mdc-list-item--disabled),
 ::ng-deep .mat-mdc-option:hover:not(.mdc-list-item--selected){
     background-color: #DAEDFB !important;
+}
+
+::ng-deep .mat-mdc-button-base {
+    margin-left: 0 !important;
 }
