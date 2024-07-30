@@ -56,6 +56,8 @@ import { NavigationService } from './services/navigation.service';
 import { ErrorHelper } from './helper/error.helper';
 import { MasterPaymentComponent } from './views/master/payment/master-payment/master-payment.component';
 import { PaymentMethodLimitComponent } from './views/master/payment/payment-method-limit/payment-method-limit.component';
+import { RecipeHeaderComponent } from './views/master/recipe-header/recipe-header.component';
+import { RecipeHeaderFormComponent } from './views/master/recipe-header/recipe-header-form/recipe-header-form.component';
 
 
 export function initializeApp(appConfig: AppConfig) {
@@ -89,7 +91,9 @@ export function initializeApp(appConfig: AppConfig) {
     MasterPaymentComponent,
     PaymentMethodComponent,
     PaymentMethodLimitComponent,
-    SupplierComponent
+    SupplierComponent,
+    RecipeHeaderComponent,
+    RecipeHeaderFormComponent
   ],
   imports: [
     BrowserModule,

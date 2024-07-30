@@ -24,7 +24,8 @@ export const navItems: SidebarMenu[] = [
       { displayName: 'MPCS Detail', route: '/master/mpcs-detail', childName: 'mpcs detail' },
       { displayName: 'Payment', route: '/master/payment', childName: 'payment' },
       { displayName: 'Supplier', route: '/master/supplier', childName: 'supplier' },
-      { displayName: 'Item Supplier', route: '/master/item-supplier', childName: 'item supplier' }
+      { displayName: 'Item Supplier', route: '/master/item-supplier', childName: 'item supplier' },
+      { displayName: 'Recipe Header', route: '/master/recipe-header', childName: 'recipe header' }
     ]
   },
   {
