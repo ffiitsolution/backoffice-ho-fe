@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PaymentMethodLimitService } from './payment-method-limit.service';
 import { Subject, takeUntil, tap } from 'rxjs';
 import { FilterService } from '../../../../services/filter.service';
+import { tabPayment } from '../../../../helper/tab-menu.helper';
 
 @Component({
     selector: 'app-payment-method-limit',
@@ -10,7 +11,7 @@ import { FilterService } from '../../../../services/filter.service';
 })
 
 export class PaymentMethodLimitComponent implements OnInit {
-    tabMenus: any;
+    tabMenus: { tabMenuName: string; route: string; }[] = tabPayment;
     headerTitle: string = '';
     menuTable: string = '';
     apiUrl: string = '';
@@ -31,7 +32,6 @@ export class PaymentMethodLimitComponent implements OnInit {
         this.apiUrl = '/payment-method-limit/dt';
         this.renderColumn();
         this.orderBy();
-        this.getTabMenus();
         this.getRegionFilter();
         this.getOrderType();
         this.getPaymentMethodCode();
@@ -103,23 +103,5 @@ export class PaymentMethodLimitComponent implements OnInit {
                 this.paymentMethodCodeList = response.data;
             })
         ).subscribe();
-    }
-
-
-    getTabMenus() {
-        this.tabMenus = [
-            {
-                tabMenuName: 'Master Payment',
-                route: '/master/payment/master-payment'
-            },
-            {
-                tabMenuName: 'Master Payment Method',
-                route: '/master/payment/payment-method'
-            },
-            {
-                tabMenuName: 'Master Payment Method Limit',
-                route: '/master/payment/payment-method-limit'
-            }
-        ]
     }
 }

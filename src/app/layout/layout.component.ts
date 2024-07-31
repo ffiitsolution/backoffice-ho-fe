@@ -21,10 +21,12 @@ export class LayoutComponent implements OnInit, AfterViewInit {
     @ViewChild('leftsidenav')
 
     // Value
-    dataBreadcrumb= {
-        parentBreadcrumb: '',
-        childBreadcrumb: '',
-    };
+    // dataBreadcrumb= {
+    //     parentBreadcrumb: '',
+    //     childBreadcrumb: '',
+    // };
+
+    dataBreadcrumb: any;
 
     bread = {
         parentBreadcrumb: '',
@@ -86,8 +88,9 @@ export class LayoutComponent implements OnInit, AfterViewInit {
 
     ngAfterViewInit(): void {
         const storedBreadcrumb = localStorage.getItem('dataBreadcrumb');
+        console.log('storedBreadcrumb', storedBreadcrumb)
 
-        if (storedBreadcrumb) {
+        if (storedBreadcrumb && storedBreadcrumb !== 'undefined') {
             this.isStorageBreadcrumb = true;
             this.dataBreadcrumb = JSON.parse(storedBreadcrumb);
             this.cdr.detectChanges()
@@ -95,7 +98,6 @@ export class LayoutComponent implements OnInit, AfterViewInit {
 
         this.cdr.detectChanges()
     }
-
 
     ngOnDestroy() {
         this.layoutChangesSubscription.unsubscribe();

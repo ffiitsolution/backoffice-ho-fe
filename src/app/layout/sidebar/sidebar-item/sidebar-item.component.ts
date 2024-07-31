@@ -28,7 +28,7 @@ export class SideBarItemComponent implements OnInit {
   ngOnInit() {}
 
     goToPage(route: any) {
-        this.router.navigate([route]);
+        if(route) this.router.navigate([route]);
     }
 
     toggleItem(item: SidebarMenu) {

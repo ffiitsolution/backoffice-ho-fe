@@ -54,8 +54,6 @@ import { SupplierComponent } from './views/master/supplier/supplier.component';
 import { PaymentMethodComponent } from './views/master/payment/payment-method/payment-method.component';
 import { MasterPaymentComponent } from './views/master/payment/master-payment/master-payment.component';
 import { PaymentMethodLimitComponent } from './views/master/payment/payment-method-limit/payment-method-limit.component';
-import { RecipeHeaderComponent } from './views/master/recipe-header/recipe-header.component';
-import { RecipeHeaderFormComponent } from './views/master/recipe-header/recipe-header-form/recipe-header-form.component';
 import { DashboardMasterComponent } from './views/master/dashboard-master/dashboard-master.component';
 import { DashboardTransactionComponent } from './views/transaction/dashboard-transaction/dashboard-transaction.component';
 import { HomeComponent } from './views/home/home.component';
@@ -72,89 +70,95 @@ import { RegexPipe } from './services/input.pipe';
 import { NavigationService } from './services/navigation.service';
 import { ErrorHelper } from './helper/error.helper';
 import { MAT_DATE_LOCALE, provideNativeDateAdapter } from '@angular/material/core';
+import { RecipeProductComponent } from './views/master/recipe/recipe-product/recipe-product.component';
+import { RecipeHeaderComponent } from './views/master/recipe/recipe-header/recipe-header.component';
+import { RecipeHeaderFormComponent } from './views/master/recipe/recipe-header/recipe-header-form/recipe-header-form.component';
+import { RecipeDetailComponent } from './views/master/recipe/recipe-detail/recipe-detail.component';
 
 export function initializeApp(appConfig: AppConfig) {
   return () => appConfig.load();
 }
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LayoutComponent,
-    LoginComponent,
-    ButtonSharedComponent,
-    NavbarComponent,
-    SidebarComponent,
-    BrandComponent,
-    SideBarItemComponent,
-    GlobalComponent,
-    OutletComponent,
-    DataTableComponent,
-    DialogConfirmationComponent,
-    DialogCrudDataComponent,
-    GlobalFormComponent,
-    ItemSupplierComponent,
-    MenuItemComponent,
-    MenuItemLimitComponent,
-    MenuItemScheduleComponent,
-    MenuSetComponent,
-    ModifierItemComponent,
-    MpcsDetailComponent,
-    MpcsHeaderComponent,
-    MasterPaymentComponent,
-    PaymentMethodComponent,
-    PaymentMethodLimitComponent,
-    SupplierComponent,
-    HomeComponent,
-    DashboardMasterComponent,
-    DashboardTransactionComponent,
-    AllReportComponent,
-    HomeComponent,
-    SendMasterComponent,
-    PaymentMethodLimitFormComponent,
-    RecipeHeaderComponent,
-    RecipeHeaderFormComponent,
-     PaymentMethodLimitFormComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MaterialModule,
-    ReactiveFormsModule,
-    FormsModule,
-    MatTableModule,
-    DataTablesModule,
-    NgSelectModule,
-  ],
-  providers: [
-    {
-      provide: LocationStrategy,
-      useClass: PathLocationStrategy,
-    },
-    AuthGuard,
-    AuthService,
-    NavigationService,
-    AppConfig,
-    DatePipe,
-    RegexPipe,
-    ErrorHelper,
-    provideHttpClient(),
-    provideNativeDateAdapter(),
-    {provide: MAT_DATE_LOCALE, useValue: 'id-ID'},
-    {
-      provide: APP_INITIALIZER,
-      useFactory: initializeApp,
-      deps: [AppConfig],
-      multi: true,
-    },
-    provideAnimationsAsync(),
-    {
-      provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
-      useValue: { duration: 5000 },
-    },
-  ],
-  bootstrap: [AppComponent],
-  schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
+    declarations: [
+        AppComponent,
+        LayoutComponent,
+        LoginComponent,
+        ButtonSharedComponent,
+        NavbarComponent,
+        SidebarComponent,
+        BrandComponent,
+        SideBarItemComponent,
+        GlobalComponent,
+        OutletComponent,
+        DataTableComponent,
+        DialogConfirmationComponent,
+        DialogCrudDataComponent,
+        GlobalFormComponent,
+        ItemSupplierComponent,
+        MenuItemComponent,
+        MenuItemLimitComponent,
+        MenuItemScheduleComponent,
+        MenuSetComponent,
+        ModifierItemComponent,
+        MpcsDetailComponent,
+        MpcsHeaderComponent,
+        MasterPaymentComponent,
+        PaymentMethodComponent,
+        PaymentMethodLimitComponent,
+        SupplierComponent,
+        HomeComponent,
+        DashboardMasterComponent,
+        DashboardTransactionComponent,
+        AllReportComponent,
+        HomeComponent,
+        SendMasterComponent,
+        PaymentMethodLimitFormComponent,
+        RecipeHeaderComponent,
+        RecipeHeaderFormComponent,
+        PaymentMethodLimitFormComponent,
+        RecipeDetailComponent,
+        RecipeProductComponent
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MaterialModule,
+        ReactiveFormsModule,
+        FormsModule,
+        MatTableModule,
+        DataTablesModule,
+        NgSelectModule,         
+    ],
+    providers: [
+        {
+            provide: LocationStrategy,
+            useClass: PathLocationStrategy,
+        },
+        AuthGuard,
+        AuthService,
+        NavigationService,
+        AppConfig,
+        DatePipe,
+        RegexPipe,
+        ErrorHelper,
+        provideHttpClient(),
+        provideNativeDateAdapter(),
+        {provide: MAT_DATE_LOCALE, useValue: 'id-ID'},
+        {
+            provide: APP_INITIALIZER,
+            useFactory: initializeApp,
+            deps: [AppConfig],
+            multi: true,
+        },
+        provideAnimationsAsync(),
+        {
+            provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
+            useValue: { duration: 5000 },
+        },
+    ],
+    bootstrap: [AppComponent],
+    schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {}

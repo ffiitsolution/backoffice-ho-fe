@@ -202,6 +202,8 @@ export class DataTableComponent implements OnInit, AfterViewInit {
 					case 'mpcs-detail':
 					case 'modifier-item':
 					case 'recipe-header':
+					case 'recipe-detail':
+					case 'recipe-product':
 					case 'menu-item':
 					case 'menu-set':
 					case 'master-payment':
