@@ -14,6 +14,8 @@ export class PaymentMethodLimitComponent implements OnInit {
     headerTitle: string = '';
     menuTable: string = '';
     apiUrl: string = '';
+    apiInsertUrl: string = '';
+    apiUpdateUrl: string = '';
     renderColumns: {};
     orderTypeList: {};
     regionList: {};
@@ -27,6 +29,8 @@ export class PaymentMethodLimitComponent implements OnInit {
         this.headerTitle = 'Master Data Payment Method Limit';
         this.menuTable = 'payment-method-limit';
         this.apiUrl = '/payment-method-limit/dt';
+        this.apiInsertUrl = '/master/payment-method-limit/insert';
+        this.apiUpdateUrl = '/master/payment-method-limit/update';
         this.renderColumn();
         this.orderBy();
         this.getRegionFilter();

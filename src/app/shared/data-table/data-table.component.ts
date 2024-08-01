@@ -382,13 +382,18 @@ export class DataTableComponent implements OnInit, AfterViewInit {
             },
         );
 
-        confirmationDialog.afterClosed().subscribe((result) => {
-            if (result == true) {
-                if (status == 'inactive') {
-                    data.status = 'I';
-                } else if (status == 'activate') {
-                    data.status = 'A';
-                }
+		confirmationDialog.afterClosed().subscribe((result) => {
+			if (result == true) {
+				if (this.menuTable == 'global') {
+					data.oldCond = data.cond;
+					data.oldCode = data.code;
+				}
+				
+				if (status == 'inactive') {
+					data.status = 'I';
+				} else if (status == 'activate') {
+					data.status = 'A';
+				}
 
                 this.updateDatatable(data);
             } else {
@@ -432,12 +437,19 @@ export class DataTableComponent implements OnInit, AfterViewInit {
             disableClose: true,
         });
 
-        dialogEditData.afterClosed().subscribe((response) => {
-            if (response) {
-                this.updateDatatable(response);
-            }
-        });
-    }
+		dialogEditData.afterClosed().subscribe((response) => {
+			if (response) {
+				if (this.menuTable == 'global') {
+					response.oldCond = dataColumn.cond;
+					response.oldCode = dataColumn.code;
+				} else if (this.menuTable == 'payment-method-limit') {
+					response.oldPaymentMethodCode = dataColumn.paymentMethodCode;
+					response.oldOrderType = dataColumn.orderType;
+				} 
+				this.updateDatatable(response);
+			}
+		});
+	}
 
     dtPageChange(event: any) {
         this.selectedRowData = undefined;
