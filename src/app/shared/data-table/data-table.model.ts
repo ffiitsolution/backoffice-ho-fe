@@ -16,7 +16,6 @@ export class PageInfo {
     count: number = 0;
 }
 
-
 export interface Params {
     start: string;
     length: string;

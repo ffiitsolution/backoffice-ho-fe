@@ -15,25 +15,25 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 
 @NgModule({
-  declarations: [],
-  exports: [
-    MatFormFieldModule,
-    MatInputModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatMenuModule,
-    MatSidenavModule,
-    MatListModule,
-    MatPaginatorModule,
-    MatSortModule,
-    MatDialogModule,
-    MatSelectModule,
-    MatSnackBarModule,
-    MatProgressSpinnerModule,
-    MatCardModule,
-    MatButtonModule,
-    MatDatepickerModule,
-  ],
+    declarations: [],
+    exports: [
+        MatFormFieldModule,
+        MatInputModule,
+        MatIconModule,
+        MatToolbarModule,
+        MatMenuModule,
+        MatSidenavModule,
+        MatListModule,
+        MatPaginatorModule,
+        MatSortModule,
+        MatDialogModule,
+        MatSelectModule,
+        MatSnackBarModule,
+        MatProgressSpinnerModule,
+        MatCardModule,
+        MatButtonModule,
+        MatDatepickerModule,
+    ],
 })
 export class MaterialModule {}
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';

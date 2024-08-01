@@ -1,64 +1,61 @@
 <form [formGroup]="form" class="form-content" #formRef="ngForm">
     <div class="form-item">
         <label for="rcode">Recipe Code</label>
-        <input 
-            id="rcode" 
-            formControlName="rcode" 
-            type="text" 
+        <input
+            id="rcode"
+            formControlName="rcode"
+            type="text"
             (keypress)="onChangeInput($event, 'alphanumeric')"
         />
     </div>
 
     <div class="form-item">
         <label for="productCode">Product Code</label>
-        <input id="productCode" formControlName="productCode">
+        <input id="productCode" formControlName="productCode" />
     </div>
 
     <div class="form-item">
         <label for="qtyPurchase">QTY Purchase</label>
-        <input 
-            id="qtyPurchase" 
+        <input
+            id="qtyPurchase"
             formControlName="qtyPurchase"
-            type="text" 
+            type="text"
             (keypress)="onChangeInput($event, 'numeric')"
         />
     </div>
 
     <div class="form-item">
         <label for="uomPurchase">UOM Purchase</label>
-        <input 
-            id="uomPurchase" 
+        <input
+            id="uomPurchase"
             formControlName="uomPurchase"
-            type="text" 
+            type="text"
             (keypress)="onChangeInput($event, 'aplhabet')"
         />
     </div>
 
     <div class="form-item">
         <label for="qtyStock">QTY Stock</label>
-        <input 
-            id="qtyStock" 
+        <input
+            id="qtyStock"
             formControlName="qtyStock"
-            type="text" 
+            type="text"
             (keypress)="onChangeInput($event, 'numeric')"
         />
     </div>
 
     <div class="form-item">
         <label for="uomStock">UOM Stock</label>
-        <input 
-            id="uomStock" 
+        <input
+            id="uomStock"
             formControlName="uomStock"
-            type="text" 
+            type="text"
             (keypress)="onChangeInput($event, 'alphabet')"
         />
     </div>
 
     <div class="form-item remark">
         <label for="remark">Remark</label>
-        <textarea 
-            id="remark" 
-            formControlName="remark"
-        ></textarea>
+        <textarea id="remark" formControlName="remark"></textarea>
     </div>
 </form>

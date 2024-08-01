@@ -1,12 +1,11 @@
 {
-  "env": {
-    "name": "#{envName}"
-  },
-  "apiServer": {
-    "BASE_URL": "http://172.16.9.123:9797/boffihq/api"
-  },
-  "applicationTitle": "BACK OFFICE",
-  "applicationSubtitle": "HEAD OFFICE",
-  "outletCode": "0208"
-
+    "env": {
+        "name": "#{envName}"
+    },
+    "apiServer": {
+        "BASE_URL": "http://172.16.9.123:9797/boffihq/api"
+    },
+    "applicationTitle": "BACK OFFICE",
+    "applicationSubtitle": "HEAD OFFICE",
+    "outletCode": "0208"
 }

@@ -1,13 +1,17 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+    Component,
+    EventEmitter,
+    Input,
+    OnInit,
+    Output,
+} from '@angular/core';
 
 @Component({
     selector: 'app-button',
     templateUrl: 'button.component.html',
-    styleUrl: 'button.component.scss'
+    styleUrl: 'button.component.scss',
 })
-
 export class ButtonSharedComponent implements OnInit {
-
     /* 
         REF : https://6195b518b76f57003aa69b4c-xwhqqwoisy.chromatic.com/?path=/story/buttons-button--default
     */
@@ -20,11 +24,11 @@ export class ButtonSharedComponent implements OnInit {
     @Input() disabled: boolean = false;
     @Output() action = new EventEmitter<boolean>();
 
-    constructor() { }
+    constructor() {}
 
-    ngOnInit() { }
+    ngOnInit() {}
 
-    actionButton(){
-        if(!this.disabled) this.action.emit();
+    actionButton() {
+        if (!this.disabled) this.action.emit();
     }
 }

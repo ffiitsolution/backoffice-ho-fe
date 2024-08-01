@@ -1,28 +1,33 @@
 <form [formGroup]="form" class="form-content" #formRef="ngForm">
     <div class="form-item">
         <label for="cond">Condition</label>
-        <input id="cond" formControlName="cond">
+        <input id="cond" formControlName="cond" />
     </div>
 
     <div class="form-item">
         <label for="code">Code</label>
-        <input id="code" formControlName="code">
+        <input id="code" formControlName="code" />
     </div>
-    
+
     <div class="d-flex flex-column w-100 gp-10">
         <div class="form-item">
             <label for="value">Value</label>
-            <input 
-                id="value" 
-                formControlName="value" 
-                type="text" 
+            <input
+                id="value"
+                formControlName="value"
+                type="text"
                 (keypress)="onChangeInput($event, 'numeric')"
             />
         </div>
-        
+
         <div class="form-item">
             <mat-label for="status">Status</mat-label>
-            <mat-select class="select-form" id="status" name="status" formControlName="status">
+            <mat-select
+                class="select-form"
+                id="status"
+                name="status"
+                formControlName="status"
+            >
                 <mat-option class="test" value="A">Active</mat-option>
                 <mat-option value="I">Inactive</mat-option>
             </mat-select>

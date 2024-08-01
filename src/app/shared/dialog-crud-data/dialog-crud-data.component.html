@@ -1,30 +1,51 @@
 <div class="dialog-crud-container">
     <h2 mat-dialog-title class="crud-title">{{ crudTitle }}</h2>
     <mat-dialog-content class="crud-form-container">
-
         <ng-container *ngIf="data.menuTable == 'global'">
-            <app-global-form [data]="data" (formValueChange)="getFormValue($event)"></app-global-form>
+            <app-global-form
+                [data]="data"
+                (formValueChange)="getFormValue($event)"
+            ></app-global-form>
         </ng-container>
 
         <ng-container *ngIf="data.menuTable == 'payment-method-limit'">
-            <app-payment-method-limit-form [data]="data" (formValueChange)="getFormValue($event)"></app-payment-method-limit-form>
+            <app-payment-method-limit-form
+                [data]="data"
+                (formValueChange)="getFormValue($event)"
+            ></app-payment-method-limit-form>
         </ng-container>
-        
+
         <ng-container *ngIf="data.menuTable == 'master-recipe'">
-            <app-recipe-header-form [data]="data" (formValueChange)="getFormValue($event)"></app-recipe-header-form>
+            <app-recipe-header-form
+                [data]="data"
+                (formValueChange)="getFormValue($event)"
+            ></app-recipe-header-form>
         </ng-container>
-        
+
         <ng-container *ngIf="data.menuTable == 'master-recipe-detail'">
-            <app-recipe-detail-form [data]="data" (formValueChange)="getFormValue($event)"></app-recipe-detail-form>
+            <app-recipe-detail-form
+                [data]="data"
+                (formValueChange)="getFormValue($event)"
+            ></app-recipe-detail-form>
         </ng-container>
-        
+
         <ng-container *ngIf="data.menuTable == 'master-recipe-product'">
-            <app-recipe-product-form [data]="data" (formValueChange)="getFormValue($event)"></app-recipe-product-form>
+            <app-recipe-product-form
+                [data]="data"
+                (formValueChange)="getFormValue($event)"
+            ></app-recipe-product-form>
         </ng-container>
-        
     </mat-dialog-content>
     <mat-dialog-actions class="crud-button-container">
-        <button mat-button mat-dialog-close class="btn-g cancel-button">Cancel</button>
-        <button mat-button class="btn-g confirm-button" (click)="submitForm()">Submit</button>
+        <button mat-button mat-dialog-close class="btn-g cancel-button">
+            Cancel
+        </button>
+        <button
+            mat-button
+            class="btn-g confirm-button"
+            (click)="submitForm()"
+        >
+            Submit
+        </button>
     </mat-dialog-actions>
 </div>

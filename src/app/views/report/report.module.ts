@@ -9,11 +9,8 @@ import { SendMasterComponent } from './send-master/send-master.component';
     imports: [
         CommonModule,
         ReportRoutingModule,
-        RouterModule.forChild(routes)
+        RouterModule.forChild(routes),
     ],
-    providers: [
-
-    ]
-  })
-
-  export class ReportModule {}
+    providers: [],
+})
+export class ReportModule {}

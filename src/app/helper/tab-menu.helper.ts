@@ -1,49 +1,48 @@
 export const tabRecipe = [
     {
         tabMenuName: 'Recipe Header',
-        route: '/master/recipe'
+        route: '/master/recipe',
     },
     {
         tabMenuName: 'Recipe Detail',
-        route: '/master/recipe-detail'
+        route: '/master/recipe-detail',
     },
     {
         tabMenuName: 'Recipe Product',
-        route: '/master/recipe-product'
-    }
+        route: '/master/recipe-product',
+    },
 ];
 
 export const tabMenu = [
     {
         tabMenuName: 'Menu Item',
-        route: '/master/menu-item'
+        route: '/master/menu-item',
     },
     {
         tabMenuName: 'Menu Item Limit',
-        route: '/master/menu-item-limit'
+        route: '/master/menu-item-limit',
     },
     {
         tabMenuName: 'Menu Item Schedule',
-        route: '/master/menu-item-schedule'
+        route: '/master/menu-item-schedule',
     },
     {
         tabMenuName: 'Menu Set',
-        route: '/master/menu-set'
-    }
+        route: '/master/menu-set',
+    },
 ];
 
 export const tabPayment = [
     {
         tabMenuName: 'Master Payment',
-        route: '/master/payment/master-payment'
+        route: '/master/payment/master-payment',
     },
     {
         tabMenuName: 'Master Payment Method',
-        route: '/master/payment/payment-method'
+        route: '/master/payment/payment-method',
     },
     {
         tabMenuName: 'Master Payment Method Limit',
-        route: '/master/payment/payment-method-limit'
-    }
+        route: '/master/payment/payment-method-limit',
+    },
 ];
-

@@ -12,14 +12,14 @@
     }
 
     .icon-menu {
-        color: #FFFFFF;
+        color: #ffffff;
         font-size: 22px;
         width: auto;
         height: auto;
     }
 
     .menu-parent {
-        color: #FFFFFF;
+        color: #ffffff;
         font-weight: 400;
     }
 
@@ -29,7 +29,7 @@
         justify-content: center;
         border: none;
         background: none;
-        color: #FFFFFF;
+        color: #ffffff;
     }
 }
 
@@ -43,14 +43,13 @@
     ::ng-deep .mdc-list-item__primary-text {
         line-height: 2 !important;
     }
-    
+
     .menu-child {
         color: #fff;
         padding-left: 37px;
     }
 
     ::ng-deep .mat-toolbar {
-        background-color: #711E1E !important;
+        background-color: #711e1e !important;
     }
 }
-

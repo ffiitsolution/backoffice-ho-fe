@@ -1,24 +1,36 @@
-
 <div *ngIf="item.navCap" class="nav-caption">
     {{ item.navCap }}
 </div>
 
 <button
-  mat-list-item
-  (click)="toggleItem(item)"
-  [ngClass]="{ 'mat-toolbar mat-primary activeMenu': item.route ? router.isActive(item.route, true) : false }"
-  class="menu-list-item menu-items-button primary"
-  *ngIf="!item.navCap"
+    mat-list-item
+    (click)="toggleItem(item)"
+    [ngClass]="{
+        'mat-toolbar mat-primary activeMenu': item.route
+            ? router.isActive(item.route, true)
+            : false,
+    }"
+    class="menu-list-item menu-items-button primary"
+    *ngIf="!item.navCap"
 >
-    <div class="d-flex justify-content-center align-items-center" style="gap: 12px;">
+    <div
+        class="d-flex justify-content-center align-items-center"
+        style="gap: 12px"
+    >
         <mat-icon class="icon-menu">{{ item.icon }}</mat-icon>
         <span class="menu-parent hide-menu">{{ item.displayName }}</span>
     </div>
-    <button class="button-menu" *ngIf="item.children && item.children.length" (click)="toggleItem(item); $event.stopPropagation()">
+    <button
+        class="button-menu"
+        *ngIf="item.children && item.children.length"
+        (click)="toggleItem(item); $event.stopPropagation()"
+    >
         <ng-container *ngIf="item.expanded; else collapsed">
             <mat-icon>keyboard_arrow_down</mat-icon>
         </ng-container>
-        <ng-template #collapsed><mat-icon>keyboard_arrow_right</mat-icon></ng-template>
+        <ng-template #collapsed
+            ><mat-icon>keyboard_arrow_right</mat-icon></ng-template
+        >
     </button>
 </button>
 
@@ -26,7 +38,11 @@
     <a
         mat-list-item
         (click)="onItemSelected(child)"
-        [ngClass]="{ 'mat-toolbar mat-primary activeMenu': child.route ? router.isActive(child.route, true) : false }"
+        [ngClass]="{
+            'mat-toolbar mat-primary activeMenu': child.route
+                ? router.isActive(child.route, true)
+                : false,
+        }"
         class="menu-list-item menu-child-items secondary"
         *ngFor="let child of item.children"
     >

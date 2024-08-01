@@ -1,10 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
-import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
-import { MESSAGES } from './message.helper'
+import {
+    MatSnackBar,
+    MatSnackBarHorizontalPosition,
+    MatSnackBarVerticalPosition,
+} from '@angular/material/snack-bar';
+import { MESSAGES } from './message.helper';
 
 @Injectable({
-  providedIn: 'root',
+    providedIn: 'root',
 })
 export class ErrorHelper {
     horizontalPosition: MatSnackBarHorizontalPosition = 'end';
@@ -19,15 +23,15 @@ export class ErrorHelper {
             errorMessage = `Error: ${error.error.message}`;
         } else {
             switch (error.status) {
-              case 0:
-                  errorMessage = MESSAGES.ERROR_MESSAGE_NO_CONNECTION_EN;
-              break;
-              case 500:
-                  errorMessage = MESSAGES.ERROR_MESSAGE_CONNECTION_EN;
-              break;
+                case 0:
+                    errorMessage = MESSAGES.ERROR_MESSAGE_NO_CONNECTION_EN;
+                    break;
+                case 500:
+                    errorMessage = MESSAGES.ERROR_MESSAGE_CONNECTION_EN;
+                    break;
                 case 400:
                     errorMessage = MESSAGES.ERROR_MESSAGE_INSERT;
-                break;
+                    break;
                 default:
                     errorMessage = `Server returned code: ${error.status}, error message is: ${error.message}`;
             }
@@ -37,7 +41,7 @@ export class ErrorHelper {
             duration: 5000,
             horizontalPosition: this.horizontalPosition,
             verticalPosition: this.verticalPosition,
-            panelClass: ['error-snackbar']
+            panelClass: ['error-snackbar'],
         });
     }
 }

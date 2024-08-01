@@ -1,4 +1,11 @@
-import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import {
+    AfterViewInit,
+    ChangeDetectorRef,
+    Component,
+    OnInit,
+    ViewChild,
+    ViewEncapsulation,
+} from '@angular/core';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Subscription } from 'rxjs';
 import { MatSidenav } from '@angular/material/sidenav';
@@ -14,18 +21,16 @@ const MONITOR_VIEW = 'screen and (min-width: 1024px)';
     selector: 'app-layout',
     templateUrl: 'layout.component.html',
     styleUrls: ['layout.component.scss'],
-    encapsulation: ViewEncapsulation.Emulated
+    encapsulation: ViewEncapsulation.Emulated,
 })
-
 export class LayoutComponent implements OnInit, AfterViewInit {
     @ViewChild('leftsidenav')
-
     dataBreadcrumb: any;
 
     bread = {
         parentBreadcrumb: '',
         childBreadcrumb: '',
-    }
+    };
 
     isStorageBreadcrumb: boolean = false;
 
@@ -53,28 +58,27 @@ export class LayoutComponent implements OnInit, AfterViewInit {
         private cdr: ChangeDetectorRef,
         private websocketService: WebsocketService,
         private service: AppService,
-        private auth: AuthService
+        private auth: AuthService,
     ) {
         this.htmlElement = document.querySelector('html')!;
         this.layoutChangesSubscription = this.breakpointObserver
-        .observe([MOBILE_VIEW, TABLET_VIEW, MONITOR_VIEW])
-        .subscribe((state) => {
-            // SidenavOpened must be reset true when layout changes
+            .observe([MOBILE_VIEW, TABLET_VIEW, MONITOR_VIEW])
+            .subscribe((state) => {
+                // SidenavOpened must be reset true when layout changes
 
-            this.isMobileScreen = state.breakpoints[MOBILE_VIEW];
+                this.isMobileScreen = state.breakpoints[MOBILE_VIEW];
 
-            this.isContentWidthFixed = state.breakpoints[MONITOR_VIEW];
-        });
+                this.isContentWidthFixed = state.breakpoints[MONITOR_VIEW];
+            });
     }
 
     ngOnInit(): void {
         this.service.isLoading.subscribe((loading) => {
-                this.isLoading = loading;
-            }
-        )
+            this.isLoading = loading;
+        });
         this.userData = this.service.getUserData();
         this.websocketService.registerFunction('WS_SUBSCRIBE_HEADER', () => {
-          this.doSubscribe();
+            this.doSubscribe();
         });
         this.checkServerTime();
         this.websocketService.initializeWebSocketConnection();
@@ -85,10 +89,10 @@ export class LayoutComponent implements OnInit, AfterViewInit {
         if (storedBreadcrumb && storedBreadcrumb !== 'undefined') {
             this.isStorageBreadcrumb = true;
             this.dataBreadcrumb = JSON.parse(storedBreadcrumb);
-            this.cdr.detectChanges()
+            this.cdr.detectChanges();
         }
 
-        this.cdr.detectChanges()
+        this.cdr.detectChanges();
     }
 
     ngOnDestroy() {
@@ -97,24 +101,33 @@ export class LayoutComponent implements OnInit, AfterViewInit {
     }
 
     doSubscribe() {
-      this.websocketService.subscribe('/topic/serverTime', (message: string) => {
-        this.service.isServerOnline = true;
-        this.willGoOffline = 2;
-        const data = JSON.parse(message);
-        this.service.wsServerTime = data;
-        localStorage.setItem('hq_serverTime', data.serverTime ?? 'OFFLINE');
-        localStorage.setItem('hq_beVersion', data.beVersion ?? 'OFFLINE');
-      });
+        this.websocketService.subscribe(
+            '/topic/serverTime',
+            (message: string) => {
+                this.service.isServerOnline = true;
+                this.willGoOffline = 2;
+                const data = JSON.parse(message);
+                this.service.wsServerTime = data;
+                localStorage.setItem(
+                    'hq_serverTime',
+                    data.serverTime ?? 'OFFLINE',
+                );
+                localStorage.setItem(
+                    'hq_beVersion',
+                    data.beVersion ?? 'OFFLINE',
+                );
+            },
+        );
     }
 
     checkServerTime() {
-      setInterval(() => {
-        if (this.willGoOffline > 0) {
-          this.willGoOffline--;
-        } else {
-          this.service.isServerOnline = false;
-        }
-      }, 1000);
+        setInterval(() => {
+            if (this.willGoOffline > 0) {
+                this.willGoOffline--;
+            } else {
+                this.service.isServerOnline = false;
+            }
+        }, 1000);
     }
 
     toggleCollapsed() {

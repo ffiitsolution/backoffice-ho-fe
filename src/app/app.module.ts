@@ -3,10 +3,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AppConfig } from './config/app.config';
 import {
-  APP_INITIALIZER,
-  CUSTOM_ELEMENTS_SCHEMA,
-  NO_ERRORS_SCHEMA,
-  NgModule,
+    APP_INITIALIZER,
+    CUSTOM_ELEMENTS_SCHEMA,
+    NO_ERRORS_SCHEMA,
+    NgModule,
 } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -35,7 +35,11 @@ import { LoginComponent } from './views/auth/login/login.component';
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import { BrandComponent } from './layout/brand/brand.component';
 import { SideBarItemComponent } from './layout/sidebar/sidebar-item/sidebar-item.component';
-import { DatePipe, LocationStrategy, PathLocationStrategy } from '@angular/common';
+import {
+    DatePipe,
+    LocationStrategy,
+    PathLocationStrategy,
+} from '@angular/common';
 import { GlobalComponent } from './views/master/global/global.component';
 import { DataTableComponent } from './shared/data-table/data-table.component';
 import { OutletComponent } from './views/master/outlet/outlet.component';
@@ -75,10 +79,13 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { RegexPipe } from './services/input.pipe';
 import { NavigationService } from './services/navigation.service';
 import { ErrorHelper } from './helper/error.helper';
-import { MAT_DATE_LOCALE, provideNativeDateAdapter } from '@angular/material/core';
+import {
+    MAT_DATE_LOCALE,
+    provideNativeDateAdapter,
+} from '@angular/material/core';
 
 export function initializeApp(appConfig: AppConfig) {
-  return () => appConfig.load();
+    return () => appConfig.load();
 }
 
 @NgModule({
@@ -122,7 +129,7 @@ export function initializeApp(appConfig: AppConfig) {
         RecipeDetailComponent,
         RecipeProductComponent,
         RecipeDetailFormComponent,
-        RecipeProductFormComponent
+        RecipeProductFormComponent,
     ],
     imports: [
         BrowserModule,
@@ -133,7 +140,7 @@ export function initializeApp(appConfig: AppConfig) {
         FormsModule,
         MatTableModule,
         DataTablesModule,
-        NgSelectModule,         
+        NgSelectModule,
     ],
     providers: [
         {
@@ -149,7 +156,7 @@ export function initializeApp(appConfig: AppConfig) {
         ErrorHelper,
         provideHttpClient(),
         provideNativeDateAdapter(),
-        {provide: MAT_DATE_LOCALE, useValue: 'id-ID'},
+        { provide: MAT_DATE_LOCALE, useValue: 'id-ID' },
         {
             provide: APP_INITIALIZER,
             useFactory: initializeApp,

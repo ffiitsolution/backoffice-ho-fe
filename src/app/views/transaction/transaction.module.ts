@@ -8,11 +8,8 @@ import { routes, TransactionRoutingModule } from './route-transaction';
     imports: [
         CommonModule,
         TransactionRoutingModule,
-        RouterModule.forChild(routes)
+        RouterModule.forChild(routes),
     ],
-    providers: [
-
-    ]
-  })
-
-  export class TransactionModule {}
+    providers: [],
+})
+export class TransactionModule {}

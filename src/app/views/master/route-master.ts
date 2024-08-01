@@ -20,175 +20,174 @@ import { RecipeDetailComponent } from './recipe/recipe-detail/recipe-detail.comp
 import { RecipeProductComponent } from './recipe/recipe-product/recipe-product.component';
 
 export const routes: Routes = [
-      {
-            path: 'dashboard',
-            component: DashboardMasterComponent,
-            data: {
-                  title: 'Dashboard Master',
-            },
-      },
-      {
-            path: 'global',
-            component: GlobalComponent,
-            data: {
-                  title: 'Global',
-            },
-      },
-      {
-            path: 'outlet',
-            component: OutletComponent,
-            data: {
-                  title: 'Outlet',
-            },
-      },
-      {
-            path: 'menu-item',
-            component: MenuItemComponent,
-            data: {
-                  title: 'Menu Item',
-            },
-      },
-      {
-            path: 'menu-item-limit',
-            component: MenuItemLimitComponent,
-            data: {
-                  title: 'Menu Item Limit',
-            },
-      },
-      {
-            path: 'menu-item-schedule',
-            component: MenuItemScheduleComponent,
-            data: {
-                  title: 'Menu Item Schedule',
-            },
-      },
-      {
-            path: 'menu-set',
-            component: MenuSetComponent,
-            data: {
-                  title: 'Menu Set',
-            },
-      },
-      {
-            path: 'modifier-item',
-            component: ModifierItemComponent,
-            data: {
-                  title: 'Modifier Item',
-            },
-      },
-      {
-            path: 'mpcs-header',
-            component: MpcsHeaderComponent,
-            data: {
-                  title: 'MPCS Header',
-            },
-      },
-      {
-            path: 'mpcs-detail',
-            component: MpcsDetailComponent,
-            data: {
-                  title: 'MPCS Detail',
-            },
-      },
+    {
+        path: 'dashboard',
+        component: DashboardMasterComponent,
+        data: {
+            title: 'Dashboard Master',
+        },
+    },
+    {
+        path: 'global',
+        component: GlobalComponent,
+        data: {
+            title: 'Global',
+        },
+    },
+    {
+        path: 'outlet',
+        component: OutletComponent,
+        data: {
+            title: 'Outlet',
+        },
+    },
+    {
+        path: 'menu-item',
+        component: MenuItemComponent,
+        data: {
+            title: 'Menu Item',
+        },
+    },
+    {
+        path: 'menu-item-limit',
+        component: MenuItemLimitComponent,
+        data: {
+            title: 'Menu Item Limit',
+        },
+    },
+    {
+        path: 'menu-item-schedule',
+        component: MenuItemScheduleComponent,
+        data: {
+            title: 'Menu Item Schedule',
+        },
+    },
+    {
+        path: 'menu-set',
+        component: MenuSetComponent,
+        data: {
+            title: 'Menu Set',
+        },
+    },
+    {
+        path: 'modifier-item',
+        component: ModifierItemComponent,
+        data: {
+            title: 'Modifier Item',
+        },
+    },
+    {
+        path: 'mpcs-header',
+        component: MpcsHeaderComponent,
+        data: {
+            title: 'MPCS Header',
+        },
+    },
+    {
+        path: 'mpcs-detail',
+        component: MpcsDetailComponent,
+        data: {
+            title: 'MPCS Detail',
+        },
+    },
 
-      {
-            path: 'payment',
-            data: {
-                  title: 'Payment',
+    {
+        path: 'payment',
+        data: {
+            title: 'Payment',
+        },
+        children: [
+            {
+                path: '',
+                redirectTo: 'master-payment',
+                pathMatch: 'full',
             },
-            children: [
-                  {
-                  path: '',
-                  redirectTo: 'master-payment',
-                  pathMatch: 'full',
-                  },
-                  {
-                  path: 'master-payment',
-                  component: MasterPaymentComponent,
-                  data: {
-                        title: 'Master Payment',
-                  },
-                  },
-                  {
-                  path: 'payment-method',
-                  component: PaymentMethodComponent,
-                  data: {
-                        title: 'Payment Method List',
-                  },
-                  },
-                  {
-                  path: 'payment-method-limit',
-                  component: PaymentMethodLimitComponent,
-                  data: {
-                        title: 'Master Payment Method Limit',
-                  },
-                  },
-            ],
-      },
-      {
-            path: 'supplier',
-            component: SupplierComponent,
-            data: {
-                  title: 'Supplier',
+            {
+                path: 'master-payment',
+                component: MasterPaymentComponent,
+                data: {
+                    title: 'Master Payment',
+                },
             },
-      },
-      {
-            path: 'item-supplier',
-            component: ItemSupplierComponent,
-            data: {
-                  title: 'Item Supplier',
+            {
+                path: 'payment-method',
+                component: PaymentMethodComponent,
+                data: {
+                    title: 'Payment Method List',
+                },
             },
-      },
-      {
-            path: 'recipe',
-            component: RecipeHeaderComponent,
-            data: {
-                  title: 'Master Recipe Header',
+            {
+                path: 'payment-method-limit',
+                component: PaymentMethodLimitComponent,
+                data: {
+                    title: 'Master Payment Method Limit',
+                },
             },
-      },
-      {
-            path: 'recipe-detail',
-            component: RecipeDetailComponent,
-            data: {
-                  title: 'Recipe Detail',
-            },
-      },
-      {
-            path: 'recipe-product',
-            component: RecipeProductComponent,
-            data: {
-                  title: 'Recipe Product',
-            },
-      }
-  
-      // {
-      //       path: 'recipe-header',
-      //       component: RecipeHeaderComponent,
-      //       data: {
-      //             title: 'recipe',
-      //       },
-      //       children: [
-      //             {
-      //                   path: 'recipe-header',
-      //                   component: RecipeHeaderComponent,
-      //                   data: {
-      //                         title: 'Master Recipe',
-      //                   },
-      //             },
-      //             {
-      //                   path: 'recipe-detail',
-      //                   component: RecipeDetailComponent,
-      //                   data: {
-      //                         title: 'Master Recipe Detail',
-      //                   },
-      //             },
-                 
-      //       ],
-      // }
+        ],
+    },
+    {
+        path: 'supplier',
+        component: SupplierComponent,
+        data: {
+            title: 'Supplier',
+        },
+    },
+    {
+        path: 'item-supplier',
+        component: ItemSupplierComponent,
+        data: {
+            title: 'Item Supplier',
+        },
+    },
+    {
+        path: 'recipe',
+        component: RecipeHeaderComponent,
+        data: {
+            title: 'Master Recipe Header',
+        },
+    },
+    {
+        path: 'recipe-detail',
+        component: RecipeDetailComponent,
+        data: {
+            title: 'Recipe Detail',
+        },
+    },
+    {
+        path: 'recipe-product',
+        component: RecipeProductComponent,
+        data: {
+            title: 'Recipe Product',
+        },
+    },
+
+    // {
+    //       path: 'recipe-header',
+    //       component: RecipeHeaderComponent,
+    //       data: {
+    //             title: 'recipe',
+    //       },
+    //       children: [
+    //             {
+    //                   path: 'recipe-header',
+    //                   component: RecipeHeaderComponent,
+    //                   data: {
+    //                         title: 'Master Recipe',
+    //                   },
+    //             },
+    //             {
+    //                   path: 'recipe-detail',
+    //                   component: RecipeDetailComponent,
+    //                   data: {
+    //                         title: 'Master Recipe Detail',
+    //                   },
+    //             },
+
+    //       ],
+    // }
 ];
 @NgModule({
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule],
 })
-
 export class MasterRoutingModule {}

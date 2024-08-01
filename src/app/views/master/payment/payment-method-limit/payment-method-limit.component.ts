@@ -7,11 +7,10 @@ import { tabPayment } from '../../../../helper/tab-menu.helper';
 @Component({
     selector: 'app-payment-method-limit',
     templateUrl: 'payment-method-limit.component.html',
-    styleUrls: ['payment-method-limit.component.scss']
+    styleUrls: ['payment-method-limit.component.scss'],
 })
-
 export class PaymentMethodLimitComponent implements OnInit {
-    tabMenus: { tabMenuName: string; route: string; }[] = tabPayment;
+    tabMenus: { tabMenuName: string; route: string }[] = tabPayment;
     headerTitle: string = '';
     menuTable: string = '';
     apiUrl: string = '';
@@ -22,11 +21,9 @@ export class PaymentMethodLimitComponent implements OnInit {
     setOrderBy: any;
     onDestroy$ = new Subject<void>();
 
-    constructor(
-        private filterService: FilterService
-    ) { }
+    constructor(private filterService: FilterService) {}
 
-    ngOnInit() { 
+    ngOnInit() {
         this.headerTitle = 'Master Data Payment Method Limit';
         this.menuTable = 'payment-method-limit';
         this.apiUrl = '/payment-method-limit/dt';
@@ -36,14 +33,39 @@ export class PaymentMethodLimitComponent implements OnInit {
         this.getOrderType();
         this.getPaymentMethodCode();
     }
-    
+
     renderColumn() {
-        this.renderColumns =  [
-            { data: 'dtIndex', title: '#', orderable: false, searchable: false },
-            { data: 'regionCode', title: 'REGION CODE', orderable: true, searchable: true },
-            { data: 'outletCode', title: 'OUTLET CODE', orderable: true, searchable: true },
-            { data: 'paymentMethodCode', title: 'PAYMENT METHOD CODE', orderable: true, searchable: true },
-            { data: 'orderType', title: 'Order Type', orderable: true, searchable: true },
+        this.renderColumns = [
+            {
+                data: 'dtIndex',
+                title: '#',
+                orderable: false,
+                searchable: false,
+            },
+            {
+                data: 'regionCode',
+                title: 'REGION CODE',
+                orderable: true,
+                searchable: true,
+            },
+            {
+                data: 'outletCode',
+                title: 'OUTLET CODE',
+                orderable: true,
+                searchable: true,
+            },
+            {
+                data: 'paymentMethodCode',
+                title: 'PAYMENT METHOD CODE',
+                orderable: true,
+                searchable: true,
+            },
+            {
+                data: 'orderType',
+                title: 'Order Type',
+                orderable: true,
+                searchable: true,
+            },
             {
                 data: 'dtIndex',
                 title: 'ACTIONS',
@@ -56,8 +78,8 @@ export class PaymentMethodLimitComponent implements OnInit {
                         <button class="action-button action-edit"><i class="fa fa-pencil"></i> Edit</button>
                         </div>
                     </div>
-                    `
-                    let actionBtn =  `
+                    `;
+                    let actionBtn = `
                         <div class="dropdown-action">
                             <button class="dropbtn">Action <i class="fa fa-caret-down" aria-hidden="true"></i></button>
                             <div class="dropdown-content">
@@ -67,41 +89,50 @@ export class PaymentMethodLimitComponent implements OnInit {
                     `;
                     return actionBtn;
                 },
-            }
-        ]
+            },
+        ];
     }
 
     orderBy() {
-        this.setOrderBy =  [
+        this.setOrderBy = [
             [6, 'asc'],
-            [1, 'asc']
+            [1, 'asc'],
         ];
     }
 
     getRegionFilter() {
-        this.filterService.getFilterListRegion().pipe(
-            takeUntil(this.onDestroy$),
-            tap((response) => {
-                this.regionList = response.data;
-            })
-        ).subscribe();
+        this.filterService
+            .getFilterListRegion()
+            .pipe(
+                takeUntil(this.onDestroy$),
+                tap((response) => {
+                    this.regionList = response.data;
+                }),
+            )
+            .subscribe();
     }
 
     getOrderType() {
-        this.filterService.getFilterOrderType().pipe(
-            takeUntil(this.onDestroy$),
-            tap((response) => {
-                this.orderTypeList = response.data;
-            })
-        ).subscribe()
+        this.filterService
+            .getFilterOrderType()
+            .pipe(
+                takeUntil(this.onDestroy$),
+                tap((response) => {
+                    this.orderTypeList = response.data;
+                }),
+            )
+            .subscribe();
     }
 
     getPaymentMethodCode() {
-        this.filterService.getFilterPaymentMethodCode().pipe(
-            takeUntil(this.onDestroy$),
-            tap((response) => {
-                this.paymentMethodCodeList = response.data;
-            })
-        ).subscribe();
+        this.filterService
+            .getFilterPaymentMethodCode()
+            .pipe(
+                takeUntil(this.onDestroy$),
+                tap((response) => {
+                    this.paymentMethodCodeList = response.data;
+                }),
+            )
+            .subscribe();
     }
 }

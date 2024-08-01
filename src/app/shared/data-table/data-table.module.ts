@@ -18,5 +18,5 @@ import { DatePipe } from '@angular/common';
         MatProgressSpinnerModule,
         MatButtonToggleModule,
     ],
-  })
-  export class DataTableModule {}
+})
+export class DataTableModule {}

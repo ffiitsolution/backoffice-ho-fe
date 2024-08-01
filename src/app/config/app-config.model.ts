@@ -3,13 +3,13 @@
  */
 
 export interface IAppConfig {
-  env: {
-    name: string;
-  };
-  apiServer: {
-    BASE_URL: string;
-  };
-  applicationTitle: string;
-  applicationSubtitle: string;
-  outletCode: string;
+    env: {
+        name: string;
+    };
+    apiServer: {
+        BASE_URL: string;
+    };
+    applicationTitle: string;
+    applicationSubtitle: string;
+    outletCode: string;
 }

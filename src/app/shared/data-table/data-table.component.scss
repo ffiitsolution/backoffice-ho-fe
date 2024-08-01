@@ -15,17 +15,17 @@
         .tab-menu-item {
             width: 100%;
             height: 100%;
-            border: 2px solid #A62B2B;
+            border: 2px solid #a62b2b;
             border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: #FFFFFF;
+            background: #ffffff;
             padding: 8px;
             cursor: pointer;
 
             span {
-                color: #A62B2B;
+                color: #a62b2b;
                 font-size: 14px;
                 font-weight: 500;
                 text-align: center;
@@ -40,7 +40,7 @@
             }
         }
 
-        ~.data-table-wrapper {
+        ~ .data-table-wrapper {
             height: 91%;
         }
     }
@@ -49,9 +49,9 @@
         display: flex;
         flex-direction: column;
         height: 75vh;
-        background: #FFFFFF;
+        background: #ffffff;
         border-radius: 10px;
-        border: 2px solid #A62B2B;
+        border: 2px solid #a62b2b;
         flex-grow: 1;
 
         .data-header-container {
@@ -60,12 +60,12 @@
             justify-content: space-between;
             padding: 16px;
             width: 100%;
-            border-bottom: 1px solid #D0D0D0;
+            border-bottom: 1px solid #d0d0d0;
 
             span {
                 font-size: 20px;
                 font-weight: 500;
-                color: #A62B2B;
+                color: #a62b2b;
             }
 
             .button-data-head-container {
@@ -93,14 +93,14 @@
                 }
 
                 .filter-data-button:hover {
-                    background: #B7B7B7;
+                    background: #b7b7b7;
                     transition: 0.2s ease-in;
                 }
 
                 .add-data-button {
                     color: white;
                     font-weight: 500;
-                    background: #A62B2B;
+                    background: #a62b2b;
                 }
 
                 .add-data-button:hover {
@@ -114,7 +114,7 @@
 
                 ::ng-deep .mdc-text-field {
                     border-radius: 8px !important;
-                    background-color: #FFFFFF !important;
+                    background-color: #ffffff !important;
                 }
             }
         }
@@ -126,7 +126,7 @@
             width: 100%;
             padding: 12px 14px;
             gap: 10px;
-            border-bottom: 1px solid #D0D0D0;
+            border-bottom: 1px solid #d0d0d0;
 
             .filter-field {
                 display: flex;
@@ -137,7 +137,7 @@
                     width: 100%;
                     height: 40px;
                     border-radius: 6px;
-                    border: 1px solid #D0D0D0;
+                    border: 1px solid #d0d0d0;
                     font-size: 14px;
                     display: flex;
                     justify-content: center;
@@ -150,7 +150,6 @@
                     }
 
                     ::ng-deep .ng-dropdown-panel {
-
                         margin-top: 34px;
                         border-radius: 4px;
                         padding: 0px 0px 0px 0px;
@@ -158,15 +157,18 @@
                         border: 1px solid #ccc;
                         box-shadow: 0 1px #0000000f;
 
-                        ::ng-deep .ng-dropdown-panel-items::-webkit-scrollbar {
+                        ::ng-deep
+                            .ng-dropdown-panel-items::-webkit-scrollbar {
                             width: 12px;
                         }
 
-                        ::ng-deep .ng-dropdown-panel-items::-webkit-scrollbar-track {
-                            background: #F1F1F1;
+                        ::ng-deep
+                            .ng-dropdown-panel-items::-webkit-scrollbar-track {
+                            background: #f1f1f1;
                         }
 
-                        ::ng-deep .ng-dropdown-panel-items::-webkit-scrollbar-thumb {
+                        ::ng-deep
+                            .ng-dropdown-panel-items::-webkit-scrollbar-thumb {
                             background-color: #888;
                             border-radius: 10px;
                             border: 3px solid #f1f1f1;
@@ -177,11 +179,16 @@
                             height: auto;
                             padding: 8px;
                             align-items: center;
-                            border-bottom: 1px solid #E0E0E0;
+                            border-bottom: 1px solid #e0e0e0;
                             font-size: 14px;
 
                             &:hover {
-                                background-color: rgba(200, 228, 249, 0.5098039216);
+                                background-color: rgba(
+                                    200,
+                                    228,
+                                    249,
+                                    0.5098039216
+                                );
                             }
                         }
 
@@ -231,17 +238,17 @@
                     align-items: center;
 
                     ::ng-deep .dt-length {
-                      font-size: 14px;
+                        font-size: 14px;
                         label {
-                          margin-left: 5px;
-                          color: #8E8E8E;
+                            margin-left: 5px;
+                            color: #8e8e8e;
                         }
 
                         .dt-input {
-                          border-radius: 0.375rem !important;
+                            border-radius: 0.375rem !important;
                         }
 
-                        select:focus-visible{
+                        select:focus-visible {
                             outline: none !important;
                         }
                     }
@@ -251,7 +258,7 @@
 
                         label {
                             margin-right: 5px;
-                            color: #8E8E8E;
+                            color: #8e8e8e;
                         }
 
                         .dt-input {
@@ -274,11 +281,11 @@
                     thead {
                         position: sticky;
                         top: 0;
-                        background: #FFFFFF;
+                        background: #ffffff;
                         box-shadow: rgba(0, 0, 0, 0.25) 9px 2px 6px 1px;
                         z-index: 1;
                         white-space: nowrap;
-    
+
                         th {
                             border-bottom: 0;
                         }
@@ -289,7 +296,7 @@
                     }
 
                     tbody {
-                      font-size: 14px;
+                        font-size: 14px;
 
                         .badge-status {
                             background: #808080;
@@ -302,7 +309,7 @@
                             border-radius: 40px;
 
                             &__A {
-                                background: #2EB85C !important;
+                                background: #2eb85c !important;
                             }
                         }
 
@@ -310,14 +317,13 @@
                             border-bottom: 0;
                         }
 
-                        tr td:last-child{
+                        tr td:last-child {
                             text-align: center;
                         }
 
                         td {
                             padding: 10px;
                         }
-
                     }
 
                     .dropdown-action {
@@ -326,13 +332,13 @@
 
                         .dropbtn {
                             background-color: transparent;
-                            color: #4CAF50;
+                            color: #4caf50;
                             border-radius: 8px;
                             padding: 2px;
                             font-size: 14px;
                             cursor: pointer;
-                            border: 2px solid #4CAF50;
-                            width: 90px
+                            border: 2px solid #4caf50;
+                            width: 90px;
                         }
 
                         .dropdown-content {
@@ -341,7 +347,7 @@
                             position: absolute;
                             background-color: #f9f9f9;
                             min-width: 160px;
-                            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
                             z-index: 1;
                             right: 0;
                             padding: 4px;
@@ -362,7 +368,7 @@
                             }
 
                             .action-button:hover {
-                                background: #D8EAF9;
+                                background: #d8eaf9;
                                 border-radius: 0px;
                             }
 
@@ -391,7 +397,7 @@
                 }
 
                 ::ng-deep .dt-layout-table::-webkit-scrollbar-track {
-                    background: #F1F1F1;
+                    background: #f1f1f1;
                 }
 
                 ::ng-deep .dt-layout-table::-webkit-scrollbar-thumb {
@@ -412,17 +418,17 @@
                     ::ng-deep .current,
                     ::ng-deep .dt-paging-button:hover.current,
                     ::ng-deep .dt-paging-button:focus-visible,
-                    ::ng-deep .dt-paging-button:active{
+                    ::ng-deep .dt-paging-button:active {
                         border: none !important;
-                        color: #FFFFFF !important;
-                        background: #A62B2B !important;
+                        color: #ffffff !important;
+                        background: #a62b2b !important;
                         border-radius: 300px;
                         text-decoration: none !important;
                         outline: none !important;
                     }
 
                     ::ng-deep .dt-paging-button:hover {
-                        color: #A62B2B !important;
+                        color: #a62b2b !important;
                         text-decoration: underline !important;
                         background: transparent !important;
                         border: none !important;
@@ -435,9 +441,9 @@
                     }
 
                     ::ng-deep .disabled:hover {
-                      background: transparent!important;
-                      border: none !important;
-                      border-radius: 300px;
+                        background: transparent !important;
+                        border: none !important;
+                        border-radius: 300px;
                     }
                 }
 
@@ -445,9 +451,10 @@
                     font-size: 14px;
                     padding: 0;
 
-                    .dt-start, .dr-end {
+                    .dt-start,
+                    .dr-end {
                         width: 50%;
-                    };
+                    }
                 }
             }
 
@@ -464,8 +471,8 @@
             }
         }
 
-       ::ng-deep .dt-processing > div > div {
-            background: #359BE9 !important;
+        ::ng-deep .dt-processing > div > div {
+            background: #359be9 !important;
         }
 
         .data-table-container::-webkit-scrollbar {
@@ -491,21 +498,19 @@
             border-radius: 8px;
         }
 
-            .custom-paginator {
-                border-radius: 0px 0px 10px 10px;
-            }
+        .custom-paginator {
+            border-radius: 0px 0px 10px 10px;
+        }
     }
 }
 
-
-
 ::ng-deep .error-snackbar .mat-mdc-snackbar-surface {
-    background-color: #CC0000 !important;
+    background-color: #cc0000 !important;
     color: #ffffff !important;
 }
 
 ::ng-deep .success-snackbar .mat-mdc-snackbar-surface {
-    background-color: #5CB85C !important;
+    background-color: #5cb85c !important;
     color: #ffffff !important;
 }
 
@@ -516,7 +521,5 @@
 
     .dt-container .dt-layout-table tbody {
         font-size: 12px;
-
     }
 }
-
