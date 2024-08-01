@@ -20,12 +20,6 @@ const MONITOR_VIEW = 'screen and (min-width: 1024px)';
 export class LayoutComponent implements OnInit, AfterViewInit {
     @ViewChild('leftsidenav')
 
-    // Value
-    // dataBreadcrumb= {
-    //     parentBreadcrumb: '',
-    //     childBreadcrumb: '',
-    // };
-
     dataBreadcrumb: any;
 
     bread = {
@@ -88,8 +82,6 @@ export class LayoutComponent implements OnInit, AfterViewInit {
 
     ngAfterViewInit(): void {
         const storedBreadcrumb = localStorage.getItem('dataBreadcrumb');
-        console.log('storedBreadcrumb', storedBreadcrumb)
-
         if (storedBreadcrumb && storedBreadcrumb !== 'undefined') {
             this.isStorageBreadcrumb = true;
             this.dataBreadcrumb = JSON.parse(storedBreadcrumb);

@@ -59,6 +59,12 @@ import { DashboardTransactionComponent } from './views/transaction/dashboard-tra
 import { HomeComponent } from './views/home/home.component';
 import { AllReportComponent } from './views/report/all-report/all-report.component';
 import { SendMasterComponent } from './views/report/send-master/send-master.component';
+import { RecipeProductComponent } from './views/master/recipe/recipe-product/recipe-product.component';
+import { RecipeHeaderComponent } from './views/master/recipe/recipe-header/recipe-header.component';
+import { RecipeHeaderFormComponent } from './views/master/recipe/recipe-header/recipe-header-form/recipe-header-form.component';
+import { RecipeDetailComponent } from './views/master/recipe/recipe-detail/recipe-detail.component';
+import { RecipeDetailFormComponent } from './views/master/recipe/recipe-detail/recipe-detail-form/recipe-detail-form.component';
+import { RecipeProductFormComponent } from './views/master/recipe/recipe-product/recipe-product-form/recipe-product-form.component';
 
 // Form
 import { GlobalFormComponent } from './views/master/global/global-form/global-form.component';
@@ -70,12 +76,6 @@ import { RegexPipe } from './services/input.pipe';
 import { NavigationService } from './services/navigation.service';
 import { ErrorHelper } from './helper/error.helper';
 import { MAT_DATE_LOCALE, provideNativeDateAdapter } from '@angular/material/core';
-import { RecipeProductComponent } from './views/master/recipe/recipe-product/recipe-product.component';
-import { RecipeHeaderComponent } from './views/master/recipe/recipe-header/recipe-header.component';
-import { RecipeHeaderFormComponent } from './views/master/recipe/recipe-header/recipe-header-form/recipe-header-form.component';
-import { RecipeDetailComponent } from './views/master/recipe/recipe-detail/recipe-detail.component';
-import { RecipeDetailFormComponent } from './views/master/recipe/recipe-detail/recipe-detail-form/recipe-detail-form.component';
-import { RecipeProductFormComponent } from './views/master/recipe/recipe-product/recipe-product-form/recipe-product-form.component';
 
 export function initializeApp(appConfig: AppConfig) {
   return () => appConfig.load();
