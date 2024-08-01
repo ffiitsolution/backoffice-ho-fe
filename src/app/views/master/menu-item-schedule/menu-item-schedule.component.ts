@@ -1,5 +1,6 @@
 import { AfterViewInit, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Subject, takeUntil, tap } from 'rxjs';
+import { tabMenu } from '../../../helper/tab-menu.helper';
 
 @Component({
     selector: 'app-menu-item-schedule',
@@ -17,22 +18,21 @@ export class MenuItemScheduleComponent implements OnInit {
     renderColumns: any;
     setOrderBy: any;
     onDestroy$ = new Subject<void>();
-    tabMenus: any;
+    tabMenus: { tabMenuName: string; route: string; }[] = tabMenu;
 
     constructor(
         private cdr: ChangeDetectorRef
     ) { }
 
     ngOnInit() {
-      this.headerTitle = 'Master Data Menu Item Schedule';
-      this.apiUrl = '/menu-item-schedule/dt';
-      this.apiInsertUrl = '/master/menu-item-schedule/insert';
-      this.apiUpdateUrl = '/master/menu-item-schedule/update';
-      this.menuTable = 'menu-item-schedule';
-      this.renderColumn();
-      this.getFilter();
-      this.orderBy();
-      this.getTabMenus();
+        this.headerTitle = 'Master Data Menu Item Schedule';
+        this.apiUrl = '/menu-item-schedule/dt';
+        this.apiInsertUrl = '/master/menu-item-schedule/insert';
+        this.apiUpdateUrl = '/master/menu-item-schedule/update';
+        this.menuTable = 'menu-item-schedule';
+        this.renderColumn();
+        this.getFilter();
+        this.orderBy();
     }
 
     getFilter() {
@@ -82,26 +82,5 @@ export class MenuItemScheduleComponent implements OnInit {
 
     orderBy() {
       this.setOrderBy =  [[1, 'asc'],[2, 'asc'],[4, 'desc']];
-    }
-
-    getTabMenus() {
-        this.tabMenus = [
-            {
-                tabMenuName: 'Menu Item',
-                route: '/master/menu-item'
-            },
-            {
-                tabMenuName: 'Menu Item Limit',
-                route: '/master/menu-item-limit'
-            },
-            {
-                tabMenuName: 'Menu Item Schedule',
-                route: '/master/menu-item-schedule'
-            },
-            {
-                tabMenuName: 'Menu Set',
-                route: '/master/menu-set'
-            }
-        ]
     }
 }

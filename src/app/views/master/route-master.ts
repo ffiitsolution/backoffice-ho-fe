@@ -15,7 +15,9 @@ import { PaymentMethodComponent } from './payment/payment-method/payment-method.
 import { MasterPaymentComponent } from './payment/master-payment/master-payment.component';
 import { PaymentMethodLimitComponent } from './payment/payment-method-limit/payment-method-limit.component';
 import { DashboardMasterComponent } from './dashboard-master/dashboard-master.component';
-import { RecipeHeaderComponent } from './recipe-header/recipe-header.component';
+import { RecipeHeaderComponent } from './recipe/recipe-header/recipe-header.component';
+import { RecipeDetailComponent } from './recipe/recipe-detail/recipe-detail.component';
+import { RecipeProductComponent } from './recipe/recipe-product/recipe-product.component';
 
 export const routes: Routes = [
       {
@@ -138,12 +140,51 @@ export const routes: Routes = [
             },
       },
       {
-            path: 'recipe-header',
+            path: 'recipe',
             component: RecipeHeaderComponent,
             data: {
-                  title: 'Recipe Header',
+                  title: 'Master Recipe Header',
             },
       },
+      {
+            path: 'recipe-detail',
+            component: RecipeDetailComponent,
+            data: {
+                  title: 'Recipe Detail',
+            },
+      },
+      {
+            path: 'recipe-product',
+            component: RecipeProductComponent,
+            data: {
+                  title: 'Recipe Product',
+            },
+      }
+  
+      // {
+      //       path: 'recipe-header',
+      //       component: RecipeHeaderComponent,
+      //       data: {
+      //             title: 'recipe',
+      //       },
+      //       children: [
+      //             {
+      //                   path: 'recipe-header',
+      //                   component: RecipeHeaderComponent,
+      //                   data: {
+      //                         title: 'Master Recipe',
+      //                   },
+      //             },
+      //             {
+      //                   path: 'recipe-detail',
+      //                   component: RecipeDetailComponent,
+      //                   data: {
+      //                         title: 'Master Recipe Detail',
+      //                   },
+      //             },
+                 
+      //       ],
+      // }
 ];
 @NgModule({
     imports: [RouterModule.forChild(routes)],

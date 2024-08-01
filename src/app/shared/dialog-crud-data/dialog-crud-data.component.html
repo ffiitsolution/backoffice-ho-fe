@@ -10,8 +10,16 @@
             <app-payment-method-limit-form [data]="data" (formValueChange)="getFormValue($event)"></app-payment-method-limit-form>
         </ng-container>
         
-        <ng-container *ngIf="data.menuTable == 'recipe-header'">
+        <ng-container *ngIf="data.menuTable == 'master-recipe'">
             <app-recipe-header-form [data]="data" (formValueChange)="getFormValue($event)"></app-recipe-header-form>
+        </ng-container>
+        
+        <ng-container *ngIf="data.menuTable == 'master-recipe-detail'">
+            <app-recipe-detail-form [data]="data" (formValueChange)="getFormValue($event)"></app-recipe-detail-form>
+        </ng-container>
+        
+        <ng-container *ngIf="data.menuTable == 'master-recipe-product'">
+            <app-recipe-product-form [data]="data" (formValueChange)="getFormValue($event)"></app-recipe-product-form>
         </ng-container>
         
     </mat-dialog-content>

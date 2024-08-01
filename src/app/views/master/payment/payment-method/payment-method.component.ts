@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FilterService } from '../../../../services/filter.service';
 import { Subject, takeUntil, tap } from 'rxjs';
+import { tabPayment } from '../../../../helper/tab-menu.helper';
 
 @Component({
     selector: 'app-payment-method',
@@ -9,7 +10,7 @@ import { Subject, takeUntil, tap } from 'rxjs';
 })
 
 export class PaymentMethodComponent implements OnInit {
-    tabMenus: any;
+    tabMenus: { tabMenuName: string; route: string; }[] = tabPayment;
     headerTitle: string = '';
     menuTable: string = '';
     apiUrl: string = '';
@@ -29,7 +30,6 @@ export class PaymentMethodComponent implements OnInit {
         this.apiUrl = '/payment-method/dt';
         this.renderColumn();
         this.orderBy();
-        this.getTabMenus();
         this.getPaymentMethodCode();
         this.getPaymentTypeCode();
     }
@@ -125,22 +125,4 @@ export class PaymentMethodComponent implements OnInit {
             [1, 'asc']
         ];
     }
-
-    getTabMenus() {
-        this.tabMenus = [
-            {
-                tabMenuName: 'Master Payment',
-                route: '/master/payment/master-payment'
-            },
-            {
-                tabMenuName: 'Master Payment Method',
-                route: '/master/payment/payment-method'
-            },
-            {
-                tabMenuName: 'Master Payment Method Limit',
-                route: '/master/payment/payment-method-limit'
-            }
-        ]
-    }
-
 }

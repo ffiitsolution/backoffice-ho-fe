@@ -1,5 +1,6 @@
 import { AfterViewInit, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Subject, takeUntil, tap } from 'rxjs';
+import { tabMenu } from '../../../helper/tab-menu.helper';
 
 @Component({
     selector: 'app-menu-set',
@@ -17,22 +18,21 @@ export class MenuSetComponent implements OnInit {
     renderColumns: any;
     setOrderBy: any;
     onDestroy$ = new Subject<void>();
-    tabMenus: any;
+    tabMenus: { tabMenuName: string; route: string; }[] = tabMenu;
 
     constructor(
         private cdr: ChangeDetectorRef
     ) { }
 
     ngOnInit() {
-      this.headerTitle = 'Master Data Menu Set';
-      this.apiUrl = '/menu-set/dt';
-      this.apiInsertUrl = '/master/menu-set/insert';
-      this.apiUpdateUrl = '/master/menu-set/update';
-      this.menuTable = 'menu-set';
-      this.renderColumn();
-      this.getFilter();
-      this.orderBy();
-      this.getTabMenus();
+        this.headerTitle = 'Master Data Menu Set';
+        this.apiUrl = '/menu-set/dt';
+        this.apiInsertUrl = '/master/menu-set/insert';
+        this.apiUpdateUrl = '/master/menu-set/update';
+        this.menuTable = 'menu-set';
+        this.renderColumn();
+        this.getFilter();
+        this.orderBy();
     }
 
     getFilter() {
@@ -106,26 +106,5 @@ export class MenuSetComponent implements OnInit {
 
     orderBy() {
       this.setOrderBy =  [[8, 'asc'],[1, 'asc']];
-    }
-
-    getTabMenus() {
-        this.tabMenus = [
-            {
-                tabMenuName: 'Menu Item',
-                route: '/master/menu-item'
-            },
-            {
-                tabMenuName: 'Menu Item Limit',
-                route: '/master/menu-item-limit'
-            },
-            {
-                tabMenuName: 'Menu Item Schedule',
-                route: '/master/menu-item-schedule'
-            },
-            {
-                tabMenuName: 'Menu Set',
-                route: '/master/menu-set'
-            }
-        ]
     }
 }

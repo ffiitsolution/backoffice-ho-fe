@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { tabPayment } from '../../../../helper/tab-menu.helper';
 
 @Component({
     selector: 'app-master-payment',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class MasterPaymentComponent implements OnInit {
-    tabMenus: any;
+    tabMenus: { tabMenuName: string; route: string; }[] = tabPayment;
     headerTitle: string = '';
     menuTable: string = '';
     apiUrl: string = '';
@@ -22,7 +23,6 @@ export class MasterPaymentComponent implements OnInit {
         this.apiUrl = '/payment/dt';
         this.renderColumn();
         this.orderBy();
-        this.getTabMenus();
     }
 
     renderColumn() {
@@ -86,22 +86,5 @@ export class MasterPaymentComponent implements OnInit {
             [6, 'asc'],
             [1, 'asc']
         ];
-    }
-
-    getTabMenus() {
-        this.tabMenus = [
-            {
-                tabMenuName: 'Master Payment',
-                route: '/master/payment/master-payment'
-            },
-            {
-                tabMenuName: 'Master Payment Method',
-                route: '/master/payment/payment-method'
-            },
-            {
-                tabMenuName: 'Master Payment Method Limit',
-                route: '/master/payment/payment-method-limit'
-            }
-        ]
     }
 }

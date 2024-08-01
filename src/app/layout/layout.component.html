@@ -25,7 +25,7 @@
             <ng-container *ngIf="dataBreadcrumb">
                 <div class="breadcrumb-container">
                 <span class="breadcrumb-item">
-                    {{ dataBreadcrumb.parentBreadcrumb }}
+                    {{ dataBreadcrumb?.parentBreadcrumb }}
                 </span>
 
                 <ng-container *ngIf=" dataBreadcrumb.childBreadcrumb">
