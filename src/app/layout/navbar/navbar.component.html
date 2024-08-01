@@ -1,6 +1,6 @@
 <mat-toolbar class="topbar">
-    <button mat-icon-button class = "hide-sidebar">
-        <mat-icon [ngStyle]="{'color':'#9E9E9E'}">reorder</mat-icon>
+    <button mat-icon-button class="hide-sidebar">
+        <mat-icon [ngStyle]="{ color: '#9E9E9E' }">reorder</mat-icon>
     </button>
 
     <span class="flex-1-auto"></span>
@@ -8,49 +8,73 @@
     <!-- --------------------------------------------------------------- -->
     <!-- Profile Icon -->
 
-    <div class="d-flex align-items-center justify-content-center" class="user-profile-data">
-      <!-- --------------------------------------------------------------- -->
-      <!-- Profile, Outlet, Trans Date Data -->
+    <div
+        class="d-flex align-items-center justify-content-center"
+        class="user-profile-data"
+    >
+        <!-- --------------------------------------------------------------- -->
+        <!-- Profile, Outlet, Trans Date Data -->
 
-      <div class="navbar-user-data">
-        <span>Welcome, {{ dataUser?.staffFullName }}</span>
+        <div class="navbar-user-data">
+            <span>Welcome, {{ dataUser?.staffFullName }}</span>
 
-        <hr class="separator">
+            <hr class="separator" />
 
-        <span>{{ dataUser?.groupId }}</span>
+            <span>{{ dataUser?.groupId }}</span>
 
-        <hr class="separator">
+            <hr class="separator" />
 
-        <span *ngIf="service.isServerOnline" class="text-success fw-bold" title="ONLINE">{{ service.wsServerTime?.serverTime }}</span>
-        <span *ngIf="!service.isServerOnline" class="text-danger fw-bold">OFFLINE</span>
-      </div>
+            <span
+                *ngIf="service.isServerOnline"
+                class="text-success fw-bold"
+                title="ONLINE"
+                >{{ service.wsServerTime?.serverTime }}</span
+            >
+            <span *ngIf="!service.isServerOnline" class="text-danger fw-bold"
+                >OFFLINE</span
+            >
+        </div>
 
-      <!-- --------------------------------------------------------------- -->
+        <!-- --------------------------------------------------------------- -->
 
-      <button
-        mat-icon-button
-        [matMenuTriggerFor]="profilemenu"
-        aria-label="Notifications" class="m-l-10 navbar-btn"
-      >
-        <mat-icon [ngStyle]="{'color':'#9E9E9E', 'font-size' : '26px'}" class="object-cover">account_circle</mat-icon>
-      </button>
-
+        <button
+            mat-icon-button
+            [matMenuTriggerFor]="profilemenu"
+            aria-label="Notifications"
+            class="m-l-10 navbar-btn"
+        >
+            <mat-icon
+                [ngStyle]="{ color: '#9E9E9E', 'font-size': '26px' }"
+                class="object-cover"
+                >account_circle</mat-icon
+            >
+        </button>
     </div>
-
 
     <!-- --------------------------------------------------------------- -->
 
     <!-- --------------------------------------------------------------- -->
     <!-- Profile Dropdown -->
 
-    <mat-menu #profilemenu="matMenu" xPosition="before" class="topbar-dd profile-container cardWithShadow">
+    <mat-menu
+        #profilemenu="matMenu"
+        xPosition="before"
+        class="topbar-dd profile-container cardWithShadow"
+    >
         <div class="profile-section">
-          <button
-            class="w-100 navbar-profile-logout-button"
-            (click)="logout()"
-          >
-            <mat-icon [ngStyle]="{'font-size' : '16px', 'width':'16px', 'height':'16px'}">power_settings_new</mat-icon>
-              Logout
+            <button
+                class="w-100 navbar-profile-logout-button"
+                (click)="logout()"
+            >
+                <mat-icon
+                    [ngStyle]="{
+                        'font-size': '16px',
+                        width: '16px',
+                        height: '16px',
+                    }"
+                    >power_settings_new</mat-icon
+                >
+                Logout
             </button>
         </div>
     </mat-menu>

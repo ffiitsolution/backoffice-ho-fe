@@ -22,28 +22,37 @@ const routes: Routes = [
             },
             {
                 path: 'master',
-                loadChildren: () => import('./views/master/master.module').then((m) => m.MasterModule )
+                loadChildren: () =>
+                    import('./views/master/master.module').then(
+                        (m) => m.MasterModule,
+                    ),
             },
             {
                 path: 'transaction',
-                loadChildren: () => import('./views/transaction/transaction.module').then((m) => m.TransactionModule )
+                loadChildren: () =>
+                    import('./views/transaction/transaction.module').then(
+                        (m) => m.TransactionModule,
+                    ),
             },
             {
                 path: 'report',
-                loadChildren: () => import('./views/report/report.module').then((m) => m.ReportModule )
+                loadChildren: () =>
+                    import('./views/report/report.module').then(
+                        (m) => m.ReportModule,
+                    ),
             },
             {
                 path: '',
                 redirectTo: 'home',
-                pathMatch: 'full'
+                pathMatch: 'full',
             },
-        ]
+        ],
     },
     { path: '**', redirectTo: 'login', pathMatch: 'full' },
 ];
 
 @NgModule({
     imports: [RouterModule.forRoot(routes)],
-    exports: [RouterModule]
+    exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

@@ -8,7 +8,7 @@
     }
     .crud-title {
         font-weight: 500;
-        border-bottom: 4px solid #A62B2B;
+        border-bottom: 4px solid #a62b2b;
     }
 
     .crud-form-container {
@@ -29,27 +29,27 @@
                 > label {
                     font-weight: 500;
                 }
-    
-                input, 
+
+                input,
                 textarea {
                     width: 100%;
                     border-radius: 6px;
-                    border: 1px solid #D0D0D0;
+                    border: 1px solid #d0d0d0;
                     padding: 8px;
                 }
 
-                input:focus, 
-                input:focus-visible, 
+                input:focus,
+                input:focus-visible,
                 textarea:focus,
                 textarea:focus-visible {
-                    outline-color: #D8EAF9 !important;
+                    outline-color: #d8eaf9 !important;
                 }
 
                 .select-form {
                     width: 100%;
                     height: 40px;
                     border-radius: 6px;
-                    border: 1px solid #D0D0D0;
+                    border: 1px solid #d0d0d0;
                     font-size: 14px;
 
                     ::ng-deep .mat-mdc-select-trigger {
@@ -57,13 +57,14 @@
                     }
                 }
 
-                input, select {
+                input,
+                select {
                     height: 40px;
                 }
 
                 textarea {
                     height: 100%;
-                } 
+                }
             }
         }
     }
@@ -85,13 +86,13 @@
         padding: 8px !important;
         height: 100% !important;
     }
-    
+
     ::ng-deep .mat-pseudo-checkbox {
         display: none !important;
     }
 }
 
-::ng-deep div.mat-mdc-select-panel{
+::ng-deep div.mat-mdc-select-panel {
     background-color: #fff !important;
     box-shadow: 6px 8px 20px 2px rgba(0, 0, 0, 0.29) !important;
     z-index: 1 !important;
@@ -105,21 +106,20 @@
 
 ::ng-deep .mat-mdc-dialog-surface {
     background-color: #fff !important;
-    box-shadow: 10px 7px 16px -4px rgba(0,0,0,0.48);
+    box-shadow: 10px 7px 16px -4px rgba(0, 0, 0, 0.48);
 }
 
-::ng-deep .mat-mdc-option-active.mdc-list-item.mdc-list-item--selected{
-    background-color: #C8E4F9 !important;
+::ng-deep .mat-mdc-option-active.mdc-list-item.mdc-list-item--selected {
+    background-color: #c8e4f9 !important;
 }
 
 ::ng-deep .mat-mdc-option-active.mdc-list-item {
     background-color: transparent !important;
 }
 
-
 ::ng-deep .mat-mdc-option:hover:not(.mdc-list-item--disabled),
-::ng-deep .mat-mdc-option:hover:not(.mdc-list-item--selected){
-    background-color: #DAEDFB !important;
+::ng-deep .mat-mdc-option:hover:not(.mdc-list-item--selected) {
+    background-color: #daedfb !important;
 }
 
 ::ng-deep .mat-mdc-button-base {

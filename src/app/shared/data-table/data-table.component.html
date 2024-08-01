@@ -1,26 +1,37 @@
 <div class="data-table-content">
-  <ng-container *ngIf="tabMenus">
-    <div class="tab-menu-container">
-      <ng-container *ngFor="let tabItem of tabMenus">
-        <div class="tab-menu-item" (click)="changeTab(tabItem.route)" [class.active]="tabItem.route === activeTabRoute">
-          <span>{{ tabItem.tabMenuName }}</span>
+    <ng-container *ngIf="tabMenus">
+        <div class="tab-menu-container">
+            <ng-container *ngFor="let tabItem of tabMenus">
+                <div
+                    class="tab-menu-item"
+                    (click)="changeTab(tabItem.route)"
+                    [class.active]="tabItem.route === activeTabRoute"
+                >
+                    <span>{{ tabItem.tabMenuName }}</span>
+                </div>
+            </ng-container>
         </div>
-      </ng-container>
-
-    </div>
-  </ng-container>
+    </ng-container>
 
     <div class="data-table-wrapper">
         <div class="data-header-container">
             <span>{{ headerTitle }}</span>
 
             <div class="button-data-head-container">
-                <button mat-button class="head-table-button filter-data-button" (click)="openFilter()">
+                <button
+                    mat-button
+                    class="head-table-button filter-data-button"
+                    (click)="openFilter()"
+                >
                     <i class="fa fa-filter"></i>
                     Filter
                 </button>
 
-                <button mat-button class="head-table-button add-data-button" (click)="dialogAddNewData()">
+                <button
+                    mat-button
+                    class="head-table-button add-data-button"
+                    (click)="dialogAddNewData()"
+                >
                     <i class="fa fa-plus"></i>
                     New Data
                 </button>
@@ -43,7 +54,12 @@
                     </div>
                 </ng-container>
 
-                <ng-container *ngIf="menuTable == 'outlet'|| menuTable == 'payment-method-limit'">
+                <ng-container
+                    *ngIf="
+                        menuTable == 'outlet' ||
+                        menuTable == 'payment-method-limit'
+                    "
+                >
                     <div class="filter-field">
                         <mat-label for="condition">Region Code</mat-label>
                         <ng-select
@@ -71,7 +87,7 @@
                     </div>
 
                     <div class="filter-field">
-                        <mat-label for="condition">Area  Code</mat-label>
+                        <mat-label for="condition">Area Code</mat-label>
                         <ng-select
                             class="select-filter"
                             [items]="areaCodes"
@@ -91,7 +107,8 @@
                             [items]="orderTypeList"
                             bindLabel="code"
                             [(ngModel)]="selectedOrderType"
-                            (ngModelChange)="onFilterChange()">
+                            (ngModelChange)="onFilterChange()"
+                        >
                         </ng-select>
                     </div>
                 </ng-container>
@@ -100,32 +117,67 @@
                     <div class="filter-field">
                         <mat-label for="pickerDateRange">Date</mat-label>
                         <mat-form-field>
-                            <mat-date-range-input [formGroup]="selectedDateRange" [rangePicker]="pickerDateRange" disabled>
-                                <input matStartDate formControlName="start" placeholder="Start date">
-                                <input matEndDate formControlName="end" placeholder="End date">
+                            <mat-date-range-input
+                                [formGroup]="selectedDateRange"
+                                [rangePicker]="pickerDateRange"
+                                disabled
+                            >
+                                <input
+                                    matStartDate
+                                    formControlName="start"
+                                    placeholder="Start date"
+                                />
+                                <input
+                                    matEndDate
+                                    formControlName="end"
+                                    placeholder="End date"
+                                />
                             </mat-date-range-input>
-                            
-                            <mat-datepicker-toggle matIconSuffix [for]="pickerDateRange" disabled="false"></mat-datepicker-toggle>
-                            <mat-date-range-picker #pickerDateRange disabled="false"></mat-date-range-picker>
-                            @if (selectedDateRange.controls.start.hasError('matStartDateInvalid')) {
+
+                            <mat-datepicker-toggle
+                                matIconSuffix
+                                [for]="pickerDateRange"
+                                disabled="false"
+                            ></mat-datepicker-toggle>
+                            <mat-date-range-picker
+                                #pickerDateRange
+                                disabled="false"
+                            ></mat-date-range-picker>
+                            @if (
+                                selectedDateRange.controls.start.hasError(
+                                    'matStartDateInvalid'
+                                )
+                            ) {
                                 <mat-error>Invalid start date</mat-error>
                             }
-                            @if (selectedDateRange.controls.end.hasError('matEndDateInvalid')) {
+                            @if (
+                                selectedDateRange.controls.end.hasError(
+                                    'matEndDateInvalid'
+                                )
+                            ) {
                                 <mat-error>Invalid end date</mat-error>
                             }
                         </mat-form-field>
                     </div>
                 </ng-container>
 
-                <ng-container *ngIf="menuTable == 'payment-method' || menuTable == 'payment-method-limit'">
+                <ng-container
+                    *ngIf="
+                        menuTable == 'payment-method' ||
+                        menuTable == 'payment-method-limit'
+                    "
+                >
                     <div class="filter-field">
-                        <mat-label for="status">Payment Method Code</mat-label>
-                        <ng-select 
-                            class="select-filter" 
-                            [items]="paymentMethodCodeList" 
-                            bindLabel="code" 
+                        <mat-label for="status"
+                            >Payment Method Code</mat-label
+                        >
+                        <ng-select
+                            class="select-filter"
+                            [items]="paymentMethodCodeList"
+                            bindLabel="code"
                             [(ngModel)]="selectPaymentMethodCode"
-                            (ngModelChange)="onFilterChange()">
+                            (ngModelChange)="onFilterChange()"
+                        >
                         </ng-select>
                     </div>
                 </ng-container>
@@ -133,16 +185,17 @@
                 <ng-container *ngIf="menuTable == 'payment-method'">
                     <div class="filter-field">
                         <mat-label for="status">Payment Type Code</mat-label>
-                        <ng-select 
-                            class="select-filter" 
-                            [items]="paymentTypeCodeList" 
-                            bindLabel="code" 
+                        <ng-select
+                            class="select-filter"
+                            [items]="paymentTypeCodeList"
+                            bindLabel="code"
                             [(ngModel)]="selectPaymentTypeCode"
-                            (ngModelChange)="onFilterChange()">
+                            (ngModelChange)="onFilterChange()"
+                        >
                         </ng-select>
                     </div>
                 </ng-container>
-                
+
                 <ng-container *ngIf="menuTable != 'payment-method-limit'">
                     <div class="filter-field">
                         <mat-label for="status">Status</mat-label>
@@ -151,11 +204,11 @@
                             [items]="statusList"
                             bindLabel="name"
                             [(ngModel)]="selectedStatus"
-                            (ngModelChange)="onFilterChange()">
+                            (ngModelChange)="onFilterChange()"
+                        >
                         </ng-select>
                     </div>
                 </ng-container>
-
             </div>
         </ng-container>
 
@@ -165,8 +218,8 @@
                 [dtOptions]="dtOptions"
                 [dtTrigger]="dtTrigger"
                 (page.dt)="dtPageChange($event)"
-                class="row-border hover">
-            </table>
+                class="row-border hover"
+            ></table>
         </div>
     </div>
 </div>

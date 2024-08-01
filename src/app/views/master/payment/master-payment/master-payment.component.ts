@@ -4,18 +4,17 @@ import { tabPayment } from '../../../../helper/tab-menu.helper';
 @Component({
     selector: 'app-master-payment',
     templateUrl: 'master-payment.component.html',
-    styleUrls: ['master-payment.component.scss']
+    styleUrls: ['master-payment.component.scss'],
 })
-
 export class MasterPaymentComponent implements OnInit {
-    tabMenus: { tabMenuName: string; route: string; }[] = tabPayment;
+    tabMenus: { tabMenuName: string; route: string }[] = tabPayment;
     headerTitle: string = '';
     menuTable: string = '';
     apiUrl: string = '';
     renderColumns: {};
     setOrderBy: any;
 
-    constructor() { }
+    constructor() {}
 
     ngOnInit() {
         this.headerTitle = 'Master Data Payment';
@@ -26,17 +25,51 @@ export class MasterPaymentComponent implements OnInit {
     }
 
     renderColumn() {
-        this.renderColumns =  [
-            { data: 'dtIndex', title: '#', orderable: false, searchable: false },
-            { data: 'paymentId', title: 'ID', orderable: true, searchable: true },
-            { data: 'paymentName', title: 'NAME', orderable: true, searchable: true },
-            { data: 'paymentAmount', title: 'AMOUNT', orderable: true, searchable: true },
-            { data: 'paymentType', title: 'TYPE', orderable: true, searchable: true },
-            { data: 'platinumId', title: 'PLATINUM ID',orderable: true,searchable: true },
-            { data: 'paymentStatus', title: 'STATUS', orderable: true, searchable: true,
+        this.renderColumns = [
+            {
+                data: 'dtIndex',
+                title: '#',
+                orderable: false,
+                searchable: false,
+            },
+            {
+                data: 'paymentId',
+                title: 'ID',
+                orderable: true,
+                searchable: true,
+            },
+            {
+                data: 'paymentName',
+                title: 'NAME',
+                orderable: true,
+                searchable: true,
+            },
+            {
+                data: 'paymentAmount',
+                title: 'AMOUNT',
+                orderable: true,
+                searchable: true,
+            },
+            {
+                data: 'paymentType',
+                title: 'TYPE',
+                orderable: true,
+                searchable: true,
+            },
+            {
+                data: 'platinumId',
+                title: 'PLATINUM ID',
+                orderable: true,
+                searchable: true,
+            },
+            {
+                data: 'paymentStatus',
+                title: 'STATUS',
+                orderable: true,
+                searchable: true,
                 render: (data: any, type: any, row: any) => {
-                const statusText = data === 'I' ? 'Inactive' : 'Active';
-                return `
+                    const statusText = data === 'I' ? 'Inactive' : 'Active';
+                    return `
                     <div class="badge-status badge-status__${data}">
                         ${statusText}
                     </div>
@@ -56,8 +89,8 @@ export class MasterPaymentComponent implements OnInit {
                         <button class="action-button"><i class="fa fa-power-off"></i> Inactive</button>
                         </div>
                     </div>
-                    `
-                    let actionBtn =  `
+                    `;
+                    let actionBtn = `
                         <div class="dropdown-action">
                             <button class="dropbtn">Action <i class="fa fa-caret-down" aria-hidden="true"></i></button>
                             <div class="dropdown-content">
@@ -67,24 +100,24 @@ export class MasterPaymentComponent implements OnInit {
                         actionBtn += `
                             <button class="action-button action-activate"><i class="fa fa-power-off"></i> Activate</button>
                             </div>
-                        </div>`
+                        </div>`;
                     } else {
                         actionBtn += `
                             <button class="action-button action-inactive"><i class="fa fa-power-off"></i> Inactive</button>
                             </div>
-                        </div>`
+                        </div>`;
                     }
-                    
+
                     return actionBtn;
                 },
-            }
-        ]
+            },
+        ];
     }
 
     orderBy() {
-        this.setOrderBy =  [
+        this.setOrderBy = [
             [6, 'asc'],
-            [1, 'asc']
+            [1, 'asc'],
         ];
     }
 }

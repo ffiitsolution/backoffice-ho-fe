@@ -55,13 +55,13 @@
 //     &.success {
 //         color: $success !important;
 //     }
-    
+
 //     &.warning {
-//         color: $warning !important;    
+//         color: $warning !important;
 //     }
-    
+
 //     &.danger {
-//         color: $danger !important;    
+//         color: $danger !important;
 //     }
 // }
 
@@ -75,16 +75,15 @@
 //     &.success {
 //         color: $success !important;
 //     }
-    
+
 //     &.warning {
-//         color: $warning !important;    
+//         color: $warning !important;
 //     }
-    
+
 //     &.danger {
-//         color: $danger !important;    
+//         color: $danger !important;
 //     }
 // }
-
 
 // .primary {
 //     background-color: $primary;
@@ -133,62 +132,122 @@
 @import '../../../styles/variables.scss';
 
 .button-app {
-  transition: background-color .15s ease, border-color .15s ease, color .15s ease, opacity .15s ease, all .5s ease;
-  align-items: center;
-  background: transparent;
-  display: inline-flex;
-  flex: none;
-  flex-direction: row;
-  justify-content: center;
-  letter-spacing: .25px;
-  line-height: normal;
-  position: relative;
-  text-align: center;
-  text-decoration: none;
-  user-select: none;
-  appearance: button;
-  cursor: pointer;
-  outline: none;
-  width: 100%;
+    transition:
+        background-color 0.15s ease,
+        border-color 0.15s ease,
+        color 0.15s ease,
+        opacity 0.15s ease,
+        all 0.5s ease;
+    align-items: center;
+    background: transparent;
+    display: inline-flex;
+    flex: none;
+    flex-direction: row;
+    justify-content: center;
+    letter-spacing: 0.25px;
+    line-height: normal;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    appearance: button;
+    cursor: pointer;
+    outline: none;
+    width: 100%;
 }
 
-.small  { font-size: 12px; padding: 9px 26.6px; min-height: 29px; }
-.medium { font-size: 14px; padding: 8.4px 30.8px; min-height: 34px; }
-.large  { font-size: 16px; padding: 9.4px 38.2px; min-height: 39px; }
+.small {
+    font-size: 12px;
+    padding: 9px 26.6px;
+    min-height: 29px;
+}
+.medium {
+    font-size: 14px;
+    padding: 8.4px 30.8px;
+    min-height: 34px;
+}
+.large {
+    font-size: 16px;
+    padding: 9.4px 38.2px;
+    min-height: 39px;
+}
 
 .inline {
-  padding: 0;
-  min-height: 0;
-  background-color: transparent !important;
-  border: 0 !important;
+    padding: 0;
+    min-height: 0;
+    background-color: transparent !important;
+    border: 0 !important;
 
-  &.primary { color: $primary !important; }
-  &.success { color: $success !important; }
-  &.warning { color: $warning !important; }
-  &.danger  { color: $danger !important; }
+    &.primary {
+        color: $primary !important;
+    }
+    &.success {
+        color: $success !important;
+    }
+    &.warning {
+        color: $warning !important;
+    }
+    &.danger {
+        color: $danger !important;
+    }
 }
 
 .outlined {
-  background-color: transparent !important;
+    background-color: transparent !important;
 
-  &.primary { color: $primary !important; }
-  &.success { color: $success !important; }
-  &.warning { color: $warning !important; }
-  &.danger  { color: $danger !important; }
+    &.primary {
+        color: $primary !important;
+    }
+    &.success {
+        color: $success !important;
+    }
+    &.warning {
+        color: $warning !important;
+    }
+    &.danger {
+        color: $danger !important;
+    }
 }
 
-.primary, .success, .warning, .danger {
-  border: 1px solid;
-  color: #fff;
+.primary,
+.success,
+.warning,
+.danger {
+    border: 1px solid;
+    color: #fff;
 
-  &:hover {
-    background-color: transparent !important;
-  }
+    &:hover {
+        background-color: transparent !important;
+    }
 
-  &.primary { background-color: $primary; border-color: $primary; &:hover { color: $primary; } }
-  &.success { background-color: $success; border-color: $success; &:hover { color: $success; } }
-  &.warning { background-color: $warning; border-color: $warning; &:hover { color: $warning; } }
-  &.danger  { background-color: $danger; border-color: $danger; &:hover { color: $danger; } }
+    &.primary {
+        background-color: $primary;
+        border-color: $primary;
+        &:hover {
+            color: $primary;
+        }
+    }
+    &.success {
+        background-color: $success;
+        border-color: $success;
+        &:hover {
+            color: $success;
+        }
+    }
+    &.warning {
+        background-color: $warning;
+        border-color: $warning;
+        &:hover {
+            color: $warning;
+        }
+    }
+    &.danger {
+        background-color: $danger;
+        border-color: $danger;
+        &:hover {
+            color: $danger;
+        }
+    }
 }
 
 .disabled {

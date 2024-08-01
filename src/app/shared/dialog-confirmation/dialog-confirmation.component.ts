@@ -6,16 +6,15 @@ import { MESSAGES } from '../../helper/message.helper';
     selector: 'app-dialog-confirmation',
     templateUrl: 'dialog-confirmation.component.html',
     styleUrls: ['dialog-confirmation.component.scss'],
-    encapsulation: ViewEncapsulation.Emulated
+    encapsulation: ViewEncapsulation.Emulated,
 })
-
 export class DialogConfirmationComponent implements OnInit {
     messageConfirmation: string = '';
 
     constructor(
-        public dialogRef: MatDialogRef<DialogConfirmationComponent>, 
-        @Inject(MAT_DIALOG_DATA) public data: any
-    ) { }
+        public dialogRef: MatDialogRef<DialogConfirmationComponent>,
+        @Inject(MAT_DIALOG_DATA) public data: any,
+    ) {}
 
     ngOnInit() {
         this.getMessage();
@@ -23,9 +22,11 @@ export class DialogConfirmationComponent implements OnInit {
 
     getMessage() {
         if (this.data.status == 'inactive') {
-            this.messageConfirmation = MESSAGES.INACTIVE_CONFRIMATION_MESSAGE_EN;
+            this.messageConfirmation =
+                MESSAGES.INACTIVE_CONFRIMATION_MESSAGE_EN;
         } else if (this.data.status == 'activate') {
-            this.messageConfirmation = MESSAGES.ACTIVATE_CONFRIMATION_MESSAGE_EN;
+            this.messageConfirmation =
+                MESSAGES.ACTIVATE_CONFRIMATION_MESSAGE_EN;
         }
     }
 

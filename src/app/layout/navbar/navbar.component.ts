@@ -7,21 +7,20 @@ import { AppService } from '../../services/app.service';
     selector: 'app-navbar',
     templateUrl: 'navbar.component.html',
     styleUrls: ['navbar.component.scss'],
-    encapsulation: ViewEncapsulation.Emulated
+    encapsulation: ViewEncapsulation.Emulated,
 })
-
 export class NavbarComponent implements OnInit {
     constructor(
         private authService: AuthService,
         public service: AppService,
-        private router: Router
-    ) { }
+        private router: Router,
+    ) {}
 
     dataUser: any;
 
     ngOnInit() {
-      this.dataUser = JSON.parse(localStorage.getItem('hq_user') ?? '');
-     }
+        this.dataUser = JSON.parse(localStorage.getItem('hq_user') ?? '');
+    }
 
     logout() {
         this.authService.doLogout();

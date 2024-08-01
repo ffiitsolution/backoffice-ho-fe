@@ -1,27 +1,32 @@
 <form [formGroup]="form" class="form-content" #formRef="ngForm">
     <div class="form-item">
         <label for="rcode">Recipe Code</label>
-        <input 
-            id="rcode" 
-            formControlName="rcode" 
-            type="text" 
+        <input
+            id="rcode"
+            formControlName="rcode"
+            type="text"
             (keypress)="onChangeInput($event, 'alphanumeric')"
         />
     </div>
 
     <div class="form-item">
         <label for="rremark">Recipe Remark</label>
-        <input id="rremark" formControlName="rremark">
+        <input id="rremark" formControlName="rremark" />
     </div>
 
     <div class="form-item">
         <label for="mpcsGroup">MPCS Group</label>
-        <input id="mpcsGroup" formControlName="mpcsGroup">
+        <input id="mpcsGroup" formControlName="mpcsGroup" />
     </div>
 
     <div class="form-item">
         <mat-label for="status">Status</mat-label>
-        <mat-select class="select-form" id="status" name="status" formControlName="status">
+        <mat-select
+            class="select-form"
+            id="status"
+            name="status"
+            formControlName="status"
+        >
             <mat-option class="test" value="A">Active</mat-option>
             <mat-option value="I">Inactive</mat-option>
         </mat-select>

@@ -5,22 +5,54 @@
                 <div style="width: fit-content">
                     <div class="card login-container p-2">
                         <div class="card-body">
-                            <div class="d-flex flex-column align-items-center custom-margin">
-                                <div class="logo-container text-center d-flex align-items-center justify-content-center disable-selection mb-3">
-                                  <img src="/assets/img/brand/logo_kfc.png" class="img-fluid mx-auto d-block"
-                                      style="max-width: 50%;" alt="LOGO KFC" draggable="false">
-                                    <img src="/assets/img/jagonya_ayam.png" class="mx-auto d-block"
-                                        style="max-width: 50%;" alt="JAGONYA AYAM KFC" draggable="false">
+                            <div
+                                class="d-flex flex-column align-items-center custom-margin"
+                            >
+                                <div
+                                    class="logo-container text-center d-flex align-items-center justify-content-center disable-selection mb-3"
+                                >
+                                    <img
+                                        src="/assets/img/brand/logo_kfc.png"
+                                        class="img-fluid mx-auto d-block"
+                                        style="max-width: 50%"
+                                        alt="LOGO KFC"
+                                        draggable="false"
+                                    />
+                                    <img
+                                        src="/assets/img/jagonya_ayam.png"
+                                        class="mx-auto d-block"
+                                        style="max-width: 50%"
+                                        alt="JAGONYA AYAM KFC"
+                                        draggable="false"
+                                    />
                                 </div>
 
-                                <span class="text-center mb-3 fw-semibold title">{{ appSubtitle }} - {{ appTitle }}</span>
+                                <span
+                                    class="text-center mb-3 fw-semibold title"
+                                    >{{ appSubtitle }} - {{ appTitle }}</span
+                                >
 
-                                <div *ngIf="errorMessage" class="box-error-message">
-                                    <p class="text-danger" style="text-align:center;"> {{ errorMessage}}</p>
+                                <div
+                                    *ngIf="errorMessage"
+                                    class="box-error-message"
+                                >
+                                    <p
+                                        class="text-danger"
+                                        style="text-align: center"
+                                    >
+                                        {{ errorMessage }}
+                                    </p>
                                 </div>
 
-                                <form [formGroup]="loginForm" class="d-flex flex-column w-100 mb-4">
-                                    <mat-form-field appearance="outline" style="margin-bottom: 8px;" class="custom-border-color">
+                                <form
+                                    [formGroup]="loginForm"
+                                    class="d-flex flex-column w-100 mb-4"
+                                >
+                                    <mat-form-field
+                                        appearance="outline"
+                                        style="margin-bottom: 8px"
+                                        class="custom-border-color"
+                                    >
                                         <mat-label>Username</mat-label>
                                         <input
                                             matInput
@@ -36,17 +68,35 @@
                                             class="button-pass"
                                             disabled
                                         >
-                                            <mat-icon [ngStyle]="{'color':'#9E9E9E'}">account_circle</mat-icon>
+                                            <mat-icon
+                                                [ngStyle]="{
+                                                    color: '#9E9E9E',
+                                                }"
+                                                >account_circle</mat-icon
+                                            >
                                         </button>
-                                        <mat-error *ngIf="loginForm.controls['username'].hasError('required')">You must enter a value</mat-error>
+                                        <mat-error
+                                            *ngIf="
+                                                loginForm.controls[
+                                                    'username'
+                                                ].hasError('required')
+                                            "
+                                            >You must enter a
+                                            value</mat-error
+                                        >
                                     </mat-form-field>
 
-                                    <mat-form-field appearance="outline" style="margin-bottom: 8px;">
+                                    <mat-form-field
+                                        appearance="outline"
+                                        style="margin-bottom: 8px"
+                                    >
                                         <mat-label>Password</mat-label>
                                         <input
                                             matInput
                                             #passwordInput
-                                            [type]="hide() ? 'password' : 'text'"
+                                            [type]="
+                                                hide() ? 'password' : 'text'
+                                            "
                                             formControlName="password"
                                             name="password"
                                             required
@@ -56,27 +106,53 @@
                                             mat-icon-button
                                             matSuffix
                                             (click)="clickEvent($event)"
-                                            [attr.aria-label]="'Hide password'"
+                                            [attr.aria-label]="
+                                                'Hide password'
+                                            "
                                             [attr.aria-pressed]="hide()"
                                             class="button-pass"
                                         >
-                                            <mat-icon [ngStyle]="{'color':'#9E9E9E'}">{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                            <mat-icon
+                                                [ngStyle]="{
+                                                    color: '#9E9E9E',
+                                                }"
+                                                >{{
+                                                    hide()
+                                                        ? 'visibility_off'
+                                                        : 'visibility'
+                                                }}</mat-icon
+                                            >
                                         </button>
-                                        <mat-error *ngIf="loginForm.controls['password'].hasError('required')">You must enter a value</mat-error>
+                                        <mat-error
+                                            *ngIf="
+                                                loginForm.controls[
+                                                    'password'
+                                                ].hasError('required')
+                                            "
+                                            >You must enter a
+                                            value</mat-error
+                                        >
                                     </mat-form-field>
                                     <app-button
                                         shape="brick"
                                         size="large"
                                         color="danger"
-                                        [loading]='isLoading'
+                                        [loading]="isLoading"
                                         (action)="onSubmit()"
                                     >
                                         Login
                                     </app-button>
                                 </form>
 
-                                <p class="text-medium-emphasis footer-version">IT Department PT.Fast Food
-                                    Indonesia, Tbk. <br> Version {{ appSvc.versionFe }} at {{year}} </p>
+                                <p
+                                    class="text-medium-emphasis footer-version"
+                                >
+                                    IT Department PT.Fast Food Indonesia,
+                                    Tbk.
+                                    <br />
+                                    Version {{ appSvc.versionFe }} at
+                                    {{ year }}
+                                </p>
                             </div>
                         </div>
                     </div>

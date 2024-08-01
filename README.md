@@ -27,6 +27,7 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
 
 ## Code Standard for Engineer
+
     + Use 4 for spaces tab
     + Reusable components can be stored in the shared folder
     + If want to uninstall package, let's do this after npm uninstall(avoid redundant package):

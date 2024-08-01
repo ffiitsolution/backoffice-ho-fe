@@ -1,13 +1,17 @@
-import { AfterViewInit, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import {
+    AfterViewInit,
+    ChangeDetectorRef,
+    Component,
+    OnInit,
+} from '@angular/core';
 import { Subject, takeUntil, tap } from 'rxjs';
 import { tabMenu } from '../../../helper/tab-menu.helper';
 
 @Component({
     selector: 'app-menu-set',
     templateUrl: 'menu-set.component.html',
-    styleUrls: ['menu-set.component.scss']
+    styleUrls: ['menu-set.component.scss'],
 })
-
 export class MenuSetComponent implements OnInit {
     headerTitle: string = '';
     apiUrl: string = '';
@@ -18,11 +22,9 @@ export class MenuSetComponent implements OnInit {
     renderColumns: any;
     setOrderBy: any;
     onDestroy$ = new Subject<void>();
-    tabMenus: { tabMenuName: string; route: string; }[] = tabMenu;
+    tabMenus: { tabMenuName: string; route: string }[] = tabMenu;
 
-    constructor(
-        private cdr: ChangeDetectorRef
-    ) { }
+    constructor(private cdr: ChangeDetectorRef) {}
 
     ngOnInit() {
         this.headerTitle = 'Master Data Menu Set';
@@ -35,76 +37,127 @@ export class MenuSetComponent implements OnInit {
         this.orderBy();
     }
 
-    getFilter() {
-
-    }
+    getFilter() {}
 
     // :regionCode, :outletCode, :menuSetCode, :menuSetItemCode, :seq, :qty, :modifierGroupCode, :status, :userUpd, :dateUpd, :timeUpd
     renderColumn() {
-    this.renderColumns = [
-        { data: 'dtIndex', title: '#', orderable: false, searchable: false },
-        { data: 'regionCode', title: 'REGION CODE', orderable: true, searchable: true },
-        { data: 'outletCode', title: 'OUTLET CODE', orderable: true, searchable: true },
-        { data: 'menuSetCode', title: 'MENU SET CODE', orderable: true, searchable: true },
-        { data: 'menuSetItemCode', title: 'ITEM CODE', orderable: true, searchable: true },
-        { data: 'seq', title: 'SEQ', orderable: true, searchable: true },
-        { data: 'qty', title: 'QTY', orderable: true, searchable: true },
-        { data: 'modifierGroupCode', title: 'MODIFIER GROUP CODE', orderable: true, searchable: true },
-        {
-          data: 'status',
-          title: 'STATUS',
-          orderable: true,
-          searchable: true,
-          render: (data: any, type: any, row: any) => {
-            const statusText = data === 'A' ? 'Active' :  (data === 'I' ? 'Inactive' : '-');
-            return `
+        this.renderColumns = [
+            {
+                data: 'dtIndex',
+                title: '#',
+                orderable: false,
+                searchable: false,
+            },
+            {
+                data: 'regionCode',
+                title: 'REGION CODE',
+                orderable: true,
+                searchable: true,
+            },
+            {
+                data: 'outletCode',
+                title: 'OUTLET CODE',
+                orderable: true,
+                searchable: true,
+            },
+            {
+                data: 'menuSetCode',
+                title: 'MENU SET CODE',
+                orderable: true,
+                searchable: true,
+            },
+            {
+                data: 'menuSetItemCode',
+                title: 'ITEM CODE',
+                orderable: true,
+                searchable: true,
+            },
+            { data: 'seq', title: 'SEQ', orderable: true, searchable: true },
+            { data: 'qty', title: 'QTY', orderable: true, searchable: true },
+            {
+                data: 'modifierGroupCode',
+                title: 'MODIFIER GROUP CODE',
+                orderable: true,
+                searchable: true,
+            },
+            {
+                data: 'status',
+                title: 'STATUS',
+                orderable: true,
+                searchable: true,
+                render: (data: any, type: any, row: any) => {
+                    const statusText =
+                        data === 'A'
+                            ? 'Active'
+                            : data === 'I'
+                              ? 'Inactive'
+                              : '-';
+                    return `
               <div class="badge-status badge-status__${data}">
                   ${statusText}
               </div>
             `;
-          },
-        },
-        { data: 'userUpd', title: 'USER UPD', orderable: true, searchable: true },
-        { data: 'dateUpd', title: 'DATE UPD', orderable: true, searchable: true },
-        { data: 'timeUpd', title: 'TIME UPD', orderable: true, searchable: true },
-        {
-          data: 'status',
-          title: 'ACTIONS',
-          orderable: false,
-          searchable: false,
-          render: (data: any, type: any, row: any) => {
-            ` <div class="dropdown-action">
+                },
+            },
+            {
+                data: 'userUpd',
+                title: 'USER UPD',
+                orderable: true,
+                searchable: true,
+            },
+            {
+                data: 'dateUpd',
+                title: 'DATE UPD',
+                orderable: true,
+                searchable: true,
+            },
+            {
+                data: 'timeUpd',
+                title: 'TIME UPD',
+                orderable: true,
+                searchable: true,
+            },
+            {
+                data: 'status',
+                title: 'ACTIONS',
+                orderable: false,
+                searchable: false,
+                render: (data: any, type: any, row: any) => {
+                    ` <div class="dropdown-action">
                 <button class="dropbtn">Action <i class="fa fa-caret-down" aria-hidden="true"></i></button>
                 <div class="dropdown-content">
                   <button class="action-button action-edit"><i class="fa fa-pencil"></i> Edit</button>
                   <button class="action-button"><i class="fa fa-power-off"></i> Inactive</button>
                 </div>
               </div>
-            `
-            let actionBtn =  `
+            `;
+                    let actionBtn = `
               <div class="dropdown-action">
                 <button class="dropbtn">Action <i class="fa fa-caret-down" aria-hidden="true"></i></button>
                 <div class="dropdown-content">
                   <button class="action-button action-edit"><i class="fa fa-pencil"></i> Edit</button>
             `;
-            if (data == 'I') {
-              actionBtn += `
+                    if (data == 'I') {
+                        actionBtn += `
                   <button class="action-button action-activate"><i class="fa fa-power-off"></i> Activate</button>
                 </div>
-              </div>`
-            } else {
-              actionBtn += `
+              </div>`;
+                    } else {
+                        actionBtn += `
                   <button class="action-button action-inactive"><i class="fa fa-power-off"></i> Inactive</button>
                 </div>
-              </div>`
-            }
-            return actionBtn;
-          },
-        }
-      ]
+              </div>`;
+                    }
+                    return actionBtn;
+                },
+            },
+        ];
     }
 
     orderBy() {
-      this.setOrderBy =  [[8, 'asc'],[1, 'asc']];
+        this.setOrderBy = [
+            [8, 'asc'],
+            [1, 'asc'],
+        ];
     }
 }

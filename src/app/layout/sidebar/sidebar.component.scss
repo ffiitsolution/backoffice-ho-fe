@@ -2,7 +2,7 @@
     display: block;
     margin: 10px 0px;
     padding-left: 20px;
-    color: #B9B9B9;
+    color: #b9b9b9;
     font-weight: 600;
     font-size: 14px;
 }
@@ -12,13 +12,13 @@
     max-height: 583px;
     overflow: auto;
     scrollbar-width: thin; /* Firefox */
-    scrollbar-color: #A66969 transparent; /* Firefox */
+    scrollbar-color: #a66969 transparent; /* Firefox */
 }
 
 /* WebKit Browsers */
 .sidebar-list::-webkit-scrollbar {
     width: 12px;
-    background-color: #F5F5F5;
+    background-color: #f5f5f5;
 }
 
 .sidebar-list::-webkit-scrollbar-thumb {

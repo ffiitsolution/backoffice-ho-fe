@@ -1,4 +1,11 @@
-import { Component, ElementRef, OnInit, signal, ViewChild, ViewEncapsulation } from '@angular/core';
+import {
+    Component,
+    ElementRef,
+    OnInit,
+    signal,
+    ViewChild,
+    ViewEncapsulation,
+} from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { finalize } from 'rxjs';
@@ -11,9 +18,8 @@ import { AppService } from '../../../services/app.service';
     selector: 'app-login',
     templateUrl: 'login.component.html',
     styleUrls: ['login.component.scss'],
-    encapsulation: ViewEncapsulation.Emulated
+    encapsulation: ViewEncapsulation.Emulated,
 })
-
 export class LoginComponent implements OnInit {
     @ViewChild('passwordInput') passwordInput!: ElementRef;
     appTitle = AppConfig.settings.applicationTitle;
@@ -32,9 +38,9 @@ export class LoginComponent implements OnInit {
     });
 
     constructor(
-      private authSvc: AuthService,
-      public appSvc: AppService,
-    ) { }
+        private authSvc: AuthService,
+        public appSvc: AppService,
+    ) {}
 
     ngOnInit() {
         this.year = new Date().getFullYear();
@@ -46,30 +52,32 @@ export class LoginComponent implements OnInit {
         event.stopPropagation();
     }
 
-    toPassword(){
+    toPassword() {
         this.passwordInput?.nativeElement?.focus();
     }
 
-    onSubmit(){
-        if(this.loginForm.valid) {
+    onSubmit() {
+        if (this.loginForm.valid) {
             this.isLoading = true;
             let params = {
-                staffCode : this.loginForm.value.username,
-                password : this.loginForm.value.password,
-                versionFe : this.appSvc.versionFe
-            }
-            this.authSvc.doLogin(params)
-            .pipe(
-                finalize(() => this.isLoading = false))
-                .subscribe(response => {
+                staffCode: this.loginForm.value.username,
+                password: this.loginForm.value.password,
+                versionFe: this.appSvc.versionFe,
+            };
+            this.authSvc
+                .doLogin(params)
+                .pipe(finalize(() => (this.isLoading = false)))
+                .subscribe((response) => {
                     const success = response?.success || false;
                     if (success) {
                         const user = response?.data?.user;
                         this.authSvc.setUser(user);
-                        localStorage.setItem('hq_token', response?.data?.token);
+                        localStorage.setItem(
+                            'hq_token',
+                            response?.data?.token,
+                        );
                     }
-                }
-            );
+                });
         }
     }
 }
