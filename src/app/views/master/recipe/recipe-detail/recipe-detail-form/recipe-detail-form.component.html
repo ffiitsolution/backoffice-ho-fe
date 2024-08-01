@@ -1,0 +1,64 @@
+<form [formGroup]="form" class="form-content" #formRef="ngForm">
+    <div class="form-item">
+        <label for="rcode">Recipe Code</label>
+        <input 
+            id="rcode" 
+            formControlName="rcode" 
+            type="text" 
+            (keypress)="onChangeInput($event, 'alphanumeric')"
+        />
+    </div>
+
+    <div class="form-item">
+        <label for="itemCode">Item Code</label>
+        <input id="itemCode" formControlName="itemCode">
+    </div>
+
+    <div class="form-item">
+        <label for="qtyPurchase">QTY Purchase</label>
+        <input 
+            id="qtyPurchase" 
+            formControlName="qtyPurchase"
+            type="text" 
+            (keypress)="onChangeInput($event, 'numeric')"
+        />
+    </div>
+
+    <div class="form-item">
+        <label for="uomPurchase">UOM Purchase</label>
+        <input 
+            id="uomPurchase" 
+            formControlName="uomPurchase"
+            type="text" 
+            (keypress)="onChangeInput($event, 'aplhabet')"
+        />
+    </div>
+
+    <div class="form-item">
+        <label for="qtyStock">QTY Stock</label>
+        <input 
+            id="qtyStock" 
+            formControlName="qtyStock"
+            type="text" 
+            (keypress)="onChangeInput($event, 'numeric')"
+        />
+    </div>
+
+    <div class="form-item">
+        <label for="uomStock">UOM Stock</label>
+        <input 
+            id="uomStock" 
+            formControlName="uomStock"
+            type="text" 
+            (keypress)="onChangeInput($event, 'alphabet')"
+        />
+    </div>
+
+    <div class="form-item remark">
+        <label for="remark">Remark</label>
+        <textarea 
+            id="remark" 
+            formControlName="remark"
+        ></textarea>
+    </div>
+</form>

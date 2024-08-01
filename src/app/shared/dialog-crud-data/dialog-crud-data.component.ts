@@ -28,9 +28,9 @@ export class DialogCrudDataComponent implements OnInit {
 
     getCrudTitle() {
         if(this.data.crudStatus == 'add') {
-            this.crudTitle = 'Create New Data';
+            this.crudTitle = `Create New Data ${this.transformData(this.data.menuTable)}`;
         } else if (this.data.crudStatus == 'edit') {
-            this.crudTitle = 'Edit Data'
+            this.crudTitle = `Edit Data ${this.transformData(this.data.menuTable)}`
         }
     }
 
@@ -44,5 +44,9 @@ export class DialogCrudDataComponent implements OnInit {
 
     submitForm() {
         this.dialogRef.close(this.dataInput);
+    }
+
+    transformData(data: string): string {
+        return data.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
     }
 }

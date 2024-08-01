@@ -74,6 +74,8 @@ import { RecipeProductComponent } from './views/master/recipe/recipe-product/rec
 import { RecipeHeaderComponent } from './views/master/recipe/recipe-header/recipe-header.component';
 import { RecipeHeaderFormComponent } from './views/master/recipe/recipe-header/recipe-header-form/recipe-header-form.component';
 import { RecipeDetailComponent } from './views/master/recipe/recipe-detail/recipe-detail.component';
+import { RecipeDetailFormComponent } from './views/master/recipe/recipe-detail/recipe-detail-form/recipe-detail-form.component';
+import { RecipeProductFormComponent } from './views/master/recipe/recipe-product/recipe-product-form/recipe-product-form.component';
 
 export function initializeApp(appConfig: AppConfig) {
   return () => appConfig.load();
@@ -118,7 +120,9 @@ export function initializeApp(appConfig: AppConfig) {
         RecipeHeaderFormComponent,
         PaymentMethodLimitFormComponent,
         RecipeDetailComponent,
-        RecipeProductComponent
+        RecipeProductComponent,
+        RecipeDetailFormComponent,
+        RecipeProductFormComponent
     ],
     imports: [
         BrowserModule,

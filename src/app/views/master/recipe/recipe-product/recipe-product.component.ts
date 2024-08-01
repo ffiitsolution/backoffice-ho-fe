@@ -4,14 +4,16 @@ import { tabRecipe } from '../../../../helper/tab-menu.helper';
 @Component({
     selector: 'recipe-product',
     templateUrl: 'recipe-product.component.html',
-    styleUrls: ['../recipe-header.component.scss']
+    styleUrls: ['../recipe.component.scss']
 })
 
 export class RecipeProductComponent implements OnInit {
     tabMenus: { tabMenuName: string; route: string; }[] = tabRecipe;
     headerTitle: string = 'Master Recipe Product';
     apiUrl: string = '/recipe-product/dt';
-    menuTable: string = 'master-product';
+    apiInsertUrl = '/master/recipe-product/insert';
+    apiUpdateUrl = '/master/recipe-product/update';
+    menuTable: string = 'master-recipe-product';
     renderColumns: any;
     condList: any;
     setOrderBy: any;
