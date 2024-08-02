@@ -16,19 +16,27 @@ export const tabRecipe = [
 export const tabMenu = [
     {
         tabMenuName: 'Menu Item',
-        route: '/master/menu-item',
+        route: '/master/menu/menu-item',
     },
     {
         tabMenuName: 'Menu Item Limit',
-        route: '/master/menu-item-limit',
+        route: '/master/menu/menu-item-limit',
     },
     {
         tabMenuName: 'Menu Item Schedule',
-        route: '/master/menu-item-schedule',
+        route: '/master/menu/menu-item-schedule',
     },
     {
         tabMenuName: 'Menu Set',
-        route: '/master/menu-set',
+        route: '/master/menu/menu-set',
+    },
+    {
+        tabMenuName: 'Menu Group',
+        route: '/master/menu/menu-group',
+    },
+    {
+        tabMenuName: 'Menu Group Limit',
+        route: '/master/menu/menu-group-limit',
     },
 ];
 

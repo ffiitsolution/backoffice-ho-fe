@@ -18,6 +18,8 @@ import { DashboardMasterComponent } from './dashboard-master/dashboard-master.co
 import { RecipeHeaderComponent } from './recipe/recipe-header/recipe-header.component';
 import { RecipeDetailComponent } from './recipe/recipe-detail/recipe-detail.component';
 import { RecipeProductComponent } from './recipe/recipe-product/recipe-product.component';
+import { MenuGroupComponent } from './menu/menu-group/menu-group.component';
+import { MenuGroupLimitComponent } from './menu/menu-group-limit/menu-group-limit.component';
 
 export const routes: Routes = [
     {
@@ -41,33 +43,61 @@ export const routes: Routes = [
             title: 'Outlet',
         },
     },
+
     {
-        path: 'menu-item',
-        component: MenuItemComponent,
+        path: 'menu',
         data: {
-            title: 'Menu Item',
+            title: 'Menu',
         },
-    },
-    {
-        path: 'menu-item-limit',
-        component: MenuItemLimitComponent,
-        data: {
-            title: 'Menu Item Limit',
-        },
-    },
-    {
-        path: 'menu-item-schedule',
-        component: MenuItemScheduleComponent,
-        data: {
-            title: 'Menu Item Schedule',
-        },
-    },
-    {
-        path: 'menu-set',
-        component: MenuSetComponent,
-        data: {
-            title: 'Menu Set',
-        },
+        children: [
+            {
+                path: '',
+                redirectTo: 'menu-item',
+                pathMatch: 'full',
+            },
+            {
+                path: 'menu-item',
+                component: MenuItemComponent,
+                data: {
+                    title: 'Menu Item',
+                },
+            },
+            {
+                path: 'menu-item-limit',
+                component: MenuItemLimitComponent,
+                data: {
+                    title: 'Menu Item Limit',
+                },
+            },
+            {
+                path: 'menu-item-schedule',
+                component: MenuItemScheduleComponent,
+                data: {
+                    title: 'Menu Item Schedule',
+                },
+            },
+            {
+                path: 'menu-set',
+                component: MenuSetComponent,
+                data: {
+                    title: 'Menu Set',
+                },
+            },
+            {
+                path: 'menu-group',
+                component: MenuGroupComponent,
+                data: {
+                    title: 'Menu Group'
+                }
+            },
+            {
+                path: 'menu-group-limit',
+                component: MenuGroupLimitComponent,
+                data: {
+                    title: 'Menu Group Limit'
+                }
+            }
+        ]
     },
     {
         path: 'modifier-item',

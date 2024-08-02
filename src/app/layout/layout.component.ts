@@ -144,5 +144,6 @@ export class LayoutComponent implements OnInit, AfterViewInit {
 
     getDataBreadCrumb(dataBreadCrumb: any) {
         this.dataBreadcrumb = dataBreadCrumb;
+        this.cdr.detectChanges();
     }
 }

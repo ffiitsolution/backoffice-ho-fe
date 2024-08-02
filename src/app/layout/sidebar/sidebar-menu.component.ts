@@ -29,7 +29,7 @@ export const navItems: SidebarMenu[] = [
             },
             {
                 displayName: 'Menu',
-                route: '/master/menu-item',
+                route: '/master/menu',
                 childName: 'menu',
             },
             // { displayName: 'Menu Item Limit', route: '/master/menu-item-limit', childName: 'menu-item-limit' },
