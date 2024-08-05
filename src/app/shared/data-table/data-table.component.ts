@@ -225,6 +225,13 @@ export class DataTableComponent implements OnInit, AfterViewInit {
                         dataTablesParameters['menuGroupCode'] = this.selectedMenuGroupCode?.code ?? '';
                         dataTablesParameters['outletCode'] = this.selectedOutlet?.code ?? '';
                             break;
+                    case 'menu-group-limit':
+                        setCommonParameters();
+                        dataTablesParameters['regionCode'] = this.selectedRegion?.code ?? '';
+                        dataTablesParameters['outletCode'] = this.selectedOutlet?.code ?? '';
+                        dataTablesParameters['menuGroupCode'] = this.selectedMenuGroupCode?.code ?? '';
+                        dataTablesParameters['orderType'] = this.selectedOrderType?.code ?? '';
+                            break;
                     case 'master-payment':
                         setCommonParameters();
                         break;

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { tabMenu } from '../../../../helper/tab-menu.helper';
+import { FilterService } from '../../../../services/filter.service';
+import { Subject, takeUntil, tap } from 'rxjs';
 
 @Component({
     selector: 'app-menu-group-limit',
@@ -12,16 +14,27 @@ export class MenuGroupLimitComponent implements OnInit {
     menuTable: string = '';
     headerTitle: string = '';
     renderColumns: {};
+    regionCodeList: {};
+    groupCodeList: {};
+    outletList: {};
+    orderTypeList: {};
     setOrderBy: any;
+    onDestroy$ = new Subject<void>();
     tabMenus: { tabMenuName: string; route: string }[] = tabMenu;
 
-    constructor() { }
+    constructor(
+        private filterService: FilterService
+    ) { }
 
     ngOnInit() { 
         this.headerTitle = 'Master Data Menu Group Limit';
         this.menuTable = 'menu-group-limit';
         this.renderColumn();
         this.orderBy();
+        this.getFilterRegionCode();
+        this.getFilterOutlet();
+        this.getFilterMenuGroupCode();
+        this.getFilterOrderType();
     }
 
     renderColumn() {
@@ -31,6 +44,12 @@ export class MenuGroupLimitComponent implements OnInit {
                 title: '#',
                 orderable: false,
                 searchable: false,
+            },
+            {
+                data: 'regionCode',
+                title: 'REGION CODE',
+                orderable: true,
+                searchable: true,
             },
             {
                 data: 'outletCode',
@@ -98,5 +117,41 @@ export class MenuGroupLimitComponent implements OnInit {
             [2, 'asc'],
             [3, 'asc'],
         ];
+    }
+
+    getFilterRegionCode() {
+        this.filterService.getFilterListRegion().pipe(
+            takeUntil(this.onDestroy$),
+            tap((response) => {
+                this.regionCodeList = response.data;
+            })
+        ).subscribe();
+    }
+
+    getFilterOutlet() {
+        this.filterService.getFilterOutlet().pipe(
+            takeUntil(this.onDestroy$),
+            tap((response) => {
+                this.outletList = response.data;
+            })
+        ).subscribe();
+    }
+
+    getFilterMenuGroupCode() {
+        this.filterService.getFilterMenuGroupCode().pipe(
+            takeUntil(this.onDestroy$),
+            tap((response) => {
+                this.groupCodeList = response.data;
+            })
+        ).subscribe();
+    }
+
+    getFilterOrderType() {
+        this.filterService.getFilterOrderType().pipe(
+            takeUntil(this.onDestroy$),
+            tap((response) => {
+                this.orderTypeList = response.data;
+            })
+        ).subscribe();
     }
 }
