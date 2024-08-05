@@ -1,7 +1,51 @@
 <mat-card appearance="outlined">
     <mat-card-header>
-        <mat-card-title> Home</mat-card-title>
+        <div class="row w-100">
+            <div class="col">
+                <mat-card-title>Home</mat-card-title>
+            </div>
+            <div class="col text-end">
+                <div class="filter-field">
+                    <mat-label for="pickerDateRange">
+                        <!-- Date -->
+                    </mat-label>
+                    <mat-form-field>
+                        <mat-date-range-input [formGroup]="selectedDateRange" [rangePicker]="pickerDateRange" disabled>
+                            <input matStartDate formControlName="start" placeholder="Start date" />
+                            <input matEndDate formControlName="end" placeholder="End date" />
+                        </mat-date-range-input>
+
+                        <mat-datepicker-toggle matIconSuffix [for]="pickerDateRange"
+                            disabled="false"></mat-datepicker-toggle>
+                        <mat-date-range-picker #pickerDateRange disabled="false"></mat-date-range-picker>
+                        @if (
+                        selectedDateRange.controls.start.hasError(
+                        'matStartDateInvalid'
+                        )
+                        ) {
+                        <mat-error>Invalid start date</mat-error>
+                        }
+                        @if (
+                        selectedDateRange.controls.end.hasError(
+                        'matEndDateInvalid'
+                        )
+                        ) {
+                        <mat-error>Invalid end date</mat-error>
+                        }
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
     </mat-card-header>
     <hr />
-    <mat-card-content> hehe </mat-card-content>
+    <mat-card-content>
+        <div class="row">
+            <div class="col">
+                <div id="salesChartContainer" style="height: 370px; width: 100%;"></div>
+            </div>
+            <div class="col">
+                <div id="billChartContainer" style="height: 370px; width: 100%;"></div>
+            </div>
+        </div>
+    </mat-card-content>
 </mat-card>

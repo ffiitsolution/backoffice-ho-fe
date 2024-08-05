@@ -85,6 +85,7 @@ import {
     provideNativeDateAdapter,
 } from '@angular/material/core';
 import { MenuGroupLimitComponent } from './views/master/menu/menu-group-limit/menu-group-limit.component';
+import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
 
 export function initializeApp(appConfig: AppConfig) {
     return () => appConfig.load();
@@ -145,6 +146,7 @@ export function initializeApp(appConfig: AppConfig) {
         MatTableModule,
         DataTablesModule,
         NgSelectModule,
+        CanvasJSAngularChartsModule
     ],
     providers: [
         {

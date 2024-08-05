@@ -29,7 +29,7 @@ export class WebsocketService {
         // this.stompClient = Stomp.over(function(){
         //   return new SockJS(urlWs);
         // });
-        console.log(urlWs);
+        // console.log(urlWs);
 
         this.stompClient = new Client({
             brokerURL: urlWs.replace('http', 'ws').replace('https', 'wss'),

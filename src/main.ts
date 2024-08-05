@@ -9,5 +9,7 @@ if (environment.production) {
 }
 
 platformBrowserDynamic()
-    .bootstrapModule(AppModule)
-    .catch((err) => console.error(err));
+    .bootstrapModule(AppModule, {
+        providers: [],
+    })
+    .catch((err) => console.error('main.ts: ' + err));

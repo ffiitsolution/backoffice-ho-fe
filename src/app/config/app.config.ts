@@ -20,7 +20,7 @@ export class AppConfig {
             const response = await lastValueFrom(
                 this.http.get<IAppConfig>(jsonFile),
             );
-            console.log(`Config file loaded:`, response);
+            // console.log(`Config file loaded:`, response);
 
             if (response) {
                 AppConfig.settings = response;

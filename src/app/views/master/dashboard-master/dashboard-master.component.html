@@ -1,7 +1,77 @@
 <mat-card appearance="outlined">
     <mat-card-header>
-        <mat-card-title> {{ headerTitle }}</mat-card-title>
+        <div class="row w-100">
+            <div class="col">
+                <mat-card-title>Dashboard Master</mat-card-title>
+            </div>
+            <div class="col text-end">
+                <div class="filter-field">
+                    <mat-label for="pickerDateRange">
+                        <!-- Date -->
+                    </mat-label>
+                    <mat-form-field>
+                        <mat-date-range-input [formGroup]="selectedDateRange" [rangePicker]="pickerDateRange" disabled>
+                            <input matStartDate formControlName="start" placeholder="Start date" />
+                            <input matEndDate formControlName="end" placeholder="End date" />
+                        </mat-date-range-input>
+
+                        <mat-datepicker-toggle matIconSuffix [for]="pickerDateRange"
+                            disabled="false"></mat-datepicker-toggle>
+                        <mat-date-range-picker #pickerDateRange disabled="false"></mat-date-range-picker>
+                        @if (
+                        selectedDateRange.controls.start.hasError(
+                        'matStartDateInvalid'
+                        )
+                        ) {
+                        <mat-error>Invalid start date</mat-error>
+                        }
+                        @if (
+                        selectedDateRange.controls.end.hasError(
+                        'matEndDateInvalid'
+                        )
+                        ) {
+                        <mat-error>Invalid end date</mat-error>
+                        }
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
     </mat-card-header>
     <hr />
-    <mat-card-content> hehe </mat-card-content>
+    <mat-card-content>
+        <div class="text-end">
+            <span class="ps-3"><i class="fa fa-check text-success"></i> : All updated</span>
+            <span class="ps-3"><i class="fa fa-times text-danger"></i> : Error occurred</span>
+            <span class="ps-3"><i class="fa fa-minus text-secondary"></i> : No update</span>
+        </div>
+        <div class="table-responsive">
+            <table *ngIf="transformedData?.dates?.length > 0" class="table table-sm table-bordered">
+                <thead>
+                    <tr>
+                        <th class="text-center">CODE</th>
+                        <th class="ps-2">NAME</th>
+                        <ng-container *ngFor="let date of transformedData.dates; let i = index;">
+                            <th [ngClass]="{'bg-light': i === indexToday}" class="text-center">{{
+                                formatDateWithDayMonth(date) }}</th>
+                        </ng-container>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let store of transformedData.tableData">
+                        <td class="text-center">{{ store.code }}</td>
+                        <td class="ps-2">{{ store.name }}</td>
+                        <ng-container *ngFor="let status of store.statuses; let i = index;">
+                            <td [ngClass]="{'bg-light': i === indexToday, 'bg-danger': status === 'I'}"
+                                class="text-center">
+                                <i class="fa fa-check text-success" *ngIf="status === 'A'"></i>
+                                <i class="fa fa-times text-white" *ngIf="status === 'I'"></i>
+                                <i class="fa fa-minus text-secondary" *ngIf="status !== 'A' && status !== 'I'"></i>
+                            </td>
+                        </ng-container>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </mat-card-content>
 </mat-card>
