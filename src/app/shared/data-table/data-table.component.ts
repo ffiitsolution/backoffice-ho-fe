@@ -40,6 +40,8 @@ export class DataTableComponent implements OnInit, AfterViewInit {
     @Input() paymentMethodCodeList: any;
     @Input() paymentTypeCodeList: any;
     @Input() type: any;
+    @Input() outletList: any;
+    @Input() groupCodeList: any;
     @Input() regionCodes: any;
     @Input() areaCodes: any;
     @Input() apiUrl: string = '';
@@ -68,6 +70,7 @@ export class DataTableComponent implements OnInit, AfterViewInit {
     selectedConditionValue: string | null = null;
 
     // Parameter Outlet
+    selectedOutlet: any;
     selectedOutletType: any = '';
     selectedRegion: any = '';
     selectedArea: any = '';
@@ -95,6 +98,9 @@ export class DataTableComponent implements OnInit, AfterViewInit {
     // Parameter Payment Method
     selectPaymentMethodCode: any;
     selectPaymentTypeCode: any;
+
+    // Parameter Menu
+    selectedMenuGroupCode: any;
 
     // Parameter Other
     selectedItemCode: any;
@@ -213,6 +219,12 @@ export class DataTableComponent implements OnInit, AfterViewInit {
                     case 'recipe-product':
                     case 'menu-item':
                     case 'menu-set':
+                    case 'menu-group':
+                        setCommonParameters();
+                        dataTablesParameters['status'] = this.selectedStatus?.code ?? '';
+                        dataTablesParameters['menuGroupCode'] = this.selectedMenuGroupCode?.code ?? '';
+                        dataTablesParameters['outletCode'] = this.selectedOutlet?.code ?? '';
+                            break;
                     case 'master-payment':
                         setCommonParameters();
                         break;

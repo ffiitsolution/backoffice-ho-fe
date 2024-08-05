@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { tabMenu } from '../../../../helper/tab-menu.helper';
+import { FilterService } from '../../../../services/filter.service';
+import { Subject, takeUntil, tap } from 'rxjs';
 
 @Component({
     selector: 'app-menu-group',
@@ -8,18 +10,27 @@ import { tabMenu } from '../../../../helper/tab-menu.helper';
 })
 
 export class MenuGroupComponent implements OnInit {
-    apiUrl = '/menu-group/dt'
+    apiUrl = '/menu-group/dt';
+    menuTable: any;
     headerTitle: string = '';
     renderColumns: {};
+    outletList: {};
+    groupCodeList: {};
     setOrderBy: any;
+    onDestroy$ = new Subject<void>();
     tabMenus: { tabMenuName: string; route: string }[] = tabMenu;
 
-    constructor() { }
+    constructor(
+        private filterService: FilterService
+    ) { }
 
     ngOnInit() { 
         this.headerTitle = 'Master Data Menu Group';
+        this.menuTable = 'menu-group';
         this.renderColumn();
         this.orderBy();
+        this.getFilterOutlet();
+        this.getFilterMenuGroupCode();
     }
 
     renderColumn() {
@@ -113,6 +124,24 @@ export class MenuGroupComponent implements OnInit {
                 },
             },
         ];
+    }
+
+    getFilterOutlet() {
+        this.filterService.getFilterOutlet().pipe(
+            takeUntil(this.onDestroy$),
+            tap((response) => {
+                this.outletList = response.data;
+            })
+        ).subscribe();
+    }
+
+    getFilterMenuGroupCode() {
+        this.filterService.getFilterMenuGroupCode().pipe(
+            takeUntil(this.onDestroy$),
+            tap((response) => {
+                this.groupCodeList = response.data;
+            })
+        ).subscribe();
     }
 
     orderBy() {

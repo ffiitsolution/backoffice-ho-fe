@@ -15,6 +15,14 @@ export class FilterService {
         private appService: AppService,
     ) {}
 
+    getFilterOutlet(): Observable<any> {
+        return this.httpClient.post(
+            this.BASE_URL + '/filter/outlet', {} ,{
+                headers: this.appService.headers()
+            }
+        )
+    }
+
     getFilterOrderType(): Observable<any> {
         return this.httpClient.post(
             this.BASE_URL + '/filter/order-type',
@@ -53,5 +61,15 @@ export class FilterService {
                 headers: this.appService.headers(),
             },
         );
+    }
+
+    getFilterMenuGroupCode(): Observable<any> {
+        return this.httpClient.post(
+            this.BASE_URL + '/filter/menu-group-code',
+            {},
+            {
+                headers: this.appService.headers(),
+            }
+        )
     }
 }

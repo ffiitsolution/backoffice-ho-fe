@@ -99,6 +99,34 @@
                     </div>
                 </ng-container>
 
+                <ng-container *ngIf="menuTable == 'menu-group'">
+                    <div class="filter-field">
+                        <mat-label for="status">Outlet Code</mat-label>
+                        <ng-select
+                            class="select-filter"
+                            [items]="outletList"
+                            bindLabel="code"
+                            [(ngModel)]="selectedOutlet"
+                            (ngModelChange)="onFilterChange()"
+                        >
+                        </ng-select>
+                    </div>
+                </ng-container>
+
+                <ng-container *ngIf="menuTable == 'menu-group'">
+                    <div class="filter-field">
+                        <mat-label for="status">Menu Group Code</mat-label>
+                        <ng-select
+                            class="select-filter"
+                            [items]="groupCodeList"
+                            bindLabel="code"
+                            [(ngModel)]="selectedMenuGroupCode"
+                            (ngModelChange)="onFilterChange()"
+                        >
+                        </ng-select>
+                    </div>
+                </ng-container>
+
                 <ng-container *ngIf="menuTable == 'payment-method-limit'">
                     <div class="filter-field">
                         <mat-label for="order-type">Order Type</mat-label>
