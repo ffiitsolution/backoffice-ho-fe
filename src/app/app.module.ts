@@ -70,6 +70,8 @@ import { RecipeDetailComponent } from './views/master/recipe/recipe-detail/recip
 import { RecipeDetailFormComponent } from './views/master/recipe/recipe-detail/recipe-detail-form/recipe-detail-form.component';
 import { RecipeProductFormComponent } from './views/master/recipe/recipe-product/recipe-product-form/recipe-product-form.component';
 import { MenuGroupComponent } from './views/master/menu/menu-group/menu-group.component';
+import { MasterModifierPriceComponent } from './views/master/modifier-price/modifier-price.component';
+import { MasterModifierPriceFormComponent } from './views/master/modifier-price/modifier-price-form/modifier-price-form.component';
 
 // Form
 import { GlobalFormComponent } from './views/master/global/global-form/global-form.component';
@@ -88,6 +90,7 @@ import { MenuGroupLimitComponent } from './views/master/menu/menu-group-limit/me
 import { MenuGroupFormComponent } from './views/master/menu/menu-group/menu-group-form/menu-group-form.component';
 import { BaseChartDirective } from 'ng2-charts';
 import { MenuFroupLimitFormComponent } from './views/master/menu/menu-group-limit/menu-group-limit-form/menu-group-limit-form.component';
+import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
 
 export function initializeApp(appConfig: AppConfig) {
     return () => appConfig.load();
@@ -138,7 +141,9 @@ export function initializeApp(appConfig: AppConfig) {
         MenuGroupComponent,
         MenuGroupLimitComponent,
         MenuGroupFormComponent,
-        MenuFroupLimitFormComponent
+        MenuFroupLimitFormComponent,
+        MasterModifierPriceComponent,
+        MasterModifierPriceFormComponent
     ],
     imports: [
         BrowserModule,

@@ -44,7 +44,7 @@ export class GlobalFormComponent implements OnInit {
             code: [this.data?.data?.code || ''],
             description: [this.data?.data?.description || ''],
             value: [this.data?.data?.value || 0],
-            status: [this.data?.data?.status || ''],
+            status: [this.data?.data?.status || 'A'],
         });
     }
 

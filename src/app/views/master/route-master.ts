@@ -20,6 +20,7 @@ import { RecipeDetailComponent } from './recipe/recipe-detail/recipe-detail.comp
 import { RecipeProductComponent } from './recipe/recipe-product/recipe-product.component';
 import { MenuGroupComponent } from './menu/menu-group/menu-group.component';
 import { MenuGroupLimitComponent } from './menu/menu-group-limit/menu-group-limit.component';
+import { MasterModifierPriceComponent } from './modifier-price/modifier-price.component';
 
 export const routes: Routes = [
     {
@@ -190,31 +191,13 @@ export const routes: Routes = [
             title: 'Recipe Product',
         },
     },
-
-    // {
-    //       path: 'recipe-header',
-    //       component: RecipeHeaderComponent,
-    //       data: {
-    //             title: 'recipe',
-    //       },
-    //       children: [
-    //             {
-    //                   path: 'recipe-header',
-    //                   component: RecipeHeaderComponent,
-    //                   data: {
-    //                         title: 'Master Recipe',
-    //                   },
-    //             },
-    //             {
-    //                   path: 'recipe-detail',
-    //                   component: RecipeDetailComponent,
-    //                   data: {
-    //                         title: 'Master Recipe Detail',
-    //                   },
-    //             },
-
-    //       ],
-    // }
+    {
+        path: 'modifier-price',
+        component: MasterModifierPriceComponent,
+        data: {
+            title: 'Modifier Price',
+        },
+    },
 ];
 @NgModule({
     imports: [RouterModule.forChild(routes)],

@@ -193,6 +193,8 @@ export class DataTableComponent implements OnInit, AfterViewInit {
                         this.selectedStatus?.code ?? '';
                 };
 
+                console.log('menu table', this.menuTable)
+
                 switch (this.menuTable) {
                     case 'global':
                         setCommonParameters();
@@ -214,7 +216,7 @@ export class DataTableComponent implements OnInit, AfterViewInit {
                     case 'mpcs-header':
                     case 'mpcs-detail':
                     case 'modifier-item':
-                    case 'recipe-header':
+                    case 'master-recipe':
                     case 'recipe-detail':
                     case 'recipe-product':
                     case 'menu-item':
@@ -278,10 +280,8 @@ export class DataTableComponent implements OnInit, AfterViewInit {
                               )
                             : '';
                         break;
-
                     default:
-                        setCommonParameters();
-                        break;
+                    break;
                 }
 
                 this.service

@@ -1,4 +1,4 @@
-<div class="dialog-crud-container">
+<!-- <div class="dialog-crud-container">
     <h2 mat-dialog-title class="crud-title">{{ crudTitle }}</h2>
     <mat-dialog-content class="crud-form-container">
         <ng-container *ngIf="data.menuTable == 'global'">
@@ -49,6 +49,15 @@
                 (formValueChange)="getFormValue($event)"
             ></app-recipe-product-form>
         </ng-container>
+
+        <ng-container *ngIf="data.menuTable == 'modifier-price'">
+            <app-modifier-price-form
+                [data]="data"
+                (formValueChange)="getFormValue($event)"
+            ></app-modifier-price-form>
+        </ng-container>
+
+
     </mat-dialog-content>
 
     <mat-dialog-actions class="crud-button-container">
@@ -63,4 +72,56 @@
             Submit
         </button>
     </mat-dialog-actions>
-</div>
+</div> -->
+
+<div class="dialog-crud-container">
+    <h2 mat-dialog-title class="crud-title">{{ crudTitle }}</h2>
+    <mat-dialog-content class="crud-form-container">
+      <ng-container [ngSwitch]="data.menuTable">
+        <app-global-form
+          *ngSwitchCase="'global'"
+          [data]="data"
+          (formValueChange)="getFormValue($event)"
+        ></app-global-form>
+  
+        <app-payment-method-limit-form
+          *ngSwitchCase="'payment-method-limit'"
+          [data]="data"
+          (formValueChange)="getFormValue($event)"
+        ></app-payment-method-limit-form>
+  
+        <app-recipe-header-form
+          *ngSwitchCase="'master-recipe'"
+          [data]="data"
+          (formValueChange)="getFormValue($event)"
+        ></app-recipe-header-form>
+  
+        <app-recipe-detail-form
+          *ngSwitchCase="'master-recipe-detail'"
+          [data]="data"
+          (formValueChange)="getFormValue($event)"
+        ></app-recipe-detail-form>
+  
+        <app-recipe-product-form
+          *ngSwitchCase="'master-recipe-product'"
+          [data]="data"
+          (formValueChange)="getFormValue($event)"
+        ></app-recipe-product-form>
+  
+        <app-modifier-price-form
+          *ngSwitchCase="'modifier-price'"
+          [data]="data"
+          (formValueChange)="getFormValue($event)"
+        ></app-modifier-price-form>
+      </ng-container>
+    </mat-dialog-content>
+    <mat-dialog-actions class="crud-button-container">
+      <button mat-button mat-dialog-close class="btn-g cancel-button">
+        Cancel
+      </button>
+      <button mat-button class="btn-g confirm-button" (click)="submitForm()">
+        Submit
+      </button>
+    </mat-dialog-actions>
+  </div>
+  

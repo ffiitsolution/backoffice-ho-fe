@@ -70,6 +70,11 @@ export const navItems: SidebarMenu[] = [
                 route: '/master/recipe',
                 childName: 'recipe header',
             },
+            {
+                displayName: 'Modifier Price',
+                route: '/master/modifier-price',
+                childName: 'Modifier Price',
+            },
         ],
     },
     {
