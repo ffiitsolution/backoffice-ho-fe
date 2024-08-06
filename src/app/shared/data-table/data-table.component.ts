@@ -458,13 +458,20 @@ export class DataTableComponent implements OnInit, AfterViewInit {
 
 		dialogEditData.afterClosed().subscribe((response) => {
 			if (response) {
+                console.log(dataColumn)
 				if (this.menuTable == 'global') {
 					response.oldCond = dataColumn.cond;
 					response.oldCode = dataColumn.code;
 				} else if (this.menuTable == 'payment-method-limit') {
 					response.oldPaymentMethodCode = dataColumn.paymentMethodCode;
 					response.oldOrderType = dataColumn.orderType;
-				} 
+				} else if (this.menuTable == 'menu-group-limit') {
+                    response.oldMenuGroupCode = dataColumn.menuGroupCode;
+                    response.oldOrderType = dataColumn.orderType;
+                    response.regionCode = dataColumn.regionCode;
+                    response.outletCode = dataColumn.outletCode;
+                }
+
 				this.updateDatatable(response);
 			}
 		});

@@ -11,6 +11,7 @@ import { Subject, takeUntil, tap } from 'rxjs';
 
 export class MenuGroupLimitComponent implements OnInit {
     apiUrl = '/menu-group-limit/dt';
+    apiUpdateUrl = '/master/menu-group-limit/update';
     menuTable: string = '';
     headerTitle: string = '';
     renderColumns: {};

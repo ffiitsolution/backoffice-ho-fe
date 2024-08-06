@@ -87,6 +87,7 @@ import {
 import { MenuGroupLimitComponent } from './views/master/menu/menu-group-limit/menu-group-limit.component';
 import { MenuGroupFormComponent } from './views/master/menu/menu-group/menu-group-form/menu-group-form.component';
 import { BaseChartDirective } from 'ng2-charts';
+import { MenuFroupLimitFormComponent } from './views/master/menu/menu-group-limit/menu-group-limit-form/menu-group-limit-form.component';
 
 export function initializeApp(appConfig: AppConfig) {
     return () => appConfig.load();
@@ -136,7 +137,8 @@ export function initializeApp(appConfig: AppConfig) {
         RecipeProductFormComponent,
         MenuGroupComponent,
         MenuGroupLimitComponent,
-        MenuGroupFormComponent
+        MenuGroupFormComponent,
+        MenuFroupLimitFormComponent
     ],
     imports: [
         BrowserModule,

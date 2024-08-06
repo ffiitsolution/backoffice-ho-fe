@@ -1,0 +1,51 @@
+<form [formGroup]="form" class="form-content" #formRef="ngForm">
+    <div class="form-item">
+        <label for="regionCode">Region Code</label>
+        <ng-select
+            [ngClass]="{'form-disabled' : disabled}"
+            class="select-filter"
+            [items]="regionCodeList"
+            bindLabel="code"
+            bindValue="code"
+            formControlName="regionCode"
+        >
+        </ng-select>
+    </div>
+
+    <div class="form-item">
+        <label for="outletCode">Outlet Code</label>
+        <ng-select
+            [ngClass]="{'form-disabled' : disabled}"
+            class="select-filter"
+            [items]="outletCodeList"
+            bindLabel="code"
+            bindValue="code"
+            formControlName="outletCode"
+        >
+        </ng-select>
+    </div>
+
+    <div class="form-item">
+        <label for="menuGroupCode">Menu Group Code</label>
+        <ng-select
+            class="select-filter"
+            [items]="menuGroupCodeList"
+            bindLabel="code"
+            bindValue="code"
+            formControlName="menuGroupCode"
+        >
+        </ng-select>
+    </div>
+
+    <div class="form-item">
+        <label for="orderType">Order Type</label>
+        <ng-select
+            class="select-filter"
+            [items]="orderTypeCodeList"
+            bindLabel="code"
+            bindValue="code"
+            formControlName="orderType"
+        >
+        </ng-select>
+    </div>
+</form>
