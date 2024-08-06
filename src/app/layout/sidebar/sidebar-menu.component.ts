@@ -32,24 +32,21 @@ export const navItems: SidebarMenu[] = [
                 route: '/master/menu',
                 childName: 'menu',
             },
-            // { displayName: 'Menu Item Limit', route: '/master/menu-item-limit', childName: 'menu-item-limit' },
-            // { displayName: 'Menu Item Schedule', route: '/master/menu-item-schedule', childName: 'menu-item-schedule' },
-            // { displayName: 'Menu Set', route: '/master/menu-set', childName: 'menu-set' },
             {
                 displayName: 'Modifier Item',
                 route: '/master/modifier-item',
                 childName: 'modifier item',
             },
-            {
-                displayName: 'MPCS Header',
-                route: '/master/mpcs-header',
-                childName: 'mpcs header',
-            },
-            {
-                displayName: 'MPCS Detail',
-                route: '/master/mpcs-detail',
-                childName: 'mpcs detail',
-            },
+            // {
+            //     displayName: 'MPCS Header',
+            //     route: '/master/mpcs-header',
+            //     childName: 'mpcs header',
+            // },
+            // {
+            //     displayName: 'MPCS Detail',
+            //     route: '/master/mpcs-detail',
+            //     childName: 'mpcs detail',
+            // },
             {
                 displayName: 'Payment',
                 route: '/master/payment',
@@ -67,13 +64,18 @@ export const navItems: SidebarMenu[] = [
             },
             {
                 displayName: 'Recipe',
-                route: '/master/recipe',
+                route: '/master/recipe/recipe-header',
                 childName: 'recipe header',
             },
             {
                 displayName: 'Modifier Price',
                 route: '/master/modifier-price',
                 childName: 'Modifier Price',
+            },
+            {
+                displayName: 'Price',
+                route: '/master/price',
+                childName: 'Price',
             },
         ],
     },

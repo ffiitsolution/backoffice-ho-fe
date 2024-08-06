@@ -50,6 +50,7 @@ export class DataTableComponent implements OnInit, AfterViewInit {
     @Input() menuTable: any;
     @Input() columns: any;
     @Input() orderBy: any;
+    @Input() priceTypeCodeList: any;
 
     @ViewChild(DataTableDirective, { static: false })
 
@@ -114,6 +115,9 @@ export class DataTableComponent implements OnInit, AfterViewInit {
         start: new FormControl<Date | null>(new Date()),
         end: new FormControl<Date | null>(new Date()),
     });
+
+    // Parameter Price
+    selectedPriceTypeCode: any;
 
     onDestroy$ = new Subject<void>();
 
@@ -235,7 +239,9 @@ export class DataTableComponent implements OnInit, AfterViewInit {
                         dataTablesParameters['orderType'] = this.selectedOrderType?.code ?? '';
                             break;
                     case 'master-payment':
+                    case 'price':
                         setCommonParameters();
+                        dataTablesParameters['status'] = this.selectedStatus?.code ?? '';
                         break;
 
                     case 'item-supplier':

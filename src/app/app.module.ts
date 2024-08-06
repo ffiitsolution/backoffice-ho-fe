@@ -91,6 +91,7 @@ import { MenuGroupFormComponent } from './views/master/menu/menu-group/menu-grou
 import { BaseChartDirective } from 'ng2-charts';
 import { MenuFroupLimitFormComponent } from './views/master/menu/menu-group-limit/menu-group-limit-form/menu-group-limit-form.component';
 import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
+import { MasterPriceComponent } from './views/master/price/price.component';
 
 export function initializeApp(appConfig: AppConfig) {
     return () => appConfig.load();
@@ -143,7 +144,8 @@ export function initializeApp(appConfig: AppConfig) {
         MenuGroupFormComponent,
         MenuFroupLimitFormComponent,
         MasterModifierPriceComponent,
-        MasterModifierPriceFormComponent
+        MasterModifierPriceFormComponent,
+        MasterPriceComponent
     ],
     imports: [
         BrowserModule,

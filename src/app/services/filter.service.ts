@@ -72,4 +72,14 @@ export class FilterService {
             }
         )
     }
+
+    getFilterPriceTypeCode(): Observable<any> {
+        return this.httpClient.post(
+            this.BASE_URL + '/filter/price-type-code',
+            {},
+            {
+                headers: this.appService.headers(),
+            }
+        )
+    }
 }

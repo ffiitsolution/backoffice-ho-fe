@@ -21,6 +21,7 @@ import { RecipeProductComponent } from './recipe/recipe-product/recipe-product.c
 import { MenuGroupComponent } from './menu/menu-group/menu-group.component';
 import { MenuGroupLimitComponent } from './menu/menu-group-limit/menu-group-limit.component';
 import { MasterModifierPriceComponent } from './modifier-price/modifier-price.component';
+import { MasterPriceComponent } from './price/price.component';
 
 export const routes: Routes = [
     {
@@ -44,7 +45,6 @@ export const routes: Routes = [
             title: 'Outlet',
         },
     },
-
     {
         path: 'menu',
         data: {
@@ -172,24 +172,37 @@ export const routes: Routes = [
     },
     {
         path: 'recipe',
-        component: RecipeHeaderComponent,
         data: {
-            title: 'Master Recipe Header',
+            title: 'Recipe'
         },
-    },
-    {
-        path: 'recipe-detail',
-        component: RecipeDetailComponent,
-        data: {
-            title: 'Recipe Detail',
-        },
-    },
-    {
-        path: 'recipe-product',
-        component: RecipeProductComponent,
-        data: {
-            title: 'Recipe Product',
-        },
+        children: [
+            {
+                path: '',
+                redirectTo: 'recipe-header',
+                pathMatch: 'full'
+            },
+            {
+                path: 'recipe-header',
+                component: RecipeHeaderComponent,
+                data: {
+                    title: 'Master Recipe Header',
+                },
+            },
+            {
+                path: 'recipe-detail',
+                component: RecipeDetailComponent,
+                data: {
+                    title: 'Recipe Detail',
+                },
+            },
+            {
+                path: 'recipe-product',
+                component: RecipeProductComponent,
+                data: {
+                    title: 'Recipe Product',
+                },
+            },
+        ]
     },
     {
         path: 'modifier-price',
@@ -198,6 +211,14 @@ export const routes: Routes = [
             title: 'Modifier Price',
         },
     },
+    {
+        path: 'price',
+        component: MasterPriceComponent,
+        data: {
+            title: 'Modifier Price',
+        },
+    },
+
 ];
 @NgModule({
     imports: [RouterModule.forChild(routes)],
