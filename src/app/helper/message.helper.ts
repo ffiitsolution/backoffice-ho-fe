@@ -16,6 +16,7 @@ export enum MESSAGES {
     ERROR_MESSAGE_NOT_MATCH_LOGIN = 'User and Password not match.',
     ERROR_MESSAGE_TIMEOUT = 'Sesi login Anda telah berakhir. Silahkan login ulang!',
     ERROR_MESSAGE_DOWNLOAD_FILE = 'File tidak dapat terunduh',
+    ERROR_MESSAGE_EMPTY_DATA = 'Tidak ada data untuk ditampilkan.',
 
     /*/ CONFIRMATION MESSAGE */
     INACTIVE_CONFRIMATION_MESSAGE = 'Apakah Anda yakin akan melakukan perubahan inactive pada item ini?',

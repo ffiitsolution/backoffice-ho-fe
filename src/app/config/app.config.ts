@@ -14,7 +14,7 @@ export class AppConfig {
 
     async load(): Promise<void> {
         const jsonFile = `/assets/config/config.${environment.name}.json`;
-        console.log(`Loading config file: ${jsonFile}`);
+        // console.log(`Loading config file: ${jsonFile}`);
 
         try {
             const response = await lastValueFrom(

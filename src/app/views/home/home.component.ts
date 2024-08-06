@@ -4,26 +4,60 @@ import { DatePipe } from '@angular/common';
 import moment from 'moment';
 import { MESSAGES } from '../../helper/message.helper';
 import { FormControl, FormGroup } from '@angular/forms';
-import { CanvasJS } from '@canvasjs/angular-charts';
+import { ChartConfiguration, ChartData, ChartEvent } from 'chart.js';
+import { BaseChartDirective } from 'ng2-charts';
+import { UtilService } from '../../services/util.service';
 
 @Component({
     selector: 'app-home',
     templateUrl: 'home.component.html',
 })
 export class HomeComponent implements OnInit {
+    @ViewChild('salesChart') salesChart: BaseChartDirective | undefined;
+    @ViewChild('billChart') billChart: BaseChartDirective | undefined;
+
     selectedDateRange = new FormGroup({
         start: new FormControl<Date | null>(new Date()),
         end: new FormControl<Date | null>(new Date()),
     });
     startDate: any;
     endDate: any;
+    today: any;
 
-    billChart: any;
-    salesChart: any;
+    dataSales = {
+        labels: [''],
+        datasets: [
+            {
+                label: '',
+                backgroundColor: '#CCE2F7',
+                data: [0],
+            },
+        ],
+    };
+    dataBill = this.dataSales;
+
+    billBarChartOptions: ChartConfiguration<'bar'>['options'] = {
+        scales: {
+            x: {
+                min: 0,
+            },
+            y: {
+                min: 0,
+            },
+        },
+        plugins: {
+            legend: {
+                display: true,
+            },
+        },
+    };
+    salesBarChartOptions: ChartConfiguration<'bar'>['options'] =
+        this.billBarChartOptions;
 
     constructor(
         private appSvc: AppService,
         private datePipe: DatePipe,
+        private util: UtilService,
     ) {}
 
     ngOnInit(): void {
@@ -33,7 +67,6 @@ export class HomeComponent implements OnInit {
             start: new FormControl<Date | null>(this.startDate),
             end: new FormControl<Date | null>(this.endDate),
         });
-        this.createChart();
         this.fetchChartData();
         this.selectedDateRange
             .get('start')
@@ -52,91 +85,52 @@ export class HomeComponent implements OnInit {
             });
     }
 
-    createChart() {
-        this.billChart = new CanvasJS.Chart('billChartContainer', {
-            title: {
-                text: 'Bill',
-            },
-            subtitles: [{text:''}],
-            data: [
-                {
-                    type: 'column',
-                    color: 'red',
-                    dataPoints: [{ label: '', y: '0' }],
-                },
-            ],
-        });
-        this.billChart.render();
-        this.salesChart = new CanvasJS.Chart('salesChartContainer', {
-            title: {
-                text: 'Sales',
-            },
-            subtitles: [{text:''}],
-            data: [
-                {
-                    type: 'column',
-                    color: 'red',
-                    dataPoints: [{ label: '', y: '0' }],
-                },
-            ],
-        });
-        this.salesChart.render();
-    }
-
     fetchChartData(): void {
-        let start = this.startDate;
-        let end = this.endDate;
+        const start = this.startDate
+            ? this.datePipe.transform(this.startDate, 'yyyy-MM-dd')
+            : '';
+        const end = this.endDate
+            ? this.datePipe.transform(this.endDate, 'yyyy-MM-dd')
+            : '';
         const params = {
-            startDate: start
-                ? this.datePipe.transform(start, 'yyyy-MM-dd')
-                : '',
-            endDate: end ? this.datePipe.transform(end, 'yyyy-MM-dd') : '',
+            startDate: start,
+            endDate: end,
         };
         this.appSvc
             .upsertDataTable('/dashboard/main-transaction-chart', params)
             .subscribe({
                 next: (response: any) => {
                     let labels = response?.data?.map((item: any) =>
-                        this.formatDateWithDay(item.transDate),
+                        this.util.formatDateWithDay(item.transDate),
                     );
                     if (labels?.length > 0) {
-                        const formattedDataSales = response?.data?.map(
-                            (item: any) => ({
-                                label: this.formatDateWithDay(
-                                    item.transDate,
-                                ),
-                                y: item.totalSales,
-                            }),
-                        );
-                        const formattedDataBill = response?.data?.map(
-                            (item: any) => ({
-                                label: this.formatDateWithDay(
-                                    item.transDate,
-                                ),
-                                y: item.totalBill,
-                            }),
-                        );
-
-                        const dateSubtitle =
-                            this.datePipe.transform(start, 'yyyy-MM-dd') +
-                            ' - ' +
-                            this.datePipe.transform(end, 'yyyy-MM-dd');
-
-                        this.billChart.options.data[0].dataPoints =
-                            formattedDataBill;
-                        this.billChart.options.subtitles[0].text =
-                            dateSubtitle;
-
-                        this.billChart.render();
-
-                        this.salesChart.options.data[0].dataPoints =
-                            formattedDataSales;
-                        this.salesChart.options.subtitles[0].text =
-                            dateSubtitle;
-                        this.salesChart.render();
+                        this.dataSales = {
+                            labels: labels,
+                            datasets: [
+                                {
+                                    label: 'Total Sales',
+                                    backgroundColor: '#CCE2F7',
+                                    data: response?.data?.map(
+                                        (item: any) => item.totalSales,
+                                    ),
+                                },
+                            ],
+                        };
+                        this.dataBill = {
+                            labels: labels,
+                            datasets: [
+                                {
+                                    label: 'Total Bill',
+                                    backgroundColor: '#DED2FD',
+                                    data: response?.data?.map(
+                                        (item: any) => item.totalBill,
+                                    ),
+                                },
+                            ],
+                        };
                     } else {
                         this.appSvc.showSnackbar(
-                            MESSAGES.ERROR_SHOW_MESSAGE,
+                            MESSAGES.ERROR_MESSAGE_EMPTY_DATA,
                         );
                     }
                 },
@@ -144,12 +138,8 @@ export class HomeComponent implements OnInit {
                     console.error('Error fetching chart data', error);
                 },
                 complete: () => {
+                    // console.log('Fetching chart data completed.');
                 },
             });
-    }
-
-    formatDateWithDay(dateString: string): string {
-        const day = moment(dateString).format('dddd');
-        return day.substring(0, 3) + ' ' + dateString;
     }
 }

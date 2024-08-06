@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Event, NavigationEnd, Router } from '@angular/router';
+import moment from 'moment';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
@@ -8,10 +9,10 @@ export class UtilService {
 
     constructor(private router: Router) {}
 
-    generateDateRange(startDate: string, endDate: string): string[] {
+    generateDateRange(startDate: string | null, endDate: string | null): string[] {
         // date format = '2024-07-01'
-        const start = new Date(startDate);
-        const end = new Date(endDate);
+        const start = new Date(startDate ?? '');
+        const end = new Date(endDate ?? '');
         const dateRange: string[] = [];
 
         for (
@@ -23,5 +24,10 @@ export class UtilService {
         }
 
         return dateRange;
+    }
+
+    formatDateWithDay(dateString: string): string {
+        const day = moment(dateString).format('dddd');
+        return day.substring(0, 3) + ' ' + dateString;
     }
 }
