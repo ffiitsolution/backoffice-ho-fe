@@ -8,6 +8,13 @@
             ></app-global-form>
         </ng-container>
 
+        <ng-container *ngIf="data.menuTable == 'menu-group'">
+            <app-menu-group-form
+                [data]="data"
+                (formValueChange)="getFormValue($event)"
+            ></app-menu-group-form>
+        </ng-container>
+
         <ng-container *ngIf="data.menuTable == 'payment-method-limit'">
             <app-payment-method-limit-form
                 [data]="data"
@@ -36,6 +43,7 @@
             ></app-recipe-product-form>
         </ng-container>
     </mat-dialog-content>
+
     <mat-dialog-actions class="crud-button-container">
         <button mat-button mat-dialog-close class="btn-g cancel-button">
             Cancel

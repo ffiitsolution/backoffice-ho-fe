@@ -122,6 +122,10 @@ h6,
             width: 100%;
             gap: 6px;
 
+            .form-disabled {
+                background: #F0F0F0;
+            }
+
             > label {
                 font-weight: 500;
             }

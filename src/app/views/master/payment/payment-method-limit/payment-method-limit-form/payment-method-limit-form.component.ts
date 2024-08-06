@@ -24,7 +24,11 @@ export class PaymentMethodLimitFormComponent implements OnInit {
     form: FormGroup;
 
     paymentMethodList: any;
+    regionCodeList: any;
+    outletCodeList: any;
     orderTypeList: any;
+
+    disabled: boolean = false;
 
     selectPaymentMethodCode: any = null;
     selectOrderTypeCode: any = null;
@@ -39,6 +43,8 @@ export class PaymentMethodLimitFormComponent implements OnInit {
 
     ngOnInit() {
         this.initializeForm();
+        this.getOutletCode();
+        this.getRegionCode();
         this.getPaymentMethodCode();
         this.getOrderType();
         this.form.valueChanges.subscribe((value) => {
@@ -53,6 +59,13 @@ export class PaymentMethodLimitFormComponent implements OnInit {
             paymentMethodCode: [this.data?.data?.paymentMethodCode || null],
             orderType: [this.data?.data?.orderType || null],
         });
+
+        const outletCodeValue = this.form.get('outletCode')?.value;
+
+        if (outletCodeValue) {
+            this.form.controls['outletCode'].disable();
+            this.disabled = true;
+        } 
     }
 
     getPaymentMethodCode() {
@@ -65,6 +78,24 @@ export class PaymentMethodLimitFormComponent implements OnInit {
                 }),
             )
             .subscribe();
+    }
+
+    getRegionCode() {
+        this.filterService.getFilterListRegion().pipe(
+            takeUntil(this.onDestroy$),
+            tap((response) => {
+                this.regionCodeList = response.data;
+            })
+        ).subscribe();
+    }
+
+    getOutletCode() {
+        this.filterService.getFilterOutlet().pipe(
+            takeUntil(this.onDestroy$),
+            tap((response) => {
+                this.outletCodeList = response.data;
+            })
+        ).subscribe();
     }
 
     getOrderType() {

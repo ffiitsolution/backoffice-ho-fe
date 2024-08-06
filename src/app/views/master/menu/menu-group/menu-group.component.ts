@@ -11,6 +11,8 @@ import { Subject, takeUntil, tap } from 'rxjs';
 
 export class MenuGroupComponent implements OnInit {
     apiUrl = '/menu-group/dt';
+    apiInserteUrl = '/master/menu-group/insert';
+    apiUpdateUrl = '/master/menu-group/update';
     menuTable: any;
     headerTitle: string = '';
     renderColumns: {};

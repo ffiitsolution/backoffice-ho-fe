@@ -85,7 +85,8 @@ import {
     provideNativeDateAdapter,
 } from '@angular/material/core';
 import { MenuGroupLimitComponent } from './views/master/menu/menu-group-limit/menu-group-limit.component';
-import { BaseChartDirective, provideCharts, withDefaultRegisterables } from 'ng2-charts';
+import { MenuGroupFormComponent } from './views/master/menu/menu-group/menu-group-form/menu-group-form.component';
+import { BaseChartDirective } from 'ng2-charts';
 
 export function initializeApp(appConfig: AppConfig) {
     return () => appConfig.load();
@@ -134,7 +135,8 @@ export function initializeApp(appConfig: AppConfig) {
         RecipeDetailFormComponent,
         RecipeProductFormComponent,
         MenuGroupComponent,
-        MenuGroupLimitComponent
+        MenuGroupLimitComponent,
+        MenuGroupFormComponent
     ],
     imports: [
         BrowserModule,
@@ -174,7 +176,6 @@ export function initializeApp(appConfig: AppConfig) {
             provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
             useValue: { duration: 5000 },
         },
-        provideCharts(withDefaultRegisterables()),
     ],
     bootstrap: [AppComponent],
     schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
