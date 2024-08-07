@@ -1,11 +1,11 @@
 export const tabRecipe = [
     {
-        tabMenuName: 'Recipe Header',
-        route: '/master/recipe/recipe-header',
-    },
-    {
         tabMenuName: 'Recipe Detail',
         route: '/master/recipe/recipe-detail',
+    },
+    {
+        tabMenuName: 'Recipe Header',
+        route: '/master/recipe/recipe-header',
     },
     {
         tabMenuName: 'Recipe Product',
@@ -14,6 +14,14 @@ export const tabRecipe = [
 ];
 
 export const tabMenu = [
+    {
+        tabMenuName: 'Menu Group',
+        route: '/master/menu/menu-group',
+    },
+    {
+        tabMenuName: 'Menu Group Limit',
+        route: '/master/menu/menu-group-limit',
+    },
     {
         tabMenuName: 'Menu Item',
         route: '/master/menu/menu-item',
@@ -30,21 +38,10 @@ export const tabMenu = [
         tabMenuName: 'Menu Set',
         route: '/master/menu/menu-set',
     },
-    {
-        tabMenuName: 'Menu Group',
-        route: '/master/menu/menu-group',
-    },
-    {
-        tabMenuName: 'Menu Group Limit',
-        route: '/master/menu/menu-group-limit',
-    },
+   
 ];
 
 export const tabPayment = [
-    {
-        tabMenuName: 'Master Payment',
-        route: '/master/payment/master-payment',
-    },
     {
         tabMenuName: 'Master Payment Method',
         route: '/master/payment/payment-method',
@@ -53,6 +50,10 @@ export const tabPayment = [
         tabMenuName: 'Master Payment Method Limit',
         route: '/master/payment/payment-method-limit',
     },
+    {
+        tabMenuName: 'Master Payment',
+        route: '/master/payment/master-payment',
+    }
 ];
 
 export const tabModifier = [
@@ -65,3 +66,14 @@ export const tabModifier = [
         route: '/master/modifier/modifier-price',
     }
 ];
+
+export const tabDiscount = [
+    {
+        tabMenuName: 'Discount Method',
+        route: '/master/discount/discount-method',
+    },
+    {
+        tabMenuName: 'Discount Method Limit',
+        route: '/master/discount/discount-method-limit',
+    },
+]

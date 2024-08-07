@@ -18,14 +18,39 @@ export const navItems: SidebarMenu[] = [
                 childName: 'dashboard-master',
             },
             {
+                displayName: 'Color',
+                route: '/master/color',
+                childName: 'color',
+            },
+            {
+                displayName: 'Discount',
+                route: '/master/discount/discount-method',
+                childName: 'discount',
+            },
+            {
+                displayName: 'Donate',
+                route: '/master/donate/donate-method',
+                childName: 'donate',
+            },
+            {
                 displayName: 'Global',
                 route: '/master/global',
                 childName: 'global',
             },
             {
-                displayName: 'Item Supplier',
-                route: '/master/item-supplier',
-                childName: 'item supplier',
+                displayName: 'Group Item',
+                route: '/master/group-item',
+                childName: 'group item',
+            },
+            {
+                displayName: 'Item',
+                route: '/master/item',
+                childName: 'item',
+            },
+            {
+                displayName: 'Level',
+                route: '/master/level/level-one',
+                childName: 'level',
             },
             {
                 displayName: 'Menu',
@@ -38,16 +63,20 @@ export const navItems: SidebarMenu[] = [
                 childName: 'Modifier Item',
             },
             {
+                displayName: 'MPCS',
+                route: '/master/mpcs/mpcs-detail',
+                childName: 'mpcs',
+            },
+            {
                 displayName: 'Outlet',
                 route: '/master/outlet',
                 childName: 'outlet',
             },
             {
                 displayName: 'Payment',
-                route: '/master/payment',
+                route: '/master/payment/payment-method',
                 childName: 'payment',
             },
-
             {
                 displayName: 'Price',
                 route: '/master/price',
@@ -55,25 +84,22 @@ export const navItems: SidebarMenu[] = [
             },
             {
                 displayName: 'Recipe',
-                route: '/master/recipe/recipe-header',
-                childName: 'recipe header',
+                route: '/master/recipe/recipe-detail',
+                childName: 'recipe',
+            },
+            {
+                displayName: 'Sales Recipe',
+                route: '/master/sales-recipe',
+                childName: 'sales',
             },
             {
                 displayName: 'Supplier',
                 route: '/master/supplier',
                 childName: 'supplier',
             },
-            // {
-            //     displayName: 'MPCS Header',
-            //     route: '/master/mpcs-header',
-            //     childName: 'mpcs header',
-            // },
-            // {
-            //     displayName: 'MPCS Detail',
-            //     route: '/master/mpcs-detail',
-            //     childName: 'mpcs detail',
-            // },
-        ],
+            
+        ]
+
     },
     {
         displayName: 'Transaction',
