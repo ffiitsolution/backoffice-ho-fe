@@ -92,6 +92,8 @@ import {
     MAT_DATE_LOCALE,
     provideNativeDateAdapter,
 } from '@angular/material/core';
+import { MasterColorComponent } from './views/master/color/color.component';
+import { MasterDiscountMethodComponent } from './views/master/discount-method/discount-method.component';
 
 export function initializeApp(appConfig: AppConfig) {
     return () => appConfig.load();
@@ -146,7 +148,9 @@ export function initializeApp(appConfig: AppConfig) {
         MasterModifierPriceComponent,
         MasterModifierPriceFormComponent,
         MasterPriceComponent,
-        MasterPriceFormComponent
+        MasterPriceFormComponent,
+        MasterColorComponent,
+        MasterDiscountMethodComponent
     ],
     imports: [
         BrowserModule,

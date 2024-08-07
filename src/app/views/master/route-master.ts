@@ -22,6 +22,8 @@ import { MenuGroupLimitComponent } from './menu/menu-group-limit/menu-group-limi
 import { MasterPriceComponent } from './price/price.component';
 import { ModifierItemComponent } from './modifier/modifier-item/modifier-item.component';
 import { MasterModifierPriceComponent } from './modifier/modifier-price/modifier-price.component';
+import { MasterColorComponent } from './color/color.component';
+import { MasterDiscountMethodComponent } from './discount-method/discount-method.component';
 
 export const routes: Routes = [
     {
@@ -231,6 +233,34 @@ export const routes: Routes = [
             title: 'Modifier Price',
         },
     },
+    {
+        path: 'color',
+        component: MasterColorComponent,
+        data: {
+            title: 'Color',
+        },
+    },
+    {
+        path: 'discount',
+        data: {
+            title: 'Discount',
+        },
+        children: [
+            {
+                path: '',
+                redirectTo: 'discount-method',
+                pathMatch: 'full',
+            },
+            {
+                path: 'discount-method',
+                component: MasterDiscountMethodComponent,
+                data: {
+                    title: 'Discount Method',
+                },
+            },
+        ]
+    },
+
 
 ];
 @NgModule({
