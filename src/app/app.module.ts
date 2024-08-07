@@ -81,7 +81,7 @@ import { MasterModifierPriceFormComponent } from './views/master/modifier/modifi
 // Form
 import { GlobalFormComponent } from './views/master/global/global-form/global-form.component';
 import { PaymentMethodLimitFormComponent } from './views/master/payment/payment-method-limit/payment-method-limit-form/payment-method-limit-form.component';
-import { MenuFroupLimitFormComponent } from './views/master/menu/menu-group-limit/menu-group-limit-form/menu-group-limit-form.component';
+import { MenuGroupLimitFormComponent } from './views/master/menu/menu-group-limit/menu-group-limit-form/menu-group-limit-form.component';
 
 // Other Library
 import { NgSelectModule } from '@ng-select/ng-select';
@@ -144,7 +144,7 @@ export function initializeApp(appConfig: AppConfig) {
         MenuGroupComponent,
         MenuGroupLimitComponent,
         MenuGroupFormComponent,
-        MenuFroupLimitFormComponent,
+        MenuGroupLimitFormComponent,
         MasterModifierPriceComponent,
         MasterModifierPriceFormComponent,
         MasterPriceComponent,

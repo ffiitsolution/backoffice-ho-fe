@@ -470,8 +470,12 @@ export class DataTableComponent implements OnInit, AfterViewInit {
 					response.oldCode = dataColumn.code;
 				} else if (this.menuTable == 'payment-method-limit') {
 					response.oldPaymentMethodCode = dataColumn.paymentMethodCode;
-					response.oldOrderType = dataColumn.orderType;
-				} else if (this.menuTable == 'menu-group-limit') {
+					response.oldOrderType = dataColumn.orderType;  
+				} else if (this.menuTable == 'menu-group') {
+                    response.menuGroupCode = dataColumn.menuGroupCode;
+                    response.regionCode = dataColumn.regionCode;
+                    response.outletCode = dataColumn.outletCode;
+                } else if (this.menuTable == 'menu-group-limit') {
                     response.oldMenuGroupCode = dataColumn.menuGroupCode;
                     response.oldOrderType = dataColumn.orderType;
                     response.regionCode = dataColumn.regionCode;

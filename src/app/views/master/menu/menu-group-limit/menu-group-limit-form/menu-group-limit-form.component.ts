@@ -22,7 +22,7 @@ import { Subject, takeUntil, tap } from 'rxjs';
     styleUrls: ['menu-group-limit-form.component.scss']
 })
 
-export class MenuFroupLimitFormComponent implements OnInit {
+export class MenuGroupLimitFormComponent implements OnInit {
     @Input() data: any;
     @Output() formValueChange = new EventEmitter<any>();
 
