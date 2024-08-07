@@ -54,3 +54,14 @@ export const tabPayment = [
         route: '/master/payment/payment-method-limit',
     },
 ];
+
+export const tabModifier = [
+    {
+        tabMenuName: 'Master Modifier Item',
+        route: '/master/modifier/modifier-item',
+    },
+    {
+        tabMenuName: 'Master Modifier Price',
+        route: '/master/modifier/modifier-price',
+    }
+];

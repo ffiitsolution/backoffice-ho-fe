@@ -7,7 +7,6 @@ import { MenuItemComponent } from './menu-item/menu-item.component';
 import { MenuItemLimitComponent } from './menu-item-limit/menu-item-limit.component';
 import { MenuItemScheduleComponent } from './menu-item-schedule/menu-item-schedule.component';
 import { MenuSetComponent } from './menu-set/menu-set.component';
-import { ModifierItemComponent } from './modifier-item/modifier-item.component';
 import { MpcsDetailComponent } from './mpcs-detail/mpcs-detail.component';
 import { MpcsHeaderComponent } from './mpcs-header/mpcs-header.component';
 import { SupplierComponent } from './supplier/supplier.component';
@@ -20,8 +19,9 @@ import { RecipeDetailComponent } from './recipe/recipe-detail/recipe-detail.comp
 import { RecipeProductComponent } from './recipe/recipe-product/recipe-product.component';
 import { MenuGroupComponent } from './menu/menu-group/menu-group.component';
 import { MenuGroupLimitComponent } from './menu/menu-group-limit/menu-group-limit.component';
-import { MasterModifierPriceComponent } from './modifier-price/modifier-price.component';
 import { MasterPriceComponent } from './price/price.component';
+import { ModifierItemComponent } from './modifier/modifier-item/modifier-item.component';
+import { MasterModifierPriceComponent } from './modifier/modifier-price/modifier-price.component';
 
 export const routes: Routes = [
     {
@@ -101,11 +101,31 @@ export const routes: Routes = [
         ]
     },
     {
-        path: 'modifier-item',
-        component: ModifierItemComponent,
+        path: 'modifier',
         data: {
-            title: 'Modifier Item',
+            title: 'Modifier',
         },
+        children: [
+            {
+                path: '',
+                redirectTo: 'modifier-item',
+                pathMatch: 'full',
+            },
+            {
+                path: 'modifier-item',
+                component: ModifierItemComponent,
+                data: {
+                    title: 'Modifier Item',
+                },
+            },
+            {
+                path: 'modifier-price',
+                component: MasterModifierPriceComponent,
+                data: {
+                    title: 'Modifier Price',
+                },
+            },
+        ]
     },
     {
         path: 'mpcs-header',
@@ -203,13 +223,6 @@ export const routes: Routes = [
                 },
             },
         ]
-    },
-    {
-        path: 'modifier-price',
-        component: MasterModifierPriceComponent,
-        data: {
-            title: 'Modifier Price',
-        },
     },
     {
         path: 'price',

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
+import { tabModifier } from '../../../../helper/tab-menu.helper';
 
 @Component({
     selector: 'master-modifier-price',
@@ -17,6 +18,7 @@ export class MasterModifierPriceComponent implements OnInit {
     renderColumns: any;
     setOrderBy: any;
     onDestroy$ = new Subject<void>();
+    tabMenus: { tabMenuName: string; route: string }[] = tabModifier;
 
     constructor() { }
 

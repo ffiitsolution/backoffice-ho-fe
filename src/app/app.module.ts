@@ -51,7 +51,6 @@ import { MenuItemComponent } from './views/master/menu-item/menu-item.component'
 import { MenuItemLimitComponent } from './views/master/menu-item-limit/menu-item-limit.component';
 import { MenuItemScheduleComponent } from './views/master/menu-item-schedule/menu-item-schedule.component';
 import { MenuSetComponent } from './views/master/menu-set/menu-set.component';
-import { ModifierItemComponent } from './views/master/modifier-item/modifier-item.component';
 import { MpcsDetailComponent } from './views/master/mpcs-detail/mpcs-detail.component';
 import { MpcsHeaderComponent } from './views/master/mpcs-header/mpcs-header.component';
 import { SupplierComponent } from './views/master/supplier/supplier.component';
@@ -70,12 +69,19 @@ import { RecipeDetailComponent } from './views/master/recipe/recipe-detail/recip
 import { RecipeDetailFormComponent } from './views/master/recipe/recipe-detail/recipe-detail-form/recipe-detail-form.component';
 import { RecipeProductFormComponent } from './views/master/recipe/recipe-product/recipe-product-form/recipe-product-form.component';
 import { MenuGroupComponent } from './views/master/menu/menu-group/menu-group.component';
-import { MasterModifierPriceComponent } from './views/master/modifier-price/modifier-price.component';
-import { MasterModifierPriceFormComponent } from './views/master/modifier-price/modifier-price-form/modifier-price-form.component';
+import { MenuGroupLimitComponent } from './views/master/menu/menu-group-limit/menu-group-limit.component';
+import { MenuGroupFormComponent } from './views/master/menu/menu-group/menu-group-form/menu-group-form.component';
+import { BaseChartDirective } from 'ng2-charts';
+import { MasterPriceComponent } from './views/master/price/price.component';
+import { MasterPriceFormComponent } from './views/master/price/price-form/price-form.component';
+import { ModifierItemComponent } from './views/master/modifier/modifier-item/modifier-item.component';
+import { MasterModifierPriceComponent } from './views/master/modifier/modifier-price/modifier-price.component';
+import { MasterModifierPriceFormComponent } from './views/master/modifier/modifier-price/modifier-price-form/modifier-price-form.component';
 
 // Form
 import { GlobalFormComponent } from './views/master/global/global-form/global-form.component';
 import { PaymentMethodLimitFormComponent } from './views/master/payment/payment-method-limit/payment-method-limit-form/payment-method-limit-form.component';
+import { MenuFroupLimitFormComponent } from './views/master/menu/menu-group-limit/menu-group-limit-form/menu-group-limit-form.component';
 
 // Other Library
 import { NgSelectModule } from '@ng-select/ng-select';
@@ -86,12 +92,6 @@ import {
     MAT_DATE_LOCALE,
     provideNativeDateAdapter,
 } from '@angular/material/core';
-import { MenuGroupLimitComponent } from './views/master/menu/menu-group-limit/menu-group-limit.component';
-import { MenuGroupFormComponent } from './views/master/menu/menu-group/menu-group-form/menu-group-form.component';
-import { BaseChartDirective } from 'ng2-charts';
-import { MenuFroupLimitFormComponent } from './views/master/menu/menu-group-limit/menu-group-limit-form/menu-group-limit-form.component';
-import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
-import { MasterPriceComponent } from './views/master/price/price.component';
 
 export function initializeApp(appConfig: AppConfig) {
     return () => appConfig.load();
@@ -145,7 +145,8 @@ export function initializeApp(appConfig: AppConfig) {
         MenuFroupLimitFormComponent,
         MasterModifierPriceComponent,
         MasterModifierPriceFormComponent,
-        MasterPriceComponent
+        MasterPriceComponent,
+        MasterPriceFormComponent
     ],
     imports: [
         BrowserModule,

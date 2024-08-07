@@ -23,9 +23,9 @@ export const navItems: SidebarMenu[] = [
                 childName: 'global',
             },
             {
-                displayName: 'Outlet',
-                route: '/master/outlet',
-                childName: 'outlet',
+                displayName: 'Item Supplier',
+                route: '/master/item-supplier',
+                childName: 'item supplier',
             },
             {
                 displayName: 'Menu',
@@ -33,9 +33,35 @@ export const navItems: SidebarMenu[] = [
                 childName: 'menu',
             },
             {
-                displayName: 'Modifier Item',
-                route: '/master/modifier-item',
-                childName: 'modifier item',
+                displayName: 'Modifier',
+                route: '/master/modifier/modifier-item',
+                childName: 'Modifier Item',
+            },
+            {
+                displayName: 'Outlet',
+                route: '/master/outlet',
+                childName: 'outlet',
+            },
+            {
+                displayName: 'Payment',
+                route: '/master/payment',
+                childName: 'payment',
+            },
+
+            {
+                displayName: 'Price',
+                route: '/master/price',
+                childName: 'Price',
+            },
+            {
+                displayName: 'Recipe',
+                route: '/master/recipe/recipe-header',
+                childName: 'recipe header',
+            },
+            {
+                displayName: 'Supplier',
+                route: '/master/supplier',
+                childName: 'supplier',
             },
             // {
             //     displayName: 'MPCS Header',
@@ -47,36 +73,6 @@ export const navItems: SidebarMenu[] = [
             //     route: '/master/mpcs-detail',
             //     childName: 'mpcs detail',
             // },
-            {
-                displayName: 'Payment',
-                route: '/master/payment',
-                childName: 'payment',
-            },
-            {
-                displayName: 'Supplier',
-                route: '/master/supplier',
-                childName: 'supplier',
-            },
-            {
-                displayName: 'Item Supplier',
-                route: '/master/item-supplier',
-                childName: 'item supplier',
-            },
-            {
-                displayName: 'Recipe',
-                route: '/master/recipe/recipe-header',
-                childName: 'recipe header',
-            },
-            {
-                displayName: 'Modifier Price',
-                route: '/master/modifier-price',
-                childName: 'Modifier Price',
-            },
-            {
-                displayName: 'Price',
-                route: '/master/price',
-                childName: 'Price',
-            },
         ],
     },
     {

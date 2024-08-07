@@ -10,8 +10,8 @@ import { Subject, takeUntil, tap } from 'rxjs';
 
 export class MasterPriceComponent implements OnInit {
     apiUrl : string = '/price/dt';
-    // apiInsertUrl = '/master/global/insert';
-    // apiUpdateUrl = '/master/supplier/update';
+    apiInsertUrl = '/master/price/insert';
+    apiUpdateUrl = '/master/price/update';
     headerTitle : string = 'Master Price';
     menuTable: string = 'price';
     renderColumns = {};

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { RegexPipe } from '../../../../services/input.pipe';
+import { RegexPipe } from '../../../../../services/input.pipe';
 
 @Component({
     selector: 'app-modifier-price-form',
