@@ -1,15 +1,15 @@
 export const tabRecipe = [
     {
         tabMenuName: 'Recipe Header',
-        route: '/master/recipe',
+        route: '/master/recipe/recipe-header',
     },
     {
         tabMenuName: 'Recipe Detail',
-        route: '/master/recipe-detail',
+        route: '/master/recipe/recipe-detail',
     },
     {
         tabMenuName: 'Recipe Product',
-        route: '/master/recipe-product',
+        route: '/master/recipe/recipe-product',
     },
 ];
 
@@ -53,4 +53,15 @@ export const tabPayment = [
         tabMenuName: 'Master Payment Method Limit',
         route: '/master/payment/payment-method-limit',
     },
+];
+
+export const tabModifier = [
+    {
+        tabMenuName: 'Master Modifier Item',
+        route: '/master/modifier/modifier-item',
+    },
+    {
+        tabMenuName: 'Master Modifier Price',
+        route: '/master/modifier/modifier-price',
+    }
 ];

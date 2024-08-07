@@ -225,7 +225,12 @@
                     </div>
                 </ng-container>
 
-                <ng-container *ngIf="menuTable != 'payment-method-limit' && menuTable != 'menu-group-limit'">
+                <ng-container 
+                    *ngIf="
+                        menuTable != 'payment-method-limit' && 
+                        menuTable != 'menu-group-limit' && 
+                        menuTable != 'price'"
+                    >
                     <div class="filter-field">
                         <mat-label for="status">Status</mat-label>
                         <ng-select
@@ -233,6 +238,20 @@
                             [items]="statusList"
                             bindLabel="name"
                             [(ngModel)]="selectedStatus"
+                            (ngModelChange)="onFilterChange()"
+                        >
+                        </ng-select>
+                    </div>
+                </ng-container>
+
+                <ng-container *ngIf="menuTable == 'price'">
+                    <div class="filter-field">
+                        <mat-label for="status">Price Type Code</mat-label>
+                        <ng-select
+                            class="select-filter"
+                            [items]="priceTypeCodeList"
+                            bindLabel="name"
+                            [(ngModel)]="selectedPriceTypeCode"
                             (ngModelChange)="onFilterChange()"
                         >
                         </ng-select>

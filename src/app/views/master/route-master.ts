@@ -7,7 +7,6 @@ import { MenuItemComponent } from './menu-item/menu-item.component';
 import { MenuItemLimitComponent } from './menu-item-limit/menu-item-limit.component';
 import { MenuItemScheduleComponent } from './menu-item-schedule/menu-item-schedule.component';
 import { MenuSetComponent } from './menu-set/menu-set.component';
-import { ModifierItemComponent } from './modifier-item/modifier-item.component';
 import { MpcsDetailComponent } from './mpcs-detail/mpcs-detail.component';
 import { MpcsHeaderComponent } from './mpcs-header/mpcs-header.component';
 import { SupplierComponent } from './supplier/supplier.component';
@@ -20,6 +19,9 @@ import { RecipeDetailComponent } from './recipe/recipe-detail/recipe-detail.comp
 import { RecipeProductComponent } from './recipe/recipe-product/recipe-product.component';
 import { MenuGroupComponent } from './menu/menu-group/menu-group.component';
 import { MenuGroupLimitComponent } from './menu/menu-group-limit/menu-group-limit.component';
+import { MasterPriceComponent } from './price/price.component';
+import { ModifierItemComponent } from './modifier/modifier-item/modifier-item.component';
+import { MasterModifierPriceComponent } from './modifier/modifier-price/modifier-price.component';
 
 export const routes: Routes = [
     {
@@ -43,7 +45,6 @@ export const routes: Routes = [
             title: 'Outlet',
         },
     },
-
     {
         path: 'menu',
         data: {
@@ -100,11 +101,31 @@ export const routes: Routes = [
         ]
     },
     {
-        path: 'modifier-item',
-        component: ModifierItemComponent,
+        path: 'modifier',
         data: {
-            title: 'Modifier Item',
+            title: 'Modifier',
         },
+        children: [
+            {
+                path: '',
+                redirectTo: 'modifier-item',
+                pathMatch: 'full',
+            },
+            {
+                path: 'modifier-item',
+                component: ModifierItemComponent,
+                data: {
+                    title: 'Modifier Item',
+                },
+            },
+            {
+                path: 'modifier-price',
+                component: MasterModifierPriceComponent,
+                data: {
+                    title: 'Modifier Price',
+                },
+            },
+        ]
     },
     {
         path: 'mpcs-header',
@@ -171,50 +192,46 @@ export const routes: Routes = [
     },
     {
         path: 'recipe',
-        component: RecipeHeaderComponent,
         data: {
-            title: 'Master Recipe Header',
+            title: 'Recipe'
         },
+        children: [
+            {
+                path: '',
+                redirectTo: 'recipe-header',
+                pathMatch: 'full'
+            },
+            {
+                path: 'recipe-header',
+                component: RecipeHeaderComponent,
+                data: {
+                    title: 'Master Recipe Header',
+                },
+            },
+            {
+                path: 'recipe-detail',
+                component: RecipeDetailComponent,
+                data: {
+                    title: 'Recipe Detail',
+                },
+            },
+            {
+                path: 'recipe-product',
+                component: RecipeProductComponent,
+                data: {
+                    title: 'Recipe Product',
+                },
+            },
+        ]
     },
     {
-        path: 'recipe-detail',
-        component: RecipeDetailComponent,
+        path: 'price',
+        component: MasterPriceComponent,
         data: {
-            title: 'Recipe Detail',
-        },
-    },
-    {
-        path: 'recipe-product',
-        component: RecipeProductComponent,
-        data: {
-            title: 'Recipe Product',
+            title: 'Modifier Price',
         },
     },
 
-    // {
-    //       path: 'recipe-header',
-    //       component: RecipeHeaderComponent,
-    //       data: {
-    //             title: 'recipe',
-    //       },
-    //       children: [
-    //             {
-    //                   path: 'recipe-header',
-    //                   component: RecipeHeaderComponent,
-    //                   data: {
-    //                         title: 'Master Recipe',
-    //                   },
-    //             },
-    //             {
-    //                   path: 'recipe-detail',
-    //                   component: RecipeDetailComponent,
-    //                   data: {
-    //                         title: 'Master Recipe Detail',
-    //                   },
-    //             },
-
-    //       ],
-    // }
 ];
 @NgModule({
     imports: [RouterModule.forChild(routes)],

@@ -23,53 +23,56 @@ export const navItems: SidebarMenu[] = [
                 childName: 'global',
             },
             {
-                displayName: 'Outlet',
-                route: '/master/outlet',
-                childName: 'outlet',
+                displayName: 'Item Supplier',
+                route: '/master/item-supplier',
+                childName: 'item supplier',
             },
             {
                 displayName: 'Menu',
                 route: '/master/menu',
                 childName: 'menu',
             },
-            // { displayName: 'Menu Item Limit', route: '/master/menu-item-limit', childName: 'menu-item-limit' },
-            // { displayName: 'Menu Item Schedule', route: '/master/menu-item-schedule', childName: 'menu-item-schedule' },
-            // { displayName: 'Menu Set', route: '/master/menu-set', childName: 'menu-set' },
             {
-                displayName: 'Modifier Item',
-                route: '/master/modifier-item',
-                childName: 'modifier item',
+                displayName: 'Modifier',
+                route: '/master/modifier/modifier-item',
+                childName: 'Modifier Item',
             },
             {
-                displayName: 'MPCS Header',
-                route: '/master/mpcs-header',
-                childName: 'mpcs header',
-            },
-            {
-                displayName: 'MPCS Detail',
-                route: '/master/mpcs-detail',
-                childName: 'mpcs detail',
+                displayName: 'Outlet',
+                route: '/master/outlet',
+                childName: 'outlet',
             },
             {
                 displayName: 'Payment',
                 route: '/master/payment',
                 childName: 'payment',
             },
+
+            {
+                displayName: 'Price',
+                route: '/master/price',
+                childName: 'Price',
+            },
+            {
+                displayName: 'Recipe',
+                route: '/master/recipe/recipe-header',
+                childName: 'recipe header',
+            },
             {
                 displayName: 'Supplier',
                 route: '/master/supplier',
                 childName: 'supplier',
             },
-            {
-                displayName: 'Item Supplier',
-                route: '/master/item-supplier',
-                childName: 'item supplier',
-            },
-            {
-                displayName: 'Recipe',
-                route: '/master/recipe',
-                childName: 'recipe header',
-            },
+            // {
+            //     displayName: 'MPCS Header',
+            //     route: '/master/mpcs-header',
+            //     childName: 'mpcs header',
+            // },
+            // {
+            //     displayName: 'MPCS Detail',
+            //     route: '/master/mpcs-detail',
+            //     childName: 'mpcs detail',
+            // },
         ],
     },
     {

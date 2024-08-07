@@ -1,30 +1,25 @@
-import {
-    Component,
-    EventEmitter,
-    Input,
-    OnInit,
-    Output,
-    ViewEncapsulation,
-} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { RegexPipe } from '../../../../../services/input.pipe';
+import { RegexPipe } from '../../../../services/input.pipe';
+import { Subject } from 'rxjs';
 
 @Component({
-    selector: 'app-recipe-header-form',
-    templateUrl: 'recipe-header-form.component.html',
-    styleUrls: ['../../recipe.component.scss'],
+    selector: 'app-price-form',
+    templateUrl: 'price-form.component.html',
     encapsulation: ViewEncapsulation.Emulated,
 })
-export class RecipeHeaderFormComponent implements OnInit {
+
+export class MasterPriceFormComponent  implements OnInit {
     @Input() data: any;
     @Output() formValueChange = new EventEmitter<any>();
 
     form: FormGroup;
+    onDestroy$ = new Subject<void>();
 
     constructor(
         private formBuilder: FormBuilder,
         private regexPipe: RegexPipe,
-    ) {}
+    ) { }
 
     ngOnInit() {
         this.initializeForm();
@@ -35,11 +30,11 @@ export class RecipeHeaderFormComponent implements OnInit {
 
     initializeForm() {
         this.form = this.formBuilder.group({
-            rcode: [this.data?.data?.recipeCode || ''],
-            rremark: [this.data?.data?.recipeRemark || ''],
-            mpcsGroup: [this.data?.data?.mpcsGroup || ''],
-            status: [this.data?.data?.status || 'A'],
-        });
+            itemCode: [this.data?.data?.itemCode || ''],
+            priceTypeCode: [this.data?.data?.priceTypeCode || ''],
+            price: [this.data?.data?.price || ''],
+
+        })
     }
 
     onChangeInput(input: any, type: string) {

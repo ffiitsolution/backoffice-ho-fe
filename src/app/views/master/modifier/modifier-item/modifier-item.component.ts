@@ -4,7 +4,8 @@ import {
     Component,
     OnInit,
 } from '@angular/core';
-import { Subject, takeUntil, tap } from 'rxjs';
+import { Subject} from 'rxjs';
+import { tabModifier } from '../../../../helper/tab-menu.helper';
 
 @Component({
     selector: 'app-modifier-item',
@@ -21,6 +22,7 @@ export class ModifierItemComponent implements OnInit {
     renderColumns: any;
     setOrderBy: any;
     onDestroy$ = new Subject<void>();
+    tabMenus: { tabMenuName: string; route: string }[] = tabModifier;
 
     constructor(private cdr: ChangeDetectorRef) {}
 
