@@ -34,7 +34,7 @@ export class RecipeDetailFormComponent implements OnInit {
 
     initializeForm() {
         this.form = this.formBuilder.group({
-            rcode: [this.data?.data?.recipeCode || ''],
+            recipeCode: [this.data?.data?.recipeCode || ''],
             itemCode: [this.data?.data?.itemCode || ''],
             qtyPurchase: [this.data?.data?.qtyPurchase || ''],
             uomPurchase: [this.data?.data?.uomPurchase || ''],

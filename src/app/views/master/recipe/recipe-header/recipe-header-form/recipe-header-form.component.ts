@@ -35,8 +35,8 @@ export class RecipeHeaderFormComponent implements OnInit {
 
     initializeForm() {
         this.form = this.formBuilder.group({
-            rcode: [this.data?.data?.recipeCode || ''],
-            rremark: [this.data?.data?.recipeRemark || ''],
+            recipeCode: [this.data?.data?.recipeCode || ''],
+            recipeRemark: [this.data?.data?.recipeRemark || ''],
             mpcsGroup: [this.data?.data?.mpcsGroup || ''],
             status: [this.data?.data?.status || 'A'],
         });

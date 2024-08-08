@@ -51,6 +51,7 @@ export class DataTableComponent implements OnInit, AfterViewInit {
     @Input() columns: any;
     @Input() orderBy: any;
     @Input() priceTypeCodeList: any;
+    @Input() componentHasFilter: boolean = true;
 
     @ViewChild(DataTableDirective, { static: false })
 
@@ -197,8 +198,6 @@ export class DataTableComponent implements OnInit, AfterViewInit {
                         this.selectedStatus?.code ?? '';
                 };
 
-                console.log('menu table', this.menuTable)
-
                 switch (this.menuTable) {
                     case 'global':
                         setCommonParameters();
@@ -227,21 +226,29 @@ export class DataTableComponent implements OnInit, AfterViewInit {
                     case 'menu-set':
                     case 'menu-group':
                         setCommonParameters();
-                        dataTablesParameters['status'] = this.selectedStatus?.code ?? '';
-                        dataTablesParameters['menuGroupCode'] = this.selectedMenuGroupCode?.code ?? '';
-                        dataTablesParameters['outletCode'] = this.selectedOutlet?.code ?? '';
-                            break;
+                        dataTablesParameters['status'] =
+                            this.selectedStatus?.code ?? '';
+                        dataTablesParameters['menuGroupCode'] =
+                            this.selectedMenuGroupCode?.code ?? '';
+                        dataTablesParameters['outletCode'] =
+                            this.selectedOutlet?.code ?? '';
+                        break;
                     case 'menu-group-limit':
                         setCommonParameters();
-                        dataTablesParameters['regionCode'] = this.selectedRegion?.code ?? '';
-                        dataTablesParameters['outletCode'] = this.selectedOutlet?.code ?? '';
-                        dataTablesParameters['menuGroupCode'] = this.selectedMenuGroupCode?.code ?? '';
-                        dataTablesParameters['orderType'] = this.selectedOrderType?.code ?? '';
-                            break;
+                        dataTablesParameters['regionCode'] =
+                            this.selectedRegion?.code ?? '';
+                        dataTablesParameters['outletCode'] =
+                            this.selectedOutlet?.code ?? '';
+                        dataTablesParameters['menuGroupCode'] =
+                            this.selectedMenuGroupCode?.code ?? '';
+                        dataTablesParameters['orderType'] =
+                            this.selectedOrderType?.code ?? '';
+                        break;
                     case 'master-payment':
                     case 'price':
                         setCommonParameters();
-                        dataTablesParameters['status'] = this.selectedStatus?.code ?? '';
+                        dataTablesParameters['status'] =
+                            this.selectedStatus?.code ?? '';
                         break;
 
                     case 'item-supplier':
@@ -287,7 +294,7 @@ export class DataTableComponent implements OnInit, AfterViewInit {
                             : '';
                         break;
                     default:
-                    break;
+                        break;
                 }
 
                 this.service
@@ -348,6 +355,7 @@ export class DataTableComponent implements OnInit, AfterViewInit {
             .pipe(
                 takeUntil(this.onDestroy$),
                 tap((response: any) => {
+                    console.log('success: ', response);
                     // Success Case
                     if (response.success) {
                         this.service.dataLoading(false);
@@ -355,6 +363,9 @@ export class DataTableComponent implements OnInit, AfterViewInit {
                             MESSAGES.SUCCESS_MESSAGE_CREATED_EN,
                         );
                         this.onFilterChange();
+                    } else {
+                        // Handle backend validation (besides syntax error)
+                        this.unsuccessResponseHandler(response);
                     }
                 }),
                 // Error Case
@@ -407,18 +418,18 @@ export class DataTableComponent implements OnInit, AfterViewInit {
             },
         );
 
-		confirmationDialog.afterClosed().subscribe((result) => {
-			if (result == true) {
-				if (this.menuTable == 'global') {
-					data.oldCond = data.cond;
-					data.oldCode = data.code;
-				}
-				
-				if (status == 'inactive') {
-					data.status = 'I';
-				} else if (status == 'activate') {
-					data.status = 'A';
-				}
+        confirmationDialog.afterClosed().subscribe((result) => {
+            if (result == true) {
+                if (this.menuTable == 'global') {
+                    data.oldCond = data.cond;
+                    data.oldCode = data.code;
+                }
+
+                if (status == 'inactive') {
+                    data.status = 'I';
+                } else if (status == 'activate') {
+                    data.status = 'A';
+                }
 
                 this.updateDatatable(data);
             } else {
@@ -462,16 +473,17 @@ export class DataTableComponent implements OnInit, AfterViewInit {
             disableClose: true,
         });
 
-		dialogEditData.afterClosed().subscribe((response) => {
-			if (response) {
-                console.log(dataColumn)
-				if (this.menuTable == 'global') {
-					response.oldCond = dataColumn.cond;
-					response.oldCode = dataColumn.code;
-				} else if (this.menuTable == 'payment-method-limit') {
-					response.oldPaymentMethodCode = dataColumn.paymentMethodCode;
-					response.oldOrderType = dataColumn.orderType;  
-				} else if (this.menuTable == 'menu-group') {
+        dialogEditData.afterClosed().subscribe((response) => {
+            if (response) {
+                console.log(dataColumn);
+                if (this.menuTable == 'global') {
+                    response.oldCond = dataColumn.cond;
+                    response.oldCode = dataColumn.code;
+                } else if (this.menuTable == 'payment-method-limit') {
+                    response.oldPaymentMethodCode =
+                        dataColumn.paymentMethodCode;
+                    response.oldOrderType = dataColumn.orderType;
+                } else if (this.menuTable == 'menu-group') {
                     response.menuGroupCode = dataColumn.menuGroupCode;
                     response.regionCode = dataColumn.regionCode;
                     response.outletCode = dataColumn.outletCode;
@@ -482,10 +494,10 @@ export class DataTableComponent implements OnInit, AfterViewInit {
                     response.outletCode = dataColumn.outletCode;
                 }
 
-				this.updateDatatable(response);
-			}
-		});
-	}
+                this.updateDatatable(response);
+            }
+        });
+    }
 
     dtPageChange(event: any) {
         this.selectedRowData = undefined;
@@ -499,5 +511,9 @@ export class DataTableComponent implements OnInit, AfterViewInit {
             verticalPosition: this.verticalPosition,
             panelClass: ['success-snackbar'],
         });
+    }
+    unsuccessResponseHandler(message: any) {
+        this.service.dataLoading(false);
+        this.errorHelper.handleError(message);
     }
 }
