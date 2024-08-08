@@ -40,14 +40,14 @@
     <hr />
     <mat-card-content>
         <div class="row">
-            <div class="col-12 col-lg-6 p-4">
-                <div style="width: 80%;" class="text-center">
+            <div class="col-12 col-lg-6 p-4 text-center">
+                <div class="chart-container" style="position: relative;">
                     <canvas #salesChart baseChart [data]="dataSales" [options]="salesBarChartOptions" [type]="'bar'">
                     </canvas>
                 </div>
             </div>
-            <div class="col-12 col-lg-6 p-4">
-                <div style="width: 80%;" class="text-center">
+            <div class="col-12 col-lg-6 p-4 text-center">
+                <div class="chart-container" style="position: relative;">
                     <canvas #billChart baseChart [data]="dataBill" [options]="billBarChartOptions" [type]="'bar'">
                     </canvas>
                 </div>

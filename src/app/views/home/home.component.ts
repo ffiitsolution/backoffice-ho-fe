@@ -47,12 +47,33 @@ export class HomeComponent implements OnInit {
         },
         plugins: {
             legend: {
+                display: false,
+            },
+            title: {
                 display: true,
+                text: 'Bill',
             },
         },
     };
-    salesBarChartOptions: ChartConfiguration<'bar'>['options'] =
-        this.billBarChartOptions;
+    salesBarChartOptions: ChartConfiguration<'bar'>['options'] = {
+        scales: {
+            x: {
+                min: 0,
+            },
+            y: {
+                min: 0,
+            },
+        },
+        plugins: {
+            legend: {
+                display: false,
+            },
+            title: {
+                display: true,
+                text: 'Sales',
+            },
+        },
+    };
 
     constructor(
         private appSvc: AppService,
@@ -92,6 +113,22 @@ export class HomeComponent implements OnInit {
         const end = this.endDate
             ? this.datePipe.transform(this.endDate, 'yyyy-MM-dd')
             : '';
+        if (
+            this.salesBarChartOptions &&
+            this.salesBarChartOptions.plugins &&
+            this.salesBarChartOptions.plugins.title
+        ) {
+            this.salesBarChartOptions.plugins.title.text =
+                'Grafik Sales ' + start + ' - ' + end;
+        }
+        if (
+            this.billBarChartOptions &&
+            this.billBarChartOptions.plugins &&
+            this.billBarChartOptions.plugins.title
+        ) {
+            this.billBarChartOptions.plugins.title.text =
+                'Grafik Bill ' + start + ' - ' + end;
+        }
         const params = {
             startDate: start,
             endDate: end,

@@ -42,6 +42,13 @@ const routes: Routes = [
                     ),
             },
             {
+                path: 'monitoring',
+                loadChildren: () =>
+                    import('./views/monitoring/monitoring.module').then(
+                        (m) => m.MonitoringModule,
+                    ),
+            },
+            {
                 path: '',
                 redirectTo: 'home',
                 pathMatch: 'full',

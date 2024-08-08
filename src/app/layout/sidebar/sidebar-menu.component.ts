@@ -130,6 +130,18 @@ export const navItems: SidebarMenu[] = [
             },
         ],
     },
+    {
+        displayName: 'Monitoring',
+        icon: 'monitor_heart',
+        parentName: 'monitoring',
+        children: [
+            {
+                displayName: 'Outlet',
+                route: '/monitoring/outlet',
+                childName: 'monitoring-outlet',
+            },
+        ],
+    },
 
     // Add More Menu With or Without Children Menu
 ];

@@ -71,7 +71,7 @@ import { RecipeProductFormComponent } from './views/master/recipe/recipe-product
 import { MenuGroupComponent } from './views/master/menu/menu-group/menu-group.component';
 import { MenuGroupLimitComponent } from './views/master/menu/menu-group-limit/menu-group-limit.component';
 import { MenuGroupFormComponent } from './views/master/menu/menu-group/menu-group-form/menu-group-form.component';
-import { BaseChartDirective } from 'ng2-charts';
+import { BaseChartDirective, provideCharts, withDefaultRegisterables } from 'ng2-charts';
 import { MasterPriceComponent } from './views/master/price/price.component';
 import { MasterPriceFormComponent } from './views/master/price/price-form/price-form.component';
 import { ModifierItemComponent } from './views/master/modifier/modifier-item/modifier-item.component';
@@ -94,6 +94,7 @@ import {
 } from '@angular/material/core';
 import { MasterColorComponent } from './views/master/color/color.component';
 import { MasterDiscountMethodComponent } from './views/master/discount-method/discount-method.component';
+import { MonitoringOutletComponent } from './views/monitoring/monitoring-outlet/monitoring-outlet.component';
 
 export function initializeApp(appConfig: AppConfig) {
     return () => appConfig.load();
@@ -150,7 +151,8 @@ export function initializeApp(appConfig: AppConfig) {
         MasterPriceComponent,
         MasterPriceFormComponent,
         MasterColorComponent,
-        MasterDiscountMethodComponent
+        MasterDiscountMethodComponent,
+        MonitoringOutletComponent
     ],
     imports: [
         BrowserModule,
@@ -190,6 +192,7 @@ export function initializeApp(appConfig: AppConfig) {
             provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
             useValue: { duration: 5000 },
         },
+        provideCharts(withDefaultRegisterables()),
     ],
     bootstrap: [AppComponent],
     schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],

@@ -1,0 +1,12 @@
+<mat-card appearance="outlined">
+    <mat-card-header>
+        <mat-card-title> {{ headerTitle }}</mat-card-title>
+    </mat-card-header>
+    <hr />
+    <mat-card-content>
+        <div class="table-responsive">
+            <table datatable class="row-border hover" [dtOptions]="dtOptions">
+            </table>
+        </div>
+    </mat-card-content>
+</mat-card>
