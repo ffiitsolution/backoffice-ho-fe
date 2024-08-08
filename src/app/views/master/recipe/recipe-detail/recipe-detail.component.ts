@@ -75,7 +75,6 @@ export class RecipeDetailComponent implements OnInit {
                 searchable: true,
             },
             {
-                data: 'status',
                 title: 'ACTIONS',
                 orderable: false,
                 searchable: false,

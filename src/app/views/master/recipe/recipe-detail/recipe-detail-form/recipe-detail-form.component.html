@@ -1,9 +1,9 @@
 <form [formGroup]="form" class="form-content" #formRef="ngForm">
     <div class="form-item">
-        <label for="rcode">Recipe Code</label>
+        <label for="recipeCode">Recipe Code</label>
         <input
-            id="rcode"
-            formControlName="rcode"
+            id="recipeCode"
+            formControlName="recipeCode"
             type="text"
             (keypress)="onChangeInput($event, 'alphanumeric')"
         />

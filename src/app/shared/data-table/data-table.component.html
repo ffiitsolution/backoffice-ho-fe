@@ -22,6 +22,7 @@
                     mat-button
                     class="head-table-button filter-data-button"
                     (click)="openFilter()"
+                    *ngIf="componentHasFilter"
                 >
                     <i class="fa fa-filter"></i>
                     Filter
@@ -57,7 +58,7 @@
                 <ng-container
                     *ngIf="
                         menuTable == 'outlet' ||
-                        menuTable == 'payment-method-limit' || 
+                        menuTable == 'payment-method-limit' ||
                         menuTable == 'menu-group-limit'
                     "
                 >
@@ -100,7 +101,12 @@
                     </div>
                 </ng-container>
 
-                <ng-container *ngIf="menuTable == 'menu-group' || menuTable == 'menu-group-limit'">
+                <ng-container
+                    *ngIf="
+                        menuTable == 'menu-group' ||
+                        menuTable == 'menu-group-limit'
+                    "
+                >
                     <div class="filter-field">
                         <mat-label for="status">Outlet Code</mat-label>
                         <ng-select
@@ -114,7 +120,12 @@
                     </div>
                 </ng-container>
 
-                <ng-container *ngIf="menuTable == 'menu-group' || menuTable == 'menu-group-limit'">
+                <ng-container
+                    *ngIf="
+                        menuTable == 'menu-group' ||
+                        menuTable == 'menu-group-limit'
+                    "
+                >
                     <div class="filter-field">
                         <mat-label for="status">Menu Group Code</mat-label>
                         <ng-select
@@ -128,7 +139,12 @@
                     </div>
                 </ng-container>
 
-                <ng-container *ngIf="menuTable == 'payment-method-limit' || menuTable == 'menu-group-limit'">
+                <ng-container
+                    *ngIf="
+                        menuTable == 'payment-method-limit' ||
+                        menuTable == 'menu-group-limit'
+                    "
+                >
                     <div class="filter-field">
                         <mat-label for="order-type">Order Type</mat-label>
                         <ng-select
@@ -225,12 +241,14 @@
                     </div>
                 </ng-container>
 
-                <ng-container 
+                <ng-container
                     *ngIf="
-                        menuTable != 'payment-method-limit' && 
-                        menuTable != 'menu-group-limit' && 
-                        menuTable != 'price'"
-                    >
+                        menuTable != 'payment-method-limit' &&
+                        menuTable != 'menu-group-limit' &&
+                        menuTable != 'price' &&
+                        menuTable != 'master-recipe-detail'
+                    "
+                >
                     <div class="filter-field">
                         <mat-label for="status">Status</mat-label>
                         <ng-select

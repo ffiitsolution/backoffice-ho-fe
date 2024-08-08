@@ -34,13 +34,13 @@ export class RecipeProductFormComponent implements OnInit {
 
     initializeForm() {
         this.form = this.formBuilder.group({
-            rcode: [this.data?.data?.recipeCode || ''],
+            recipeCode: [this.data?.data?.recipeCode || ''],
             productCode: [this.data?.data?.productCode || ''],
             qtyPurchase: [this.data?.data?.qtyPurchase || ''],
             uomPurchase: [this.data?.data?.uomPurchase || ''],
             qtyStock: [this.data?.data?.qtyStock || ''],
             uomStock: [this.data?.data?.uomStock || ''],
-            remark: [this.data?.data?.productRemark || ''],
+            productRemark: [this.data?.data?.productRemark || ''],
         });
     }
 
