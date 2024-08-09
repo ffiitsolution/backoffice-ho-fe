@@ -5,14 +5,13 @@ import { tabModifier } from '../../../../helper/tab-menu.helper';
 @Component({
     selector: 'master-modifier-price',
     templateUrl: 'modifier-price.component.html',
-    styleUrl: 'modifier-price.component.scss'
+    styleUrl: 'modifier-price.component.scss',
 })
-
 export class MasterModifierPriceComponent implements OnInit {
     headerTitle: string = 'Master Data Modifier Price';
     apiUrl: string = '/modifier-price/dt';
-    apiInsertUrl: string = '/modifier-price/insert';
-    apiUpdateUrl: string = '/modifier-price/update';
+    apiInsertUrl: string = '/master/modifier-price/insert';
+    apiUpdateUrl: string = '/master/modifier-price/update';
     menuTable: string = 'modifier-price';
     condList: any;
     renderColumns: any;
@@ -20,7 +19,7 @@ export class MasterModifierPriceComponent implements OnInit {
     onDestroy$ = new Subject<void>();
     tabMenus: { tabMenuName: string; route: string }[] = tabModifier;
 
-    constructor() { }
+    constructor() {}
 
     ngOnInit() {
         this.renderColumn();
@@ -29,9 +28,7 @@ export class MasterModifierPriceComponent implements OnInit {
     }
 
     orderBy() {
-        this.setOrderBy = [
-            [1, 'asc']
-        ];
+        this.setOrderBy = [[1, 'asc']];
     }
 
     getFilter() {}
@@ -69,7 +66,6 @@ export class MasterModifierPriceComponent implements OnInit {
                 searchable: true,
             },
             {
-                data: 'status',
                 title: 'ACTIONS',
                 orderable: false,
                 searchable: false,
@@ -91,6 +87,6 @@ export class MasterModifierPriceComponent implements OnInit {
                     return actionBtn;
                 },
             },
-        ]
+        ];
     }
 }

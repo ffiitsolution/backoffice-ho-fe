@@ -1,4 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
+import {
+    Component,
+    EventEmitter,
+    Input,
+    OnInit,
+    Output,
+    ViewEncapsulation,
+} from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { RegexPipe } from '../../../../../services/input.pipe';
 
@@ -8,18 +15,18 @@ import { RegexPipe } from '../../../../../services/input.pipe';
     styleUrl: '../modifier-price.component.scss',
     encapsulation: ViewEncapsulation.Emulated,
 })
-
 export class MasterModifierPriceFormComponent implements OnInit {
     @Input() data: any;
     @Output() formValueChange = new EventEmitter<any>();
 
     form: FormGroup;
+    IS_EDIT_MODE: boolean = false;
     constructor(
         private formBuilder: FormBuilder,
         private regexPipe: RegexPipe,
-    ) { }
+    ) {}
 
-    ngOnInit() { 
+    ngOnInit() {
         this.initializeForm();
         this.form.valueChanges.subscribe((value) => {
             this.formValueChange.emit(value);
@@ -28,11 +35,15 @@ export class MasterModifierPriceFormComponent implements OnInit {
 
     initializeForm() {
         this.form = this.formBuilder.group({
-            mgroupCode: [this.data?.data?.modifierGroupCode || ''],
-            mitemCode: [this.data?.data?.modifierItemCode || ''],
+            modifierGroupCode: [this.data?.data?.modifierGroupCode || ''],
+            modifierItemCode: [this.data?.data?.modifierItemCode || ''],
             priceTypeCode: [this.data?.data?.priceTypeCode || ''],
-            price: [this.data?.data?.value || 0],
+            price: [this.data?.data?.price || 0],
         });
+        this.IS_EDIT_MODE =
+            this.form.get('modifierGroupCode')?.value ||
+            this.form.get('modifierItemCode')?.value ||
+            this.form.get('priceTypeCode')?.value;
     }
 
     onChangeInput(input: any, type: string) {

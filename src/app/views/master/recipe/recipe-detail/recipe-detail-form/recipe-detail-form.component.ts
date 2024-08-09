@@ -20,6 +20,7 @@ export class RecipeDetailFormComponent implements OnInit {
     @Output() formValueChange = new EventEmitter<any>();
 
     form: FormGroup;
+    IS_EDIT_MODE: boolean = false;
     constructor(
         private formBuilder: FormBuilder,
         private regexPipe: RegexPipe,
@@ -42,6 +43,9 @@ export class RecipeDetailFormComponent implements OnInit {
             uomStock: [this.data?.data?.uomStock || ''],
             remark: [this.data?.data?.remark || ''],
         });
+        this.IS_EDIT_MODE =
+            this.form.get('recipeCode')?.value ||
+            this.form.get('itemCode')?.value;
     }
 
     onChangeInput(input: any, type: string) {
