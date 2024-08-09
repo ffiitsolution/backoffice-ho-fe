@@ -19,6 +19,7 @@ export class AppService {
 
     isServerOnline: boolean = false;
     wsServerTime: any;
+    wsListOutlet: any = [];
 
     data: any;
     params: any;
@@ -76,6 +77,16 @@ export class AppService {
                 .set('X-API-TOKEN', token);
         }
         return headers;
+    }
+
+    updateWsListOutlet(outletCode: string, columnName: string, value: string) {
+        for (const outlet of this.wsListOutlet) {
+            if (outlet.outletCode === outletCode) {
+                outlet[columnName] = value;
+                console.log(`Updated outletCode ${outletCode} with ${columnName}: ${value}`);
+                return;
+            }
+        }
     }
 
     generateDateRange(startDate: string, endDate: string): string[] {
@@ -139,5 +150,11 @@ export class AppService {
 
     dataLoading(loading: boolean) {
         this._isLoading$.next(loading);
+    }
+
+    doPostExternal(url: string, body: any = {}): Observable<any> {
+        return this.httpClient.post(url, body, {
+            headers: this.headers(),
+        });
     }
 }

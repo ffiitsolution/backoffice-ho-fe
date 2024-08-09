@@ -95,6 +95,7 @@ import {
 import { MasterColorComponent } from './views/master/color/color.component';
 import { MasterDiscountMethodComponent } from './views/master/discount-method/discount-method.component';
 import { MonitoringOutletComponent } from './views/monitoring/monitoring-outlet/monitoring-outlet.component';
+import { MonitoringOutletWsComponent } from './views/monitoring/monitoring-outlet-ws/monitoring-outlet-ws.component';
 
 export function initializeApp(appConfig: AppConfig) {
     return () => appConfig.load();
@@ -152,7 +153,8 @@ export function initializeApp(appConfig: AppConfig) {
         MasterPriceFormComponent,
         MasterColorComponent,
         MasterDiscountMethodComponent,
-        MonitoringOutletComponent
+        MonitoringOutletComponent,
+        MonitoringOutletWsComponent
     ],
     imports: [
         BrowserModule,

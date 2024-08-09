@@ -118,6 +118,49 @@ export class LayoutComponent implements OnInit, AfterViewInit {
                 );
             },
         );
+        this.websocketService.subscribe(
+            '/topic/outletsReply',
+            (message: string) => {
+                // console.log('outletsReply: ' + message);
+                try {
+                    const msg = JSON.parse(message);
+                    if (msg.action === 'time') {
+                        if (this.service.wsListOutlet?.length > 0) {
+                            if(msg.app === 'boffi'){
+                                this.service.updateWsListOutlet(
+                                    msg.outletCode,
+                                    'boffiBe',
+                                    msg.beVersion,
+                                );
+                                this.service.updateWsListOutlet(
+                                    msg.outletCode,
+                                    'boffiFe',
+                                    msg.feVersion,
+                                );
+                                this.service.updateWsListOutlet(
+                                    msg.outletCode,
+                                    'boffiTime',
+                                    msg.outletTime,
+                                );
+                            } else if(msg.app === 'mpcs'){
+                                this.service.updateWsListOutlet(
+                                    msg.outletCode,
+                                    'mpcsBe',
+                                    msg.beVersion,
+                                );
+                                this.service.updateWsListOutlet(
+                                    msg.outletCode,
+                                    'mpcsFe',
+                                    msg.feVersion,
+                                );
+                            }
+                        }
+                    }
+                } catch (error) {
+                    console.error('Invalid JSON:', error);
+                }
+            },
+        );
     }
 
     checkServerTime() {

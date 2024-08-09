@@ -97,7 +97,7 @@ export const navItems: SidebarMenu[] = [
                 route: '/master/supplier',
                 childName: 'supplier',
             },
-            
+
         ]
 
     },
@@ -139,6 +139,11 @@ export const navItems: SidebarMenu[] = [
                 displayName: 'Outlet',
                 route: '/monitoring/outlet',
                 childName: 'monitoring-outlet',
+            },
+            {
+                displayName: 'Outlet via WS',
+                route: '/monitoring/outlet-ws',
+                childName: 'monitoring-outlet-ws',
             },
         ],
     },

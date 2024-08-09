@@ -1,24 +1,6 @@
 <mat-card appearance="outlined">
     <mat-card-header>
         <mat-card-title> {{ headerTitle }}</mat-card-title>
-        <!-- <div class="row">
-            <div class="col">
-                {{ headerTitle }}
-            </div>
-            <div class="col">
-                <div class="filter-field">
-                    <mat-label for="status">Status</mat-label>
-                    <ng-select
-                        class="select-filter"
-                        [items]="listOutletRegion"
-                        bindLabel="name"
-                        [(ngModel)]="selectedOutletRegion"
-                        (ngModelChange)="onSelectedOutletRegionChange()"
-                    >
-                    </ng-select>
-                </div>
-            </div>
-        </div> -->
     </mat-card-header>
     <hr />
     <mat-card-content>
@@ -37,7 +19,6 @@
                         <th scope="col" rowspan="4">OUTLET CODE</th>
                         <th scope="col" rowspan="4">OUTLET NAME</th>
                         <th scope="col" colspan="5">APPLICATION</th>
-                        <th scope="col" rowspan="4">ACTION</th>
                     </tr>
                     <tr class="align-middle text-center">
                         <th scope="col" colspan="3">BOFFI</th>
@@ -59,13 +40,13 @@
                     </tr>
                 </thead>
                 <tbody class="table-group-divider">
-                    <tr *ngIf="listOutlet?.length == 0">
-                        <td colspan="11" class="text-center">No data</td>
+                    <tr *ngIf="appSvc.wsListOutlet?.length == 0" class="text-center">
+                        <td colspan="11">No data</td>
                     </tr>
-                    <tr *ngFor="let outlet of listOutlet;let i = index;">
+                    <tr *ngFor="let outlet of appSvc.wsListOutlet;let i = index;">
                         <td class="text-end">{{ i+1 }}</td>
-                        <td class="text-end">{{ outlet.regionCode }}</td>
                         <td class="text-end">{{ outlet.areaCode }}</td>
+                        <td class="text-end">{{ outlet.regionCode }}</td>
                         <td>{{ outlet.type }}</td>
                         <th class="text-end pe-2">{{ outlet.outletCode }}</th>
                         <td>{{ outlet.outletName }}</td>
@@ -126,9 +107,6 @@
                                     {{ outlet.mpcsFe }}
                                 </span>
                             </ng-container>
-                        </td>
-                        <td>
-                            <button class="btn btn-warning btn-sm" (click)="doUpdate(outlet)">UPDATE</button>
                         </td>
                     </tr>
                 </tbody>

@@ -38,6 +38,7 @@
     "stompjs": "^2.3.3",
     "tslib": "^2.3.0",
     "ws": "^8.16.0",
+    "xlsx": "^0.18.5",
     "zone.js": "~0.14.3"
   },
   "devDependencies": {
