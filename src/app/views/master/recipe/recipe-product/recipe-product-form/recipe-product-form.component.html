@@ -6,12 +6,21 @@
             formControlName="recipeCode"
             type="text"
             (keypress)="onChangeInput($event, 'alphanumeric')"
+            [ngClass]="{ 'form-disabled': IS_EDIT_MODE }"
+            [disabled]="IS_EDIT_MODE"
+            [readOnly]="IS_EDIT_MODE"
         />
     </div>
 
     <div class="form-item">
         <label for="productCode">Product Code</label>
-        <input id="productCode" formControlName="productCode" />
+        <input
+            id="productCode"
+            formControlName="productCode"
+            [ngClass]="{ 'form-disabled': IS_EDIT_MODE }"
+            [disabled]="IS_EDIT_MODE"
+            [readOnly]="IS_EDIT_MODE"
+        />
     </div>
 
     <div class="form-item">

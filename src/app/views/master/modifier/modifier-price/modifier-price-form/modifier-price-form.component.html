@@ -1,22 +1,44 @@
 <form [formGroup]="form" class="form-content" #formRef="ngForm">
     <div class="form-item">
-        <label for="mgroupCode">Modifier Group Code</label>
-        <input id="mgroupCode" formControlName="mgroupCode"/>
+        <label for="modifierGroupCode">Modifier Group Code</label>
+        <input
+            id="modifierGroupCode"
+            formControlName="modifierGroupCode"
+            [ngClass]="{ 'form-disabled': IS_EDIT_MODE }"
+            [disabled]="IS_EDIT_MODE"
+            [readOnly]="IS_EDIT_MODE"
+            [maxLength]="3"
+        />
     </div>
 
     <div class="form-item">
-        <label for="mitemCode">Modifier Item Code</label>
-        <input id="mitemCode" formControlName="mitemCode" />
+        <label for="modifierItemCode">Modifier Item Code</label>
+        <input
+            id="modifierItemCode"
+            formControlName="modifierItemCode"
+            [ngClass]="{ 'form-disabled': IS_EDIT_MODE }"
+            [disabled]="IS_EDIT_MODE"
+            [readOnly]="IS_EDIT_MODE"
+        />
     </div>
 
     <div class="form-item">
         <label for="priceTypeCode">Price Type Code</label>
-        <input id="priceTypeCode" formControlName="priceTypeCode" />
+        <input
+            id="priceTypeCode"
+            formControlName="priceTypeCode"
+            [ngClass]="{ 'form-disabled': IS_EDIT_MODE }"
+            [disabled]="IS_EDIT_MODE"
+            [readOnly]="IS_EDIT_MODE"
+        />
     </div>
 
     <div class="form-item">
         <label for="price">Price</label>
-        <input id="price" formControlName="price" (keypress)="onChangeInput($event, 'numeric')"/>
+        <input
+            id="price"
+            formControlName="price"
+            (keypress)="onChangeInput($event, 'numeric')"
+        />
     </div>
 </form>
-

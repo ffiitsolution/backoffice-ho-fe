@@ -8,6 +8,7 @@
             [maxlength]="5"
             [ngClass]="{ 'form-disabled': IS_EDIT_MODE }"
             [disabled]="IS_EDIT_MODE"
+            [readOnly]="IS_EDIT_MODE"
         />
     </div>
 
@@ -19,6 +20,7 @@
             (keypress)="onChangeInput($event, 'alphanumeric')"
             [ngClass]="{ 'form-disabled': IS_EDIT_MODE }"
             [disabled]="IS_EDIT_MODE"
+            [readOnly]="IS_EDIT_MODE"
         />
     </div>
 

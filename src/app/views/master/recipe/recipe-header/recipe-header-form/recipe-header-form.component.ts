@@ -20,6 +20,7 @@ export class RecipeHeaderFormComponent implements OnInit {
     @Output() formValueChange = new EventEmitter<any>();
 
     form: FormGroup;
+    IS_EDIT_MODE: boolean = false;
 
     constructor(
         private formBuilder: FormBuilder,
@@ -40,6 +41,7 @@ export class RecipeHeaderFormComponent implements OnInit {
             mpcsGroup: [this.data?.data?.mpcsGroup || ''],
             status: [this.data?.data?.status || 'A'],
         });
+        this.IS_EDIT_MODE = this.form.get('recipeCode')?.value;
     }
 
     onChangeInput(input: any, type: string) {
