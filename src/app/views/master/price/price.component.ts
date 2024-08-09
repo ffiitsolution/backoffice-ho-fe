@@ -5,28 +5,25 @@ import { Subject, takeUntil, tap } from 'rxjs';
 @Component({
     selector: 'app-price',
     templateUrl: 'price.component.html',
-    styleUrl: 'price.component.scss'
+    styleUrl: 'price.component.scss',
 })
-
 export class MasterPriceComponent implements OnInit {
-    apiUrl : string = '/price/dt';
+    apiUrl: string = '/price/dt';
     apiInsertUrl = '/master/price/insert';
     apiUpdateUrl = '/master/price/update';
-    headerTitle : string = 'Master Price';
+    headerTitle: string = 'Master Price';
     menuTable: string = 'price';
     renderColumns = {};
-    setOrderBy : any;
+    setOrderBy: any;
     priceTypeCodeList: any;
     onDestroy$ = new Subject<void>();
 
-    constructor(
-        private filterService: FilterService
-    ) { }
+    constructor(private filterService: FilterService) {}
 
     ngOnInit() {
         this.renderColumn();
         this.orderBy();
-        this.getPaymentTypeCode();
+        // this.getPaymentTypeCode();
     }
 
     renderColumn() {
@@ -84,21 +81,19 @@ export class MasterPriceComponent implements OnInit {
         ];
     }
 
-    getPaymentTypeCode() {
-        this.filterService
-            .getFilterPriceTypeCode()
-            .pipe(
-                takeUntil(this.onDestroy$),
-                tap((response) => {
-                    this.priceTypeCodeList = response.data;
-                }),
-            )
-            .subscribe();
-    }
+    // getPaymentTypeCode() {
+    //     this.filterService
+    //         .getFilterPriceTypeCode()
+    //         .pipe(
+    //             takeUntil(this.onDestroy$),
+    //             tap((response) => {
+    //                 this.priceTypeCodeList = response.data;
+    //             }),
+    //         )
+    //         .subscribe();
+    // }
 
     orderBy() {
-        this.setOrderBy = [
-            [1, 'asc'],
-        ];
+        this.setOrderBy = [[1, 'asc']];
     }
 }
