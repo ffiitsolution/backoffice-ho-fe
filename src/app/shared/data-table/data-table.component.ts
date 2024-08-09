@@ -392,6 +392,9 @@ export class DataTableComponent implements OnInit, AfterViewInit {
                             MESSAGES.SUCCESS_MESSAGE_UPDATE_EN,
                         );
                         this.onFilterChange();
+                    } else {
+                        // Handle backend validation (besides syntax error)
+                        this.unsuccessResponseHandler(response);
                     }
                 }),
                 // Error Case
