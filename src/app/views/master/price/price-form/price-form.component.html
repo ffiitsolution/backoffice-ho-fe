@@ -1,17 +1,33 @@
 <form [formGroup]="form" class="form-content" #formRef="ngForm">
     <div class="form-item">
-        <label for="itemCode">Item Code</label>
-        <input id="itemCode" formControlName="itemCode" (keypress)="onChangeInput($event, 'alphanumeric')"/>
+        <label for="menuItemCode">Menu Item Code</label>
+        <input
+            id="menuItemCode"
+            formControlName="menuItemCode"
+            (keypress)="onChangeInput($event, 'alphanumeric')"
+            [maxlength]="5"
+            [ngClass]="{ 'form-disabled': IS_EDIT_MODE }"
+            [disabled]="IS_EDIT_MODE"
+        />
     </div>
 
     <div class="form-item">
         <label for="priceTypeCode">Price Type Code</label>
-        <input id="priceTypeCode" formControlName="priceTypeCode" (keypress)="onChangeInput($event, 'alphanumeric')"/>
+        <input
+            id="priceTypeCode"
+            formControlName="priceTypeCode"
+            (keypress)="onChangeInput($event, 'alphanumeric')"
+            [ngClass]="{ 'form-disabled': IS_EDIT_MODE }"
+            [disabled]="IS_EDIT_MODE"
+        />
     </div>
 
     <div class="form-item">
         <label for="price">Price</label>
-        <input id="price" formControlName="price" (keypress)="onChangeInput($event, 'numeric')"/>
+        <input
+            id="price"
+            formControlName="price"
+            (keypress)="onChangeInput($event, 'numeric')"
+        />
     </div>
 </form>
-

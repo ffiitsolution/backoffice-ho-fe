@@ -17,10 +17,12 @@ export class FilterService {
 
     getFilterOutlet(): Observable<any> {
         return this.httpClient.post(
-            this.BASE_URL + '/filter/outlet', {} ,{
-                headers: this.appService.headers()
-            }
-        )
+            this.BASE_URL + '/filter/outlet',
+            {},
+            {
+                headers: this.appService.headers(),
+            },
+        );
     }
 
     getFilterOrderType(): Observable<any> {
@@ -69,17 +71,17 @@ export class FilterService {
             {},
             {
                 headers: this.appService.headers(),
-            }
-        )
+            },
+        );
     }
 
-    getFilterPriceTypeCode(): Observable<any> {
-        return this.httpClient.post(
-            this.BASE_URL + '/filter/price-type-code',
-            {},
-            {
-                headers: this.appService.headers(),
-            }
-        )
-    }
+    // getFilterPriceTypeCode(): Observable<any> {
+    //     return this.httpClient.post(
+    //         this.BASE_URL + '/filter/price-type-code',
+    //         {},
+    //         {
+    //             headers: this.appService.headers(),
+    //         }
+    //     )
+    // }
 }
